@@ -1,2 +1,3 @@
 export { default as Button } from './Button'
-export * from './common'
+export { Okla } from './common/Okla'
+export { Johnny } from './Johnny'
