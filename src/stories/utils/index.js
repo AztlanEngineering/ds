@@ -7,3 +7,5 @@ export {
   TestRouter as Router,
   history
 } from './Router'
+
+export * from './Dummy'

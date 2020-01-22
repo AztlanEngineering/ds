@@ -1,33 +1,35 @@
-/* @fwrlines/generator-react-component 1.0.1 */
+/* @fwrlines/generator-react-component 1.1.2 */
 import React from 'react'
 import PropTypes from 'prop-types'
-/*
-   Config */
+
+
+
+//Config
 import C from 'ui/cssClasses'
 
-//Relative imports
-import styles from './checklist.scss'
-import { Item } from './common'
 
-const baseClassName = 'checklist'
+const baseClassName = C.item
+const cross_class = 'cross'
 
-
-const Checklist = ({
+const Item = ({
   id,
   className,
   style,
-
-  dangerouslySetInnerHTML,
   children,
+
+  cross,
+
+  dangerouslySetInnerHTML
 }) => {
 
+
   return (
-    <ul
+    <li
       className={
         [
-          styles[baseClassName],
-          className,
-          C.list
+          baseClassName, //Because we are a subitem
+          cross && cross_class,
+          className
         ].filter(e => e).join(' ')
       }
       id={ id }
@@ -35,10 +37,10 @@ const Checklist = ({
       dangerouslySetInnerHTML={ dangerouslySetInnerHTML }
     >
       { children }
-    </ul>
+    </li>
   )}
 
-Checklist.propTypes = {
+Item.propTypes = {
   /**
    * Provide an HTML id to this element
    */
@@ -59,9 +61,15 @@ Checklist.propTypes = {
    */
   children: PropTypes.node,
 
-
+  /**
+   *  Whether it's a cross
+   */
+  cross:PropTypes.bool,
 }
 
-Checklist.Item = Item
+Item.defaultProps = {
+  cross:false,
+}
 
-export default Checklist
+
+export default Item

@@ -4,29 +4,57 @@ import React from 'react'
 //import { action } from '@storybook/addon-actions'
 
 import { GrayscaleIcon } from 'ui'
-//import QUERY from './graphql/query.graphql'
-//import { AplProvider } from 'stories/utils'
-//import { Router } from 'stories/utils'
-
-//const endpoint = 'https://api.fwrlines.com/graphql'
 
 export default {
   title: 'common/GrayscaleIcon',
   component:GrayscaleIcon,
   parameters: {
-    decorators: [ 
+    decorators: [
       //storyfn => <div className="">{ storyfn() }</div>,
-      //storyfn => <AplProvider endpoint={ endpoint }>{ storyfn() }</AplProvider>,
-      //storyfn => <Router>{ storyfn() }</Router>,
     ]
   }
 }
 
-export const Default = () => (
-  <GrayscaleIcon></GrayscaleIcon> 
-)
+const variants = [
+  {
+    alt:'Corriere',
+    src:'/press_corriere.png',
+    link:'blah.com'
+  },
+  {
+    alt:'New York Times',
+    src:'/press_nyt.png',
+    className:'b-teal',
+    link:'blah.com'
+  },
+  {
+    alt:'Stampa',
+    src:'/press_stampa.svg',
+    className:'b-red',
+    link:'blah.com'
+  }
+]
 
-export const Variant = () => (
-    <GrayscaleIcon></GrayscaleIcon> 
-)
+export const Default = () =>
+  (
+    <GrayscaleIcon
+      { ...variants[0] }
+    />
+  )
+
+export const TestClasses = () =>
+  variants.map((e,i) =>
+    <GrayscaleIcon
+      { ...e }
+      key={ i }
+    />
+  )
+
+export const Inline = () =>
+  variants.map(({ className, ...e },i) =>
+    <GrayscaleIcon
+      { ...e }
+      key={ i }
+    />
+  )
 

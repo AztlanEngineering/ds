@@ -1,32 +1,23 @@
 /* @fwrlines/generator-storybook-story 1.0.1 */
 import React from 'react'
 
-//import { action } from '@storybook/addon-actions'
-
 import { InnerContent } from 'ui'
-//import QUERY from './graphql/query.graphql'
-//import { AplProvider } from 'stories/utils'
-//import { Router } from 'stories/utils'
 
-//const endpoint = 'https://api.fwrlines.com/graphql'
+import { TEXT_XXS_ESC, TEXT_XXS, TEXT_XS, TEXT } from '../utils/Dummy'
 
 export default {
   title: 'common/InnerContent',
   component:InnerContent,
   parameters: {
-    decorators: [ 
+    decorators: [
       //storyfn => <div className="">{ storyfn() }</div>,
-      //storyfn => <AplProvider endpoint={ endpoint }>{ storyfn() }</AplProvider>,
-      //storyfn => <Router>{ storyfn() }</Router>,
     ]
   }
 }
 
-export const Default = () => (
-  <InnerContent></InnerContent> 
-)
 
-export const Variant = () => (
-    <InnerContent></InnerContent> 
-)
 
+export const Default = () =>
+  <InnerContent
+    dangerouslySetInnerHTML={{ __html:TEXT }}
+  />

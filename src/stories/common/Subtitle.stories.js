@@ -1,32 +1,43 @@
 /* @fwrlines/generator-storybook-story 1.0.1 */
 import React from 'react'
 
-//import { action } from '@storybook/addon-actions'
-
 import { Subtitle } from 'ui'
-//import QUERY from './graphql/query.graphql'
-//import { AplProvider } from 'stories/utils'
-//import { Router } from 'stories/utils'
-
-//const endpoint = 'https://api.fwrlines.com/graphql'
 
 export default {
   title: 'common/Subtitle',
   component:Subtitle,
   parameters: {
-    decorators: [ 
+    decorators: [
       //storyfn => <div className="">{ storyfn() }</div>,
-      //storyfn => <AplProvider endpoint={ endpoint }>{ storyfn() }</AplProvider>,
-      //storyfn => <Router>{ storyfn() }</Router>,
     ]
   }
 }
 
-export const Default = () => (
-  <Subtitle></Subtitle> 
-)
+const variants = [
+  {
+    text:'Stanley Kubrick, 1960',
+    link:''
+  },
+  {
+    text:'@Meccamico',
+    link:''
+  },
+  {
+    text:'1961 - 2020',
+    link:''
+  },
+  {
+    text:'The new destination in Wales',
+    link:''
+  },
+]
 
-export const Variant = () => (
-    <Subtitle></Subtitle> 
-)
+export const Default = () =>
+  <Subtitle>This is a subtitle</Subtitle>
 
+export const Variants = () =>
+  variants.map((e,i) =>
+    <Subtitle upper={ i % 2 == 1 }>
+      { e.text }
+    </Subtitle>
+  )

@@ -24,7 +24,7 @@ const Image = ({
     <Element
       className={
         [
-          styles[baseClassName],
+          baseClassName,
           className
         ].filter(e => e).join(' ')
       }

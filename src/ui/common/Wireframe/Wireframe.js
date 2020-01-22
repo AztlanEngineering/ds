@@ -2,14 +2,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-
-
-import { gql } from 'graphql-tag'
 /* Config
    import C from 'ui/cssClasses' */
 
 //Relative imports
-import styles from './wireframe.scss'
+import './wireframe.scss'
+import { Text, Image } from './common'
 
 const Wireframe = {
   Image,
