@@ -37,7 +37,8 @@ module.exports = function (api) {
     ['babel-plugin-inline-import', {
       'extensions': [
         '.html',
-        '.graphql'
+        '.graphql',
+        '.gql'
       ]}],
 
     ['add-module-exports'],
