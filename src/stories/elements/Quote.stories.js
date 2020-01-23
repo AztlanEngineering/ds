@@ -22,11 +22,19 @@ export default {
   }
 }
 
-export const Default = () => (
-  <Quote></Quote>
-)
+const paragraph_text = 'The hour when ye say: \'What good is my justice! I do not see that I am fervour and fuel. The just, however, are fervour and fuel!\''
 
-export const Variant = () => (
-  <Quote></Quote>
+const cite = 'https://archive.org/stream/thusspokezarathu00nietuoft/thusspokezarathu00nietuoft_djvu.txt'
+
+export const Default = () =>
+  (<Quote>{ paragraph_text }</Quote>)
+
+export const WithAuthor = () =>(
+  <Quote
+    author='F. Nietzsche'
+    cite={ cite }
+  >
+    { paragraph_text }
+  </Quote>
 )
 

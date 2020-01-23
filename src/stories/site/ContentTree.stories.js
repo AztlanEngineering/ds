@@ -3,10 +3,12 @@ import React from 'react'
 
 //import { action } from '@storybook/addon-actions'
 
-import { ContentTree } from 'ui'
-//import QUERY from './graphql/query.graphql'
-//import { AplProvider } from 'stories/utils'
-//import { Router } from 'stories/utils'
+import {
+  ContentTree,
+  ContentTreeContextProvider as ContextProvider,
+} from 'ui'
+
+import { TEXT } from '../utils'
 
 //const endpoint = 'https://api.fwrlines.com/graphql'
 
@@ -14,19 +16,79 @@ export default {
   title: 'site/ContentTree',
   component:ContentTree,
   parameters: {
-    decorators: [ 
-      //storyfn => <div className="">{ storyfn() }</div>,
-      //storyfn => <AplProvider endpoint={ endpoint }>{ storyfn() }</AplProvider>,
-      //storyfn => <Router>{ storyfn() }</Router>,
+    decorators: [
+      storyfn => <ContextProvider>{ storyfn() }</ContextProvider>
+      /* storyfn => <div className="">{ storyfn() }</div>,
+         storyfn => <AplProvider endpoint={ endpoint }>{ storyfn() }</AplProvider>,
+         storyfn => <Router>{ storyfn() }</Router>, */
     ]
   }
 }
 
 export const Default = () => (
-  <ContentTree></ContentTree> 
+  <>
+    <ContentTree
+      content={ TEXT }
+      style={{
+    		position:'fixed',
+    		top:'0',
+    		left:'0',
+		    background:'beige'
+		  }}
+      activeClassName='c-orange'
+    />
+    <div
+      className='content'
+      dangerouslySetInnerHTML={{__html:TEXT}}
+      style={{ paddingTop:'500px', paddingBottom:'500px' }}
+    >
+
+    </div>
+  </>
 )
 
-export const Variant = () => (
-    <ContentTree></ContentTree> 
+export const PastStyle = () => (
+  <>
+    <ContentTree
+      content={ TEXT }
+      style={{
+    		position:'fixed',
+    		top:'0',
+    		left:'0',
+		    background:'beige'
+		  }}
+      pastClassName='c-red ti'
+      activeClassName='c-teal'
+      elementClassName='nt'
+    />
+    <div
+      className='content'
+      dangerouslySetInnerHTML={{__html:TEXT}}
+      style={{ paddingTop:'500px', paddingBottom:'500px' }}
+    />
+
+  </>
+)
+
+export const UnfoldActive = () => (
+  <>
+    <ContentTree
+      content={ TEXT }
+      style={{
+    		position:'fixed',
+    		top:'0',
+    		left:'0',
+		    background:'beige'
+		  }}
+      activeClassName='c-teal'
+      unfoldActive
+    />
+    <div
+      className='content'
+      dangerouslySetInnerHTML={{__html:TEXT}}
+      style={{ paddingTop:'500px', paddingBottom:'500px' }}
+    />
+
+  </>
 )
 

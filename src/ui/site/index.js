@@ -1,5 +1,5 @@
 export * from './common'
-export { ContentTree } from './ContentTree'
+export { ContentTree, ContentTreeContextProvider} from './ContentTree'
 export { Menu } from './Menu'
 export { Page } from './Page'
 export { Paginator } from './Paginator'

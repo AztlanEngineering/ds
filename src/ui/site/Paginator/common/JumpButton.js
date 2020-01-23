@@ -2,7 +2,8 @@
 import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 
-import PaginatorContex from './Context'
+import PaginatorContext from './Context'
+import { Button } from 'ui/elements'
 
 /* Config
    import C from 'ui/cssClasses' */
