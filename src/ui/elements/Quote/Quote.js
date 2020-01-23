@@ -2,49 +2,52 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import C from 'ui/cssClasses'
+
+
+//import C from 'ui/cssClasses'
+import { Subtitle } from 'ui/common'
 
 //Relative imports
-import styles from './local_index.scss'
-import { Item } from './common'
+import styles from './quote.scss'
 
-const baseClassName = 'local_index'
+const baseClassName = 'quote'
 
-const LocalIndex = ({
+const Quote = ({
   id,
   className,
   style,
   children,
 
-  title
+  author,
+  cite
 }) => {
 
-
   return (
-    <ul
+    <figure
       className={
         [
           styles[baseClassName],
-          'lsn c-off-black',
-          C.list,
           className
         ].filter(e => e).join(' ')
       }
       id={ id }
       style={ style }
     >
-      <p className={
-        C.title
-    + ' s-sm tls tu c-grey'
+      <blockquote cite={ cite }>
+        { children }
+      </blockquote>
+      { author &&
+        <Subtitle
+          as='figcaption'
+          className='ur'
+        >
+          { author }
+        </Subtitle>
       }
-      >
-        { title }
-      </p>
-      { children }
-    </ul>
+    </figure>
   )}
 
-LocalIndex.propTypes = {
+Quote.propTypes = {
   /**
    * Provide an HTML id to this element
    */
@@ -63,20 +66,23 @@ LocalIndex.propTypes = {
   /**
    *  The children JSX
    */
-  children: PropTypes.node,
+  children: PropTypes.node.isRequired,
 
   /**
-   * The title of the Index
+   * The author of the quote
    */
-  title: PropTypes.string,
+  author: PropTypes.string,
 
+  /**
+   * The blockquote cite (an http link)
+   */
+  cite: PropTypes.string,
 }
 
 /*
-LocalIndex.defaultProps = {
+Quote.defaultProps = {
   status: 'neutral',
 }
 */
-LocalIndex.Item = Item
 
-export default LocalIndex
+export default Quote

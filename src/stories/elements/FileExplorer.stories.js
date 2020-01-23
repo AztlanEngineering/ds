@@ -1,32 +1,47 @@
 /* @fwrlines/generator-storybook-story 1.0.1 */
 import React from 'react'
 
-//import { action } from '@storybook/addon-actions'
 
 import { FileExplorer } from 'ui'
-//import QUERY from './graphql/query.graphql'
-//import { AplProvider } from 'stories/utils'
-//import { Router } from 'stories/utils'
-
-//const endpoint = 'https://api.fwrlines.com/graphql'
 
 export default {
   title: 'elements/FileExplorer',
   component:FileExplorer,
   parameters: {
-    decorators: [ 
-      //storyfn => <div className="">{ storyfn() }</div>,
-      //storyfn => <AplProvider endpoint={ endpoint }>{ storyfn() }</AplProvider>,
-      //storyfn => <Router>{ storyfn() }</Router>,
+    decorators: [
+      /* storyfn => <div className="">{ storyfn() }</div>,*/
     ]
   }
 }
 
 export const Default = () => (
-  <FileExplorer></FileExplorer> 
+  <FileExplorer
+    root='Root'
+    rootIcon='F'
+  >
+    <FileExplorer.Folder name='Music'>
+      <FileExplorer.File name='a-good-song.mp3'/>
+      <FileExplorer.File name='mymp3.mp3'/>
+      <FileExplorer.File name='highQuality.wave'/>
+    </FileExplorer.Folder>
+    <FileExplorer.Folder
+      name='Souvenirs'
+      open
+    >
+      <FileExplorer.File name='holidays.jpg'/>
+      <FileExplorer.File name='China.png'/>
+      <FileExplorer.File name='lastNight.jpg'/>
+    </FileExplorer.Folder>
+    <FileExplorer.Folder
+      name='Images'
+      open
+    >
+      <FileExplorer.File name='holidays.jpg'/>
+      <FileExplorer.File name='China.png'/>
+      <FileExplorer.File name='lastNight.jpg'/>
+    </FileExplorer.Folder>
+
+  </FileExplorer>
 )
 
-export const Variant = () => (
-    <FileExplorer></FileExplorer> 
-)
 

@@ -3,7 +3,7 @@ import React from 'react'
 
 //import { action } from '@storybook/addon-actions'
 
-import { Quotation } from 'ui'
+import { Menu } from 'ui'
 //import QUERY from './graphql/query.graphql'
 //import { AplProvider } from 'stories/utils'
 //import { Router } from 'stories/utils'
@@ -11,8 +11,8 @@ import { Quotation } from 'ui'
 //const endpoint = 'https://api.fwrlines.com/graphql'
 
 export default {
-  title: 'elements/Quotation',
-  component:Quotation,
+  title: 'site/Menu',
+  component:Menu,
   parameters: {
     decorators: [ 
       //storyfn => <div className="">{ storyfn() }</div>,
@@ -23,10 +23,10 @@ export default {
 }
 
 export const Default = () => (
-  <Quotation></Quotation> 
+  <Menu></Menu> 
 )
 
 export const Variant = () => (
-    <Quotation></Quotation> 
+    <Menu></Menu> 
 )
 

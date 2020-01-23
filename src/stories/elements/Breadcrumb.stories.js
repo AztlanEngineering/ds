@@ -1,32 +1,41 @@
 /* @fwrlines/generator-storybook-story 1.0.1 */
 import React from 'react'
 
-//import { action } from '@storybook/addon-actions'
 
 import { Breadcrumb } from 'ui'
-//import QUERY from './graphql/query.graphql'
-//import { AplProvider } from 'stories/utils'
-//import { Router } from 'stories/utils'
+import { Router } from 'stories/utils'
 
-//const endpoint = 'https://api.fwrlines.com/graphql'
 
 export default {
   title: 'elements/Breadcrumb',
   component:Breadcrumb,
   parameters: {
-    decorators: [ 
-      //storyfn => <div className="">{ storyfn() }</div>,
-      //storyfn => <AplProvider endpoint={ endpoint }>{ storyfn() }</AplProvider>,
-      //storyfn => <Router>{ storyfn() }</Router>,
+    decorators: [
+      storyfn => <Router>{ storyfn() }</Router>,
     ]
   }
 }
 
 export const Default = () => (
-  <Breadcrumb></Breadcrumb> 
-)
-
-export const Variant = () => (
-    <Breadcrumb></Breadcrumb> 
+  <Breadcrumb>
+    <Breadcrumb.Item
+      to='blog'
+      position={1}
+    >
+  Blog
+    </Breadcrumb.Item>
+    <Breadcrumb.Item
+      to='blog'
+      position={2}
+    >
+  Category
+    </Breadcrumb.Item>
+    <Breadcrumb.Item
+      disabled
+      position={3}
+    >
+  Article
+    </Breadcrumb.Item>
+  </Breadcrumb>
 )
 

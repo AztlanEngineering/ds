@@ -2,11 +2,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-
-
-import { gql } from 'graphql-tag'
-//Config
-//import C from 'ui/cssClasses'
+import { Subtitle, Label } from 'ui/common'
+import C from 'ui/cssClasses'
 
 //Relative imports
 import styles from './heading.scss'
@@ -16,24 +13,65 @@ const baseClassName = 'heading'
 const Heading = ({
   id,
   className,
-  style
+  style,
+  children,
+
+  heading,
+  headingClassName,
+  headingAs:HeadingElement,
+
+  labelClassName,
+  label,
+  labelAs:LabelElement,
+
+  subtitle,
+  subtitleClassName,
+  subtitleUpper,
 }) => {
-  
-  
+
   return (
-  <div 
-    className={
-      [
-        styles[baseClassName],
-        className
-      ].filter(e => e).join(' ')
-  }
-    id={ id }
-    style={ style }
-  >
-    <h2>Welcome to the Heading component</h2>
-  </div>
-)}
+    <div
+      className={
+        [
+          styles[baseClassName],
+          className
+        ].filter(e => e).join(' ')
+      }
+      id={ id }
+      style={ style }
+    >
+      { label &&
+        <LabelElement
+          className={
+            (labelClassName ? ' ' + labelClassName : '')
+          }
+        >
+          { label }
+        </LabelElement>
+      }
+
+      <HeadingElement
+        className={
+          C.content
+      + (headingClassName ? ' ' + headingClassName : '')
+        }
+      >
+        { heading }
+      </HeadingElement>
+
+      { subtitle &&
+        <Subtitle
+          className={
+            (subtitleClassName ? ' ' + subtitleClassName : '')
+          }
+          upper={ subtitleUpper }
+        >
+          { subtitle }
+        </Subtitle>
+      }
+      { children }
+    </div>
+  )}
 
 Heading.propTypes = {
   /**
@@ -56,22 +94,65 @@ Heading.propTypes = {
    */
   children: PropTypes.node,
 
-  /*
-  : PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    state: PropTypes.string.isRequired,
-  }),
-  : PropTypes.func,
-  : PropTypes.func,
-  : PropTypes.oneOf(['primary', 'stroke', 'flat'])
-  */
+  /**
+   * The heading text
+   */
+  heading: PropTypes.string.isRequired,
+
+  /**
+   * The node to display the heading with
+   */
+  headingAs: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.node
+  ]),
+
+  /**
+   * The heading html class
+   */
+  headingClassName: PropTypes.string,
+
+
+  /**
+   * the Label
+   */
+  label:PropTypes.string,
+
+  /**
+   * The label html class
+   */
+  labelClassName: PropTypes.string,
+
+  /**
+   * The node to display the label with
+   */
+  labelAs: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.node
+  ]),
+
+  /**
+   * The subtitle
+   */
+  subtitle:PropTypes.string,
+
+  /**
+   * The subtitle html class
+   */
+  subtitleClassName: PropTypes.string,
+
+  /**
+   * A toggle for the subtitle uppercase
+   */
+  subtitleUpper:PropTypes.bool,
+
 }
 
-/*
 Heading.defaultProps = {
-  status: 'neutral',
+  headingAs:'p',
+  subtitleClassName:'r-sm',
+  subtitleUpper:false,
+  labelAs:Label
 }
-*/
 
 export default Heading

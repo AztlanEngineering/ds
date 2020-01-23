@@ -4,42 +4,43 @@ import PropTypes from 'prop-types'
 
 
 
-import C from 'ui/cssClasses'
+/* Config
+   import C from 'ui/cssClasses' */
 
 //Relative imports
 
-const baseClassName = C.group
+const baseClassName = 'question'
 
-const Group = ({
+const Question = ({
   id,
   className,
   style,
   children,
 
-  vertical,
-  stretch
+  dangerouslySetInnerHTML,
+
+  as:Wrapper,
 }) => {
 
 
   return (
-    <div
+    <Wrapper
       className={
         [
           baseClassName,
-          stretch == 'horizontal' && C.horizontalStretch,
-          stretch == 'vertical' && C.verticalStretch,
-          vertical && C.vertical,
           className
         ].filter(e => e).join(' ')
       }
       id={ id }
       style={ style }
+      itemProp='name'
+      dangerouslySetInnerHTML={ dangerouslySetInnerHTML }
     >
       { children }
-    </div>
+    </Wrapper>
   )}
 
-Group.propTypes = {
+Question.propTypes = {
   /**
    * Provide an HTML id to this element
    */
@@ -61,18 +62,16 @@ Group.propTypes = {
   children: PropTypes.node,
 
   /**
-   * If this is a vertical group
+   * Which html tag to use
    */
-  vertical:PropTypes.boolean,
-
-  /**
-   * How the group should stretch
-   */
-  stretch: PropTypes.oneOf(['horizontal', 'vertical'])
+  as: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.node
+  ]),
 }
 
-Group.defaultProps = {
-  vertical:false,
+Question.defaultProps = {
+  as:'p',
 }
 
-export default Group
+export default Question

@@ -2,69 +2,61 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { Link } from 'react-router-dom'
+import { InnerContent } from 'ui/common'
+import { BackToButton } from '../../common'
 
 
-//Config
-import C from 'ui/cssClasses'
+/* Config
+   import C from 'ui/cssClasses' */
 
-//Relative imports
-const baseClassName = C.item
 
-const Item = ({
+const baseClassName = 'answer'
+
+const Answer = ({
   id,
   className,
   style,
   children,
 
-  //itemId,//Unknown
-  to,
-  position,
+  backTo,
+  backToHTML,
+
+  dangerouslySetInnerHTML
 }) => {
-  var Wrapper
-  const wrapper_args = { itemProp:'item' }
-  if (!to) {
-    Wrapper = 'span'
-  }
-  else {
-    Wrapper = Link
-    wrapper_args['to'] = to
-  }
+
+
   return (
-    <li
+    <div
       className={
         [
           baseClassName,
           className
         ].filter(e => e).join(' ')
       }
+      itemScope
+      itemProp='acceptedAnswer'
+      itemType='https://schema.org/Answer'
       id={ id }
       style={ style }
-      itemProp='itemListElement'
-      itemScope
-      itemType='http://schema.org/ListItem'
     >
-      <Wrapper
-        { ...wrapper_args }
+      <InnerContent
+        itemProp='text'
+        dangerouslySetInnerHTML={ dangerouslySetInnerHTML }
       >
-        <span
-          itemProp='name'
-        >
-          { children }
-        </span>
-        { position && <meta
-          itemProp='position'
-          content={ position }
-                      />}
-        {/* itemId && <meta
-          itemProp='item'
-          itemID={ itemId }
-        /> */}
-      </Wrapper>
-    </li>
+        { children }
+      </InnerContent>
+      <div className='ul pv1'>
+        { backTo &&
+          <BackToButton
+            to={ backTo }
+            dangerouslySetInnerHTML={{ __html:backToHTML }}
+          />}
+      </div>
+
+    </div>
   )}
 
-Item.propTypes = {
+Answer.propTypes = {
   /**
    * Provide an HTML id to this element
    */
@@ -103,21 +95,6 @@ Item.propTypes = {
    * The width of the element
    */
   width: PropTypes.string,
-
-  /**
-   * The Schema position (https://developers.google.com/search/docs/data-types/breadcrumb)
-   */
-  position: PropTypes.number.isRequired,
-
-  /**
-   * On click, internal link to
-   */
-  to: PropTypes.string,
-
-  /**
-   *
-   */
-  //itemId: PropTypes.string, //Required except for last
   /*
   : PropTypes.shape({
     id: PropTypes.string.isRequired,
@@ -131,10 +108,11 @@ Item.propTypes = {
 }
 
 /*
-Item.defaultProps = {
+Answer.defaultProps = {
   status: 'neutral',
   //height:'2.2em',
+  //as:'p',
 }
 */
 
-export default Item
+export default Answer

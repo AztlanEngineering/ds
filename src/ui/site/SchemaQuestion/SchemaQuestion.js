@@ -4,20 +4,20 @@ import PropTypes from 'prop-types'
 
 
 
-import C from 'ui/cssClasses'
+/* Config
+   import C from 'ui/cssClasses' */
 
 //Relative imports
+import styles from './schema_question.scss'
+import { Question, Answer } from './common'
 
-const baseClassName = C.group
+const baseClassName = 'schema_question'
 
-const Group = ({
+const SchemaQuestion = ({
   id,
   className,
   style,
-  children,
-
-  vertical,
-  stretch
+  children
 }) => {
 
 
@@ -25,21 +25,21 @@ const Group = ({
     <div
       className={
         [
-          baseClassName,
-          stretch == 'horizontal' && C.horizontalStretch,
-          stretch == 'vertical' && C.verticalStretch,
-          vertical && C.vertical,
+          styles[baseClassName],
           className
         ].filter(e => e).join(' ')
       }
       id={ id }
       style={ style }
+      itemScope
+      itemProp='mainEntity'
+      itemType='https://schema.org/Question'
     >
-      { children }
+      {children}
     </div>
   )}
 
-Group.propTypes = {
+SchemaQuestion.propTypes = {
   /**
    * Provide an HTML id to this element
    */
@@ -60,19 +60,17 @@ Group.propTypes = {
    */
   children: PropTypes.node,
 
-  /**
-   * If this is a vertical group
-   */
-  vertical:PropTypes.boolean,
-
-  /**
-   * How the group should stretch
-   */
-  stretch: PropTypes.oneOf(['horizontal', 'vertical'])
 }
 
-Group.defaultProps = {
-  vertical:false,
+/*
+SchemaQuestion.defaultProps = {
+  status: 'neutral',
+  //height:'2.2em',
+  //as:'p',
 }
+*/
 
-export default Group
+SchemaQuestion.Question = Question
+SchemaQuestion.Answer = Answer
+
+export default SchemaQuestion

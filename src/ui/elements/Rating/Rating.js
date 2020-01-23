@@ -4,35 +4,86 @@ import PropTypes from 'prop-types'
 
 
 
-import { gql } from 'graphql-tag'
-//Config
-//import C from 'ui/cssClasses'
+import C from 'ui/cssClasses'
 
 //Relative imports
 import styles from './rating.scss'
 
 const baseClassName = 'rating'
+const starsClassName = 'stars'
 
 const Rating = ({
   id,
   className,
-  style
+  style,
+
+  title,
+  content,
+  name,
+  source,
+
+  rating,
+  scale,
+  emptyStars,
+
+  as:Element,
+
+  animated,
+
+ TEXT,
 }) => {
   
+  const noStarChar = emptyStars ? 's':'S' //Depending on the font
   
   return (
-  <div 
+  <Element
     className={
       [
         styles[baseClassName],
         className
       ].filter(e => e).join(' ')
   }
-    id={ id }
-    style={ style }
-  >
-    <h2>Welcome to the Rating component</h2>
-  </div>
+      id={ id }
+      style={ style }
+    >
+
+      <p className={ starsClassName + ' fi' + (animated ? ' ' + C.anim : '')}>
+        <span className='fp'>
+          {rating}
+          {' '}
+        </span>
+        { [...Array(scale)].map((e,i) =>
+          i < rating ? <span className='yes'>S</span> : <span className='no'>{ noStarChar }</span>
+        ) }
+      </p>
+
+      <p className={ C.title + '' }>
+        { title }
+      </p>
+
+      <p className={ C.name + '' }>
+        { TEXT.BY ? TEXT.BY : 'By ' }
+        {' '}
+        <span className={ C.content }>
+          { name }
+        </span>
+      </p>
+
+      <p className={ C.content + '' }>{ content }</p>
+      { source &&
+      <p className={ C.source + ' ur s-xs' }>
+        <a
+          href={ source }
+          target='_blank'
+          className='c-ld t'
+          rel='nofollow'
+        >
+          { source }
+        </a>
+      </p>
+      }
+      </Element>
+
 )}
 
 Rating.propTypes = {
@@ -52,26 +103,69 @@ Rating.propTypes = {
   style: PropTypes.object,
 
   /**
-   *  The children JSX
+   * The author name 
    */
-  children: PropTypes.node,
+  author: PropTypes.string.isRequired,
 
-  /*
-  : PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    state: PropTypes.string.isRequired,
-  }),
-  : PropTypes.func,
-  : PropTypes.func,
-  : PropTypes.oneOf(['primary', 'stroke', 'flat'])
-  */
+  /**
+   * The title of the review
+   */
+  title: PropTypes.string.isRequired,
+
+  /**
+   * The content of the review
+   */
+  content: PropTypes.string.isRequired,
+
+
+  /**
+   *  The rating
+   */
+  rating: PropTypes.number.isRequired,
+
+  /**
+   * The source of the review
+   */
+  source:PropTypes.string,
+
+  /**
+   * The scale 
+   */
+  scale: PropTypes.number,
+
+  /**
+   * Whether to displayremaining starts as "empty"
+   */
+  emptyStars:PropTypes.boolean,
+
+
+  /**
+   * Whether the starts "shine" 
+   */
+  animated:PropTypes.boolean,
+
+  /**
+   * The TEXT module
+   */
+  TEXT:PropTypes.object,
+
+  /**
+   * The node to display the rating as
+   */
+  as: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.node
+  ]),
 }
 
-/*
 Rating.defaultProps = {
-  status: 'neutral',
+  scale:5,
+  emptyStars:false,
+  round:true,
+  asCard:true,
+  animated:true,
+  as:'div',
+  TEXT:{}
 }
-*/
 
 export default Rating

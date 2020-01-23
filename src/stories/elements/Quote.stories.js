@@ -3,7 +3,7 @@ import React from 'react'
 
 //import { action } from '@storybook/addon-actions'
 
-import { DotInfo } from 'ui'
+import { Quote } from 'ui'
 /* import QUERY from './graphql/query.graphql'
    import { AplProvider } from 'stories/utils'
    import { Router } from 'stories/utils' */
@@ -11,8 +11,8 @@ import { DotInfo } from 'ui'
 //const endpoint = 'https://api.fwrlines.com/graphql'
 
 export default {
-  title: 'elements/DotInfo',
-  component:DotInfo,
+  title: 'elements/Quote',
+  component:Quote,
   parameters: {
     decorators: [
       /* storyfn => <div className="">{ storyfn() }</div>,
@@ -22,34 +22,11 @@ export default {
   }
 }
 
-const map = [
-  {
-    name:'In Progress',
-    circle:'b-orange'
-  },
-  {
-    name:'Error',
-    circle:'b-red'
-  },
-  {
-    name:'Ready',
-    circle:'b-green'
-  },
-]
-
-
 export const Default = () => (
-  map.map((e,i) =>
-    <div
-      className='p1'
-      key={i}
-    >
-      <DotInfo
-        title={e.name}
-        circleClassName={e.circle}
-      />
-    </div>
+  <Quote></Quote>
+)
 
-  )
+export const Variant = () => (
+  <Quote></Quote>
 )
 

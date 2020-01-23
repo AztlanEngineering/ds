@@ -1,19 +1,18 @@
-/* @fwrlines/generator-react-component 1.1.0 */
+/* @fwrlines/generator-react-component 1.1.2 */
 import React from 'react'
 import PropTypes from 'prop-types'
 
 
 
-import { gql } from 'graphql-tag'
 //Config
 //import C from 'ui/cssClasses'
 
 //Relative imports
-import styles from './quotation.scss'
+import styles from './menu.scss'
 
-const baseClassName = 'quotation'
+const baseClassName = 'menu'
 
-const Quotation = ({
+const Menu = ({
   id,
   className,
   style
@@ -31,11 +30,11 @@ const Quotation = ({
     id={ id }
     style={ style }
   >
-    <h2>Welcome to the Quotation component</h2>
+    <h2>Welcome to the Menu component</h2>
   </div>
 )}
 
-Quotation.propTypes = {
+Menu.propTypes = {
   /**
    * Provide an HTML id to this element
    */
@@ -56,6 +55,24 @@ Quotation.propTypes = {
    */
   children: PropTypes.node,
 
+  /**
+   * Which html tag to use
+   */
+  as: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.node
+  ]), 
+  //as: PropTypes.string,
+
+  /**
+   * The height of the element
+   */
+  height: PropTypes.string,
+
+  /**
+   * The width of the element
+   */
+  width: PropTypes.string,
   /*
   : PropTypes.shape({
     id: PropTypes.string.isRequired,
@@ -64,14 +81,16 @@ Quotation.propTypes = {
   }),
   : PropTypes.func,
   : PropTypes.func,
-  : PropTypes.oneOf(['primary', 'stroke', 'flat'])
+  : PropTypes.oneOf(['', ''])
   */
 }
 
 /*
-Quotation.defaultProps = {
+Menu.defaultProps = {
   status: 'neutral',
+  //height:'2.2em',
+  //as:'p',
 }
 */
 
-export default Quotation
+export default Menu

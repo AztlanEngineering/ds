@@ -3,7 +3,7 @@ import React from 'react'
 
 //import { action } from '@storybook/addon-actions'
 
-import { ProgressTracker } from 'ui'
+import { PageProgressTracker } from 'ui'
 //import QUERY from './graphql/query.graphql'
 //import { AplProvider } from 'stories/utils'
 //import { Router } from 'stories/utils'
@@ -11,8 +11,8 @@ import { ProgressTracker } from 'ui'
 //const endpoint = 'https://api.fwrlines.com/graphql'
 
 export default {
-  title: 'elements/ProgressTracker',
-  component:ProgressTracker,
+  title: 'elements/PageProgressTracker',
+  component:PageProgressTracker,
   parameters: {
     decorators: [ 
       //storyfn => <div className="">{ storyfn() }</div>,
@@ -23,10 +23,10 @@ export default {
 }
 
 export const Default = () => (
-  <ProgressTracker></ProgressTracker> 
+  <PageProgressTracker></PageProgressTracker> 
 )
 
 export const Variant = () => (
-    <ProgressTracker></ProgressTracker> 
+    <PageProgressTracker></PageProgressTracker> 
 )
 

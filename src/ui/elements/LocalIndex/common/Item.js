@@ -4,42 +4,42 @@ import PropTypes from 'prop-types'
 
 
 
-import C from 'ui/cssClasses'
+/* Config
+   import C from 'ui/cssClasses' */
 
 //Relative imports
 
-const baseClassName = C.group
+const baseClassName = 'item'
 
-const Group = ({
+const Item = ({
   id,
   className,
-  style,
   children,
+  style,
 
-  vertical,
-  stretch
+  title
 }) => {
-
-
   return (
-    <div
+    <li
       className={
         [
           baseClassName,
-          stretch == 'horizontal' && C.horizontalStretch,
-          stretch == 'vertical' && C.verticalStretch,
-          vertical && C.vertical,
           className
         ].filter(e => e).join(' ')
       }
       id={ id }
       style={ style }
     >
-      { children }
-    </div>
+      <span>{ title }</span>
+      { children &&
+        <ul className='c-dark-grey'>
+          { children }
+        </ul>
+      }
+    </li>
   )}
 
-Group.propTypes = {
+Item.propTypes = {
   /**
    * Provide an HTML id to this element
    */
@@ -61,18 +61,17 @@ Group.propTypes = {
   children: PropTypes.node,
 
   /**
-   * If this is a vertical group
+   * The title of the Item
    */
-  vertical:PropTypes.boolean,
-
-  /**
-   * How the group should stretch
-   */
-  stretch: PropTypes.oneOf(['horizontal', 'vertical'])
+  title: PropTypes.string,
 }
 
-Group.defaultProps = {
-  vertical:false,
+/*
+Item.defaultProps = {
+  status: 'neutral',
+  //height:'2.2em',
+  //as:'p',
 }
+*/
 
-export default Group
+export default Item
