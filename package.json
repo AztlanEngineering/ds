@@ -39,6 +39,7 @@
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-router": "^5.1.2",
+    "react-router-dom": "^5.1.2",
     "stylelint": "^13.0.0",
     "stylelint-config-palantir": "^4.0.1",
     "stylelint-scss": "^3.13.0"

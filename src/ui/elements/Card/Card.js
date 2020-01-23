@@ -4,36 +4,47 @@ import PropTypes from 'prop-types'
 
 
 
-import { gql } from 'graphql-tag'
-//Config
-//import C from 'ui/cssClasses'
+import C from 'ui/cssClasses'
 
 //Relative imports
 import styles from './card.scss'
+import {
+  Content,
+  Divider,
+  Footer,
+  Header
+} from './common'
 
 const baseClassName = 'card'
 
 const Card = ({
   id,
   className,
-  style
+  style,
+  children,
+
+  selectable,
+  active,
+  onClick,
 }) => {
-  
-  
   return (
-  <div 
-    className={
-      [
-        styles[baseClassName],
-        className
-      ].filter(e => e).join(' ')
-  }
-    id={ id }
-    style={ style }
-  >
-    <h2>Welcome to the Card component</h2>
-  </div>
-)}
+    <div
+      className={
+        [
+          styles[baseClassName],
+          'sh-sm b',
+          active && C.active,
+          selectable && C.selectable,
+          className
+        ].filter(e => e).join(' ')
+      }
+      id={id}
+      onClick={onClick}
+      style={style}
+    >
+      { children }
+    </div>
+  )}
 
 Card.propTypes = {
   /**
@@ -56,22 +67,35 @@ Card.propTypes = {
    */
   children: PropTypes.node,
 
-  /*
-  : PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    state: PropTypes.string.isRequired,
-  }),
-  : PropTypes.func,
-  : PropTypes.func,
-  : PropTypes.oneOf(['primary', 'stroke', 'flat'])
-  */
+  /**
+   * Whether the element has a full size image inside
+   */
+  image:PropTypes.bool,
+
+  /**
+   * What to do when the card is clicked
+   */
+  onClick:PropTypes.func,
+
+  /**
+   * Whether the card is active
+   */
+  active: PropTypes.bool,
+
+  /**
+   * Whether the card is selectable
+   */
+  selectable: PropTypes.bool
 }
 
-/*
 Card.defaultProps = {
-  status: 'neutral',
+  selectable:false,
+  active:false,
 }
-*/
+
+Card.Content = Content
+Card.Divider = Divider
+Card.Footer = Footer
+Card.Header = Header
 
 export default Card

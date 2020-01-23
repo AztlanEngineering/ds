@@ -1,44 +1,39 @@
-/* @fwrlines/generator-react-component 1.1.0 */
+/* @fwrlines/generator-react-component 1.1.2 */
 import React from 'react'
 import PropTypes from 'prop-types'
 
-
-import { gql } from 'graphql-tag'
-/* Config
-   import C from 'ui/cssClasses' */
+import C from 'ui/cssClasses'
 
 //Relative imports
-import styles from './breadcrumb.scss'
-import { Item } from './common'
+const baseClassName = C.header
 
-const baseClassName = 'breadcrumb'
-
-const Breadcrumb = ({
+const Header = ({
   id,
   className,
   style,
-  children
+  children,
+
+  image
 }) => {
 
-
   return (
-    <ol
-      id={ id }
-      style={ style }
+    <header
       className={
         [
-          styles[baseClassName],
+          baseClassName,
+          'b-light-grey',
+          image ? C.image : 'p1',
           className
         ].filter(e => e).join(' ')
       }
-      itemScope
-      itemType='http://schema.org/BreadcrumbList'
+      style={ style }
+      id={id}
     >
       { children }
-    </ol>
+    </header>
   )}
 
-Breadcrumb.propTypes = {
+Header.propTypes = {
   /**
    * Provide an HTML id to this element
    */
@@ -57,16 +52,20 @@ Breadcrumb.propTypes = {
   /**
    *  The children JSX
    */
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
 
+  /**
+   * Whether the element has a full size image inside
+   */
+  image:PropTypes.bool,
 }
 
 /*
-Breadcrumb.defaultProps = {
+Header.defaultProps = {
   status: 'neutral',
+  //height:'2.2em',
+  //as:'p',
 }
 */
 
-Breadcrumb.Item = Item
-
-export default Breadcrumb
+export default Header

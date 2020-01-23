@@ -2,11 +2,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import { Link } from 'react-router-dom'
+import { Subtitle } from 'ui/common'
 
-
-import { gql } from 'graphql-tag'
-//Config
-//import C from 'ui/cssClasses'
+import C from 'ui/cssClasses'
 
 //Relative imports
 import styles from './circle_info.scss'
@@ -16,24 +15,86 @@ const baseClassName = 'circle_info'
 const CircleInfo = ({
   id,
   className,
-  style
+  style,
+
+  title,
+  subtitle,
+  link,
+
+  image,
+  imageAlt,
+
+  circleClassName,
 }) => {
-  
-  
-  return (
-  <div 
-    className={
-      [
-        styles[baseClassName],
-        className
-      ].filter(e => e).join(' ')
+
+  var Wrapper, wrapperArgs
+
+  if (link){
+    if(link.startsWith('/')) {
+      Wrapper = Link
+      wrapperArgs = {
+        to:link
+      }
+    } else {
+      Wrapper = 'a'
+      wrapperArgs = {
+        href:link,
+        target:'_blank',
+        rel:'nofollow'
+      }
+    }
+  } else {
+    Wrapper = React.Fragment
+    wrapperArgs={}
   }
-    id={ id }
-    style={ style }
-  >
-    <h2>Welcome to the CircleInfo component</h2>
-  </div>
-)}
+
+  return(
+    <div
+      className={
+        [
+          styles[baseClassName],
+          className
+        ].filter(e => e).join(' ')
+      }
+      id={ id }
+      style={ style }
+    >
+      <div className={
+        [
+          'yib wb',
+          C.circle,
+          circleClassName
+        ].filter(e => e).join(' ')
+      }
+      >
+        { image &&
+          <img
+            src={ image }
+            alt={ imageAlt }
+            className='row fit'
+            height='100%'
+          />
+        }
+      </div>
+      <div className={ C.content + ' yib wb' }>
+        <div className='inside p05'>
+          <Wrapper {...wrapperArgs}>
+            <p
+              className='fh c-off-black nm'
+            >
+              { title }
+            </p>
+            <Subtitle
+              //upper
+              className='r-sm'
+            >
+              { subtitle }
+            </Subtitle>
+          </Wrapper>
+        </div>
+      </div>
+    </div>
+  )}
 
 CircleInfo.propTypes = {
   /**
@@ -52,20 +113,34 @@ CircleInfo.propTypes = {
   style: PropTypes.object,
 
   /**
-   *  The children JSX
+   *  The title of the element
    */
-  children: PropTypes.node,
+  title: PropTypes.string.isRequired,
 
-  /*
-  : PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    state: PropTypes.string.isRequired,
-  }),
-  : PropTypes.func,
-  : PropTypes.func,
-  : PropTypes.oneOf(['primary', 'stroke', 'flat'])
-  */
+  /**
+   * The subtitle of the element
+   */
+  subtitle: PropTypes.string.isRequired,
+
+  /**
+   * A link, on Click (internal or external)
+   */
+  link: PropTypes.string,
+
+  /**
+   * The url of the image
+   */
+  image: PropTypes.string.isRequired,
+
+  /**
+   *
+   */
+  imageAlt: PropTypes.string,
+
+  /**
+   * The class name of the circle
+   */
+  circleClassName: PropTypes.string,
 }
 
 /*

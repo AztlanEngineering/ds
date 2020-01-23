@@ -2,11 +2,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-
+import { Subtitle } from 'ui/common'
 
 import { gql } from 'graphql-tag'
-//Config
-//import C from 'ui/cssClasses'
+
+import C from 'ui/cssClasses'
 
 //Relative imports
 import styles from './dot_info.scss'
@@ -16,24 +16,42 @@ const baseClassName = 'dot_info'
 const DotInfo = ({
   id,
   className,
-  style
+  style,
+
+  title,
+  //link,
+
+  circleClassName,
 }) => {
-  
-  
+
+
   return (
-  <div 
-    className={
-      [
-        styles[baseClassName],
-        className
-      ].filter(e => e).join(' ')
-  }
-    id={ id }
-    style={ style }
-  >
-    <h2>Welcome to the DotInfo component</h2>
-  </div>
-)}
+    <div
+      className={
+        [
+          styles[baseClassName],
+          className
+        ].filter(e => e).join(' ')
+      }
+      id={ id }
+      style={ style }
+    >
+      <div className={
+        [
+          'yib wb',
+          C.circle,
+          circleClassName
+        ].filter(e => e).join(' ')
+      }
+      >
+      </div>
+      <div className={ C.content + ' yib wb ph05' }>
+        <Subtitle upper>
+          { title }
+        </Subtitle>
+      </div>
+    </div>
+  )}
 
 DotInfo.propTypes = {
   /**
@@ -52,20 +70,19 @@ DotInfo.propTypes = {
   style: PropTypes.object,
 
   /**
-   *  The children JSX
+   *  The title of the element
    */
-  children: PropTypes.node,
+  title: PropTypes.string.isRequired,
 
-  /*
-  : PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    state: PropTypes.string.isRequired,
-  }),
-  : PropTypes.func,
-  : PropTypes.func,
-  : PropTypes.oneOf(['primary', 'stroke', 'flat'])
-  */
+  /**
+   * A link, on Click (internal or external)
+   */
+  //link: PropTypes.string,
+
+  /**
+   * The class name of the circle
+   */
+  circleClassName: PropTypes.string,
 }
 
 /*

@@ -11,8 +11,8 @@ import { Wireframe } from 'ui'
 //const endpoint = 'https://api.fwrlines.com/graphql'
 
 export default {
-  title: 'common/Wireframe',
-  component:Wireframe,
+  title: 'common/Wireframe.Image',
+  component:Wireframe.Image,
   parameters: {
     decorators: [
       /* storyfn => <div className="">{ storyfn() }</div>,
@@ -22,8 +22,6 @@ export default {
   }
 }
 
-const sizes = ['xs', 'sm', 'md', 'lg', 'xl']
-const as_list = ['p', 'h5', 'h4', 'h3', 'h2', 'h1']
 const dimensions_list = [
   {
     height:'100px',
@@ -39,22 +37,12 @@ const dimensions_list = [
   }
 ]
 
-export const Text = () =>
-  <Wireframe.Text/>
-
-export const Sizes = () =>
-  sizes.map((e) =>
-    <Wireframe.Text size={e}/>
-  )
-
-export const As = () =>
-  as_list.map((e) =>
-    <Wireframe.Text as={e}/>
-  )
-
 export const Image = () =>
-  dimensions_list.map((e) =>
-    <div className='p1'>
+  dimensions_list.map((e, i) =>
+    <div
+      className='p1'
+      key={i}
+    >
       <Wireframe.Image
         height={ e.height }
         width={ e.width }
