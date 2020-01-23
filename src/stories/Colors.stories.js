@@ -85,7 +85,7 @@ export const defaultStyle = () => (
 
 const setterTester = (MAP) => (
   MAP.map((e,i) =>
-    <div className={ 'x-' + e }>
+    <div className={ 'x-' + e } key={i}>
       <span style={{
         background:'var(--x-dark)',
         color:'var(--x-on)',

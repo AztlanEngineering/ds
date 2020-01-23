@@ -28,7 +28,7 @@ module.exports = {
           }
         }
     ],
-      include: path.resolve(__dirname, '../'),
+      include: path.resolve(__dirname, '../..')
     });
 
     // Return the altered config
