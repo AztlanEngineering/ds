@@ -5,30 +5,28 @@ Classes :
 
 */
 
-.breadcrumb
-{
-  list-style:none;
-  padding-left:0;
-  li
-  {
-    display:inline;
+.breadcrumb {
+  padding-left: 0;
+  list-style: none;
+
+  li {
+    display: inline;
   }
-  li + li
-  {
-    &:before
-    {
-      font-family:'if';
-      content:' g ';
-      vertical-align:bottom;
-      color:var(--light-grey);
+
+  li + li {
+    &::before {
+      vertical-align: bottom;
+      color: var(--light-grey);
+      font-family: "if";
+      content: " g ";
     }
   }
-  span span
-  {
-    color:var(--grey);
+
+  span {
+    color: var(--x, var(--darker-grey));
   }
-  a
-  {
-    color:var(--cc, var(--dark-blue));
+
+  a {
+    color: var(--y, var(--dark-blue));
   }
 }

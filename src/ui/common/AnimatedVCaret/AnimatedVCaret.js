@@ -9,10 +9,15 @@ import { gql } from 'graphql-tag'
 import C from 'ui/cssClasses'
 
 //Relative imports
-import styles from './animated_v_caret.scss'
+import './animated_v_caret.scss'
 
 const baseClassName = 'animated_v_caret'
 
+/**
+ * Use `AnimatedVCaret` to command the opening or closing of an accordion.
+ * Has class `C.active` on `active`
+ * Has color `x`, and `y, x` on active
+ */
 const AnimatedVCaret = ({
   id,
   className,
@@ -47,7 +52,7 @@ const AnimatedVCaret = ({
     <div
       className={
         [
-          styles[baseClassName],
+          baseClassName,
           className,
           active && C.active
         ].filter(e => e).join(' ')
@@ -72,7 +77,7 @@ const AnimatedVCaret = ({
               key={i}
               strokeLinecap={ strokeLinecap }
               strokeWidth={ strokeWidth }
-              stroke='blue'
+              //             stroke='blue'
               x1={ e }
               y1={ 50 }
               x2={ 50 }
@@ -181,5 +186,4 @@ AnimatedVCaret.defaultProps = {
   active:false,
   setActive:() => null,
 }
-
 export default AnimatedVCaret

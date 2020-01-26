@@ -6,10 +6,10 @@ import React from 'react'
 import { NumberIncrease } from 'ui'
 
 export default {
-  title: 'common/NumberIncrease',
-  component:NumberIncrease,
-  parameters: {
-    decorators: [
+  title     :'common/NumberIncrease',
+  component :NumberIncrease,
+  parameters:{
+    decorators:[
       //storyfn => <div className="">{ storyfn() }</div>,
     ]
   }
@@ -17,30 +17,30 @@ export default {
 
 const variants = [
   {
-    number:100,
+    number  :100,
     duration:1000,
   },
   {
-    number:1000,
+    number  :1000,
     duration:1000,
   },
   {
-    number:100,
+    number  :100,
     duration:1000,
   },
   {
-    number:100,
+    number  :100,
     duration:5000,
-    suffix:'km'
+    suffix  :'km'
   },
   {
-    number:1000,
+    number  :1000,
     duration:5000,
   },
   {
-    number:100,
+    number  :100,
     duration:5000,
-    suffix:'years'
+    suffix  :'years'
   },
 ]
 

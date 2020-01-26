@@ -4,29 +4,35 @@ Classes :
 .checklist : default
 
 */
-$checkmarkLetter:'o';
-$crossLetter:'p';
-$iconFontName:'if';
-$paddingRight:.5em;
-$checklistTop:.2em;
+$checkmarkLetter:"o";
+$crossLetter:"p";
+$iconFontName:"if";
+$paddingRight:0.5em;
+$checklistTop:0.2em;
 
-.checklist{
-	list-style:none;
-	padding-left:0;
+.checklist {
+  padding-left: 0;
+  list-style: none;
 
-	li {
-		&:before {
-			position:relative;
-			top:.2em;
-			content:$checkmarkLetter;
-			font-family:$iconFontName;
-			color:var(--cc, var(--blue));
-			padding-right:$paddingRight;
-		}
+  li {
+    &::before {
+      position: relative;
+      top: 0.2em;
+      padding-right: $paddingRight;
+      color: var(--y, var(--x, var(--green)));
+      font-family: $iconFontName;
+      content: $checkmarkLetter;
+    }
 
-		&.cross:before {
-			content:$crossLetter;
-		}
-	}
+    &:hover,
+    &:focus {
+      &::before {
+        color: var(--z, var(--x));
+      }
+    }
 
+    &.cross::before {
+      content: $crossLetter;
+    }
+  }
 }

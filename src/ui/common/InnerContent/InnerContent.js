@@ -3,7 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 //Relative imports
-import styles from './inner_content.scss'
+import './inner_content.scss'
 
 const baseClassName = 'inner_content'
 
@@ -21,7 +21,7 @@ const InnerContent = ({
     <div
       className={
         [
-          styles[baseClassName],
+          baseClassName,
           className
         ].filter(e => e).join(' ')
       }
@@ -31,28 +31,30 @@ const InnerContent = ({
     >
       { children }
     </div>
-  )}
+  )
+}
 
 InnerContent.propTypes = {
   /**
    * Provide an HTML id to this element
    */
-  id: PropTypes.string,
+  id:PropTypes.string,
 
   /**
    * The html class names to be provided to this element
    */
-  className: PropTypes.string,
+  className:PropTypes.string,
 
   /**
    * The JSX-Written, css styles to apply to the element.
    */
-  style: PropTypes.object,
+  style:PropTypes.object,
 
   /**
    *  The children JSX
    */
-  children: PropTypes.node,
+  children               :PropTypes.node,
+  dangerouslySetInnerHTML:PropTypes.string,
 
   /*
   : PropTypes.shape({

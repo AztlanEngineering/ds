@@ -7,7 +7,7 @@ import PropTypes from 'prop-types'
 
 //Relative imports
 import { LoaderBars, LoaderCircle } from './common'
-import styles from './inline_loader.scss'
+import './inline_loader.scss'
 
 const baseClassName = 'inline_loader'
 
@@ -32,7 +32,7 @@ const InlineLoader = ({
     <div
       className={
         [
-          styles[baseClassName],
+          baseClassName,
           className
         ].filter(e => e).join(' ')
       }
@@ -68,56 +68,56 @@ InlineLoader.propTypes = {
   /**
    * Provide an HTML id to this element
    */
-  id: PropTypes.string,
+  id:PropTypes.string,
 
   /**
    * The html class names to be provided to this element
    */
-  className: PropTypes.string,
+  className:PropTypes.string,
 
   /**
    * The JSX-Written, css styles to apply to the element.
    */
-  style: PropTypes.object,
+  style:PropTypes.object,
 
   /**
    *  The children JSX
    */
-  children: PropTypes.node,
+  children:PropTypes.node,
 
   /**
    * The width of the loader
    */
-  width: PropTypes.string,
+  width:PropTypes.string,
 
   /**
    * The height of the loader
    */
-  height: PropTypes.string,
+  height:PropTypes.string,
 
   /**
    * The duration of the animation loop in seconds
    */
-  animationDuration: PropTypes.number,
+  animationDuration:PropTypes.number,
 
   /**
    * An id to pass to the loader
    */
-  loaderId: PropTypes.string,
+  loaderId:PropTypes.string,
 
   /**
    * A class to pass to the loader
    */
-  loaderClassName: PropTypes.string,
+  loaderClassName:PropTypes.string,
 
   /**
    * Which type of loader
    */
-  type: PropTypes.oneOf(['circle','bars'])
+  type:PropTypes.oneOf(['circle','bars'])
 }
 
 InlineLoader.defaultProps = {
-  type: 'bars',
+  type:'bars',
 }
 
 export default InlineLoader

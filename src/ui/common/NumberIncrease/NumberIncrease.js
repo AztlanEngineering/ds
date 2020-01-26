@@ -7,7 +7,7 @@ import { useInterval } from '@fwrlines/utils'
 //import C from 'ui/cssClasses'
 
 //Relative imports
-import styles from './number_increase.scss'
+import './number_increase.scss'
 
 const baseClassName = 'number_increase'
 
@@ -41,7 +41,7 @@ const NumberIncrease = ({
       <Wrapper
         className={
           [
-            styles[baseClassName],
+            baseClassName,
             className
           ].filter(e => e).join(' ')
         }
@@ -61,17 +61,17 @@ NumberIncrease.propTypes = {
   /**
    * Provide an HTML id to this element
    */
-  id: PropTypes.string,
+  id:PropTypes.string,
 
   /**
    * The html class names to be provided to this element
    */
-  className: PropTypes.string,
+  className:PropTypes.string,
 
   /**
    * The JSX-Written, css styles to apply to the element.
    */
-  style: PropTypes.object,
+  style:PropTypes.object,
 
   /**
    * The number to increase to
@@ -86,17 +86,17 @@ NumberIncrease.propTypes = {
   /**
    * This suffix, for instance a unit measure, to append to the number
    */
-  suffix: PropTypes.string,
+  suffix:PropTypes.string,
 
   /**
    * The class name to apply to the suffix
    */
-  suffixClassName: PropTypes.string,
+  suffixClassName:PropTypes.string,
 
   /**
    * With html tag to use
    */
-  as: PropTypes.string,
+  as:PropTypes.string,
 
   /*
   : PropTypes.shape({
@@ -111,7 +111,7 @@ NumberIncrease.propTypes = {
 }
 
 NumberIncrease.defaultProps = {
-  as: 'p',
+  as:'p',
 }
 
 export default NumberIncrease

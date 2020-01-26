@@ -5,10 +5,8 @@ Classes :
 
 */
 
-svg.loader_bars
-{
-  line
-  {
-    stroke:var(--cc, var(--default));
+svg.loader_bars {
+  line {
+    stroke: var(--x, var(--primary));
   }
 }

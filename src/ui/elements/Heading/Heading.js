@@ -77,40 +77,40 @@ Heading.propTypes = {
   /**
    * Provide an HTML id to this element
    */
-  id: PropTypes.string,
+  id:PropTypes.string,
 
   /**
    * The html class names to be provided to this element
    */
-  className: PropTypes.string,
+  className:PropTypes.string,
 
   /**
    * The JSX-Written, css styles to apply to the element.
    */
-  style: PropTypes.object,
+  style:PropTypes.object,
 
   /**
    *  The children JSX
    */
-  children: PropTypes.node,
+  children:PropTypes.node,
 
   /**
    * The heading text
    */
-  heading: PropTypes.string.isRequired,
+  heading:PropTypes.string.isRequired,
 
   /**
    * The node to display the heading with
    */
-  headingAs: PropTypes.oneOfType([
+  headingAs:PropTypes.oneOfType([
     PropTypes.string,
-    PropTypes.node
+    PropTypes.object
   ]),
 
   /**
    * The heading html class
    */
-  headingClassName: PropTypes.string,
+  headingClassName:PropTypes.string,
 
 
   /**
@@ -121,14 +121,14 @@ Heading.propTypes = {
   /**
    * The label html class
    */
-  labelClassName: PropTypes.string,
+  labelClassName:PropTypes.string,
 
   /**
    * The node to display the label with
    */
-  labelAs: PropTypes.oneOfType([
+  labelAs:PropTypes.oneOfType([
     PropTypes.string,
-    PropTypes.node
+    PropTypes.object
   ]),
 
   /**
@@ -139,7 +139,7 @@ Heading.propTypes = {
   /**
    * The subtitle html class
    */
-  subtitleClassName: PropTypes.string,
+  subtitleClassName:PropTypes.string,
 
   /**
    * A toggle for the subtitle uppercase
@@ -149,10 +149,10 @@ Heading.propTypes = {
 }
 
 Heading.defaultProps = {
-  headingAs:'p',
+  headingAs        :'p',
   subtitleClassName:'r-sm',
-  subtitleUpper:false,
-  labelAs:Label
+  subtitleUpper    :false,
+  labelAs          :Label
 }
 
 export default Heading

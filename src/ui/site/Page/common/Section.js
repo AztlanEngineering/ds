@@ -57,27 +57,27 @@ Section.propTypes = {
   /**
    * Provide an HTML id to this element
    */
-  id: PropTypes.string,
+  id:PropTypes.string,
 
   /**
    * The html class names to be provided to this element
    */
-  className: PropTypes.string,
+  className:PropTypes.string,
 
   /**
    * The JSX-Written, css styles to apply to the element.
    */
-  style: PropTypes.object,
+  style:PropTypes.object,
 
   /**
    *  The children JSX
    */
-  children: PropTypes.node,
+  children:PropTypes.node,
 
   /**
    * Which html tag to use
    */
-  as: PropTypes.oneOfType([
+  as:PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.node
   ]),
@@ -85,12 +85,12 @@ Section.propTypes = {
   /**
    * Whether we invert the color scheme (dark mode) for the element TODO
    */
-  inverted:PropTypes.string,
+  inverted:PropTypes.bool,
 
   /**
    * Whether the section has a transparent background TODO
    */
-  transparent:PropTypes.string,
+  transparent:PropTypes.bool,
 
   /**
    * Whether this is the first section (supersets 'as')
@@ -100,7 +100,7 @@ Section.propTypes = {
   /**
    * Which id tag on the page is the target (without page suffix)
    */
-  caretDown: PropTypes.string.isRequired,
+  caretDown:PropTypes.string.isRequired,
 
   /**
    * Whether the click is animated (react-scroll)
@@ -110,17 +110,17 @@ Section.propTypes = {
   /**
    * The duration of the animation (react-scroll)
    */
-  caretDownDuration: PropTypes.number,
+  caretDownDuration:PropTypes.number,
 
 }
 
 Section.defaultProps = {
-  status: 'neutral',
+  status         :'neutral',
   //height:'2.2em',
-  as:'section',
-  header:false,
-  transparent:false,
-  inverted:false,
+  as             :'section',
+  header         :false,
+  transparent    :false,
+  inverted       :false,
   caretDownSmooth:false,
 }
 

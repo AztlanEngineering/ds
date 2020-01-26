@@ -27,8 +27,9 @@ const Subtitle = ({
     <Element
       className={
         [
-          styles[baseClassName],
-          'c-grey nm tos',
+          baseClassName,
+          'x-grey cx-dark',
+          //'x-grey nm tos',
           upper && 'tls tu',
           className,
         ].filter(e => e).join(' ')
@@ -44,27 +45,27 @@ Subtitle.propTypes = {
   /**
    * Provide an HTML id to this element
    */
-  id: PropTypes.string,
+  id:PropTypes.string,
 
   /**
    * The html class names to be provided to this element
    */
-  className: PropTypes.string,
+  className:PropTypes.string,
 
   /**
    * The JSX-Written, css styles to apply to the element.
    */
-  style: PropTypes.object,
+  style:PropTypes.object,
 
   /**
    *  The children JSX
    */
-  children: PropTypes.node,
+  children:PropTypes.node,
 
   /**
    * With html tag to use
    */
-  as: PropTypes.oneOfType([
+  as:PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.node
   ]),
@@ -86,7 +87,7 @@ Subtitle.propTypes = {
 }
 
 Subtitle.defaultProps = {
-  as: 'p',
+  as:'p',
 }
 
 export default Subtitle

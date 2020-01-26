@@ -6,12 +6,17 @@ import PropTypes from 'prop-types'
 import C from 'ui/cssClasses'
 
 //Relative imports
-import styles from './checklist.scss'
+import './checklist.scss'
 import { Item } from './common'
 
 const baseClassName = 'checklist'
 
 
+/**
+ * Use `Checklist` to display a list with checkmarks
+ * Has class `C.list`
+ * Before has color `y, x`, and `z, x` on hover
+ */
 const Checklist = ({
   id,
   className,
@@ -25,9 +30,9 @@ const Checklist = ({
     <ul
       className={
         [
-          styles[baseClassName],
+          baseClassName,
+          C.list,
           className,
-          C.list
         ].filter(e => e).join(' ')
       }
       id={ id }
@@ -42,22 +47,22 @@ Checklist.propTypes = {
   /**
    * Provide an HTML id to this element
    */
-  id: PropTypes.string,
+  id:PropTypes.string,
 
   /**
    * The html class names to be provided to this element
    */
-  className: PropTypes.string,
+  className:PropTypes.string,
 
   /**
    * The JSX-Written, css styles to apply to the element.
    */
-  style: PropTypes.object,
+  style:PropTypes.object,
 
   /**
    *  The children JSX
    */
-  children: PropTypes.node,
+  children:PropTypes.node,
 
 
 }

@@ -16,20 +16,22 @@ export default {
 const sizes = [
   {
     height:'200px',
-    back:'black',
+    back:'x-black bx',
   },
   {
     height:'300px',
-    back:'blue',
+    back:'x-blue bx',
   },
   {
     height:'450px',
-    back:'purple',
+    back:'x-violet bx',
   },
 ]
 
 export const Default = () =>(
+  <div style={{ height:'300px' }}>
   <GreenTick/>
+  </div>
 )
 
 
@@ -37,16 +39,9 @@ export const Variant = () =>
   sizes.map((e,i) =>
     <div
       key={i}
-      className={'p1 b-' + e.back}
+      className={e.back}
       style={{ height:e.height, width:e.width }}
     >
-      <p>
-        { e.height }
-        {' '}
-x
-        {' '}
-        { e.back }
-      </p>
       <GreenTick />
     </div>
   )

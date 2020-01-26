@@ -95,6 +95,19 @@ module.exports = {
 		'react/forbid-prop-types': 0,
 		'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 0,
+    'key-spacing': [
+      "error", {
+        "multiLine": {
+          "beforeColon": false,
+          "afterColon": false
+        },
+         "align": {
+          "beforeColon": false,
+          "afterColon": false,
+          "on": "colon"
+        }
+      }
+    ],
   }
 }
 

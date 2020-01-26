@@ -39,3 +39,28 @@ export const Default = () => (
   </Breadcrumb>
 )
 
+export const Colors = () => (
+  <Breadcrumb className="x-orange">
+    <Breadcrumb.Item
+      to='blog'
+      className='y-green'
+      position={1}
+    >
+  Blog
+    </Breadcrumb.Item>
+    <Breadcrumb.Item
+      to='blog'
+      className='y-red'
+      position={2}
+    >
+  Category
+    </Breadcrumb.Item>
+    <Breadcrumb.Item
+      disabled
+      position={3}
+    >
+  Article
+    </Breadcrumb.Item>
+  </Breadcrumb>
+)
+

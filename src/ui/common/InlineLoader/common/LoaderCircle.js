@@ -8,7 +8,7 @@ import PropTypes from 'prop-types'
    import C from 'ui/cssClasses' */
 
 //Relative imports
-import styles from './loader_circle.scss'
+import './loader_circle.scss'
 
 const baseClassName = 'loader_circle'
 
@@ -32,7 +32,7 @@ const LoaderCircle = ({
       viewBox='25 25 50 50'
       className={
         [
-          styles[baseClassName],
+          baseClassName,
           className
         ].filter(e => e).join(' ')
       }
@@ -63,37 +63,37 @@ LoaderCircle.propTypes = {
   /**
    * Provide an HTML id to this element
    */
-  id: PropTypes.string,
+  id:PropTypes.string,
 
   /**
    * The html class names to be provided to this element
    */
-  className: PropTypes.string,
+  className:PropTypes.string,
 
   /**
    * The height of the loader
    */
-  height: PropTypes.string,
+  height:PropTypes.string,
 
   /**
    * The width of the loader
    */
-  width: PropTypes.string,
+  width:PropTypes.string,
 
   /**
    * The SVG property stroke-linecap
    */
-  strokeLinecap: PropTypes.oneOf(['round', 'square', 'butt']),
+  strokeLinecap:PropTypes.oneOf(['round', 'square', 'butt']),
 
   /**
    * The SVG property stroke-width
    */
-  strokeWidth: PropTypes.string,
+  strokeWidth:PropTypes.string,
 }
 
 LoaderCircle.defaultProps = {
   strokeLinecap:'round',
-  strokeWidth:'5',
+  strokeWidth  :'5',
 }
 
 export default LoaderCircle

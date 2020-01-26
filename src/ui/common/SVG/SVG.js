@@ -9,7 +9,7 @@ import C from 'ui/cssClasses'
 
 //Relative imports
 import { UseSVG } from './common'
-import styles from './svg.scss'
+import './svg.scss'
 
 const baseClassName = 'svg'
 
@@ -29,7 +29,6 @@ const SVG = ({
   target,
   targets,
 
-  stroke,
   strokeWidth,
   animated,
 }) => {
@@ -39,7 +38,7 @@ const SVG = ({
     <svg
       className={
         [
-          styles[baseClassName],
+          baseClassName,
           className,
           animated && C.anim
         ].filter(e => e).join(' ')
@@ -58,7 +57,6 @@ const SVG = ({
           className={ useClassName }
           sprite={ sprite }
           target={ target }
-          stroke={ stroke }
           strokeWidth={ strokeWidth }
         />
         :
@@ -67,7 +65,6 @@ const SVG = ({
             className={ e.className }
             sprite={ sprite }
             target={ e.target }
-            stroke={ e.stroke }
             strokeWidth={ e.strokeWidth }
             key={ i }
           />
@@ -81,37 +78,37 @@ SVG.propTypes = {
   /**
    * Provide an HTML id to this element
    */
-  id: PropTypes.string,
+  id:PropTypes.string,
 
   /**
    * The html class names to be provided to this element
    */
-  className: PropTypes.string,
+  className:PropTypes.string,
 
   /**
    * The JSX-Written, css styles to apply to the element.
    */
-  style: PropTypes.object,
+  style:PropTypes.object,
 
   /**
    * The height of the element
    */
-  height: PropTypes.string,
+  height:PropTypes.string,
 
   /**
    * The width of the element
    */
-  width: PropTypes.string,
+  width:PropTypes.string,
 
   /**
    * The viewBox property of the svg html container
    */
-  viewBox: PropTypes.string,
+  viewBox:PropTypes.string,
 
   /**
    * The class to apply to the target's use tag
    */
-  useClassName: PropTypes.string,
+  useClassName:PropTypes.string,
 
   /**
    *  The preserverveAspectRatio property of the svg html container
@@ -121,44 +118,39 @@ SVG.propTypes = {
   /**
    * The url to the sprite
    */
-  sprite: PropTypes.string,
+  sprite:PropTypes.string,
 
   /**
    * The id of the target in the sprite
    */
-  target: PropTypes.string,
+  target:PropTypes.string,
 
   /**
    * An array of targets
    */
-  targets: PropTypes.arrayOf(
+  targets:PropTypes.arrayOf(
     PropTypes.exact({
-      target: PropTypes.string,
-      className: PropTypes.number,
-      stroke: PropTypes.boolean,
-      strokeWidth: PropTypes.number,
+      target     :PropTypes.string,
+      className  :PropTypes.number,
+      stroke     :PropTypes.boolean,
+      strokeWidth:PropTypes.number,
     }),
   ),
 
   /**
-   * The SVG property stroke (color) to apply in case of a single target
-   */
-  stroke: PropTypes.boolean,
-
-  /**
    * The SVG property stroke-width to apply in case of a single target
    */
-  strokeWidth: PropTypes.number,
+  strokeWidth:PropTypes.number,
 
   /**
    * Whether to apply an animation class (C.anim)
    */
-  animated: PropTypes.boolean,
+  animated:PropTypes.bool,
 }
 
 SVG.defaultProps = {
-  preserveAspectRatio: 'xMinYMin meet',
-  viewBox:'-4 -4 516 516',
+  preserveAspectRatio:'xMinYMin meet',
+  viewBox            :'-4 -4 516 516',
   /* height:'2.2em',
      as:'p', */
 }

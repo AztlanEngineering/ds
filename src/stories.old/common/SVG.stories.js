@@ -54,7 +54,7 @@ SVGAnim.story = {
 export const SVGColorsStroke = () =>
   Object.keys(COLORS).map((e,i) =>
     <>
-      <p>{ e }</p>
+      <span>{ e }</span>
       <SVG
         key={i}
         height='200'

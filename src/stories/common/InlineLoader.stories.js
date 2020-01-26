@@ -32,7 +32,7 @@ const item_map=[
     height:'80',
   },
   {
-    color:'white',
+    color:'yellow',
     height:'100',
     back:'blue',
   },
@@ -45,7 +45,7 @@ const item_map=[
 export const Default = () =>
   <InlineLoader
     height='200'
-    loaderClassName='c-orange b-blue'
+    loaderClassName='x-orange'
   >
   </InlineLoader>
 
@@ -59,9 +59,9 @@ export const Variant = () =>
         >
           <InlineLoader
             className={
-			    (e.back ? 'b-'+e.back:'')
+			    (e.back ? 'by y-'+e.back:'')
 			  }
-            loaderClassName={' c-'+e.color}
+            loaderClassName={'x-'+e.color}
             height={e.height }
           />
         </div>
@@ -79,10 +79,10 @@ export const Circle = () =>
         >
           <InlineLoader
             className={
-			    (e.back ? 'b-'+e.back:'')
+			    (e.back ? 'by y-'+e.back:'')
 			  }
             type='circle'
-            loaderClassName={' c-'+e.color}
+            loaderClassName={' x-'+e.color}
             height={e.height }
           />
         </div>

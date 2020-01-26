@@ -3,12 +3,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 
-import { gql } from 'graphql-tag'
 /* Config
    import C from 'ui/cssClasses' */
 
 //Relative imports
-import styles from './breadcrumb.scss'
+import './breadcrumb.scss'
 import { Item } from './common'
 
 const baseClassName = 'breadcrumb'
@@ -27,7 +26,7 @@ const Breadcrumb = ({
       style={ style }
       className={
         [
-          styles[baseClassName],
+          baseClassName,
           className
         ].filter(e => e).join(' ')
       }
@@ -42,22 +41,22 @@ Breadcrumb.propTypes = {
   /**
    * Provide an HTML id to this element
    */
-  id: PropTypes.string,
+  id:PropTypes.string,
 
   /**
    * The html class names to be provided to this element
    */
-  className: PropTypes.string,
+  className:PropTypes.string,
 
   /**
    * The JSX-Written, css styles to apply to the element.
    */
-  style: PropTypes.object,
+  style:PropTypes.object,
 
   /**
    *  The children JSX
    */
-  children: PropTypes.node.isRequired,
+  children:PropTypes.node.isRequired,
 
 }
 

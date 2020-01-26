@@ -6,10 +6,10 @@ import React from 'react'
 import { GrayscaleIcon } from 'ui'
 
 export default {
-  title: 'common/GrayscaleIcon',
-  component:GrayscaleIcon,
-  parameters: {
-    decorators: [
+  title     :'common/GrayscaleIcon',
+  component :GrayscaleIcon,
+  parameters:{
+    decorators:[
       //storyfn => <div className="">{ storyfn() }</div>,
     ]
   }
@@ -17,21 +17,21 @@ export default {
 
 const variants = [
   {
-    alt:'Corriere',
-    src:'/press_corriere.png',
+    alt :'Corriere',
+    src :'/press_corriere.png',
     link:'blah.com'
   },
   {
-    alt:'New York Times',
-    src:'/press_nyt.png',
-    className:'b-teal',
-    link:'blah.com'
+    alt      :'New York Times',
+    src      :'/press_nyt.png',
+    className:'bx x-indigo',
+    link     :'blah.com'
   },
   {
-    alt:'Stampa',
-    src:'/press_stampa.svg',
-    className:'b-red',
-    link:'blah.com'
+    alt      :'Stampa',
+    src      :'/press_stampa.svg',
+    className:'bx x-red',
+    link     :'blah.com'
   }
 ]
 
@@ -50,7 +50,7 @@ export const TestClasses = () =>
     />
   )
 
-export const Inline = () =>
+export const TODO_Inline = () =>
   variants.map(({ className, ...e },i) =>
     <GrayscaleIcon
       { ...e }

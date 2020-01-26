@@ -34,7 +34,7 @@ export const ColorVariant = () => {
       active={ active }
       setActive={ setActive }
       id='myarrow'
-      className='c-yellow'
+      className='x-secondary y-primary'
       height='240px'
     />
 

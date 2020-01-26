@@ -47,11 +47,7 @@ const Item = ({
       <Wrapper
         { ...wrapper_args }
       >
-        <span
-          itemProp='name'
-        >
           { children }
-        </span>
         { position && <meta
           itemProp='position'
           content={ position }

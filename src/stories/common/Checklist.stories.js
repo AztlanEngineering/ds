@@ -24,8 +24,8 @@ const items = [
     content:'That you won\'t find somewhere else'
   },
   {
-    content:'More than 5 hours of battery life. Only 3kg of weight. Available in 36 colors. Makes less noice than a B2 airplane.',
-    className:'cc-red'
+    content:'More than 5 hours of battery life. Only 3kg of weight. Available in 36 colors. Super silent.',
+    className:'y-red x-blue z-primary cx xh-orange'
   }
 ]
 

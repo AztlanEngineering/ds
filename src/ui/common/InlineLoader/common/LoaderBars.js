@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
    import C from 'ui/cssClasses' */
 
 //Relative imports
-import styles from './loader_bars.scss'
+import './loader_bars.scss'
 
 const baseClassName = 'loader_bars'
 
@@ -37,7 +37,7 @@ const LoaderBars = ({
     <svg
       className={
         [
-          styles[baseClassName],
+          baseClassName,
           className
         ].filter(e => e).join(' ')
       }
@@ -91,43 +91,43 @@ LoaderBars.propTypes = {
   /**
    * Provide an HTML id to this element
    */
-  id: PropTypes.string,
+  id:PropTypes.string,
 
   /**
    * The html class names to be provided to this element
    */
-  className: PropTypes.string,
+  className:PropTypes.string,
 
   /**
    * The height of the loader
    */
-  height: PropTypes.string,
+  height:PropTypes.string,
 
   /**
    * The width of the loader
    */
-  width: PropTypes.string,
+  width:PropTypes.string,
 
   /**
    * The SVG property stroke-linecap
    */
-  strokeLinecap: PropTypes.oneOf(['round', 'square', 'butt']),
+  strokeLinecap:PropTypes.oneOf(['round', 'square', 'butt']),
 
   /**
    * The SVG property stroke-width
    */
-  strokeWidth: PropTypes.string,
+  strokeWidth:PropTypes.string,
 
   /**
    * The duration of the animation in seconds
    */
-  animationDuration: PropTypes.number,
+  animationDuration:PropTypes.number,
 
 }
 
 LoaderBars.defaultProps = {
-  strokeLinecap:'round',
-  strokeWidth:'14',
+  strokeLinecap    :'round',
+  strokeWidth      :'14',
   animationDuration:1.25
 }
 

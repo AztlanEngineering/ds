@@ -11,6 +11,12 @@ Classes :
 
   line {
     transition: stroke 0.3s;
-    stroke: var(--cc, var(--black, black));
+    stroke: var(--x, var(--black, black));
+  }
+
+  &.active {
+    line {
+      stroke: var(--y, var(--x, var(--black, black)));
+    }
   }
 }
