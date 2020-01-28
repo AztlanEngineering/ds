@@ -6,7 +6,7 @@ import C from 'ui/cssClasses'
 import { InlineLoader } from 'ui/common'
 
 //Relative imports
-import styles from './button.scss'
+import './button.scss'
 import { Group } from './common'
 
 const baseClassName = 'button'
@@ -17,12 +17,9 @@ const Button = ({
   style,
   children,
 
-  shadow='md',
-  shadowHover='sm',
-
   basic,
   simple,
-  circle,
+  in3d,
 
   icon,
   iconSide,
@@ -41,27 +38,29 @@ const Button = ({
       style={ style }
       className={
         [
-          styles[baseClassName],
+          baseClassName,
           C.transition,
-          (shadow && !simple) && C.shadow + shadow,
           disabled && C.disabled,
           icon && C.iconInside + ((iconSide && !loading) ? iconSide : 'c'),
           simple && C.simple,
-          circle && C.circle,
-          basic && 'bxc b-t bxc-' + C.shadowActive,
-          loading && C.loading,
           (simple && !disabled) && C.simpleHover,
-          (shadow && !simple && !basic) && C.shadow + shadow,
-          (shadowHover && !disabled && !simple && !basic) && C.shadowHover + shadowHover + ' ' + C.shadowActive,
+          //circle && C.circle,
+          basic && C.basic,
+          (basic && !disabled) && C.basicHover,
+          in3d && C.in3d,
+          (in3d && !disabled) && C.in3dHover,
+          loading && C.loading,
           className
-        ]
+        ].filter(e => e).join(' ')
       }
+      disabled={ disabled }
     >
       { loading ?
         <>
           <InlineLoader
             height='100%'
             type={ loaderType }
+            style={{ '--x': 'var(--x-on)' }}
           />
         </>
 	  :
@@ -81,57 +80,47 @@ Button.propTypes = {
   /**
    * Provide an HTML id to this element
    */
-  id: PropTypes.string,
+  id:PropTypes.string,
 
   /**
    * The html class names to be provided to this element
    */
-  className: PropTypes.string,
+  className:PropTypes.string,
 
   /**
    * The JSX-Written, css styles to apply to the element.
    */
-  style: PropTypes.object,
+  style:PropTypes.object,
 
   /**
    *  The children JSX
    */
-  children: PropTypes.node,
-
-  /**
-   * The shadow
-   */
-  shadow: PropTypes.oneOf(['sm', 'md', 'lg', null]),
-
-  /**
-   * The shadow on hover
-   */
-  shadowHover: PropTypes.oneOf(['sm', 'md', 'lg', null]),
+  children:PropTypes.node,
 
   /**
    * The icon to add, as a fontastic char
    */
-  icon: PropTypes.string,
+  icon:PropTypes.string,
 
   /**
    * Which side to display the icon on
    */
-  iconSide: PropTypes.oneOf(['c', 'l', 'r']),
+  iconSide:PropTypes.oneOf(['c', 'l', 'r']),
 
   /**
    * Whether to use a "simple" style
    */
-  simple: PropTypes.bool,
+  simple:PropTypes.bool,
 
   /**
    * Whether to apply the "basic" style
    */
-  basic: PropTypes.bool,
+  basic:PropTypes.bool,
 
   /**
-   * Whether the element is circular instead of square
+   * Whether to apply the 3D style
    */
-  circle:PropTypes.bool,
+  in3d:PropTypes.bool,
 
   /**
    * Whether the element is disabled
@@ -146,19 +135,16 @@ Button.propTypes = {
   /**
    *
    */
-  loaderType: PropTypes.oneOf(['bars', 'circle'])
+  loaderType:PropTypes.oneOf(['bars', 'circle'])
 }
 
 Button.defaultProps = {
-  as:'button',
-  shadow:'md',
-  shadowHover:'sm',
+  as        :'button',
   loaderType:'bars',
-  simple:false,
-  basic:false,
-  circle:false,
-  disabled:false,
-  loading:false
+  simple    :false,
+  basic     :false,
+  disabled  :false,
+  loading   :false
 }
 
 Button.Group = Group

@@ -8,7 +8,7 @@ import C from 'ui/cssClasses'
 
 //Relative imports
 
-const baseClassName = C.group
+const baseClassName = C.group + ' buttons'
 
 const Group = ({
   id,
@@ -17,6 +17,7 @@ const Group = ({
   children,
 
   vertical,
+  independent,
   stretch
 }) => {
 
@@ -29,6 +30,7 @@ const Group = ({
           stretch == 'horizontal' && C.horizontalStretch,
           stretch == 'vertical' && C.verticalStretch,
           vertical && C.vertical,
+          independent && C.independent,
           className
         ].filter(e => e).join(' ')
       }
@@ -43,22 +45,22 @@ Group.propTypes = {
   /**
    * Provide an HTML id to this element
    */
-  id: PropTypes.string,
+  id:PropTypes.string,
 
   /**
    * The html class names to be provided to this element
    */
-  className: PropTypes.string,
+  className:PropTypes.string,
 
   /**
    * The JSX-Written, css styles to apply to the element.
    */
-  style: PropTypes.object,
+  style:PropTypes.object,
 
   /**
    *  The children JSX
    */
-  children: PropTypes.node,
+  children:PropTypes.node,
 
   /**
    * If this is a vertical group
@@ -68,11 +70,17 @@ Group.propTypes = {
   /**
    * How the group should stretch
    */
-  stretch: PropTypes.oneOf(['horizontal', 'vertical'])
+  stretch:PropTypes.oneOf(['horizontal', 'vertical']),
+
+  /**
+   * Whether the element is loading
+   */
+  independent:PropTypes.bool,
 }
 
 Group.defaultProps = {
   vertical:false,
+  independent:false,
 }
 
 export default Group

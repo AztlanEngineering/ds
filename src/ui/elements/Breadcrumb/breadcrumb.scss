@@ -16,14 +16,14 @@ Classes :
   li + li {
     &::before {
       vertical-align: bottom;
-      color: var(--light-grey);
+      color: var(--x-light, var(--light-grey));
       font-family: "if";
       content: " g ";
     }
   }
 
   span {
-    color: var(--x, var(--darker-grey));
+    color: var(--x-dark, var(--darker-grey));
   }
 
   a {

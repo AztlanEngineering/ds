@@ -100,3 +100,16 @@ export const Basic = () => (
   )
 
 )
+
+export const Sizes = () => (
+
+  //Object.keys(ALL_COLORS).map((e,i) =>
+  SIZES.map((e,i) =>
+    <Label
+      className={ 'x-blue ks s'+e}
+    >
+      { variants[1].content || 'blah'}
+    </Label>
+  )
+
+)

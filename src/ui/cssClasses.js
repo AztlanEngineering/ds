@@ -4,8 +4,10 @@ export default {
   'alt'              :'alt-',
   // SVG
   'anim'             :'anim',
-  // Label
+  // Label, Button
   'basic'            :'basic',
+  // Label, Button
+  'basicHover'       :'hbasic',
   'block'            :'block',
   'center'           :'ctr',
   'circle'           :'c',
@@ -14,6 +16,8 @@ export default {
   'contour'          :'contour',
   'disabled'         :'disabled',
   'error'            :'err',
+  // Group (Button)
+  'group'            :'group',
   'headSection'      :'head section',
   'header'           :'header',
   'horizontalStretch':'h-stretch',
@@ -23,6 +27,12 @@ export default {
   // GrayscaleIcon
   'imgFit'           :'fit',
   'incard'           :'incard',
+  //Button
+  'in3d'             :'in3d',
+  //Button
+  'in3dHover'        :'hin3d',
+  // Group( Button )
+  'independent'      :'indep',
   'input'            :'input',
   'inputs'           :'fw sin',
   'inverted'         :'inv',
@@ -46,9 +56,10 @@ export default {
   'shadow'           :'sh-',
   'shadowActive'     :'sha',
   'shadowHover'      :'shh-',
-  // Label
+  // Label, Button
   'simple'           :'simple',
-  'simpleHover'      :'simpleh',
+  // Button
+  'simpleHover'      :'hsimple',
   'size'             :'s-',
   'small'            :'small',
   'stroke'           :'stroke',

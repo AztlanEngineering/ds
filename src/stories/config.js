@@ -1,10 +1,13 @@
 const SIZES=[
-  'xs',
-  'sm',
-  'md',
-  'lg',
-  'xl',
-  'xxl'
+  '-3',
+  '-2',
+  '-1',
+  '0',
+  '1',
+  '2',
+  '3',
+  '4',
+  '5'
 ]
 
 const THEME = [
@@ -47,11 +50,17 @@ const ALL_COLORS = [
   ...MODALS
 ]
 
+const FONT_FAMILY_HEADINGS = 'px grotesk'
+const FONT_FAMILY_PARAGRAPH = 'us'
+
 export {
   SIZES,
   THEME,
   MONOCHROME,
   WHEEL,
   MODALS,
-  ALL_COLORS
+  ALL_COLORS,
+
+  FONT_FAMILY_HEADINGS,
+  FONT_FAMILY_PARAGRAPH
 }

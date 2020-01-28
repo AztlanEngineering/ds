@@ -5,224 +5,240 @@ Classes :
 
 */
 
-$paddingSide:.8em;
-$paddingTop:.50em;
-$paddingBottom:.55em;
+$paddingSide:0.8em;
+$paddingTop:0.5em;
+$paddingBottom:0.55em;
 $padding:$paddingTop $paddingSide $paddingBottom;
-$fontFamily:var(--fontHeaders);
-$fontWeight:normal;
-$willChange:'';
+$fontFamily:var(--fp);
+$fontWeight:bold;
+$willChange:"";
 $tapColor:transparent;
 $lineHeight:1.3em;
-$iconOpacity:.9;
-$iconOpacityHover:.96;
-$iconBackOpacity:.20;
-$iconBackOpacityHover:.4;
+$iconOpacity:0.9;
+$iconOpacityHover:0.96;
+$iconBackOpacity:0.2;
+$iconBackOpacityHover:0.4;
 $iconBackWidth:2em;
-$iconPadding:$paddingTop .5em $paddingBottom;
-$iconTransitionMovement:.25em;
-$iconTransitionTime:.3s;
+$iconPadding:$paddingTop 0.5em $paddingBottom;
+$iconTransitionMovement:0.25em;
+$iconTransitionTime:0.3s;
 
-.button
-{
-  position:relative;
+.button {
+  position: relative;
+  outline: none;
+  border: 0;
+  border-radius: var(--r);
 
-  &:not(.i)
-  {
-    padding:$padding;
+  background: var(--x, var(--light-grey));
+  cursor: pointer;
+  overflow: hidden;
+  line-height: $lineHeight;
+  color: var(--x-on, var(--black));
+  font-family: $fontFamily;
+  font-weight: $fontWeight;
+  -webkit-tap-highlight-color: $tapColor;
+  user-select: none;
+  will-change: $willChange;
+
+  &:not(.i) {
+    padding: $padding;
   }
 
-  :not(.g-button) > &
-  {
-    height:$lineHeight + $paddingTop + $paddingBottom;
+  :not(.g-button) > & {
+    height: $lineHeight + $paddingTop + $paddingBottom;
   }
 
-  font-family:$fontFamily;
-  font-weight:$fontWeight;
-  border:0;
-  border-radius:var(--r);
-  cursor:pointer;
-  user-select:none;
-  outline:none;
-  overflow:hidden;
-  line-height:$lineHeight;
-  will-change:$willChange;
-  -webkit-tap-highlight-color:$tapColor;
 
-  &.il
-  {
-    padding-left:$paddingSide + $iconBackWidth;
+  &:disabled {
+    background: var(--x-light, var(--dark-white));
+    cursor: unset;
+    color: var(--x-on, var(--dark-grey));
   }
 
-  &.ir
-  {
-    padding-right:$paddingSide + $iconBackWidth;
+  &:not(:disabled) {
+    &:hover {
+      background: var(--x-light, var(--dark-white));
+    }
+
+    &:focus,
+    &:active {
+      background: var(--x, var(--light-grey));
+    }
   }
 
-  &.ic 
-  {
-    padding:5em;
+  &.il {
+    padding-left: $paddingSide + $iconBackWidth;
+  }
+
+  &.ir {
+    padding-right: $paddingSide + $iconBackWidth;
+  }
+
+  &.ic  {
+    padding: 5em;
   }
 
   &.ir,
-  &.il
-  {
-    i
-    {
-      z-index:0;
-      opacity:$iconOpacity;
-      position:absolute;
-      padding:$iconPadding;
-      top:0;
-      bottom:0;
-      line-height:$lineHeight;
-			transition:all $iconTransitionTime;
+  &.il {
+    i {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      opacity: $iconOpacity;
+      z-index: 0;
+      padding: $iconPadding;
+      line-height: $lineHeight;
+      transition: all $iconTransitionTime;
 
-      &:before
-      {
-        content:' ';
-        z-index:-1;
-        background:var(--white);
-        opacity:$iconBackOpacity;
-        position:absolute;
-        top:0;
-        bottom:0;
-        width:$iconBackWidth;
-				transition:all $iconTransitionTime;
+      &::before {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        opacity: $iconBackOpacity;
+        z-index: -1;
+        background: var(--white);
+        width: $iconBackWidth;
+        content: " ";
+        transition: all $iconTransitionTime;
       }
     }
 
-    &[class*='bh-']
-    {
+    &[class*="bh-"] {
       &:hover,
-      &:focus
-      {
-        i
-        {
-          opacity:$iconOpacityHover;
-          &:before
-          {
-            opacity:$iconBackOpacityHover;
+      &:focus {
+        i {
+          opacity: $iconOpacityHover;
+
+          &::before {
+            opacity: $iconBackOpacityHover;
           }
         }
       }
-      &:active
-      {
-        i
-        {
-          box-shadow:var(--ish-sm);
+
+      &:active {
+        i {
+          //box-shadow: var(--ish-sm);
         }
       }
     }
   }
 
   &.i i,
-  &.il i
-  {
-    left:0;
-    &:before
-    {
-      left:0;
+  &.il i {
+    left: 0;
+
+    &::before {
+      left: 0;
     }
   }
 
   &.i i,
-  &.ir i
-  {
-    right:0;
-    &:before
-    {
-      right:0;
+  &.ir i {
+    right: 0;
+
+    &::before {
+      right: 0;
     }
   }
-	&.it {
-		&:hover,
-		&:focus,
-		&:active {
-			&.il {
-				i {
-					transform:translateX(-#{$iconTransitionMovement});
-					&:before {
-						width:$iconBackWidth + $iconTransitionMovement;
-					}
-				}
-			}
 
-			&.ir {
-				i {
-					transform:translateX(#{$iconTransitionMovement});
-					&:before {
-						width:$iconBackWidth + $iconTransitionMovement;
-					}
-				}
-			}
-		}
-	}
+  &.it {
+    &:hover,
+    &:focus,
+    &:active {
+      &.il {
+        i {
+          transform: translateX(-#{$iconTransitionMovement});
 
+          &::before {
+            width: $iconBackWidth + $iconTransitionMovement;
+          }
+        }
+      }
 
+      &.ir {
+        i {
+          transform: translateX(#{$iconTransitionMovement});
+
+          &::before {
+            width: $iconBackWidth + $iconTransitionMovement;
+          }
+        }
+      }
+    }
+  }
 }
 
-.g-button
-{
-  display:flex;
+.group.buttons {
+  display: flex;
 
-  &:not(.vrt)
-  {
-    flex-direction:row;
-    flex-wrap:nowrap;
-
-    .button
-    {
-      border-radius:0;
+  &.indep.indep {
+    .button {
+      border-radius: var(--r) !important;
     }
 
-		> *:not(.button){
-			> .button {
-				height:inherit;
-			}
-		}
-
-    > :first-child,
-    > :first-child .button,	
-    {
-      border-radius:var(--r-left);
+    &:not(.vrt) {
+      .button + .button {
+        margin-left: 0.25rem;
+      }
     }
 
-    > :last-child,
-    > :last-child .button,	
-    {
-      border-radius:var(--r-right);
+    &.vrt {
+      .button + .button {
+        margin-top: 0.25rem;
+      }
     }
   }
 
-  &.vrt
-  {
-    flex-direction:column;
-    flex-wrap:nowrap;
+  &:not(.vrt) {
+    flex-direction: row;
+    flex-wrap: nowrap;
 
-    .button
-    {
-      border-radius:0;
+    .button {
+      border-radius: 0;
     }
 
-		> *:not(.button){
-			width:100%;
-			> .button {
-				width:inherit;
-			}
-		}
-
+    > *:not(.button) {
+      > .button {
+        height: inherit;
+      }
+    }
 
     > :first-child,
-    > :first-child .button,
-    {
-      border-radius:var(--r-top);
+    > :first-child .button, {
+      border-radius: var(--rl);
     }
 
     > :last-child,
-    > :last-child .button,
-    {
-      border-radius:var(--r-bottom);
+    > :last-child .button, {
+      border-radius: var(--rr);
+    }
+  }
+
+  &.vrt {
+    flex-direction: column;
+    flex-wrap: nowrap;
+
+    .button {
+      border-radius: 0;
+    }
+
+    > *:not(.button) {
+      width: 100%;
+
+      > .button {
+        width: inherit;
+      }
+    }
+
+
+    > :first-child,
+    > :first-child .button, {
+      border-radius: var(--rt);
+    }
+
+    > :last-child,
+    > :last-child .button, {
+      border-radius: var(--rb);
     }
   }
 }
