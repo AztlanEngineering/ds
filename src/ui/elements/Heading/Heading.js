@@ -6,7 +6,7 @@ import { Subtitle, Label } from 'ui/common'
 import C from 'ui/cssClasses'
 
 //Relative imports
-import styles from './heading.scss'
+import './heading.scss'
 
 const baseClassName = 'heading'
 
@@ -33,7 +33,7 @@ const Heading = ({
     <div
       className={
         [
-          styles[baseClassName],
+          baseClassName,
           className
         ].filter(e => e).join(' ')
       }
@@ -44,6 +44,7 @@ const Heading = ({
         <LabelElement
           className={
             (labelClassName ? ' ' + labelClassName : '')
+            + ' s-1 ls'
           }
         >
           { label }

@@ -4,14 +4,18 @@ Classes :
 .heading : default
 
 */
-$labelHeadingMargin:.4rem;
+$labelHeadingMargin:0.2rem;
 
-.heading{
-	p.label + * {
-		margin-top:$labelHeadingMargin;
-	}
+.heading {
+  .label:first-child {
+    margin-bottom: 0;
+  }
 
-	.content {
-		margin-bottom:.15em;
-	}
+  p.label + * {
+    margin-top: $labelHeadingMargin;
+  }
+
+  .content {
+    margin-bottom: 0.15em;
+  }
 }
