@@ -23,7 +23,7 @@ const Content = ({
       className={
         [
           baseClassName,
-          image ? C.image,
+          image && C.image,
           className
         ].filter(e => e).join(' ')
       }
