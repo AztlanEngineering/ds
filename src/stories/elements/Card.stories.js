@@ -4,10 +4,16 @@ import React from 'react'
 import { Card, SVG } from 'ui'
 
 export default {
-  title: 'elements/Card',
-  component:Card,
-  parameters: {
-    decorators: [
+  title        :'elements/Card',
+  component    :Card,
+  subcomponents:{
+    Header :Card.Header,
+    Content:Card.Content,
+    Footer :Card.Footer,
+    Divider:Card.Divider,
+  },
+  parameters:{
+    decorators:[
       //storyfn => <div className="">{ storyfn() }</div>,
     ]
   }
@@ -36,40 +42,37 @@ const img_src='https://images.pexels.com/photos/157811/pexels-photo-157811.jpeg?
 
 
 export const Default = () => (
-  <div className='p2'>
-    <Card>
-      <Card.Content>
-        <h2 className='small'>Ajedrez</h2>
-      </Card.Content>
-      <Card.Divider/>
-      <Card.Content>
-        <p dangerouslySetInnerHTML={{__html:text}}>
+  <Card>
+    <Card.Content>
+      <h2 className='small'>Ajedrez</h2>
+    </Card.Content>
+    <Card.Divider/>
+    <Card.Content>
+      <p dangerouslySetInnerHTML={{__html: text}}>
 
-        </p>
-      </Card.Content>
-    </Card>
-  </div>
+      </p>
+    </Card.Content>
+  </Card>
 
 )
 
 export const WithHeaderAndFooter = () =>(
-  <div className='p2'>
-    <Card>
-      <Card.Header>
-        <h2 className='small'>Ajedrez</h2>
-      </Card.Header>
-      <Card.Divider/>
-      <Card.Content>
-        <p dangerouslySetInnerHTML={{__html:text}}>
 
-        </p>
-      </Card.Content>
-      <Card.Divider/>
-      <Card.Footer className='ur'>
-        <p className=''>Jorge Luis Borges</p>
-      </Card.Footer>
-    </Card>
-  </div>
+  <Card className='y-blue'>
+    <Card.Header>
+      <h2 className='small'>Ajedrez</h2>
+    </Card.Header>
+    <Card.Divider/>
+    <Card.Content>
+      <p dangerouslySetInnerHTML={{__html: text}}>
+
+      </p>
+    </Card.Content>
+    <Card.Divider/>
+    <Card.Footer className='ur'>
+      <p className=''>Jorge Luis Borges</p>
+    </Card.Footer>
+  </Card>
 
 
 )
@@ -82,7 +85,7 @@ export const Selectable = () =>(
       </Card.Header>
       <Card.Divider/>
       <Card.Content>
-        <p dangerouslySetInnerHTML={{__html:text}}>
+        <p dangerouslySetInnerHTML={{__html: text}}>
 
         </p>
       </Card.Content>
@@ -98,7 +101,7 @@ export const Selectable = () =>(
       <Card.Divider/>
 
       <Card.Content>
-        <p dangerouslySetInnerHTML={{__html:text}}>
+        <p dangerouslySetInnerHTML={{__html: text}}>
 
         </p>
       </Card.Content>
@@ -110,7 +113,7 @@ export const Selectable = () =>(
 
 export const WithImage = () =>(
   <div className='p2'>
-    <Card style={{ width:'min-content' }}>
+    <Card style={{ width: 'min-content' }}>
       <Card.Header image>
         <img
           src={ img_src }
@@ -121,7 +124,7 @@ export const WithImage = () =>(
         />
       </Card.Header>
       <Card.Content>
-        <p dangerouslySetInnerHTML={{__html:text}}>
+        <p dangerouslySetInnerHTML={{__html: text}}>
 
         </p>
       </Card.Content>
@@ -132,7 +135,7 @@ export const WithImage = () =>(
 
 export const IconCard = () => (
   <div className='p2'>
-    <Card style={{ width:'min-content' }}>
+    <Card style={{ width: 'min-content' }}>
       <Card.Content>
         <SVG
           width='120'

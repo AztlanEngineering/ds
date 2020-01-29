@@ -7,7 +7,7 @@ import PropTypes from 'prop-types'
 import C from 'ui/cssClasses'
 
 //Relative imports
-import styles from './card.scss'
+import './card.scss'
 import {
   Content,
   Divider,
@@ -31,8 +31,7 @@ const Card = ({
     <div
       className={
         [
-          styles[baseClassName],
-          'sh-sm b',
+          baseClassName,
           active && C.active,
           selectable && C.selectable,
           className

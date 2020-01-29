@@ -10,10 +10,17 @@ $transformHoverScale:1.02;
 
 .card
 {
+
+  background:var(--y, transparent);
+
   display:inline-block;
   transition:all $transitionDuration;
   position:relative;
   overflow:hidden;
+  
+  & > *{
+    color:var(--on-black);
+  }
 
   & > :first-child
   {

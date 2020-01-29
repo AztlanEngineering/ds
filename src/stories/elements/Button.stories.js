@@ -13,8 +13,11 @@ import { Button } from 'ui'
 //const endpoint = 'https://api.fwrlines.com/graphql'
 
 export default {
-  title     :'elements/Button',
-  component :Button,
+  title        :'elements/Button',
+  component    :Button,
+  subcomponents:{
+    Group:Button.Group
+  },
   parameters:{
     decorators:[
       /* storyfn => <div className="">{ storyfn() }</div>,
@@ -309,7 +312,10 @@ export const GroupVertical = () =>
   </Button.Group>
 
 export const GroupVerticalIndep = () =>
-  <Button.Group vertical independent>
+  <Button.Group
+    vertical
+    independent
+  >
     {icons_map.map((e,i) =>
       <Button
         className={'ks s2 x-' + e.back}
