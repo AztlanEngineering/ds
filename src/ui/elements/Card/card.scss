@@ -18,7 +18,7 @@ $transformHoverScale:1.02;
   position:relative;
   overflow:hidden;
   
-  & > *{
+  & > .content{
     color:var(--on-black);
   }
 
@@ -32,6 +32,10 @@ $transformHoverScale:1.02;
   {
     border-radius:var(--r-bottom);
     overflow:hidden;
+  }
+
+  & > div {
+    &:not
   }
 
   &.select
