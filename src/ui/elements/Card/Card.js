@@ -9,10 +9,8 @@ import C from 'ui/cssClasses'
 //Relative imports
 import './card.scss'
 import {
-  Content,
+  Section,
   Divider,
-  Footer,
-  Header
 } from './common'
 
 const baseClassName = 'card'
@@ -23,6 +21,8 @@ const Card = ({
   style,
   children,
 
+  basic,
+  simple,
   selectable,
   active,
   onClick,
@@ -34,6 +34,8 @@ const Card = ({
           baseClassName,
           active && C.active,
           selectable && C.selectable,
+          basic && C.basic,
+          simple && C.simple,
           className
         ].filter(e => e).join(' ')
       }
@@ -49,22 +51,22 @@ Card.propTypes = {
   /**
    * Provide an HTML id to this element
    */
-  id: PropTypes.string,
+  id:PropTypes.string,
 
   /**
    * The html class names to be provided to this element
    */
-  className: PropTypes.string,
+  className:PropTypes.string,
 
   /**
    * The JSX-Written, css styles to apply to the element.
    */
-  style: PropTypes.object,
+  style:PropTypes.object,
 
   /**
    *  The children JSX
    */
-  children: PropTypes.node,
+  children:PropTypes.node,
 
   /**
    * Whether the element has a full size image inside
@@ -79,22 +81,30 @@ Card.propTypes = {
   /**
    * Whether the card is active
    */
-  active: PropTypes.bool,
+  active:PropTypes.bool,
+
+  /**
+   * Whether to use a "simple" style
+   */
+  simple:PropTypes.bool,
+
+  /**
+   * Whether to apply the "basic" style
+   */
+  basic:PropTypes.bool,
 
   /**
    * Whether the card is selectable
    */
-  selectable: PropTypes.bool
+  selectable:PropTypes.bool
 }
 
 Card.defaultProps = {
   selectable:false,
-  active:false,
+  active    :false,
 }
 
-Card.Content = Content
+Card.Section = Section
 Card.Divider = Divider
-Card.Footer = Footer
-Card.Header = Header
 
 export default Card

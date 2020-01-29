@@ -25,15 +25,15 @@ export default {
 const map = [
   {
     name:'In Progress',
-    circle:'b-orange'
+    circle:'y-warning'
   },
   {
     name:'Error',
-    circle:'b-red'
+    circle:'y-error'
   },
   {
     name:'Ready',
-    circle:'b-green'
+    circle:'y-success'
   },
 ]
 
@@ -46,10 +46,25 @@ export const Default = () => (
     >
       <DotInfo
         title={e.name}
-        circleClassName={e.circle}
+        className={e.circle}
       />
     </div>
 
   )
 )
 
+export const Colors = () => (
+  map.map((e,i) =>
+    <div
+      className='p1'
+      key={i}
+    >
+      <DotInfo
+        title={e.name}
+        className={ e.circle }
+        subtitleClassName={ "cx x-blue" }
+      />
+    </div>
+
+  )
+)

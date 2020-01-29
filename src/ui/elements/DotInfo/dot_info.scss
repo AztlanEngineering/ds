@@ -4,13 +4,13 @@ Classes :
 .dot_info : default
 
 */
-$circleSize:.9em;
+$circleSize:0.9em;
 
-.dot_info
-{
-  .c
-  {
-    height:$circleSize;
-    width:$circleSize;
+.dot_info {
+  .circle {
+    margin-right: 0.5em;
+    background: var(--y, var(--success));
+    width: $circleSize;
+    height: $circleSize;
   }
 }

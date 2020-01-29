@@ -7,10 +7,10 @@ import { Router } from 'stories/utils'
 
 
 export default {
-  title: 'elements/CircleInfo',
-  component:CircleInfo,
-  parameters: {
-    decorators: [
+  title     :'elements/CircleInfo',
+  component :CircleInfo,
+  parameters:{
+    decorators:[
       storyfn => <Router>{ storyfn() }</Router>,
     ]
   }
@@ -18,93 +18,101 @@ export default {
 
 const map = [
   {
-    circle:'b-orange',
-    title:'Firedrich Nietzsche',
-    subtitle:'A philosopher from the XIXth'
+    circle   :'b-orange',
+    title    :'Friedrich Nietzsche',
+    className:'s3 ks',
+    subtitle :'A philosopher from the XIXth'
   },
   {
-    circle:'b-violet',
-    title:'J.S. Bach',
-    subtitle:'A composer from the 18th'
+    circle   :'b-violet',
+    title    :'J.S. Bach',
+    className:'s1 ks',
+    subtitle :'A composer from the 18th'
   },
   {
-    circle:'b-teal',
-    title:'Carlos Pellicer',
-    subtitle:'The poet from Tabasco'
+    circle   :'b-teal',
+    title    :'Carlos Pellicer',
+    className:'s0 ks',
+    subtitle :'The poet from Tabasco'
   },
 ]
 
 const mapVariant = [
   {
-    circle:'b-orange',
-    title:'Firedrich Nietzsche',
-    subtitle:'@fnietzsche',
-    link:'https://twitter.com/fnietzsche',
-    image:'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Nietzsche187a.jpg/440px-Nietzsche187a.jpg',
-    imageAlt:'Firedrich Nietzsche',
+    circle   :'b-orange',
+    title    :'Friedrich Nietzsche',
+    subtitle :'@fnietzsche',
+    link     :'https://twitter.com/fnietzsche',
+    image    :'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Nietzsche187a.jpg/440px-Nietzsche187a.jpg',
+    imageAlt :'Friedrich Nietzsche',
+    className:'s3 ks mu u2',
   },
   {
-    circle:'b-red',
-    title:'J.S. Bach',
-    subtitle:'@fnietzsche',
-    link:'https://twitter.com/fnietzsche',
-    image:'https://upload.wikimedia.org/wikipedia/commons/6/6a/Johann_Sebastian_Bach.jpg',
-    imageAlt:'J.S. Bach',
+    circle   :'b-red',
+    title    :'J.S. Bach',
+    subtitle :'@sebb',
+    link     :'https://twitter.com/fnietzsche',
+    image    :'https://upload.wikimedia.org/wikipedia/commons/6/6a/Johann_Sebastian_Bach.jpg',
+    imageAlt :'J.S. Bach',
+    className:'s1 ks mu u2',
   },
   {
-    circle:'b-teal',
-    title:'Carlos Pellicer',
-    subtitle:'His biography, notes',
-    link:'/pellicer',
-    image:'https://www.mexicodesconocido.com.mx/wp-content/uploads/2019/02/WhatsApp-Image-2019-02-15-at-7.33.12-PM.jpeg',
-    imageAlt:'Carlos Pellicer',
+    circle   :'b-teal',
+    title    :'Carlos Pellicer',
+    subtitle :'His biography, and books',
+    link     :'/pellicer',
+    image    :'https://www.mexicodesconocido.com.mx/wp-content/uploads/2019/02/WhatsApp-Image-2019-02-15-at-7.33.12-PM.jpeg',
+    imageAlt :'Carlos Pellicer',
+    className:'s0 ks mu u2',
   },
 ]
 
-export const CircleInfoDefault = () =>(
-  map.map((e,i) => (
-    <div
-      className='p1'
-      key={i}
-    >
-      <CircleInfo
-        title={ e.title }
-        subtitle={ e.subtitle }
-        circleClassName={ e.circle }
-      />
-    </div>
+export const Default = () =>(
+  mapVariant.map((e,i) => (
+    <CircleInfo
+      title={ e.title }
+      circleClassName={ e.circle }
+      className={ 'mu u2' }
+      image={ e.image }
+      imageAlt={ e.imageAlt }
+    />
   ))
 )
 
-export const CircleInfoVariant = () =>(
+export const Variant = () =>(
   mapVariant.map((e,i) =>
-    <div
-      className='p1'
-      key={i}
-    >
-      <CircleInfo
-        title={ e.title }
-        subtitle={ e.subtitle }
-        link={ e.link }
-        circleClassName={ e.circle }
-      />
-    </div>
+    <CircleInfo
+      title={ e.title }
+      className={ e.className }
+      subtitle={ e.subtitle }
+      link={ e.link }
+      circleClassName={ e.circle }
+    />
   )
 )
 
-export const CircleInfoWithImage = () =>(
+export const WithImage = () =>(
   mapVariant.map((e,i) =>
-    <div
-      className='p1'
-      key={i}
-    >
-      <CircleInfo
-        title={ e.title }
-        subtitle={ e.subtitle }
-        circleClassName={ e.circle }
-        image={ e.image }
-        imageAlt={ e.imageAlt }
-      />
-    </div>
+    <CircleInfo
+      title={ e.title }
+      subtitle={ e.subtitle }
+      circleClassName={ e.circle }
+      image={ e.image }
+      imageAlt={ e.imageAlt }
+      className={ e.className }
+    />
+  )
+)
+
+export const Color = () => (
+  mapVariant.map((e,i) =>
+    i == 0 && <CircleInfo
+      title={ e.title }
+      subtitle={ e.subtitle }
+      circleClassName={ e.circle }
+      image={ e.image }
+      imageAlt={ e.imageAlt }
+      className="x-blue y-red"
+    />
   )
 )

@@ -8,7 +8,7 @@ import { Subtitle } from 'ui/common'
 import C from 'ui/cssClasses'
 
 //Relative imports
-import styles from './circle_info.scss'
+import './circle_info.scss'
 
 const baseClassName = 'circle_info'
 
@@ -38,9 +38,9 @@ const CircleInfo = ({
     } else {
       Wrapper = 'a'
       wrapperArgs = {
-        href:link,
+        href  :link,
         target:'_blank',
-        rel:'nofollow'
+        rel   :'nofollow'
       }
     }
   } else {
@@ -52,7 +52,7 @@ const CircleInfo = ({
     <div
       className={
         [
-          styles[baseClassName],
+          baseClassName,
           className
         ].filter(e => e).join(' ')
       }
@@ -71,7 +71,14 @@ const CircleInfo = ({
           <img
             src={ image }
             alt={ imageAlt }
-            className='row fit'
+            className={
+              [
+                C.row,
+                C.imgFit,
+              ].filter(e => e).join(' ')
+
+
+            }
             height='100%'
           />
         }
@@ -80,16 +87,18 @@ const CircleInfo = ({
         <div className='inside p05'>
           <Wrapper {...wrapperArgs}>
             <p
-              className='fh c-off-black nm'
+              className='s1 ls u0 mu fh'
             >
               { title }
             </p>
-            <Subtitle
+            { subtitle &&
+              <Subtitle
               //upper
-              className='r-sm'
-            >
-              { subtitle }
-            </Subtitle>
+                className='s0 ls'
+              >
+                { subtitle }
+              </Subtitle>
+            }
           </Wrapper>
         </div>
       </div>
@@ -100,47 +109,47 @@ CircleInfo.propTypes = {
   /**
    * Provide an HTML id to this element
    */
-  id: PropTypes.string,
+  id:PropTypes.string,
 
   /**
    * The html class names to be provided to this element
    */
-  className: PropTypes.string,
+  className:PropTypes.string,
 
   /**
    * The JSX-Written, css styles to apply to the element.
    */
-  style: PropTypes.object,
+  style:PropTypes.object,
 
   /**
    *  The title of the element
    */
-  title: PropTypes.string.isRequired,
+  title:PropTypes.string.isRequired,
 
   /**
    * The subtitle of the element
    */
-  subtitle: PropTypes.string.isRequired,
+  subtitle:PropTypes.string,
 
   /**
    * A link, on Click (internal or external)
    */
-  link: PropTypes.string,
+  link:PropTypes.string,
 
   /**
    * The url of the image
    */
-  image: PropTypes.string.isRequired,
+  image:PropTypes.string.isRequired,
 
   /**
    *
    */
-  imageAlt: PropTypes.string,
+  imageAlt:PropTypes.string,
 
   /**
    * The class name of the circle
    */
-  circleClassName: PropTypes.string,
+  circleClassName:PropTypes.string,
 }
 
 /*

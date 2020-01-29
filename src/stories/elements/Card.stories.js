@@ -2,14 +2,13 @@
 import React from 'react'
 
 import { Card, SVG } from 'ui'
+import { ALL_COLORS } from '../config'
 
 export default {
   title        :'elements/Card',
   component    :Card,
   subcomponents:{
-    Header :Card.Header,
-    Content:Card.Content,
-    Footer :Card.Footer,
+    Section:Card.Section,
     Divider:Card.Divider,
   },
   parameters:{
@@ -43,35 +42,35 @@ const img_src='https://images.pexels.com/photos/157811/pexels-photo-157811.jpeg?
 
 export const Default = () => (
   <Card>
-    <Card.Content>
+    <Card.Section>
       <h2 className='small'>Ajedrez</h2>
-    </Card.Content>
+    </Card.Section>
     <Card.Divider/>
-    <Card.Content>
+    <Card.Section>
       <p dangerouslySetInnerHTML={{__html: text}}>
 
       </p>
-    </Card.Content>
+    </Card.Section>
   </Card>
 
 )
 
-export const WithHeaderAndFooter = () =>(
+export const WithSectionAndSection = () =>(
 
   <Card className='y-blue'>
-    <Card.Header>
+    <Card.Section>
       <h2 className='small'>Ajedrez</h2>
-    </Card.Header>
+    </Card.Section>
     <Card.Divider/>
-    <Card.Content>
+    <Card.Section>
       <p dangerouslySetInnerHTML={{__html: text}}>
 
       </p>
-    </Card.Content>
+    </Card.Section>
     <Card.Divider/>
-    <Card.Footer className='ur'>
+    <Card.Section className='ur'>
       <p className=''>Jorge Luis Borges</p>
-    </Card.Footer>
+    </Card.Section>
   </Card>
 
 
@@ -80,31 +79,31 @@ export const WithHeaderAndFooter = () =>(
 export const Selectable = () =>(
   <div className='p2'>
     <Card selectable>
-      <Card.Header>
+      <Card.Section>
         <h2 className='small'>Ajedrez</h2>
-      </Card.Header>
+      </Card.Section>
       <Card.Divider/>
-      <Card.Content>
+      <Card.Section>
         <p dangerouslySetInnerHTML={{__html: text}}>
 
         </p>
-      </Card.Content>
+      </Card.Section>
     </Card>
     <Card
       selectable
       active
     >
-      <Card.Header>
+      <Card.Section>
         <h2 className='small'>Ajedrez</h2>
-      </Card.Header>
+      </Card.Section>
 
       <Card.Divider/>
 
-      <Card.Content>
+      <Card.Section>
         <p dangerouslySetInnerHTML={{__html: text}}>
 
         </p>
-      </Card.Content>
+      </Card.Section>
     </Card>
   </div>
 
@@ -114,7 +113,10 @@ export const Selectable = () =>(
 export const WithImage = () =>(
   <div className='p2'>
     <Card style={{ width: 'min-content' }}>
-      <Card.Header image>
+      <Card.Section
+        image
+        as='header'
+      >
         <img
           src={ img_src }
           alt='alt img'
@@ -122,12 +124,12 @@ export const WithImage = () =>(
           height={200}
           width={350}
         />
-      </Card.Header>
-      <Card.Content>
+      </Card.Section>
+      <Card.Section>
         <p dangerouslySetInnerHTML={{__html: text}}>
 
         </p>
-      </Card.Content>
+      </Card.Section>
     </Card>
   </div>
 )
@@ -136,22 +138,103 @@ export const WithImage = () =>(
 export const IconCard = () => (
   <div className='p2'>
     <Card style={{ width: 'min-content' }}>
-      <Card.Content>
+      <Card.Section>
         <SVG
           width='120'
           target='engine'
           className='f-teal'
           anim
         />
-      </Card.Content>
+      </Card.Section>
 
       <Card.Divider/>
 
-      <Card.Footer>
+      <Card.Section>
         <p className='uc'>Engine repair</p>
-      </Card.Footer>
+      </Card.Section>
 
     </Card>
   </div>
+)
+
+export const Colors = () => (
+  ALL_COLORS.map((e,i) =>
+    <Card
+      style={{ width: '320px' }}
+      className={
+        'y-' + e.toLowerCase()
+      }
+      key={i}
+    >
+      <Card.Section>
+        <h2 className='small'>Ajedrez</h2>
+      </Card.Section>
+      <Card.Divider/>
+      <Card.Section>
+        <p dangerouslySetInnerHTML={{__html: text}}>
+
+        </p>
+      </Card.Section>
+      <Card.Divider/>
+      <Card.Section className='ur'>
+        <p className=''>Jorge Luis Borges</p>
+      </Card.Section>
+    </Card>
+  )
+)
+
+export const Basic = () => (
+  ALL_COLORS.map((e,i) =>
+    <Card
+      style={{ width: '320px' }}
+      className={
+        'x-' + e.toLowerCase()
+      }
+      basic
+      key={i}
+    >
+      <Card.Section>
+        <h2 className='small'>Ajedrez</h2>
+      </Card.Section>
+      <Card.Divider/>
+      <Card.Section>
+        <p dangerouslySetInnerHTML={{__html: text}}>
+
+        </p>
+      </Card.Section>
+      <Card.Divider/>
+      <Card.Section className='ur'>
+        <p className=''>Jorge Luis Borges</p>
+      </Card.Section>
+    </Card>
+  )
+)
+
+export const Simple = () => (
+  ALL_COLORS.map((e,i) =>
+    <Card
+      style={{ width: '320px' }}
+      simple
+      className={
+        'x-' + e.toLowerCase()
+      }
+      key={i}
+    >
+      <Card.Section>
+        <h2 className='small'>Ajedrez</h2>
+      </Card.Section>
+      <Card.Divider/>
+      <Card.Section>
+        <p dangerouslySetInnerHTML={{__html: text}}>
+
+        </p>
+      </Card.Section>
+      <Card.Divider/>
+      <Card.Section className='ur'>
+        <p className=''>Jorge Luis Borges</p>
+      </Card.Section>
+
+    </Card>
+  )
 )
 

@@ -28,7 +28,6 @@ const Subtitle = ({
       className={
         [
           baseClassName,
-          'x-grey cx-dark',
           //'x-grey nm tos',
           upper && 'tls tu',
           className,

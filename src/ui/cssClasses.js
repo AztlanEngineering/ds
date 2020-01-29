@@ -10,7 +10,8 @@ export default {
   'basicHover'       :'hbasic',
   'block'            :'block',
   'center'           :'ctr',
-  'circle'           :'c',
+  // CircleInfo
+  'circle'           :'circle',
   'compact'          :' compact',
   'content'          :'content',
   'contour'          :'contour',
@@ -24,7 +25,7 @@ export default {
   'icon'             :'if',
   'iconInside'       :'i',
   'image'            :'img',
-  // GrayscaleIcon
+  // GrayscaleIcon, CircleInfo
   'imgFit'           :'fit',
   'incard'           :'incard',
   //Button
@@ -50,6 +51,9 @@ export default {
   'question'         :'ref',
   'relativeSize'     :'r-',
   'right'            :'rgt',
+  //CircleInfo
+  'row'              :'row',
+  // Section (Card)
   'section'          :'section',
   'selectable'       :'select',
   'semi'             :'semi',

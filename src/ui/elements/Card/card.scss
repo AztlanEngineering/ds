@@ -4,47 +4,68 @@ Classes :
 .card : default
 
 */
-$transitionDuration:.2s;
-$selectionAnimationHeight:.1em;
+$transitionDuration:0.2s;
+$selectionAnimationHeight:0.1em;
 $transformHoverScale:1.02;
+$section-padding:2em;
 
-.card
-{
+.card {
+  display: inline-block;
+  position: relative;
+  border-radius: var(--r);
 
-  background:var(--y, transparent);
+  background: var(--y, transparent);
+  overflow: hidden;
+  transition: all $transitionDuration;
 
-  display:inline-block;
-  transition:all $transitionDuration;
-  position:relative;
-  overflow:hidden;
-  
-  & > .content{
-    color:var(--on-black);
+  & > .section {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    p,
+    span, {
+      color: var(--x, var(--y-on));
+    }
+
+    &:not(.img) {
+      padding: $section-padding;
+
+      &:not(:first-child) {
+        padding-top: $section-padding / 2;
+      }
+
+      &:not(:last-child) {
+        padding-bottom: $section-padding / 2;
+      }
+
+      &:first-child:last-child {
+        padding-top: $section-padding;
+        padding-bottom: $section-padding;
+      }
+    }
   }
 
-  & > :first-child
-  {
-    border-radius:var(--r-top);
-    overflow:hidden;
+  & > :first-child {
+    border-radius: var(--r-top);
+    overflow: hidden;
   }
 
-  & > :last-child
-  {
-    border-radius:var(--r-bottom);
-    overflow:hidden;
+  & > :last-child {
+    border-radius: var(--r-bottom);
+    overflow: hidden;
   }
 
-  & > div {
+  & > {
     //&:not
   }
 
-  &.select
-  {
+  &.select {
     &.active,
     &:hover,
-    &:focus
-    {
-	 		transform:scale($transformHoverScale);
+    &:focus {
+      transform: scale($transformHoverScale);
     }
   }
 }

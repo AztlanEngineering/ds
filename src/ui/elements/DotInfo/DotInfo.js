@@ -9,7 +9,7 @@ import { gql } from 'graphql-tag'
 import C from 'ui/cssClasses'
 
 //Relative imports
-import styles from './dot_info.scss'
+import './dot_info.scss'
 
 const baseClassName = 'dot_info'
 
@@ -22,6 +22,7 @@ const DotInfo = ({
   //link,
 
   circleClassName,
+  subtitleClassName,
 }) => {
 
 
@@ -29,7 +30,7 @@ const DotInfo = ({
     <div
       className={
         [
-          styles[baseClassName],
+          baseClassName,
           className
         ].filter(e => e).join(' ')
       }
@@ -46,7 +47,10 @@ const DotInfo = ({
       >
       </div>
       <div className={ C.content + ' yib wb ph05' }>
-        <Subtitle upper>
+        <Subtitle
+          upper
+          className={ subtitleClassName }
+        >
           { title }
         </Subtitle>
       </div>
@@ -57,22 +61,22 @@ DotInfo.propTypes = {
   /**
    * Provide an HTML id to this element
    */
-  id: PropTypes.string,
+  id:PropTypes.string,
 
   /**
    * The html class names to be provided to this element
    */
-  className: PropTypes.string,
+  className:PropTypes.string,
 
   /**
    * The JSX-Written, css styles to apply to the element.
    */
-  style: PropTypes.object,
+  style:PropTypes.object,
 
   /**
    *  The title of the element
    */
-  title: PropTypes.string.isRequired,
+  title:PropTypes.string.isRequired,
 
   /**
    * A link, on Click (internal or external)
@@ -80,9 +84,14 @@ DotInfo.propTypes = {
   //link: PropTypes.string,
 
   /**
+   * The class name of the subtitle
+   */
+  subtitleClassName:PropTypes.string,
+
+  /**
    * The class name of the circle
    */
-  circleClassName: PropTypes.string,
+  circleClassName:PropTypes.string,
 }
 
 /*

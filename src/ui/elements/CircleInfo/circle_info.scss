@@ -7,30 +7,41 @@ Classes :
 $circleSize:3em;
 $maxWidth:22em;
 
-.circle_info
-{
-	position:relative;
-	min-width:max-content;
-  height:$circleSize;
-  .c
-  {
-    height:$circleSize;
-    width:$circleSize;
+.circle_info {
+  position: relative;
+  min-width: max-content;
+  height: $circleSize;
+
+  .circle {
+    background: var(--z, var(--dark-white));
+    width: $circleSize;
+    height: $circleSize;
   }
-  .content
-  {
- 		position:relative;
-		width:calc(#{$maxWidth} - #{$circleSize});
-		height:$circleSize;
 
-		p {
-			min-width:max-content;
-		}
+  .content {
+    position: relative;
+    left: 0.5em;
+    width: calc(#{$maxWidth} - #{$circleSize});
+    height: $circleSize;
 
-		.inside {
-			position:absolute;
-			top:50%;
-			transform:translateY(-50%);
-		}
+    p {
+      min-width: max-content;
+      line-height: 1em;
+      //font-size: calc(var(--s) * 1em);
+
+      &:not(.subtitle) {
+        color: var(--x, var(--paragraph));
+      }
+
+      &.subtitle {
+        color: var(--y, var(--metadata));
+      }
+    }
+
+    .inside {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
   }
 }
