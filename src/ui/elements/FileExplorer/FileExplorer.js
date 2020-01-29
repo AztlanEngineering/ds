@@ -1,9 +1,9 @@
 /* @fwrlines/generator-react-component 1.1.0 */
-import React, { useState } from 'react'
+import React, { useState, memo } from 'react'
 import PropTypes from 'prop-types'
 
 //Relative imports
-import styles from './file_explorer.scss'
+import './file_explorer.scss'
 import {
   FileExplorerContext,
   CurrentFolderContext
@@ -12,14 +12,14 @@ import { Folder, File } from './common'
 
 const baseClassName = 'file_explorer'
 
+/**
+ * TODO State, Onchange
+ */
 const FileExplorer = ({
   id,
   className,
   style,
   children,
-
-  iconColor,
-  textColor,
 
   rootName,
   rootIcon,
@@ -35,7 +35,7 @@ const FileExplorer = ({
     <div
       className={
         [
-          styles[baseClassName],
+          baseClassName,
           className
         ].filter(e => e).join(' ')
       }
@@ -45,7 +45,7 @@ const FileExplorer = ({
       { rootName &&
         <span
           data-icon={ rootIcon }
-          className='tb tu tls c-grey root'
+          className='tb tu tls x-metadata cx root'
         >
           { rootName }
         </span>
@@ -78,61 +78,50 @@ FileExplorer.propTypes = {
   /**
    * Provide an HTML id to this element
    */
-  id: PropTypes.string,
+  id:PropTypes.string,
 
   /**
    * The html class names to be provided to this element
    */
-  className: PropTypes.string,
+  className:PropTypes.string,
 
   /**
    * The JSX-Written, css styles to apply to the element.
    */
-  style: PropTypes.object,
+  style:PropTypes.object,
 
   /**
    *  The children JSX
    */
-  children: PropTypes.node,
-
-  /**
-   * The color of the icon
-   */
-  //iconColor: PropTypes.oneOf(['primary', 'stroke', 'flat'])
-  iconColor: PropTypes.string,
-
-  /**
-   * The color of the text
-   */
-  textColor: PropTypes.string,
+  children:PropTypes.node,
 
   /**
    * The name of the root node
    */
-  root: PropTypes.string,
+  root:PropTypes.string,
 
   /**
    * The icon for the root directory
    */
-  rootIcon: PropTypes.string,
+  rootIcon:PropTypes.string,
 
   /**
    * The path for context (???) of the root
    */
-  rootPath: PropTypes.string,
+  rootPath:PropTypes.string,
 
   /**
    * The html class to apply to a selected element
    */
-  selectedClassName: PropTypes.string,
+  selectedClassName:PropTypes.string,
 }
 
 FileExplorer.defaultProps = {
   rootPath:'/',
-  selectedClassName:'c-teal',
+  //selectedClassName:'x-orange',
 }
 
-FileExplorer.File = File
-FileExplorer.Folder = Folder
+FileExplorer.File = memo(File)
+FileExplorer.Folder = memo(Folder)
 
 export default FileExplorer

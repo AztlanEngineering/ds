@@ -61,8 +61,7 @@ export const Colors = () => (
     >
       <DotInfo
         title={e.name}
-        className={ e.circle }
-        subtitleClassName={ "cx x-blue" }
+        className={ e.circle + ' x-indigo' }
       />
     </div>
 

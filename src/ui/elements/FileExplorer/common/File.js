@@ -4,8 +4,7 @@ import PropTypes from 'prop-types'
 
 
 
-/* Config
-   import C from 'ui/cssClasses' */
+import C from 'ui/cssClasses'
 
 //Relative imports
 
@@ -21,8 +20,6 @@ const File = ({
   className,
   style,
 
-  iconColor,
-  textColor,
   name,
 }) => {
 
@@ -33,16 +30,18 @@ const File = ({
   const {
     selectedFile,
     selectFile,
-    selectedClassName
+    selectedClassName=''
   } = useContext(FileExplorerContext)
   const fullName = [parentsPath, name].join('/')
   const current = selectedFile == fullName
+  console.log(selectedFile, fullName)
 
   return (
     <li
       className={
         [
           baseClassName,
+          's0 ls',
           className
         ].filter(e => e).join(' ')
       }
@@ -55,9 +54,7 @@ const File = ({
           () => selectFile(undefined) :
           () => selectFile(fullName)
         }
-        className={ 'p01'
-						+ (current ? ' ' + selectedClassName : ' c-dark-grey')
-        }
+        className={ (current ? ' ' + C.selected+ ' ' + selectedClassName : ' ') }
       >
         { name }
       </span>
@@ -68,41 +65,27 @@ File.propTypes = {
   /**
    * Provide an HTML id to this element
    */
-  id: PropTypes.string,
+  id:PropTypes.string,
 
   /**
    * The html class names to be provided to this element
    */
-  className: PropTypes.string,
+  className:PropTypes.string,
 
   /**
    * The JSX-Written, css styles to apply to the element.
    */
-  style: PropTypes.object,
+  style:PropTypes.object,
 
   /**
    * The filename
    */
-  name: PropTypes.string,
-
-  /**
-   * The color of the icon
-   */
-  iconColor: PropTypes.string,
-
-  /**
-   * The color of the text
-   */
-  textColor: PropTypes.string,
+  name:PropTypes.string.isRequired,
 
 }
 
-/*
 File.defaultProps = {
-  status: 'neutral',
-  //height:'2.2em',
-  //as:'p',
+  selectedClassName:'x-indigo',
 }
-*/
 
 export default File

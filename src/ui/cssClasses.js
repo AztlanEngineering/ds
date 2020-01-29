@@ -56,6 +56,8 @@ export default {
   // Section (Card)
   'section'          :'section',
   'selectable'       :'select',
+  // File (FileExplorer)
+  'selected':'selected',
   'semi'             :'semi',
   'shadow'           :'sh-',
   'shadowActive'     :'sha',

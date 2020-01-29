@@ -9,14 +9,14 @@ import PropTypes from 'prop-types'
 import { CurrentFolderContext } from './contexts'
 const baseClassName = 'folder'
 
+/**
+ * TODO State, Onchange
+ */
 const Folder = ({
   id,
   className,
   style,
   children,
-
-  iconColor,
-  textColor,
 
   name,
   open
@@ -31,6 +31,7 @@ const Folder = ({
       className={
         [
           baseClassName,
+          's1 ls',
           className
         ].filter(e => e).join(' ')
       }
@@ -44,7 +45,7 @@ const Folder = ({
         <span
           onClick={ () => setIsOpen(!isOpen) }
           data-icon={ isOpen ? 'Y' : 'Z' }
-          className={ 'c-off-black p01' }
+          className={ '' }
         >
           { name }
         </span>
@@ -60,42 +61,32 @@ Folder.propTypes = {
   /**
    * Provide an HTML id to this element
    */
-  id: PropTypes.string,
+  id:PropTypes.string,
 
   /**
    * The html class names to be provided to this element
    */
-  className: PropTypes.string,
+  className:PropTypes.string,
 
   /**
    * The JSX-Written, css styles to apply to the element.
    */
-  style: PropTypes.object,
+  style:PropTypes.object,
 
   /**
    *  The children JSX
    */
-  children: PropTypes.node,
+  children:PropTypes.node,
 
   /**
    * The folder name
    */
-  name: PropTypes.string,
+  name:PropTypes.string.isRequired,
 
   /**
    * Whether the folder is open
    */
-  open: PropTypes.bool,
-
-  /**
-   * The color of the Icon
-   */
-  iconColor: PropTypes.string,
-
-  /**
-   * The color of the text
-   */
-  textColor: PropTypes.string,
+  open:PropTypes.bool,
 
 }
 

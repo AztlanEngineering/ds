@@ -5,29 +5,60 @@ Classes :
 
 */
 
-.file_explorer
-{
-  span.root
-  {
-    margin-bottom:.3em;
+.file_explorer {
+  font-size: calc(var(--s, 1) * 1rem);
+
+
+  li {
+    margin-bottom: 0;
   }
+
+  ul {
+    font-size: 1em;
+  }
+
+  span.root {
+    margin-bottom: 0.3em;
+  }
+
   .file,
-  .folder
-  {
-    & > span
-    {
+  .folder {
+    & > span {
       &:hover,
-      &:focus
-      {
-        background-color:var(--accent1);
-        color:var(--c-accent1);
+      &:focus {
       }
     }
   }
-  span
-  {
-    cursor:pointer;
-    vertical-align:middle;
-    display:inline-block;
+
+  .folder {
+    span {
+      color: var(--folder, var(--subtitles));
+
+      &:hover,
+      &:focus {
+        color: var(--x, var(--headings));
+      }
+    }
+  }
+
+  .file {
+    span {
+      color: var(--file, var(--metadata));
+
+      &:hover,
+      &:focus {
+        color: var(--y, var(--subtitles));
+      }
+    }
+
+    .selected {
+      color: var(--z, var(--accent1));
+    }
+  }
+
+  span {
+    display: inline-block;
+    cursor: pointer;
+    vertical-align: middle;
   }
 }
