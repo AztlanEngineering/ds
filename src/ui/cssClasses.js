@@ -41,6 +41,8 @@ export default {
   'independent'      :'indep',
   'input'            :'input',
   'inputs'           :'fw sin',
+  // Item (Menu)
+  'item':'item',
   'inverted'         :'inv',
   'label'            :'label',
   //SnapSlider
