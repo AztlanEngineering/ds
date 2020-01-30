@@ -12,11 +12,11 @@ export const Default = () =>
 		Scroll down the page...
     <div
       style={{ height:'1000px' }}
-      className='b-grey'
+      className='bx x-grey'
     />
     <div
       style={{ height:'1000px' }}
-      className='b-blue'
+      className='bx x-blue'
     />
     <BackToButton label='hello hey'/>
   </>
@@ -26,12 +26,12 @@ export const Target = () =>
 		Scroll down the page...
     <div
       style={{ height:'1000px' }}
-      className='b-blue'
+      className='bx x-blue'
     />
     <h2 id='title'>Title to scroll back to</h2>
     <div
       style={{ height:'1000px' }}
-      className='b-grey'
+      className='bx x-grey'
     />
     <BackToButton
       label='hello hey'
@@ -45,11 +45,11 @@ export const CustomChildren = () =>
     <h2 id='title'>Title to scroll back to</h2>
     <div
       style={{ height:'1000px' }}
-      className='b-blue'
+      className='bx x-blue'
     />
     <div
       style={{ height:'1000px' }}
-      className='b-grey'
+      className='bx x-grey'
     />
     <BackToButton
       to='title'
@@ -60,10 +60,3 @@ hello
     </BackToButton>
   </>
 
-/*Variant.story = {
-		name: 'Variant',
-}*/
-
-/*
-    onClick={action('clicked')}
-		*/

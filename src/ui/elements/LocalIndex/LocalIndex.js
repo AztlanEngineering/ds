@@ -4,8 +4,9 @@ import PropTypes from 'prop-types'
 
 import C from 'ui/cssClasses'
 
+import { Subtitle } from 'ui/common'
 //Relative imports
-import styles from './local_index.scss'
+import './local_index.scss'
 import { Item } from './common'
 
 const baseClassName = 'local_index'
@@ -24,8 +25,9 @@ const LocalIndex = ({
     <ul
       className={
         [
-          styles[baseClassName],
-          'lsn c-off-black',
+          baseClassName,
+          'lsn x-headings cx',
+          C.compact,
           C.list,
           className
         ].filter(e => e).join(' ')
@@ -33,13 +35,14 @@ const LocalIndex = ({
       id={ id }
       style={ style }
     >
-      <p className={
-        C.title
-    + ' s-sm tls tu c-grey'
-      }
+      <Subtitle
+        className={
+          ' x-metadata'
+        }
+        upper
       >
         { title }
-      </p>
+      </Subtitle>
       { children }
     </ul>
   )}
@@ -48,27 +51,27 @@ LocalIndex.propTypes = {
   /**
    * Provide an HTML id to this element
    */
-  id: PropTypes.string,
+  id:PropTypes.string,
 
   /**
    * The html class names to be provided to this element
    */
-  className: PropTypes.string,
+  className:PropTypes.string,
 
   /**
    * The JSX-Written, css styles to apply to the element.
    */
-  style: PropTypes.object,
+  style:PropTypes.object,
 
   /**
    *  The children JSX
    */
-  children: PropTypes.node,
+  children:PropTypes.node,
 
   /**
    * The title of the Index
    */
-  title: PropTypes.string,
+  title:PropTypes.string,
 
 }
 

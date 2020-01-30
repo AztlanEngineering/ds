@@ -67,6 +67,7 @@ export const Colors = () => (
   ALL_COLORS.map((e,i) =>
     <Label
       className={ 'x-'+e}
+      circle={ i % 2 }
     >
       { variants[1].content || 'blah'}
     </Label>
@@ -93,6 +94,7 @@ export const Basic = () => (
   ALL_COLORS.map((e,i) =>
     <Label
       className={ 'x-'+e}
+      circle={ i % 2 }
       basic
     >
       { variants[1].content || 'blah'}

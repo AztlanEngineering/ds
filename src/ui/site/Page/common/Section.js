@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import C from 'ui/cssClasses'
 
 //Relative imports
-import styles from './section.scss'
+import './section.scss'
 import Context from './Context'
 import CaretDown from './CaretDown'
 
@@ -32,7 +32,8 @@ const Section = ({
       id={ id && (id + (contextId ? '_' + contextId : ''))}
       className={
         [
-          styles[baseClassName],
+          //styles[baseClassName],
+          baseClassName,
           header ? C.headSection : C.section,
           inverted && C.inverted,
           transparent && C.transparent,
@@ -121,7 +122,8 @@ Section.defaultProps = {
   header         :false,
   transparent    :false,
   inverted       :false,
-  caretDownSmooth:false,
+  caretDown      :false,
+  caretDownSmooth:true,
 }
 
 export default Section

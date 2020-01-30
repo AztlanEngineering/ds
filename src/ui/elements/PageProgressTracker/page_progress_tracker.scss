@@ -4,23 +4,22 @@ Classes :
 .page_progress_tracker : default
 
 */
-$transitionDuration:.3s;
+$transitionDuration:0.3s;
 
-.page_progress_tracker{
-	width:100%;
+.page_progress_tracker {
+  width: 100%;
 
-	svg {
-		width:100%;
-		position:absolute;
+  svg {
+    position: absolute;
+    width: 100%;
 
-		#active {
-			stroke-dashoffset:var(--do, 50);
-			transition:all $transitionDuration;
-		}
-		rect#pb_back {
-			fill:var(--fill, var(--cb, var(--default)))
+    #active {
+      transition: all $transitionDuration;
+      stroke-dashoffset: var(--do, 50);
+    }
 
-		}
-	}
-
+    rect#pb_back {
+      fill: var(--fill, var(--x, var(--primary)));
+    }
+  }
 }

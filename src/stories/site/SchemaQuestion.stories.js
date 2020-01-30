@@ -8,6 +8,10 @@ import { QA } from '../utils'
 export default {
   title: 'site/SchemaQuestion',
   component:SchemaQuestion,
+  subcomponents:{
+    'Question':SchemaQuestion.Question,
+    'Answer':SchemaQuestion.Answer
+  },
   parameters: {
     decorators: [
       /* storyfn => <div className="">{ storyfn() }</div>,
@@ -20,7 +24,9 @@ export default {
 export const Default = () => (
   QA.map(({__html, ...e},i) =>
     <SchemaQuestion key={i}>
-      <SchemaQuestion.Question id={ e.anchor }>
+      <SchemaQuestion.Question id={ e.anchor }
+        as='h2'
+      >
         {e.Q}
       </SchemaQuestion.Question>
       <SchemaQuestion.Answer
@@ -36,9 +42,11 @@ export const Default = () => (
 export const BackTo = () => (
   QA.map(({__html, ...e},i) =>
     <SchemaQuestion key={i}>
-      <SchemaQuestion.Question id={ e.anchor }>
+      <SchemaQuestion.Question id={ e.anchor }
+        as='h2'
+      >
         {e.Q}
-      </SchemaQuestion.Question>
+        </SchemaQuestion.Question>
       <SchemaQuestion.Answer
         backTo
         dangerouslySetInnerHTML={{__html}}
@@ -53,7 +61,9 @@ export const BackTo = () => (
 export const BackToCustomText = () => (
   QA.map(({__html, ...e},i) =>
     <SchemaQuestion key={i}>
-      <SchemaQuestion.Question id={ e.anchor }>
+      <SchemaQuestion.Question id={ e.anchor }
+        as='h2'
+      >
         {e.Q}
       </SchemaQuestion.Question>
       <SchemaQuestion.Answer

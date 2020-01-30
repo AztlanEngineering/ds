@@ -5,8 +5,9 @@ import PropTypes from 'prop-types'
 //Config
 import C from 'ui/cssClasses'
 
-//Relative imports
-import styles from './round_progress.scss'
+/* Relative imports
+   import styles from './round_progress.scss' */
+import './round_progress.scss'
 import { NumberIncrease } from 'ui/common'
 
 const baseClassName = 'round_progress'
@@ -33,7 +34,8 @@ const RoundProgress = ({
     <div
       className={
         [
-          styles[baseClassName],
+          //styles[baseClassName],
+          baseClassName,
           className
         ].filter(e => e).join(' ')
       }
@@ -67,8 +69,7 @@ const RoundProgress = ({
             cy='50'
             r={40 + strokeWidth / 2}
             className={ C.stroke }
-            style={{'--do':
-						300 - (number * 300 ) / max
+            style={{'--svg-tdo':300 - (number * 300 ) / max
 						+ (['round', 'square'].includes(strokeLinecap) ? 10 : 0)
             }}
             //Magic happens here using animation @draw-stroke from fwr scss
@@ -104,17 +105,17 @@ RoundProgress.propTypes = {
   /**
    * Provide an HTML id to this element
    */
-  id: PropTypes.string,
+  id:PropTypes.string,
 
   /**
    * The html class names to be provided to this element
    */
-  className: PropTypes.string,
+  className:PropTypes.string,
 
   /**
    * The JSX-Written, css styles to apply to the element.
    */
-  style: PropTypes.object,
+  style:PropTypes.object,
 
   /**
    * The number, as a fragment of 'max'
@@ -129,7 +130,7 @@ RoundProgress.propTypes = {
   /**
    * The html class names to be provided to the title
    */
-  titleClassName: PropTypes.string,
+  titleClassName:PropTypes.string,
 
   /**
    * The maximum number (100% of the circle)
@@ -144,17 +145,17 @@ RoundProgress.propTypes = {
   /**
    * The duration of the animation in milliseconds
    */
-  duration: PropTypes.number,
+  duration:PropTypes.number,
 
   /**
    * The stroke width SVG  Property
    */
-  strokeWidth: PropTypes.number,
+  strokeWidth:PropTypes.number,
 
   /**
    * The stroke line cap SVG Property
    */
-  strokeLinecap: PropTypes.oneOf(['round', 'square', 'butt']),
+  strokeLinecap:PropTypes.oneOf(['round', 'square', 'butt']),
 }
 
 RoundProgress.defaultProps = {

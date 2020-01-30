@@ -42,14 +42,15 @@ const Answer = ({
       <InnerContent
         itemProp='text'
         dangerouslySetInnerHTML={ dangerouslySetInnerHTML }
+        className='uj'
       >
         { children }
       </InnerContent>
-      <div className='ul pv1'>
+      <div className='ul'>
         { backTo &&
           <BackToButton
             to={ backTo }
-            dangerouslySetInnerHTML={{ __html:backToHTML }}
+            dangerouslySetInnerHTML={{ __html: backToHTML }}
           />}
       </div>
 
@@ -60,41 +61,32 @@ Answer.propTypes = {
   /**
    * Provide an HTML id to this element
    */
-  id: PropTypes.string,
+  id:PropTypes.string,
 
   /**
    * The html class names to be provided to this element
    */
-  className: PropTypes.string,
+  className:PropTypes.string,
 
   /**
    * The JSX-Written, css styles to apply to the element.
    */
-  style: PropTypes.object,
+  style:PropTypes.object,
 
   /**
    *  The children JSX
    */
-  children: PropTypes.node,
+  children:PropTypes.node,
 
   /**
    * Which html tag to use
    */
-  as: PropTypes.oneOfType([
+  as:PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.node
   ]),
   //as: PropTypes.string,
 
-  /**
-   * The height of the element
-   */
-  height: PropTypes.string,
-
-  /**
-   * The width of the element
-   */
-  width: PropTypes.string,
   /*
   : PropTypes.shape({
     id: PropTypes.string.isRequired,
@@ -107,12 +99,10 @@ Answer.propTypes = {
   */
 }
 
-/*
 Answer.defaultProps = {
-  status: 'neutral',
-  //height:'2.2em',
-  //as:'p',
+  //className:'w1 pw',
+  /* height:'2.2em',
+     as:'p', */
 }
-*/
 
 export default Answer

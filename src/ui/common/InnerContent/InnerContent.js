@@ -22,6 +22,7 @@ const InnerContent = ({
       className={
         [
           baseClassName,
+          //'u2 pu',
           className
         ].filter(e => e).join(' ')
       }

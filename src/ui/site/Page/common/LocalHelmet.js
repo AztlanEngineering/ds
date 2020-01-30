@@ -108,7 +108,7 @@ const conditionMatchAndGetProps = (props) =>
   ,'')
 
 
-const LocalHelmet = memo(({
+const LocalHelmet = ({
   ...props
 }) => {
   const HelmetProps = conditionMatchAndGetProps(props)
@@ -119,7 +119,7 @@ const LocalHelmet = memo(({
 
 
   )
-})
+}
 
 LocalHelmet.propTypes = {
   robots: PropTypes.string,

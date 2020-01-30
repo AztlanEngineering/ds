@@ -11,7 +11,7 @@ import {
    import C from 'ui/cssClasses' */
 
 //Relative imports
-import styles from './page_progress_tracker.scss'
+import './page_progress_tracker.scss'
 
 const baseClassName = 'page_progress_tracker'
 
@@ -21,7 +21,7 @@ const PageProgressTracker = ({
   style,
 
   rectClassName,
-  strokeWidth=8,
+  strokeWidth,
   gradientMap,
 
   initializeAt,
@@ -35,7 +35,7 @@ const PageProgressTracker = ({
   } = useScrollProgressSpy({
     activeDefaultId:initializeAt,
     offsetPx,
-    contentId:spyOn,
+    contentId      :spyOn,
     throttleMs
   })
 
@@ -45,12 +45,12 @@ const PageProgressTracker = ({
     <div
       className={
         [
-          styles[baseClassName],
+          baseClassName,
           className
         ].filter(e => e).join(' ')
       }
       id={ id }
-      style={{ ...style, height:strokeWidth }}
+      style={{ ...style, height: strokeWidth }}
     >
       <svg
         viewBox={`0 0 100 ${strokeWidth}`}
@@ -62,7 +62,7 @@ const PageProgressTracker = ({
         className={
           //TODO
           [
-            styles[baseClassName],
+            baseClassName,
             className
           ].filter(e => e).join(' ')
         }
@@ -129,22 +129,22 @@ PageProgressTracker.propTypes = {
   /**
    * Provide an HTML id to this element
    */
-  id: PropTypes.string,
+  id:PropTypes.string,
 
   /**
    * The html class names to be provided to this element
    */
-  className: PropTypes.string,
+  className:PropTypes.string,
 
   /**
    * The JSX-Written, css styles to apply to the element.
    */
-  style: PropTypes.object,
+  style:PropTypes.object,
 
   /**
    * An html class to pass to the main rectangle
    */
-  rectClassName: PropTypes.string,
+  rectClassName:PropTypes.string,
 
   /**
    * Offset for the page tracking, in pixels
@@ -174,9 +174,9 @@ PageProgressTracker.propTypes = {
   /**
    * The svg map for the gradient background
    */
-  gradientMap: PropTypes.arrayOf(PropTypes.shape({
-    offset: PropTypes.string.isRequired,
-    stopColor: PropTypes.string.isRequired,
+  gradientMap:PropTypes.arrayOf(PropTypes.shape({
+    offset   :PropTypes.string.isRequired,
+    stopColor:PropTypes.string.isRequired,
   })),
 
   /*
@@ -193,7 +193,7 @@ PageProgressTracker.propTypes = {
 
 PageProgressTracker.defaultProps = {
   strokeWidth:8,
-  throttleMs:100
+  throttleMs :100
 }
 
 export default PageProgressTracker

@@ -8,7 +8,8 @@ import PropTypes from 'prop-types'
 import { Subtitle } from 'ui/common'
 
 //Relative imports
-import styles from './quote.scss'
+//import styles './quote.scss'
+import  './quote.scss'
 
 const baseClassName = 'quote'
 
@@ -26,7 +27,7 @@ const Quote = ({
     <figure
       className={
         [
-          styles[baseClassName],
+          baseClassName,
           className
         ].filter(e => e).join(' ')
       }

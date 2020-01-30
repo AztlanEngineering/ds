@@ -7,12 +7,16 @@ import PropTypes from 'prop-types'
 /* Config
    import C from 'ui/cssClasses' */
 
-//Relative imports
-import styles from './schema_question.scss'
+/* Relative imports
+   import styles from './schema_question.scss' */
+import './schema_question.scss'
 import { Question, Answer } from './common'
 
 const baseClassName = 'schema_question'
 
+/**
+ * TODO padding and block separation
+ */
 const SchemaQuestion = ({
   id,
   className,
@@ -25,7 +29,7 @@ const SchemaQuestion = ({
     <div
       className={
         [
-          styles[baseClassName],
+          baseClassName,
           className
         ].filter(e => e).join(' ')
       }
@@ -43,22 +47,22 @@ SchemaQuestion.propTypes = {
   /**
    * Provide an HTML id to this element
    */
-  id: PropTypes.string,
+  id:PropTypes.string,
 
   /**
    * The html class names to be provided to this element
    */
-  className: PropTypes.string,
+  className:PropTypes.string,
 
   /**
    * The JSX-Written, css styles to apply to the element.
    */
-  style: PropTypes.object,
+  style:PropTypes.object,
 
   /**
    *  The children JSX
    */
-  children: PropTypes.node,
+  children:PropTypes.node,
 
 }
 

@@ -1,13 +1,14 @@
 /* @fwrlines/generator-react-component 1.1.2 */
-import React from 'react'
+import React, { memo }from 'react'
 import PropTypes from 'prop-types'
 
 
 /* Config
    import C from 'ui/cssClasses' */
 
-//Relative imports
-import styles from './page.scss'
+/* Relative imports
+   import styles from './page.scss' */
+import './page.scss'
 
 import {
   Context,
@@ -16,6 +17,8 @@ import {
 } from './common'
 
 const baseClassName = 'page'
+
+const MemoLocalHelmet = memo(LocalHelmet)
 
 const Page = ({
   id,
@@ -37,7 +40,8 @@ const Page = ({
       <div
         className={
           [
-            styles[baseClassName],
+            //styles[baseClassName],
+            baseClassName,
             className
           ].filter(e => e).join(' ')
         }
@@ -52,7 +56,7 @@ const Page = ({
             content={ HELMET && HELMET.canonical }
           />
         }
-        { HELMET && <LocalHelmet { ...HELMET }/> }
+        { HELMET && <MemoLocalHelmet { ...HELMET }/> }
 
         { children }
       </div>
@@ -63,32 +67,32 @@ Page.propTypes = {
   /**
    * Provide an HTML id to this element
    */
-  id: PropTypes.string,
+  id:PropTypes.string,
 
   /**
    * The html class names to be provided to this element
    */
-  className: PropTypes.string,
+  className:PropTypes.string,
 
   /**
    * The JSX-Written, css styles to apply to the element.
    */
-  style: PropTypes.object,
+  style:PropTypes.object,
 
   /**
    *  The children JSX
    */
-  children: PropTypes.node,
+  children:PropTypes.node,
 
   /**
    * The main entity schema
    */
-  itemType: PropTypes.string,
+  itemType:PropTypes.string,
 
   /**
-   * The helmet props
+   * The helmet props to pass to the common/LocalHelmet comp
    */
-  HELMET: PropTypes.object.isRequired
+  HELMET:PropTypes.object.isRequired
   ,
 }
 

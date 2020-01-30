@@ -13,16 +13,22 @@ $fontFamily:var(--font-d) !default;
 $verticalAlignInHeadings:top;
 $marginBottom:0.3em;
 $font-weight:bold;
+$vertical-align:bottom;
 
 .label {
   display: inline-block;
   margin-bottom: $marginBottom;
-  border-radius: $border-radius;
+  border-radius: var(--r);
   background: var(--x, transparent);
   padding: $padding;
+  vertical-align: $vertical-align;
   color: var(--x-on, var(--black));
   font-family: $fontFamily;
   font-weight: $font-weight;
+
+  &.circle {
+    border-radius: $border-radius;
+  }
 
   &.i {
     padding: $paddingTop $paddingTop $paddingBottom;

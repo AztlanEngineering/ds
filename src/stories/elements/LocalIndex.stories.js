@@ -71,7 +71,50 @@ export const Default = () => (
 
 export const Variant = () => (
   <>
-    <LocalIndex>Yo</LocalIndex>
+    <LocalIndex title='In this page' className='y-white by-dark pu u2'>
+    <LocalIndex.Item
+      title='Old Polluting cars'
+    >
+      <LocalIndex.Item
+        title='Hummer'
+      />
+      <LocalIndex.Item
+        title='Renault'
+      />
+      <LocalIndex.Item
+        title='Fiat'
+      />
+    </LocalIndex.Item>
+
+    <LocalIndex.Item
+      title='Itemectric cars'
+    >
+      <LocalIndex.Item
+        title='Tesla'
+      />
+      <LocalIndex.Item
+        title='Renault'
+      />
+      <LocalIndex.Item
+        title='Fiat'
+      />
+    </LocalIndex.Item>
+
+    <LocalIndex.Item
+      title='Why does it rain more on Tuesdays ?'
+    >
+      <LocalIndex.Item
+        title='Tuesdays are no wednesdays'
+      />
+      <LocalIndex.Item
+        title='Not all tuesdays are the same'
+      />
+      <LocalIndex.Item
+        title='A thunderstorm'
+      />
+    </LocalIndex.Item>
+  </LocalIndex>
+
     <div
       className=''
       dangerouslySetInnerHTML={{__html:TEXT}}

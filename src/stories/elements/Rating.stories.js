@@ -11,10 +11,10 @@ import { Rating } from 'ui'
 //const endpoint = 'https://api.fwrlines.com/graphql'
 
 export default {
-  title: 'elements/Rating',
-  component:Rating,
-  parameters: {
-    decorators: [
+  title     :'elements/Rating',
+  component :Rating,
+  parameters:{
+    decorators:[
       storyfn => <div className='b-yellow p1'>{ storyfn() }</div>
       /* storyfn => <div className="">{ storyfn() }</div>,
          storyfn => <AplProvider endpoint={ endpoint }>{ storyfn() }</AplProvider>,
@@ -25,9 +25,9 @@ export default {
 
 const ratings_map = [
   {
-    rating:5,
-    name:'John Doe',
-    title:'A very good review',
+    rating :5,
+    name   :'John Doe',
+    title  :'A very good review',
     content:`Trópico, para que me diste
 las manos llenas de color.
 Todo lo que yo toque
@@ -35,9 +35,9 @@ se llenará de sol. `,
     source:'https://gle.me/ratingJohnDoe'
   },
   {
-    rating:4,
-    name:'Bocaccio',
-    title:'Could have been perfect',
+    rating :4,
+    name   :'Bocaccio',
+    title  :'Could have been perfect',
     content:`
 		En las tardes sutiles de otras tierras
 pasaré con mis ruidos de vidrio tornasol.
@@ -49,18 +49,18 @@ cambiar de clima el corazón,
     source:'https://gle.me/ratingJohnDoe'
   },
   {
-    rating:3,
-    name:'Rastapopoulos',
-    title:'So-so',
+    rating :3,
+    name   :'Rastapopoulos',
+    title  :'So-so',
     content:`
 		Everything perfect ! Very recommended service
 `,
     source:'https://gle.me/ratingJohnDoe'
   },
   {
-    rating:2,
-    name:'Carlos Pellicer Camara',
-    title:'Can do better',
+    rating :2,
+    name   :'Carlos Pellicer Camara',
+    title  :'Can do better',
     content:`
 		beber la penumbra de una costa desierta,
 inclinarme en silencio sobre un recóndito balcón,
@@ -72,9 +72,9 @@ y escribir con un lápiz muy fino mi meditación.
     source:'https://gle.me/ratingJohnDoe'
   },
   {
-    rating:1,
-    name:'Friedrich Nietzsche',
-    title:'Will not come back',
+    rating :1,
+    name   :'Friedrich Nietzsche',
+    title  :'Will not come back',
     content:`
 		¡Oh, deja de ser un solo instante
 el Ayudante de Campo del sol!
@@ -88,7 +88,8 @@ las manos llenas de color!
 export const Default = () => (
   ratings_map.map((e,i) =>
     <Rating
-      style={{ width:'400px' }}
+      style={{ width: '400px' }}
+      className='x-primary y-secondary'
       { ...e }
       asCard
       key={i}
@@ -99,7 +100,7 @@ export const Default = () => (
 export const NoTitle = () => (
 		  ratings_map.map(({ title, ...e },i) =>
   <Rating
-      style={{ width:'400px' }}
+      style={{ width: '400px' }}
       { ...e }
       asCard
       key={i}
@@ -111,7 +112,7 @@ export const EmptyStars = () => (
   ratings_map.map(( e ,i) =>
     <Rating
       emptyStars
-      style={{ width:'400px' }}
+      style={{ width: '400px' }}
       { ...e }
       asCard
       key={i}
@@ -124,7 +125,7 @@ export const OnTen  = () => (
     <Rating
       scale={ 10 }
       rating={ rating + 5 }
-      style={{ width:'400px' }}
+      style={{ width: '400px' }}
       { ...e }
       asCard
       key={i}

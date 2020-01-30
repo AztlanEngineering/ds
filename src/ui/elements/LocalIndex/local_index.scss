@@ -5,22 +5,24 @@ Classes :
 
 */
 
-ul.local_index
-{
-	> li {
-		font-weight:bold;
+ul.local_index {
+  border-radius: var(--r);
 
-		ul {
-			> li {
-				font-weight:normal;
-			}
-		}
-	}
-  .title
-  {
-    margin-bottom:.5em;
+  > li {
+    font-weight: bold;
+
+    ul {
+      > li {
+        font-weight: normal;
+      }
+    }
   }
-	a {
-		color:inherit;
-	}
+
+  .title {
+    margin-bottom: 0.5em;
+  }
+
+  a {
+    color: inherit;
+  }
 }

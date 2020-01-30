@@ -4,6 +4,12 @@ import React from 'react'
 //import { action } from '@storybook/addon-actions'
 
 import { Paginator } from 'ui'
+import {
+  ArrowButton,
+  JumpButton,
+  PageNumberButton,
+  SpreadPageNumbersButtons,
+} from 'ui/site/Paginator/common'
 import { Router } from 'stories/utils'
 
 //const endpoint = 'https://api.fwrlines.com/graphql'
@@ -12,6 +18,12 @@ import POSTS from '../mockData/testposts.json'
 export default {
   title: 'site/Paginator',
   component:Paginator,
+  subcomponents:{
+    'ArrowButton':ArrowButton,
+    'JumpButton':JumpButton,
+    'PageNumberButton':PageNumberButton,
+    "SpreadPageNumbersButtons":SpreadPageNumbersButtons,
+  },
   parameters: {
     decorators: [
       storyfn => <Router>{ storyfn() }</Router>,
@@ -57,7 +69,7 @@ export const Last = () => (
 
 export const  ThreePages = () => (
   <Paginator
-    buttonClassName='s-lg b-grey bh-grey'
+    buttonClassName='ks s2 x-grey'
     paginator={ pagThree }
     spread={ 4 }
     getLink={ getLink }
@@ -66,7 +78,7 @@ export const  ThreePages = () => (
 
 export const Stretch = () => (
   <Paginator
-    buttonClassName='s-lg b-grey bh-grey'
+    buttonClassName='ks s2 x-secondary'
     paginator={ pagThree }
     spread={ 4 }
     getLink={ getLink }
@@ -76,7 +88,7 @@ export const Stretch = () => (
 
 export const ManyPages = () => (
   <Paginator
-    buttonClassName='s-md b-green bh-grey'
+    buttonClassName='ks s1 x-green'
     paginator={ pagMulti }
     spread={ 4 }
     getLink={ getLink }
@@ -85,8 +97,8 @@ export const ManyPages = () => (
 
 export const Current = () => (
   <Paginator
-    buttonClassName='s-md b-blue bh-grey'
-    currentClassName='s-md b-red bh-grey'
+    buttonClassName='ks s1 x-blue'
+    currentClassName='ks s1 x-red'
     paginator={ pagMulti }
     spread={ 4 }
     getLink={ getLink }
@@ -95,7 +107,7 @@ export const Current = () => (
 
 export const Basic = () => (
   <Paginator
-    buttonClassName='s-lg c-blue bh-grey'
+    buttonClassName='ks s1 x-blue'
     paginator={ pagThree }
     spread={ 4 }
     basic
@@ -105,7 +117,7 @@ export const Basic = () => (
 
 export const CustomLabels = () => (
   <Paginator
-    buttonClassName='s-md b-blue bh-grey'
+    buttonClassName='ks s3 x-indigo'
     paginator={ pagThree }
     spread={ 4 }
     TEXT={{ PREV:'GABADI', NEXT:'GABADA' }}
@@ -115,8 +127,8 @@ export const CustomLabels = () => (
 
 export const NoLabels = () => (
   <Paginator
-    buttonClassName='s-md b-teal bh-grey'
-    currentClassName='s-md b-violet bh-grey'
+    buttonClassName='s-md x-grey'
+    currentClassName='s-md x-azure'
     paginator={ pagThree }
     spread={ 4 }
     TEXT={{ }}

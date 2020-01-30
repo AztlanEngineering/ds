@@ -3,11 +3,18 @@ import React from 'react'
 
 
 import { Page, InnerContent, Heading } from 'ui'
+import { LocalHelmet } from 'ui/site/Page/common'
 import { TEXT_XXS_ESC, TEXT_XXS, TEXT_XS, TEXT } from '../utils'
+console.log('LH', LocalHelmet)
 
 export default {
   title: 'site/Page',
   component:Page,
+  subcomponents:{
+    'Section':Page.Section,
+
+    'LocalHelmet':LocalHelmet
+  },
   parameters: {
     decorators: [
       //storyfn => <Router>{ storyfn() }</Router>,
@@ -19,30 +26,30 @@ const id = 'homepage'
 const titles = [
 
   {
-    title:'Spartacus',
+    heading:'Spartacus',
     subtitle:'Stanley Kubrick, 1960',
-    as:'h1',
+    headingAs:'h1',
     align:'uc',
     label:'Film',
     labelBasic:true,
-    labelClassName:'s-sm c-red',
-    headingClassName:'ts c-green'
+    labelClassName:'x-red',
+    headingClassName:'ts-green'
   },
   {
-    title:'Lolita',
+    heading:'Lolita',
     subtitle:'Stanley Kubrick, 1962',
-    as:'h2',
+    headingAs:'h2',
     align:'uc',
     label:'Today\'s cinema',
-    labelClassName:'b-orange'
+    labelClassName:'x-orange'
   },
   {
-    title:'Dr. Strangelove',
+    heading:'Dr. Strangelove',
     subtitle:'Stanley Kubrick, 1964',
-    as:'h3',
+    headingAs:'h3',
     align:'ur',
     label:'Movie time',
-    labelClassName:'b-red'
+    labelClassName:'x-red'
   },
 ]
 
@@ -84,6 +91,7 @@ export const Head = () => (
       head
       id='head'
       HELMET={ helmet }
+      className='pu u2'
     >
 
       <Heading
@@ -102,6 +110,7 @@ export const HeadWithSchema = () => (
   >
     <Page.Section
       head
+      className='pu u2'
       id='head'
     >
 
@@ -118,6 +127,7 @@ export const Plural = () => (
   <Page id={ id }>
     <Page.Section
       head
+      className='pu u2'
       id='head'
     >
 
@@ -128,6 +138,7 @@ export const Plural = () => (
     </Page.Section>
     <Page.Section
       id='a1'
+      className='pu u2'
     >
       <h2>Section A1</h2>
       <p>{ TEXT_XXS_ESC }</p>
@@ -135,6 +146,7 @@ export const Plural = () => (
     </Page.Section>
     <Page.Section
       id='a2'
+      className='pu u2'
     >
       <h2>Section A2</h2>
       <p>{ TEXT_XXS_ESC }</p>
@@ -148,6 +160,7 @@ export const PluralCaretDown = () => (
       head
       id='head'
       caretDown='a1'
+      className='pu u2'
     >
 
       <Heading
@@ -158,6 +171,7 @@ export const PluralCaretDown = () => (
     <Page.Section
       id='a1'
       caretDown='a2'
+      className='pu u2'
     >
       <h2>Section A1</h2>
       <p>{ TEXT_XXS_ESC }</p>
@@ -165,6 +179,7 @@ export const PluralCaretDown = () => (
     </Page.Section>
     <Page.Section
       id='a2'
+      className='pu u2'
     >
       <h2>Section A2</h2>
       <p dangerouslySetInnerHTML={{ __html:TEXT_XS }}></p>
@@ -179,6 +194,7 @@ export const Content = () => (
       head
       id='head'
       caretDown='a1'
+      className='pu u2'
     >
 
       <Heading
@@ -188,6 +204,7 @@ export const Content = () => (
     </Page.Section>
     <Page.Section
       id='a1'
+      className='pu u2'
     >
       <InnerContent
         dangerouslySetInnerHTML={{ __html:TEXT }}

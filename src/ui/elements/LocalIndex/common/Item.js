@@ -32,7 +32,7 @@ const Item = ({
     >
       <span>{ title }</span>
       { children &&
-        <ul className='c-dark-grey'>
+        <ul className='x-subtitles cx'>
           { children }
         </ul>
       }
@@ -43,27 +43,27 @@ Item.propTypes = {
   /**
    * Provide an HTML id to this element
    */
-  id: PropTypes.string,
+  id:PropTypes.string,
 
   /**
    * The html class names to be provided to this element
    */
-  className: PropTypes.string,
+  className:PropTypes.string,
 
   /**
    * The JSX-Written, css styles to apply to the element.
    */
-  style: PropTypes.object,
+  style:PropTypes.object,
 
   /**
    *  The children JSX
    */
-  children: PropTypes.node,
+  children:PropTypes.node,
 
   /**
    * The title of the Item
    */
-  title: PropTypes.string,
+  title:PropTypes.string,
 }
 
 /*

@@ -7,67 +7,58 @@ Classes :
 $titleSize:1.4rem;
 $starsSize:1.7rem;
 
-.rating
-{
+.rating {
   .stars,
-  .title
-  {
-    margin:0;
+  .title {
+    margin: 0;
   }
-  .name
-  {
-    color:var(--grey);
-    .content
-    {
-      color:var(--dark-grey);
-      font-weight:bold;
-    }
-  }
-  .title
-  {
-    font-size:$titleSize;
-    font-weight:bold;
-  }
-  .stars
-  {
-    .fp
-    {
-      vertical-align:top;
-    }
-    font-size:$starsSize;
-    margin-bottom:.3em;
-    background:linear-gradient(
-    to right,
-    var(--yellow) 0%,
-    var(--yellow) 60%,
-    var(--light-yellow)90%,
-    var(--yellow) 100%
-    );
-    -webkit-background-clip:text;
-            background-clip:text;
-    -webkit-text-fill-color:transparent;
-    background-size:150%;
 
-    &.anim
-    {
-      animation:back-horizontal 5s ease infinite;
-    }
-    .yes
-    {
-      color:var(--yellow);
-    }
-    .no
-    {
-      color:var(--light-grey);
-      background:var(--light-grey);
-      -webkit-background-clip:text;
-              background-clip:text;
-      -webkit-text-fill-color:transparent;
+  .name {
+    color: var(--y, var(--metadata));
+
+    .content {
+      color: var(--subtitle);
+      font-weight: bold;
     }
   }
-  &.incard
-  {
-    margin:1rem .5rem;
-    display:inline-block;
+
+  .title {
+    font-size: $titleSize;
+    font-weight: bold;
+  }
+
+  .stars {
+    .fp {
+      vertical-align: top;
+    }
+    margin-bottom: 0.3em;
+    background:linear-gradient(
+      to right,
+      var(--yellow) 0%,
+      var(--yellow) 60%,
+      var(--light-yellow) 90%,
+      var(--yellow) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    background-size: 150%;
+    font-size: $starsSize;
+    -webkit-text-fill-color: transparent;
+
+    &.anim {
+      animation: back-horizontal 5s ease infinite;
+    }
+
+    .yes {
+      color: var(--yellow);
+    }
+
+    .no {
+      background: var(--light-grey);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: var(--light-grey);
+      -webkit-text-fill-color: transparent;
+    }
   }
 }

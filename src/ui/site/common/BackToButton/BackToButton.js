@@ -29,7 +29,7 @@ const BackToButton = ({
 
   const wp={
     duration:800,
-    delay:0
+    delay   :0
   }
   let Wrapper, wrapper_props
   if (typeof to !== 'string') {
@@ -43,7 +43,7 @@ const BackToButton = ({
     wrapper_props={
       to,
       smooth:true,
-      spy:true,
+      spy   :true,
       ...wp
     }
   }
@@ -64,7 +64,7 @@ const BackToButton = ({
         dangerouslySetInnerHTML={ dangerouslySetInnerHTML }
         icon='k'
         iconSide='l'
-        className='b-light-grey'
+        className='x-grey'
       >
         { children }
       </Button>
@@ -75,27 +75,27 @@ BackToButton.propTypes = {
   /**
    * Provide an HTML id to this element
    */
-  id: PropTypes.string,
+  id:PropTypes.string,
 
   /**
    * The html class names to be provided to this element
    */
-  className: PropTypes.string,
+  className:PropTypes.string,
 
   /**
    * The JSX-Written, css styles to apply to the element.
    */
-  style: PropTypes.object,
+  style:PropTypes.object,
 
   /**
    *  The children JSX
    */
-  children: PropTypes.node,
+  children:PropTypes.node,
 
   /**
    * The id of the anchor to scroll to (if blank will scroll back to the top)
    */
-  to: PropTypes.string,
+  to:PropTypes.string,
 }
 
 /*

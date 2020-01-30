@@ -40,21 +40,21 @@ const variants = [
     number:4,
     max:5,
     unit:'',
-    className:'f-light-grey c-blue',
+    className:'x-grey y-blue',
     title:'Live in an appartment'
   },
   {
     number:60,
     max:60,
     unit:'',
-    className:'f-blue c-light-grey',
+    className:'x-blue y-grey',
     title:'Time savings',
   },
   {
     number:10,
     max:100,
     unit:'%',
-    className:'f-black c-green',
+    className:'x-black y-green',
     title:'Do sports',
   },
 ]

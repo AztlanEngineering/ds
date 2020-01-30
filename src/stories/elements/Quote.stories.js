@@ -38,3 +38,13 @@ export const WithAuthor = () =>(
   </Quote>
 )
 
+export const Color = () =>(
+  <Quote
+    author='F. Nietzsche'
+    cite={ cite }
+    className='z-blue'
+  >
+    { paragraph_text }
+  </Quote>
+)
+

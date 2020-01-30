@@ -54,7 +54,7 @@ const elements_map = [
 const ItemsInside = ({ className }) =>
   elements_map.map((e,i) =>
     <div
-      className={ className || '' + ' b-' + e.back}
+      className={ className || '' + ' bx x-' + e.back}
       style={{ minWidth:'200px', height:'200px' }}
       key={i}
     />

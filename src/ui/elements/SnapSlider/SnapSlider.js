@@ -9,7 +9,8 @@ import { gql } from 'graphql-tag'
 import C from 'ui/cssClasses'
 
 //Relative imports
-import styles from './snap_slider.scss'
+//import styles from './snap_slider.scss'
+import './snap_slider.scss'
 
 const baseClassName = 'snap_slider'
 
@@ -28,7 +29,8 @@ const SnapSlider = ({
     <div
       className={
         [
-          styles[baseClassName],
+         // styles[baseClassName],
+          baseClassName,
           !scrollbar && 'nsb-xs',
           compact && C.compact,
           (pin == 'left') && C.left,

@@ -39,7 +39,7 @@ const CaretDown = ({
       smooth={ smooth }
       duration={ duration }
     >
-      <i className={ C.fontIcon /* fi*/ }>{ icon }</i>
+      <i className={ C.icon /* fi*/ }>{ icon }</i>
     </ScrollLink>
   )
 }
@@ -49,22 +49,22 @@ CaretDown.propTypes = {
   /**
    * Provide an HTML id to this element
    */
-  id: PropTypes.string,
+  id:PropTypes.string,
 
   /**
    * The html class names to be provided to this element
    */
-  className: PropTypes.string,
+  className:PropTypes.string,
 
   /**
    * The JSX-Written, css styles to apply to the element.
    */
-  style: PropTypes.object,
+  style:PropTypes.object,
 
   /**
    * Which id tag on the page is the target (without page suffix)
    */
-  destination: PropTypes.string.isRequired,
+  destination:PropTypes.string.isRequired,
 
   /**
    * Whether the click is animated (react-scroll)
@@ -74,7 +74,7 @@ CaretDown.propTypes = {
   /**
    * The duration of the animation (react-scroll)
    */
-  duration: PropTypes.number,
+  duration:PropTypes.number,
 
   /**
    * The icon to use (as a fontastic font letter)
@@ -86,7 +86,7 @@ CaretDown.propTypes = {
 CaretDown.defaultProps = {
   duration:900,
   animated:false,
-  icon:'n'
+  icon    :'i'
 }
 
 export default CaretDown

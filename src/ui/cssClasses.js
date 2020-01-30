@@ -9,9 +9,11 @@ export default {
   // Label, Button
   'basicHover'       :'hbasic',
   'block'            :'block',
+  //SnapSlider
   'center'           :'ctr',
-  // CircleInfo
+  // CircleInfo, Label
   'circle'           :'circle',
+  //LocalIndex1
   'compact'          :' compact',
   'content'          :'content',
   'contour'          :'contour',
@@ -22,7 +24,9 @@ export default {
   'headSection'      :'head section',
   'header'           :'header',
   'horizontalStretch':'h-stretch',
-  'icon'             :'if',
+  // (CaretDown) Page
+  'icon'             :'fi',
+  // Button
   'iconInside'       :'i',
   'image'            :'img',
   // GrayscaleIcon, CircleInfo
@@ -38,7 +42,8 @@ export default {
   'inputs'           :'fw sin',
   'inverted'         :'inv',
   'label'            :'label',
-  'left'             :'lft',
+  //SnapSlider
+  'left'             :'left',
   'lib'              :'fw',
   'light'            :'light',
   //Checklist
@@ -50,6 +55,7 @@ export default {
   'part'             :'part',
   'question'         :'ref',
   'relativeSize'     :'r-',
+  //SnapSlider
   'right'            :'rgt',
   //CircleInfo
   'row'              :'row',

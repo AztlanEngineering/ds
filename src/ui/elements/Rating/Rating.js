@@ -6,8 +6,9 @@ import PropTypes from 'prop-types'
 
 import C from 'ui/cssClasses'
 
-//Relative imports
-import styles from './rating.scss'
+/* Relative imports
+   import styles from './rating.scss' */
+import './rating.scss'
 
 const baseClassName = 'rating'
 const starsClassName = 'stars'
@@ -30,19 +31,19 @@ const Rating = ({
 
   animated,
 
- TEXT,
+  TEXT,
 }) => {
-  
+
   const noStarChar = emptyStars ? 's':'S' //Depending on the font
-  
+
   return (
-  <Element
-    className={
-      [
-        styles[baseClassName],
-        className
-      ].filter(e => e).join(' ')
-  }
+    <Element
+      className={
+        [
+          baseClassName,
+          className
+        ].filter(e => e).join(' ')
+      }
       id={ id }
       style={ style }
     >
@@ -71,57 +72,57 @@ const Rating = ({
 
       <p className={ C.content + '' }>{ content }</p>
       { source &&
-      <p className={ C.source + ' ur s-xs' }>
-        <a
-          href={ source }
-          target='_blank'
-          className='c-ld t'
-          rel='nofollow'
-        >
-          { source }
-        </a>
-      </p>
+        <p className={ C.source + ' ur s-xs' }>
+          <a
+            href={ source }
+            target='_blank'
+            className='t'
+            rel='nofollow'
+          >
+            { source }
+          </a>
+        </p>
       }
-      </Element>
+    </Element>
 
-)}
+  )}
 
 Rating.propTypes = {
   /**
    * Provide an HTML id to this element
    */
-  id: PropTypes.string,
+  id:PropTypes.string,
 
   /**
    * The html class names to be provided to this element
    */
-  className: PropTypes.string,
+  className:PropTypes.string,
 
   /**
    * The JSX-Written, css styles to apply to the element.
    */
-  style: PropTypes.object,
+  style:PropTypes.object,
 
   /**
-   * The author name 
+   * The author name
    */
-  author: PropTypes.string.isRequired,
+  author:PropTypes.string.isRequired,
 
   /**
    * The title of the review
    */
-  title: PropTypes.string.isRequired,
+  title:PropTypes.string.isRequired,
 
   /**
    * The content of the review
    */
-  content: PropTypes.string.isRequired,
+  content:PropTypes.string.isRequired,
 
 
   /**
    *  The rating
    */
-  rating: PropTypes.number.isRequired,
+  rating:PropTypes.number.isRequired,
 
   /**
    * The source of the review
@@ -129,9 +130,9 @@ Rating.propTypes = {
   source:PropTypes.string,
 
   /**
-   * The scale 
+   * The scale
    */
-  scale: PropTypes.number,
+  scale:PropTypes.number,
 
   /**
    * Whether to displayremaining starts as "empty"
@@ -140,7 +141,7 @@ Rating.propTypes = {
 
 
   /**
-   * Whether the starts "shine" 
+   * Whether the starts "shine"
    */
   animated:PropTypes.boolean,
 
@@ -152,20 +153,19 @@ Rating.propTypes = {
   /**
    * The node to display the rating as
    */
-  as: PropTypes.oneOfType([
+  as:PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.node
   ]),
 }
 
 Rating.defaultProps = {
-  scale:5,
+  scale     :5,
   emptyStars:false,
-  round:true,
-  asCard:true,
-  animated:true,
-  as:'div',
-  TEXT:{}
+  round     :true,
+  animated  :true,
+  as        :'div',
+  TEXT      :{}
 }
 
 export default Rating

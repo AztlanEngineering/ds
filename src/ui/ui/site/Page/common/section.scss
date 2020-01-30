@@ -4,7 +4,7 @@ Classes :
 .section : default
 
 */
-$caretDownMarginTop:2rem;
+$caretDownMarginTop:4rem;
 $caretDownSize:1.3rem;
 
 .section{
@@ -14,6 +14,9 @@ $caretDownSize:1.3rem;
 	.caret_down {
 		display:block;
 		margin-top:$caretDownMarginTop;
+    cursor:pointer;
+    color:var(--red);
+
 		i {
 			font-size:$caretDownSize;
 		}

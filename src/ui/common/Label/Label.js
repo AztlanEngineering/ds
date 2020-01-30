@@ -22,6 +22,7 @@ const Label = ({
   icon,
   basic,
   simple,
+  circle,
 
   as:Wrapper,
 }) => {
@@ -36,6 +37,7 @@ const Label = ({
           C.transition,
           basic && C.basic,
           simple && C.simple,
+          circle && C.circle,
           /*   icon && (C.fontIcon + ' ' + C.iconInside) */
         ].filter(e => e).join(' ')
       }
@@ -73,6 +75,11 @@ Label.propTypes = {
   as:PropTypes.string,
 
   /**
+   * Circular
+   */
+  circle:PropTypes.bool,
+
+  /**
    * Icon only
    */
   icon:PropTypes.bool,
@@ -89,7 +96,7 @@ Label.propTypes = {
 }
 
 Label.defaultProps = {
-  as    :'p',
+  as    :'span',
   basic :false,
   simple:false,
 }
