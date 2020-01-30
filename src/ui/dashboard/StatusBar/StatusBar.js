@@ -21,7 +21,9 @@ const baseClassName = 'status_bar'
 const StatusBar = ({
   id,
   className,
-  style
+  style,
+
+  fixed,
 }) => {
   
   
@@ -63,23 +65,9 @@ StatusBar.propTypes = {
   children: PropTypes.node,
 
   /**
-   * Which html tag to use
+   * Whether the bar is fixed at the bottom
    */
-  as: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.object
-  ]), 
-  //as: PropTypes.string,
-
-  /**
-   * The height of the element
-   */
-  height: PropTypes.string,
-
-  /**
-   * The width of the element
-   */
-  width: PropTypes.string,
+  fixed: PropTypes.bool,
   /*
   : PropTypes.shape({
     id: PropTypes.string.isRequired,
