@@ -7,13 +7,14 @@ import PropTypes from 'prop-types'
 import { Button } from 'ui'
 import gql from 'graphql-tag'
 import { useQuery } from '@apollo/react-hooks'
-import { QUERY_GOOGLE } from './graphql/oAuth2Google.gql'
+import QUERY_GOOGLE from './graphql/oAuth2Google.gql'
 
 /* Relative imports
    import styles from './o_login_button.scss' */
 import './o_login_button.scss'
 
 const baseClassName = 'o_login_button'
+console.log(QUERY_GOOGLE)
 
 const OLoginButton = ({
   id,
@@ -23,6 +24,7 @@ const OLoginButton = ({
   label,
   query,
   dataKey,
+  simple,
   buttonClassName,
 }) => {
 
@@ -47,8 +49,8 @@ const OLoginButton = ({
         href={ data && data[dataKey] }
       >
         <Button
-          simple
-          buttonClassName={
+          simple={ simple }
+          className={
             [
               buttonClassName,
             ].filter(e => e).join(' ')
@@ -88,6 +90,11 @@ OLoginButton.propTypes = {
   children:PropTypes.node,
 
   /**
+   * Whether the style is simple
+   */
+  simple:PropTypes.bool,
+
+  /**
    * The query (.gql file import with babel import inline)
    */
   query:PropTypes.string.isRequired,
@@ -114,10 +121,12 @@ OLoginButton.propTypes = {
 }
 
 OLoginButton.defaultProps = {
-  query          :QUERY_GOOGLE,
-  dataKey        :'oAuth2Google',
-  label          :'login',
-  buttonClassName:'x-green'
+  query    :QUERY_GOOGLE,
+  dataKey  :'oAuth2Google',
+  label    :'login',
+  className:'x-orange',
+  simple   :true,
+  //buttonClassName:'x-green',
 }
 
 export default OLoginButton

@@ -4,25 +4,30 @@ import React from 'react'
 //import { action } from '@storybook/addon-actions'
 
 import { OLoginButton } from 'ui'
-   import { AplProvider } from 'stories/utils'
-
-const endpoint = 'https://api.fwrlines.com/graphql'
+import { AplProvider } from 'stories/utils'
 
 export default {
-  title: 'oAuth2/OLoginButton',
-  component:OLoginButton,
-  parameters: {
-    decorators: [
-      storyfn => <AplProvider endpoint={ endpoint }>{ storyfn() }</AplProvider>,
+  title     :'oAuth2/OLoginButton',
+  component :OLoginButton,
+  parameters:{
+    decorators:[
+      storyfn => <AplProvider>{ storyfn() }</AplProvider>,
     ]
   }
 }
 
 export const Default = () => (
-  <OLoginButton className="x-red cx tb" label="Login with Google"/>
+  <OLoginButton
+    //className='
+    label='Login with Google'
+  />
 )
 
-export const Variant = () => (
-  <OLoginButton></OLoginButton>
+export const NotSimple = () => (
+  <OLoginButton
+    className='x-secondary cx tb'
+    label='Login with Google'
+    simple={false}
+  />
 )
 
