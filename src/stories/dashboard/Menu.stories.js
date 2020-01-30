@@ -3,7 +3,7 @@ import React from 'react'
 
 //import { action } from '@storybook/addon-actions'
 
-import { Menu } from 'ui'
+import { DashboardMenu as Menu } from 'ui'
 /* import QUERY from './graphql/query.graphql'
    import { AplProvider } from 'stories/utils'
    import { Router } from 'stories/utils'

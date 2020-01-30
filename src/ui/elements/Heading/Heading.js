@@ -44,7 +44,7 @@ const Heading = ({
         <LabelElement
           className={
             (labelClassName ? ' ' + labelClassName : '')
-            + ' s-1 ls'
+
           }
         >
           { label }
@@ -153,7 +153,8 @@ Heading.defaultProps = {
   headingAs        :'p',
   subtitleClassName:'r-sm',
   subtitleUpper    :false,
-  labelAs          :Label
+  labelAs          :Label,
+  labelClassName   :'ls s-1'
 }
 
 export default Heading

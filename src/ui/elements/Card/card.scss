@@ -19,6 +19,7 @@ $section-padding:2em;
   transition: all $transitionDuration;
 
   & > .section {
+    /*
     h1,
     h2,
     h3,
@@ -27,7 +28,7 @@ $section-padding:2em;
     p,
     span, {
       color: var(--x, var(--y-on));
-    }
+    }*/
 
     &:not(.img) {
       padding: $section-padding;

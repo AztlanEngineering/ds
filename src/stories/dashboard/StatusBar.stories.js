@@ -4,7 +4,7 @@ import React from 'react'
 //import { action } from '@storybook/addon-actions'
 import { Button } from 'ui/elements'
 
-import { StatusBar } from 'ui'
+import { DashboardStatusBar as StatusBar } from 'ui'
 /* import QUERY from './graphql/query.graphql'
    import { AplProvider } from 'stories/utils'
    import { Router } from 'stories/utils'
@@ -31,16 +31,20 @@ export default {
 
 export const Default = () => (
   <StatusBar
-    className="x-blue y-white"
-    status="4 unsaved modifications"
-  ><Button>Action !</Button></StatusBar>
+    className='x-blue y-white'
+    status='4 unsaved modifications'
+  >
+    <Button>Action !</Button>
+  </StatusBar>
 )
 
 export const Fixed = () => (
   <StatusBar
-    className="x-secondary y-white"
-    status="4 unsaved modifications"
+    className='x-secondary y-black'
+    status='4 unsaved modifications'
     fixed
-  ><Button>Click me</Button></StatusBar>
+  >
+    <Button>Click me</Button>
+  </StatusBar>
 )
 

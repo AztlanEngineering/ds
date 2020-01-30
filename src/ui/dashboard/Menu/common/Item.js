@@ -4,10 +4,10 @@ import PropTypes from 'prop-types'
 
 
 
-/* Config
-   import C from 'ui/cssClasses' */
+import C from 'ui/cssClasses'
 
 //Relative imports
+import{ Card,Heading } from 'ui/elements'
 
 const baseClassName = C.item
 
@@ -19,23 +19,61 @@ const baseClassName = C.item
 const Item = ({
   id,
   className,
-  style
+  style,
+
+  active,
+  heading,
+  headingClassName,
+  label,
+  labelClassName,
+
+  as:Element,
 }) => {
 
 
   return (
-    <div
+    <Element
       className={
         [
-          styles[baseClassName],
+          baseClassName,
           className
         ].filter(e => e).join(' ')
       }
       id={ id }
       style={ style }
     >
-      <h2>Welcome to the Item component</h2>
-    </div>
+      <Card className=''>
+        {/*}
+        <Card.Section>
+          <p
+            data-icon='S'
+            className='s2 ks icon'
+          />
+        </Card.Section>
+          {*/}
+        <Card.Section>
+          <Heading
+            className='yib'
+            headingAs='p'
+            headingClassName={
+              [
+                'fh s3 ks',
+                headingClassName
+              ].filter(e => e).join(' ')
+            }
+            heading={ heading }
+            label={ label }
+            //labelClassName='x-warning s-2 ks'
+            labelClassName={
+              [
+                's-2 ks',
+                labelClassName
+              ].filter(e => e).join(' ')
+            }
+          />
+        </Card.Section>
+      </Card>
+    </Element>
   )}
 
 Item.propTypes = {
@@ -68,15 +106,6 @@ Item.propTypes = {
   ]),
   //as: PropTypes.string,
 
-  /**
-   * The height of the element
-   */
-  height:PropTypes.string,
-
-  /**
-   * The width of the element
-   */
-  width:PropTypes.string,
   /*
   : PropTypes.shape({
     id: PropTypes.string.isRequired,
@@ -89,11 +118,9 @@ Item.propTypes = {
   */
 }
 
-/*
 Item.defaultProps = {
-  status: 'neutral',
-  //height:'2.2em',
-  //as:'p',
+  as       :'li',
+  className:'s-1 ks'
 }
-*/
+
 export default Item

@@ -13,8 +13,8 @@ export default {
   'center'           :'ctr',
   // CircleInfo, Label
   'circle'           :'circle',
-  //LocalIndex1
-  'compact'          :' compact',
+  //LocalIndex
+  'compact'          :'compact',
   'content'          :'content',
   'contour'          :'contour',
   'disabled'         :'disabled',

@@ -1,4 +1,5 @@
 /* @fwrlines/generator-react-component 1.2.1 */
+
 /*
 
 Classes :
@@ -6,6 +7,19 @@ Classes :
 
 */
 
-.menu{
+.dash-menu {
+  .item {
+    color: var(--subtitles);
 
+    .icon {
+      &:hover,
+      &:focus {
+        color: var(--x);
+      }
+    }
+
+    &.active {
+      color: var(--x);
+    }
+  }
 }
