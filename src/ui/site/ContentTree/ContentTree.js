@@ -9,15 +9,11 @@ import C from 'ui/cssClasses'
 import { LocalIndex } from 'ui/elements'
 import { Link as ScrollLink } from 'react-scroll'
 
-//Relative imports
-import styles from './content_tree.scss'
+/* Relative imports
+   import styles from './content_tree.scss' */
+import './content_tree.scss'
 import { Context, Provider, DisplayTree } from './common'
 
-const MemoDisplayTree = memo(DisplayTree, (p, n) => {
-  if(p.tree == n.tree) {
-    return true
-  }
-})
 
 const defaultDurationFromDistance = (distance) => Math.abs(distance) / 2
 
@@ -28,6 +24,8 @@ const ContentTree = ({
   className,
   style,
   children,
+
+  title,
 
   content,
 
@@ -88,7 +86,7 @@ const ContentTree = ({
       title={ title }
       className={
         [
-          styles[baseClassName],
+          baseClassName,
           className
         ].filter(e => e).join(' ')
       }
@@ -96,7 +94,7 @@ const ContentTree = ({
       style={ style }
     >
       { children }
-      <MemoDisplayTree { ...params } />
+      <DisplayTree { ...params } />
     </LocalIndex>
 
   )}
@@ -105,57 +103,57 @@ ContentTree.propTypes = {
   /**
    * Provide an HTML id to this element
    */
-  id: PropTypes.string,
+  id:PropTypes.string,
 
   /**
    * The html class names to be provided to this element
    */
-  className: PropTypes.string,
+  className:PropTypes.string,
 
   /**
    * The JSX-Written, css styles to apply to the element.
    */
-  style: PropTypes.object,
+  style:PropTypes.object,
 
   /**
    *  The children JSX
    */
-  children: PropTypes.node,
+  children:PropTypes.node,
 
   /**
    * The html id for the content to spy on
    */
-  content: PropTypes.string.isRequired,
+  content:PropTypes.string.isRequired,
 
   /**
    * The title to display for the local index
    */
-  title: PropTypes.string,
+  title:PropTypes.string,
 
   /**
    * HTML class of an item
    */
-  elementClassName: PropTypes.string,
+  elementClassName:PropTypes.string,
 
   /**
    * HTML class toggled for active items
    */
-  activeClassName: PropTypes.string,
+  activeClassName:PropTypes.string,
 
   /**
    * HTML class applied to "past" items
    */
-  pastClassName: PropTypes.string,
+  pastClassName:PropTypes.string,
 
   /**
    * Whether to unfold the current subsection
    */
-  unfoldActive: PropTypes.bool,
+  unfoldActive:PropTypes.bool,
 
   /**
    * The offset in px to pass to the listener
    */
-  offsetPx: PropTypes.number,
+  offsetPx:PropTypes.number,
 
   /**
    * Callback on element click
@@ -180,17 +178,18 @@ ContentTree.propTypes = {
   /**
    * Duration to pass to the ScrollLink. If a function, should be (currentOffset) => milliseconds
    */
-  scrollLinkDuration: PropTypes.oneOfType([
+  scrollLinkDuration:PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.func
   ]),
 }
 
 ContentTree.defaultProps = {
-  offsetPx:-100,
-  scrollLinkOffset:0,
-  scrollLinkSmooth:true,
-  scrollLinkDuration:defaultDurationFromDistance
+  offsetPx          :-100,
+  scrollLinkOffset  :0,
+  scrollLinkSmooth  :true,
+  scrollLinkDuration:defaultDurationFromDistance,
+  activeClassName   :'x-blue cx'
 }
 
 export default ContentTree

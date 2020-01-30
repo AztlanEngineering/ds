@@ -13,10 +13,10 @@ import { TEXT } from '../utils'
 //const endpoint = 'https://api.fwrlines.com/graphql'
 
 export default {
-  title: 'site/ContentTree',
-  component:ContentTree,
-  parameters: {
-    decorators: [
+  title     :'site/ContentTree',
+  component :ContentTree,
+  parameters:{
+    decorators:[
       storyfn => <ContextProvider>{ storyfn() }</ContextProvider>
       /* storyfn => <div className="">{ storyfn() }</div>,
          storyfn => <AplProvider endpoint={ endpoint }>{ storyfn() }</AplProvider>,
@@ -30,17 +30,16 @@ export const Default = () => (
     <ContentTree
       content={ TEXT }
       style={{
-    		position:'fixed',
-    		top:'0',
-    		left:'0',
+    		position  :'fixed',
+    		top       :'0',
+    		left      :'0',
 		    background:'beige'
 		  }}
-      activeClassName='c-orange'
     />
     <div
       className='content'
-      dangerouslySetInnerHTML={{__html:TEXT}}
-      style={{ paddingTop:'500px', paddingBottom:'500px' }}
+      dangerouslySetInnerHTML={{__html: TEXT}}
+      style={{ paddingTop: '500px', paddingBottom: '500px' }}
     >
 
     </div>
@@ -52,19 +51,19 @@ export const PastStyle = () => (
     <ContentTree
       content={ TEXT }
       style={{
-    		position:'fixed',
-    		top:'0',
-    		left:'0',
+    		position  :'fixed',
+    		top       :'0',
+    		left      :'0',
 		    background:'beige'
 		  }}
-      pastClassName='c-red ti'
-      activeClassName='c-teal'
+      pastClassName='cx x-red ti'
+      activeClassName='cx x-blue'
       elementClassName='nt'
     />
     <div
       className='content'
-      dangerouslySetInnerHTML={{__html:TEXT}}
-      style={{ paddingTop:'500px', paddingBottom:'500px' }}
+      dangerouslySetInnerHTML={{__html: TEXT}}
+      style={{ paddingTop: '500px', paddingBottom: '500px' }}
     />
 
   </>
@@ -75,18 +74,18 @@ export const UnfoldActive = () => (
     <ContentTree
       content={ TEXT }
       style={{
-    		position:'fixed',
-    		top:'0',
-    		left:'0',
+    		position  :'fixed',
+    		top       :'0',
+    		left      :'0',
 		    background:'beige'
 		  }}
-      activeClassName='c-teal'
+      activeClassName='cx x-red'
       unfoldActive
     />
     <div
       className='content'
-      dangerouslySetInnerHTML={{__html:TEXT}}
-      style={{ paddingTop:'500px', paddingBottom:'500px' }}
+      dangerouslySetInnerHTML={{__html: TEXT}}
+      style={{ paddingTop: '500px', paddingBottom: '500px' }}
     />
 
   </>

@@ -23,7 +23,8 @@ export default {
   'group'            :'group',
   'headSection'      :'head section',
   'header'           :'header',
-  'horizontalStretch':'h-stretch',
+  // Group (Button)
+  'horizontalStretch':'hstretch',
   // (CaretDown) Page
   'icon'             :'fi',
   // Button
@@ -82,5 +83,6 @@ export default {
   'transition'       :'t',
   'valid'            :'val',
   'vertical'         :'vrt',
+  // Group (Button)
   'verticalStretch'  :'v-stretch',
 }
