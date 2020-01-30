@@ -19,6 +19,8 @@ export default {
   'contour'          :'contour',
   'disabled'         :'disabled',
   'error'            :'err',
+  // StatusBar
+  'fixed' : "fixed",
   // Group (Button)
   'group'            :'group',
   'headSection'      :'head section',

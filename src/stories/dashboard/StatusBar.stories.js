@@ -2,6 +2,7 @@
 import React from 'react'
 
 //import { action } from '@storybook/addon-actions'
+import { Button } from 'ui/elements'
 
 import { StatusBar } from 'ui'
 /* import QUERY from './graphql/query.graphql'
@@ -29,10 +30,17 @@ export default {
 }
 
 export const Default = () => (
-  <StatusBar></StatusBar>
+  <StatusBar
+    className="x-blue y-white"
+    status="4 unsaved modifications"
+  ><Button>Action !</Button></StatusBar>
 )
 
-export const Variant = () => (
-  <StatusBar></StatusBar>
+export const Fixed = () => (
+  <StatusBar
+    className="x-secondary y-white"
+    status="4 unsaved modifications"
+    fixed
+  ><Button>Click me</Button></StatusBar>
 )
 

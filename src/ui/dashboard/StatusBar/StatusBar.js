@@ -3,12 +3,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 
+   import C from 'ui/cssClasses' 
 
-//Config
-//import C from 'ui/cssClasses'
-
-//Relative imports
-//import styles from './status_bar.scss'
+/* Relative imports
+   import styles from './status_bar.scss' */
 import './status_bar.scss'
 
 const baseClassName = 'status_bar'
@@ -16,58 +14,73 @@ const baseClassName = 'status_bar'
 
 /**
  * Use `StatusBar` to
- * Has color `x` 
+ * Has color `x`
  */
 const StatusBar = ({
   id,
   className,
   style,
+  children,
 
   fixed,
+  status,
 }) => {
-  
-  
+
+
   return (
-  <div 
-    className={
-      [
+    <div
+      className={
+        [
         //styles[baseClassName],
-        baseClassName,
-        className
-      ].filter(e => e).join(' ')
-  }
-    id={ id }
-    style={ style }
-  >
-    <h2>Welcome to the StatusBar component</h2>
-  </div>
-)}
+          baseClassName,
+          'ur by',
+          fixed && C.fixed,
+          className
+        ].filter(e => e).join(' ')
+      }
+      id={ id }
+      style={ style }
+    >
+      <p className='yib h5 cx-light mv v0 s0 ls'>{ status }</p>
+      { children }
+    </div>
+  )}
 
 StatusBar.propTypes = {
   /**
    * Provide an HTML id to this element
    */
-  id: PropTypes.string,
+  id:PropTypes.string,
 
   /**
    * The html class names to be provided to this element
    */
-  className: PropTypes.string,
+  className:PropTypes.string,
 
   /**
    * The JSX-Written, css styles to apply to the element.
    */
-  style: PropTypes.object,
+  style:PropTypes.object,
 
   /**
    *  The children JSX
    */
-  children: PropTypes.node,
+  children:PropTypes.node,
 
   /**
    * Whether the bar is fixed at the bottom
    */
-  fixed: PropTypes.bool,
+  fixed:PropTypes.bool,
+
+  /**
+   * Whether the bar is fixed at the bottom
+   */
+  status:PropTypes.bool,
+
+  /**
+   * Status
+   */
+  status:PropTypes.string,
   /*
   : PropTypes.shape({
     id: PropTypes.string.isRequired,
@@ -82,7 +95,7 @@ StatusBar.propTypes = {
 
 /*
 StatusBar.defaultProps = {
-  status: 'neutral',
+  status: '4 unsaved modifications.',
   //height:'2.2em',
   //as:'p',
 }
