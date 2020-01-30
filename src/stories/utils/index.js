@@ -1,6 +1,6 @@
 export {
   Provider as AplProvider,
-  Client
+  client
 } from './Client'
 
 export {

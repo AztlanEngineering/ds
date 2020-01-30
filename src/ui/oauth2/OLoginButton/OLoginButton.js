@@ -2,54 +2,105 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-//Config
-//import C from 'ui/cssClasses'
+/* Config
+   import C from 'ui/cssClasses' */
+import { Button } from 'ui'
+import gql from 'graphql-tag'
+import { useQuery } from '@apollo/react-hooks'
+import { QUERY_GOOGLE } from './graphql/oAuth2Google.gql'
 
-//Relative imports
-import styles from './o_login_button.scss'
+/* Relative imports
+   import styles from './o_login_button.scss' */
+import './o_login_button.scss'
 
 const baseClassName = 'o_login_button'
 
 const OLoginButton = ({
   id,
   className,
-  style
-}) => (
-  <div 
-    className={
-      [
-        styles[baseClassName],
-        className
-      ].filter(e => e).join(' ')
-  }
-    id={ id }
-    style={ style }
-  >
-    <h2>Welcome to the OLoginButton component</h2>
-  </div>
-)
+  style,
+
+  label,
+  query,
+  dataKey,
+  buttonClassName,
+}) => {
+
+  const {
+    loading,
+    error,
+    data={}
+  } = useQuery(gql(query))
+  console.log(loading, error, data)
+
+  return(
+    <>
+      <a
+        className={
+          [
+            baseClassName,
+            className
+          ].filter(e => e).join(' ')
+        }
+        id={ id }
+        style={ style }
+        href={ data && data[dataKey] }
+      >
+        <Button
+          simple
+          buttonClassName={
+            [
+              buttonClassName,
+            ].filter(e => e).join(' ')
+          }
+        >
+          { label }
+        </Button>
+      </a>
+    </>
+  )
+}
 
 OLoginButton.propTypes = {
   /**
    * Provide an HTML id to this element
    */
-  id: PropTypes.string,
+  id:PropTypes.string,
 
   /**
-   * The html class names to be provided to this element
+   * The html class names to be provided to the wrapper
    */
-  className: PropTypes.string,
+  className:PropTypes.string,
+
+  /**
+   * The html class names to be provided to the inner button
+   */
+  buttonClassName:PropTypes.string,
 
   /**
    * The JSX-Written, css styles to apply to the element.
    */
-  style: PropTypes.object,
+  style:PropTypes.object,
 
   /**
    *  The children JSX
    */
-  children: PropTypes.node,
+  children:PropTypes.node,
 
+  /**
+   * The query (.gql file import with babel import inline)
+   */
+  query:PropTypes.string.isRequired,
+
+  /**
+   * The key to the query data object
+   */
+  dataKey:PropTypes.string.isRequired,
+
+  /**
+   * The button label
+   */
+  label:PropTypes.string.isRequired,
   /*
   : PropTypes.shape({
     id: PropTypes.string.isRequired,
@@ -62,10 +113,11 @@ OLoginButton.propTypes = {
   */
 }
 
-/*
 OLoginButton.defaultProps = {
-  status: 'neutral',
+  query          :QUERY_GOOGLE,
+  dataKey        :'oAuth2Google',
+  label          :'login',
+  buttonClassName:'x-green'
 }
-*/
 
 export default OLoginButton

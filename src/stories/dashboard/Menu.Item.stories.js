@@ -30,18 +30,24 @@ export default {
 }
 
 export const Default = () => (
-    <Menu.Item
-      className=''
-      heading='Website Information'
-      label='Complete'
-      labelClassName='x-success'
-    />
+  <Menu.Item
+    className=''
+    heading='Website Information'
+    label='Complete'
+    labelClassName='x-success'
+  />
 )
 
 export const Label = () => (
   <>
     <Menu.Item
-      className='ur'
+      className=''
+      heading='Facturation and Payment'
+      label='50% done'
+      labelClassName='x-warning'
+    />
+    <Menu.Item
+      className=''
       heading='Website Information'
       label='Complete'
       labelClassName='x-success'
@@ -49,12 +55,12 @@ export const Label = () => (
   </>
 )
 export const Right = () => (
-    <Menu.Item
-      className='ur'
-      heading='Website Information'
-      label='Complete'
-      labelClassName='x-success'
-    />
+  <Menu.Item
+    className='ur'
+    heading='Website Information'
+    label='Complete'
+    labelClassName='x-success'
+  />
 )
 
 export const Active = () => (

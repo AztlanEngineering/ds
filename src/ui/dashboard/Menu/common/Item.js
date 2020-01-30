@@ -42,37 +42,25 @@ const Item = ({
       id={ id }
       style={ style }
     >
-      <Card className=''>
-        {/*}
-        <Card.Section>
-          <p
-            data-icon='S'
-            className='s2 ks icon'
-          />
-        </Card.Section>
-          {*/}
-        <Card.Section>
-          <Heading
-            className='yib'
-            headingAs='p'
-            headingClassName={
-              [
-                'fh s3 ks',
-                headingClassName
-              ].filter(e => e).join(' ')
-            }
-            heading={ heading }
-            label={ label }
-            //labelClassName='x-warning s-2 ks'
-            labelClassName={
-              [
-                's-2 ks',
-                labelClassName
-              ].filter(e => e).join(' ')
-            }
-          />
-        </Card.Section>
-      </Card>
+      <Heading
+        className='yib'
+        headingAs='p'
+        headingClassName={
+          [
+            'fh s3 ks',
+            headingClassName
+          ].filter(e => e).join(' ')
+        }
+        heading={ heading }
+        label={ label }
+        //labelClassName='x-warning s-2 ks'
+        labelClassName={
+          [
+            's-2 ks',
+            labelClassName
+          ].filter(e => e).join(' ')
+        }
+      />
     </Element>
   )}
 
