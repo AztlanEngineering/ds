@@ -77,20 +77,6 @@ StatusBar.propTypes = {
    */
   status:PropTypes.bool,
 
-  /**
-   * Status
-   */
-  status:PropTypes.string,
-  /*
-  : PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    state: PropTypes.string.isRequired,
-  }),
-  : PropTypes.func,
-  : PropTypes.func,
-  : PropTypes.oneOf(['', ''])
-  */
 }
 
 /*
