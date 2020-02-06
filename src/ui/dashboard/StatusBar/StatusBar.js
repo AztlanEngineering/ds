@@ -3,7 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 
-   import C from 'ui/cssClasses' 
+import C from 'ui/cssClasses'
 
 /* Relative imports
    import styles from './status_bar.scss' */
@@ -41,7 +41,7 @@ const StatusBar = ({
       id={ id }
       style={ style }
     >
-      <p className='yib h5 cx-light mv v0 s0 ls'>{ status }</p>
+      <p className='yib h5 cx-light s0 ls'>{ status }</p>
       { children }
     </div>
   )}

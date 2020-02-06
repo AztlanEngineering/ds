@@ -14,6 +14,7 @@ $verticalAlignInHeadings:top;
 $marginBottom:0.3em;
 $font-weight:bold;
 $vertical-align:bottom;
+$line-height:.9em;
 
 .label {
   display: inline-block;
@@ -23,6 +24,7 @@ $vertical-align:bottom;
   padding: $padding;
   vertical-align: $vertical-align;
   color: var(--x-on, var(--black));
+  line-height:$line-height;
   font-family: $fontFamily;
   font-weight: $font-weight;
 

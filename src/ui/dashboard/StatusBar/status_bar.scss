@@ -1,4 +1,5 @@
 /* @fwrlines/generator-react-component 1.2.1 */
+
 /*
 
 Classes :
@@ -6,22 +7,23 @@ Classes :
 
 */
 
-.status_bar{
-  padding:.5em;
-  padding-top:.5em;
-  width:100%;
+.status_bar {
+  width: 100%;
+  padding: 0.5em;
+  padding-top: 0.5em;
+
   & > * {
-    vertical-align:middle;
+    vertical-align: middle;
   }
-  p{
-    margin-right:1em;
+
+  p {
+    margin-right: 1em;
+    margin-bottom: 0;
   }
 
   &.fixed {
-    position:fixed;
-    bottom:0;
-    right:0;
-
+    position: fixed;
+    right: 0;
+    bottom: 0;
   }
-
 }
