@@ -72,7 +72,7 @@ Subtitle.propTypes = {
   /**
    * Apply special styles related to capitalization
    */
-  upper:PropTypes.boolean,
+  upper:PropTypes.bool,
   /*
   : PropTypes.shape({
     id: PropTypes.string.isRequired,

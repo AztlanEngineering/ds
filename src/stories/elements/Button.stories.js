@@ -190,6 +190,7 @@ export const ButtonLoading = () =>
         icon={e.icon}
         loading
         loaderType={ e.loaderType }
+        key={i}
       >
         { e.text }
       </Button>
@@ -206,14 +207,14 @@ export const AnimatedArrow = () =>
       iconSide='l'
       className='it x-green'
     >
-	Pass your mouve over me !
+      Pass your mouve over me !
     </Button>
     <Button
       icon='m'
       iconSide='r'
       className='it x-blue'
     >
-	Pass your mouve over me !
+      Pass your mouve over me !
     </Button>
   </>
 
@@ -225,6 +226,7 @@ export const StretchedGroup = () =>
       {icons_map.slice(1, 3).map((e,i) =>
         <Button
           className={'ks s2 x-' + e.back}
+          key={i}
         >
           { e.text }
         </Button>
@@ -236,6 +238,7 @@ export const StretchedGroup = () =>
           className={'ks s2 x-' + e.back}
           iconSide={ e.side }
           icon={e.icon}
+          key={i}
         >
           { e.text }
         </Button>
@@ -250,6 +253,7 @@ export const BasicGroup = () =>
         <Button
           className={'ks s2 x-' + e.back}
           basic
+          key={i}
         >
           { e.text }
         </Button>
@@ -262,6 +266,7 @@ export const BasicGroup = () =>
           className={'ks s2 x-' + e.back}
           iconSide={ e.side }
           icon={e.icon}
+          key={i}
           basic
         >
           { e.text }
@@ -289,6 +294,7 @@ export const GroupIndep = () =>
           className={'ks s2 x-' + e.back}
           iconSide={ e.side }
           icon={e.icon}
+          key={i}
           basic
         >
           { e.text }
@@ -305,6 +311,7 @@ export const GroupVertical = () =>
         className={'ks s2 x-' + e.back}
         iconSide={ e.side }
         icon={e.icon}
+        key={i}
       >
         { e.text }
       </Button>
@@ -321,6 +328,7 @@ export const GroupVerticalIndep = () =>
         className={'ks s2 x-' + e.back}
         iconSide={ e.side }
         icon={e.icon}
+        key={i}
       >
         { e.text }
       </Button>

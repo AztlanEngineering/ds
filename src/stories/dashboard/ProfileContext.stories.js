@@ -24,7 +24,9 @@ export default {
 }
 
 export const Default = () => (
-  <ProfileContextProvider/>
+  <ProfileContextProvider>
+    this text is inside the context
+  </ProfileContextProvider>
 )
 
 

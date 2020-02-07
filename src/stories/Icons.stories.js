@@ -35,7 +35,7 @@ export const Default = () => (
     {chars.map((e,i) =>
       <IconItem
         name={ e}
-        key='i'
+        key={ i }
       >
         <span className='fi'>{ e }</span>
       </IconItem>

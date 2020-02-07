@@ -75,6 +75,7 @@ export const Default = () =>(
       className={ 'mu u2' }
       image={ e.image }
       imageAlt={ e.imageAlt }
+      key={i}
     />
   ))
 )
@@ -87,6 +88,7 @@ export const Variant = () =>(
       subtitle={ e.subtitle }
       link={ e.link }
       circleClassName={ e.circle }
+      key={i}
     />
   )
 )
@@ -100,6 +102,7 @@ export const WithImage = () =>(
       image={ e.image }
       imageAlt={ e.imageAlt }
       className={ e.className }
+      key={i}
     />
   )
 )
@@ -112,7 +115,8 @@ export const Color = () => (
       circleClassName={ e.circle }
       image={ e.image }
       imageAlt={ e.imageAlt }
-      className="x-blue y-red"
+      className='x-blue y-red'
+      key={i}
     />
   )
 )

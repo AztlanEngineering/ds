@@ -75,7 +75,7 @@ StatusBar.propTypes = {
   /**
    * Whether the bar is fixed at the bottom
    */
-  status:PropTypes.bool,
+  status:PropTypes.string,
 
 }
 

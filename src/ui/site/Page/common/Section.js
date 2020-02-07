@@ -101,7 +101,7 @@ Section.propTypes = {
   /**
    * Which id tag on the page is the target (without page suffix)
    */
-  caretDown:PropTypes.string.isRequired,
+  caretDown:PropTypes.string,
 
   /**
    * Whether the click is animated (react-scroll)
@@ -122,7 +122,6 @@ Section.defaultProps = {
   header         :false,
   transparent    :false,
   inverted       :false,
-  caretDown      :false,
   caretDownSmooth:true,
 }
 

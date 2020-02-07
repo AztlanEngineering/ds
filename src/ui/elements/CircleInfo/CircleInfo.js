@@ -139,7 +139,7 @@ CircleInfo.propTypes = {
   /**
    * The url of the image
    */
-  image:PropTypes.string.isRequired,
+  image:PropTypes.string,
 
   /**
    *

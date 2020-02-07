@@ -35,7 +35,9 @@ const config={
 }
 
 export const Default = () => (
-  <SiteContextProvider config={ config }/>
+  <SiteContextProvider config={ config }>
+    This text is inside the context
+  </SiteContextProvider>
 )
 
 

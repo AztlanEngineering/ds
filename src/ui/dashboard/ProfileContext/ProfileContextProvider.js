@@ -110,7 +110,7 @@ ProfileContextProvider.propTypes = {
   /**
    *  The children JSX
    */
-  children:PropTypes.node,
+  children:PropTypes.node.isRequired,
 
   /**
    * Which html tag to use
