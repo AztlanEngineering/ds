@@ -5,7 +5,6 @@ import React from 'react'
 import { Page, InnerContent, Heading } from 'ui'
 import { LocalHelmet } from 'ui/site/Page/common'
 import { TEXT_XXS_ESC, TEXT_XXS, TEXT_XS, TEXT } from '../utils'
-console.log('LH', LocalHelmet)
 
 export default {
   title: 'site/Page',

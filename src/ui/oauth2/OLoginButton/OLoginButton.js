@@ -14,7 +14,6 @@ import QUERY_GOOGLE from './graphql/oAuth2Google.gql'
 import './o_login_button.scss'
 
 const baseClassName = 'o_login_button'
-console.log(QUERY_GOOGLE)
 
 const OLoginButton = ({
   id,
@@ -33,7 +32,7 @@ const OLoginButton = ({
     error,
     data={}
   } = useQuery(gql(query))
-  console.log(loading, error, data)
+  //console.log(loading, error, data)
 
   return(
     <>
