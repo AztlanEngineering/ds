@@ -41,7 +41,10 @@ const ContentTree = ({
   withScrollLink,
   scrollLinkOffset,
   scrollLinkSmooth,
-  scrollLinkDuration
+  scrollLinkDuration,
+
+  as:Element,
+  itemAs,
 }) => {
 
   const {
@@ -78,11 +81,12 @@ const ContentTree = ({
     activeClassName,
     pastClassName,
     unfoldActive,
+    as  :itemAs,
 
   }
 
   return(
-    <LocalIndex
+    <Element
       title={ title }
       className={
         [
@@ -95,7 +99,7 @@ const ContentTree = ({
     >
       { children }
       <DisplayTree { ...params } />
-    </LocalIndex>
+    </Element>
 
   )}
 
@@ -182,6 +186,22 @@ ContentTree.propTypes = {
     PropTypes.number,
     PropTypes.func
   ]),
+
+  /**
+   * Which html tag to use
+   */
+  as:PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.node
+  ]),
+
+  /**
+   * Which html tag to use for the children
+   */
+  itemAs:PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.node
+  ]),
 }
 
 ContentTree.defaultProps = {
@@ -189,7 +209,9 @@ ContentTree.defaultProps = {
   scrollLinkOffset  :0,
   scrollLinkSmooth  :true,
   scrollLinkDuration:defaultDurationFromDistance,
-  activeClassName   :'x-blue cx'
+  activeClassName   :'x-blue cx',
+  as                :LocalIndex,
+  itemAs            :LocalIndex.Item
 }
 
 export default ContentTree

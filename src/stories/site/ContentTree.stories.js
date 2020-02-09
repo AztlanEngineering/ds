@@ -4,6 +4,7 @@ import React from 'react'
 //import { action } from '@storybook/addon-actions'
 
 import {
+  Button,
   ContentTree,
   ContentTreeContextProvider as ContextProvider,
 } from 'ui'
@@ -91,3 +92,26 @@ export const UnfoldActive = () => (
   </>
 )
 
+
+export const As = () => (
+  <>
+    <ContentTree
+      content={ TEXT }
+      as={ Button.Group }
+      itemAs={ Button }
+      style={{
+    		position  :'fixed',
+    		top       :'0',
+    		left      :'0',
+		    //background:'beige'
+		  }}
+      activeClassName='cx x-red'
+    />
+    <div
+      className='content'
+      dangerouslySetInnerHTML={{__html: TEXT}}
+      style={{ paddingTop: '500px', paddingBottom: '500px' }}
+    />
+
+  </>
+)

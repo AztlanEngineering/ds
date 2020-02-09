@@ -6,10 +6,6 @@ import { Link as ScrollLink } from 'react-scroll'
 //import C from 'ui/cssClasses'
 
 
-//Relative imports
-import { LocalIndex } from 'ui/elements'
-
-
 const DisplayTree = ({
   tree,
   ...props
@@ -100,35 +96,35 @@ DisplayTree.propTypes = {
   /**
    * The JSX-Written, css styles to apply to the element.
    */
-  style: PropTypes.object,
+  style:PropTypes.object,
 
   /**
    * Which html tag to use
    */
-  as: PropTypes.oneOfType([
+  as:PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.node
-  ]),
+  ]).isRequired,
 
   /**
    * The height of the element
    */
-  height: PropTypes.string,
+  height:PropTypes.string,
 
   /**
    * The width of the element
    */
-  width: PropTypes.string,
+  width:PropTypes.string,
 
   /**
    * the content tree starting from this element
    */
-  tree : PropTypes.object.isRequired,
+  tree:PropTypes.object.isRequired,
 
   /**
    * The current active part of the content
    */
-  activeId: PropTypes.string.isRequired,
+  activeId:PropTypes.string.isRequired,
 
   /**
    * The width of the element
@@ -158,7 +154,7 @@ DisplayTree.propTypes = {
   /**
    * Duration to pass to the ScrollLink. If a function, should be (currentOffset) => milliseconds
    */
-  scrollLinkDuration: PropTypes.oneOfType([
+  scrollLinkDuration:PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.func
   ]),
@@ -166,32 +162,31 @@ DisplayTree.propTypes = {
   /**
    * HTML class of an item
    */
-  elementClassName: PropTypes.string,
+  elementClassName:PropTypes.string,
 
   /**
    * HTML class applied to the links
    */
-  linkClassName: PropTypes.string,
+  linkClassName:PropTypes.string,
 
   /**
    * HTML class toggled for active items
    */
-  activeClassName: PropTypes.string,
+  activeClassName:PropTypes.string,
 
   /**
    * HTML class applied to "past" items
    */
-  pastClassName: PropTypes.string,
+  pastClassName:PropTypes.string,
 
   /**
    * Whether to unfold the current subsection
    */
-  unfoldActive: PropTypes.bool,
+  unfoldActive:PropTypes.bool,
 }
 
 DisplayTree.defaultProps = {
   unfoldActive:false,
-  as:LocalIndex.Item
 }
 
 export default DisplayTree
