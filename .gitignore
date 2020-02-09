@@ -5,6 +5,7 @@ logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+DS_Store
 
 # Runtime data
 *.lock
@@ -17,6 +18,7 @@ pids
 *.swm
 *.swp
 *.pem
+.DS_Store
 dist/static/
 dist/
 public/*
