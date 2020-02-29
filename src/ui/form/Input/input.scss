@@ -1,0 +1,15 @@
+/* @fwrlines/generator-react-component 1.4.0 */
+
+/*
+
+Classes :
+.input : default
+
+*/
+
+.input {
+  > input,
+  > textarea {
+    width: 100%;
+  }
+}
