@@ -31,12 +31,21 @@ export default {
 export const Default = () => (
   <HTMLTextarea 
     name='some_input'
+    placeholder='blah blah blah input textarea'
   />
 )
 
 export const Variant = () => (
   <HTMLTextarea 
     name='some_input'
+    placeholder='blah blah blah input textarea'
   />
 )
 
+export const Disabled = () => (
+  <HTMLTextarea 
+    name='some_input'
+    disabled
+    placeholder={ 'This input is disabled' }
+  />
+)

@@ -4,35 +4,298 @@ import React from 'react'
 //import { action } from '@storybook/addon-actions'
 
 import { SVGChoice } from 'ui'
-//import QUERY from './graphql/query.graphql'
-//import { AplProvider } from 'stories/utils'
-//import { Router } from 'stories/utils'
-//import {ALL_COLORS, SIZES } from '../config.js'
-//import { TEXT_XXS_ESC, TEXT_XXS, TEXT_XS, TEXT } from '../utils/Dummy'
+import {
+  CheckboxCheck,
+  CheckboxCross,
+  RadioCircle,
+  RadioCross,
+  RadioDot
+} from 'ui/form/Input/common/SVGChoice/common/'
+/* import QUERY from './graphql/query.graphql'
+   import { AplProvider } from 'stories/utils'
+   import { Router } from 'stories/utils'
+   import {ALL_COLORS, SIZES } from '../config.js'
+   import { TEXT_XXS_ESC, TEXT_XXS, TEXT_XS, TEXT } from '../utils/Dummy' */
 
 //const endpoint = 'https://api.fwrlines.com/graphql'
 
 export default {
-  title: 'SVGChoice',
-  component:SVGChoice,
+  title        :'form/Input/common/SVGChoice',
+  component    :SVGChoice,
   //componentSubtitle:'Component subtitle',
-  subcomponents: {
-    //SVGChoice.Item
+  subcomponents:{
+    CheckboxCheck,
+    CheckboxCross,
+    RadioCircle,
+    RadioCross,
+    RadioDot
   },
-  parameters: {
-    decorators: [ 
-      //storyfn => <div className="">{ storyfn() }</div>,
-      //storyfn => <AplProvider endpoint={ endpoint }>{ storyfn() }</AplProvider>,
-      //storyfn => <Router>{ storyfn() }</Router>,
+  parameters:{
+    decorators:[
+      /* storyfn => <div className="">{ storyfn() }</div>,
+         storyfn => <AplProvider endpoint={ endpoint }>{ storyfn() }</AplProvider>,
+         storyfn => <Router>{ storyfn() }</Router>, */
     ]
   }
 }
 
 export const Default = () => (
-  <SVGChoice></SVGChoice> 
+  <SVGChoice
+    name='composer'
+    options={[
+      {
+        value:'valhalla',
+        label:'Wagner',
+        id   :'wag'
+      },
+      {
+        value:'viaggio',
+        label:'Rossini',
+        id   :'ross'
+      },
+      {
+        value:'pelleas',
+        label:<span>
+          <b>Claude</b>
+          {' '}
+          Debussy
+              </span>,
+        id:'debu'
+      }
+    ]}
+  />
 )
 
-export const Variant = () => (
-    <SVGChoice></SVGChoice> 
+export const Multiple = () => (
+  <SVGChoice
+    name='composer'
+    options={[
+      {
+        value:'valhalla',
+        label:'Wagner',
+        id   :'wag'
+      },
+      {
+        value:'viaggio',
+        label:'Rossini',
+        id   :'ross'
+      },
+      {
+        value:'pelleas',
+        label:'Debussy',
+        id   :'debu'
+      }
+    ]}
+    multiple
+    //disabled
+  />
 )
+
+export const Other = () => (
+  <SVGChoice
+    name='composer'
+    options={[
+      {
+        value:'valhalla',
+        label:'Wagner',
+        id   :'wag'
+      },
+      {
+        value:'viaggio',
+        label:'Rossini',
+        id   :'ross'
+      },
+      {
+        value:'pelleas',
+        label:<span>
+          <b>Claude</b>
+          {' '}
+          Debussy
+              </span>,
+        id:'debu'
+      }
+    ]}
+    other
+    otherId='yoho'
+    //disabled
+  />
+)
+
+export const OtherCustom = () => (
+  <SVGChoice
+    name='composer'
+    options={[
+      {
+        value:'valhalla',
+        label:'Wagner',
+        id   :'wag'
+      },
+      {
+        value:'viaggio',
+        label:'Rossini',
+        id   :'ross'
+      },
+      {
+        value:'pelleas',
+        label:<span>
+          <b>Claude</b>
+          {' '}
+          Debussy
+              </span>,
+        id:'debu'
+      }
+    ]}
+    other='Altro'
+    otherId='yoho'
+    //disabled
+  />
+)
+
+export const DisabledAll = () => (
+  <SVGChoice
+    name='composer'
+    options={[
+      {
+        value:'valhalla',
+        label:'Wagner',
+        id   :'wag'
+      },
+      {
+        value:'viaggio',
+        label:'Rossini',
+        id   :'ross'
+      },
+      {
+        value:'pelleas',
+        label:<span>
+          <b>Claude</b>
+          {' '}
+          Debussy
+              </span>,
+        id:'debu'
+      }
+    ]}
+    disabled
+  />
+)
+
+export const DisabledOption = () => (
+  <SVGChoice
+    name='composer'
+    options={[
+      {
+        value:'valhalla',
+        label:'Wagner',
+        id   :'wag'
+      },
+      {
+        value   :'viaggio',
+        label   :'Rossini',
+        id      :'ross',
+        disabled:true
+      },
+      {
+        value:'pelleas',
+        label:<span>
+          <b>Claude</b>
+          {' '}
+          Debussy
+              </span>,
+        id:'debu'
+      }
+    ]}
+  />
+)
+
+
+export const VariantCircle = () => (
+  <SVGChoice
+    name='composer'
+    options={[
+      {
+        value:'valhalla',
+        label:'Wagner',
+        id   :'wag'
+      },
+      {
+        value   :'viaggio',
+        label   :'Rossini',
+        id      :'ross',
+        disabled:true
+      },
+      {
+        value:'pelleas',
+        label:<span>
+          <b>Claude</b>
+          {' '}
+          Debussy
+              </span>,
+        id:'debu'
+      }
+    ]}
+    variant='circle'
+  />
+)
+
+
+export const VariantDot = () => (
+  <SVGChoice
+    name='composer'
+    options={[
+      {
+        value:'valhalla',
+        label:'Wagner',
+        id   :'wag'
+      },
+      {
+        value   :'viaggio',
+        label   :'Rossini',
+        id      :'ross',
+        disabled:true
+      },
+      {
+        value:'pelleas',
+        label:<span>
+          <b>Claude</b>
+          {' '}
+          Debussy
+              </span>,
+        id:'debu'
+      }
+    ]}
+    variant='dot'
+  />
+)
+
+
+export const VariantCheck = () => (
+  <SVGChoice
+    name='composer'
+    options={[
+      {
+        value:'valhalla',
+        label:'Wagner',
+        id   :'wag'
+      },
+      {
+        value   :'viaggio',
+        label   :'Rossini',
+        id      :'ross',
+        disabled:true
+      },
+      {
+        value:'pelleas',
+        label:<span>
+          <b>Claude</b>
+          {' '}
+          Debussy
+              </span>,
+        id:'debu'
+      }
+    ]}
+    variant='check'
+    multiple
+  />
+)
+
 

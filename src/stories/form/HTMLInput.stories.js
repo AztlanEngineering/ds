@@ -59,3 +59,12 @@ export const Phone = () => (
   />
 )
 
+export const Disabled = () => (
+  <HTMLInput
+    name='some_input'
+    disabled
+    type={ 'tel' }
+    placeholder={ 'This input is disabled' }
+  />
+)
+

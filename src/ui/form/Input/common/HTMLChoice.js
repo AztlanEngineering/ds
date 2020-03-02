@@ -38,6 +38,7 @@ const HTMLChoice = ({
     <>
       { options.map((e,i) =>
         <div
+          key={ i }
           className={
             [
             //styles[baseClassName],
