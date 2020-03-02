@@ -42,7 +42,7 @@ $tickFill:var(--green);
   }
 
   #line {
-    --ado: #{$tickStrokeDashOffset};
+    --svg-odo: #{$tickStrokeDashOffset};
     animation: draw-stroke $tickDuration ease-in-out 1 $tickDuration forwards;
     fill: none;
     stroke: $tickStroke;

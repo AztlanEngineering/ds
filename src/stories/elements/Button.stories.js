@@ -57,7 +57,7 @@ const icons_map = [
     loaderType:'circle',
   },
   {
-    'icon':'g',
+    'icon':'l',
     'side':'r',
     'text':'Right Arrow',
     'back':'green',
@@ -203,14 +203,14 @@ export const AnimatedArrow = () =>
   <>
     <Button
       vertical
-      icon='l'
+      icon='h'
       iconSide='l'
       className='it x-green'
     >
       Pass your mouve over me !
     </Button>
     <Button
-      icon='m'
+      icon='l'
       iconSide='r'
       className='it x-blue'
     >
