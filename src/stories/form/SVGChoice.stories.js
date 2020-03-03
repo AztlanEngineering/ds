@@ -14,8 +14,8 @@ import {
 /* import QUERY from './graphql/query.graphql'
    import { AplProvider } from 'stories/utils'
    import { Router } from 'stories/utils'
-   import {ALL_COLORS, SIZES } from '../config.js'
    import { TEXT_XXS_ESC, TEXT_XXS, TEXT_XS, TEXT } from '../utils/Dummy' */
+import {ALL_COLORS, SIZES } from '../config.js'
 
 //const endpoint = 'https://api.fwrlines.com/graphql'
 
@@ -298,4 +298,32 @@ export const VariantCheck = () => (
   />
 )
 
+
+export const Colors = () => (
+  ALL_COLORS.map((e,i) =>
+    <SVGChoice
+      name='composer'
+      className={ 'y-' + e.toLowerCase() }
+      options={[
+        {
+          value:'valhalla',
+          label:'Wagner',
+          id   :'wag'
+        },
+        {
+          value:'viaggio',
+          label:'Rossini',
+          id   :'ross'
+        },
+        {
+          value:'pelleas',
+          label:'Debussy',
+          id   :'debu'
+        }
+      ]}
+      multiple={ i % 2 }
+    //disabled
+    />
+  )
+)
 

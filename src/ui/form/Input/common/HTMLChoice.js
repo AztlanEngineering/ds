@@ -75,20 +75,21 @@ const HTMLChoice = ({
             name={ name }
             id={ otherId }
             value={ otherValue }
-            disabled={ disabled }
           />
           <label
             htmlFor={ otherId }
             onClick={
-              e => console.log(e.target.children[
+              e => e.target.children.length && e.target.children[
                 [
                   otherId,
                   'setter'
                 ].filter(e => e).join('_')
-              ].focus())
+              ].focus()
             }
           >
-            { typeof(other) === 'string' ? other : 'Other :' }
+            { typeof(other) === 'string' ? other : 'Other' }
+            &nbsp;
+            : 
             &nbsp;
             <input
               type='text'

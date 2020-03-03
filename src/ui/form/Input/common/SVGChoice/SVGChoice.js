@@ -1,5 +1,5 @@
 /* @fwrlines/generator-react-component 1.4.0 */
-import React from 'react'
+import React, { memo, useState } from 'react'
 import PropTypes from 'prop-types'
 
 import {
@@ -51,8 +51,10 @@ const SVGChoice = ({
 }) => {
 
   const SVGInput = multiple ?
-    checkboxVariantsMap[variant] :
-    radioVariantsMap[variant]
+    memo(checkboxVariantsMap[variant], () => true) :
+    memo(radioVariantsMap[variant], () => true)
+
+  const [otherValue, setOtherValue] = useState('')
 
   return (
     <>
@@ -81,6 +83,57 @@ const SVGChoice = ({
 
         </div>
       )}
+
+      { other &&
+        <div
+          className={
+            [
+            //styles[baseClassName],
+              baseClassName,
+              className
+            ].filter(e => e).join(' ')
+          }
+          id={ id }
+          style={ style }
+        >
+          <input
+            type={ multiple ? 'checkbox' : 'radio' }
+            name={ name }
+            id={ otherId }
+            value={ otherValue }
+            disabled={ disabled }
+          />
+          <label
+            htmlFor={ otherId }
+            onClick={
+              e => e.target.children.length && e.target.children[
+                [
+                  otherId,
+                  'setter'
+                ].filter(e => e).join('_')
+              ].focus()
+            }
+          >
+            { typeof(other) === 'string' ? other : 'Other' }
+            &nbsp;
+            : 
+            &nbsp;
+            <input
+              type='text'
+              value={ otherValue }
+              id={
+                [
+                  otherId,
+                  'setter'
+                ].filter(e => e).join('_')
+              }
+              onChange={ e => setOtherValue(e.target.value) }
+              onFocus={ e => e.target.parentNode.click() }
+            />
+          </label>
+          <SVGInput />
+        </div>
+      }
     </>
   )}
 
