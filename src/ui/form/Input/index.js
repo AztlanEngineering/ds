@@ -4,5 +4,6 @@ export {
   HTMLInput,
   HTMLTextarea,
   HTMLChoice,
-  SVGChoice
+  SVGChoice,
+  CardChoice,
 } from './common'

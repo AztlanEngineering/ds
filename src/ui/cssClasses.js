@@ -13,14 +13,15 @@ export default {
   'center'           :'ctr',
   // CircleInfo, Label
   'circle'           :'circle',
-  //LocalIndex
+  //LocalIndex, CardChoice (Input)
   'compact'          :'compact',
+  //CardChoice (Input)
   'content'          :'content',
   'contour'          :'contour',
   'disabled'         :'disabled',
   'error'            :'err',
   // StatusBar
-  'fixed' : "fixed",
+  'fixed'            :'fixed',
   // Group (Button)
   'group'            :'group',
   'headSection'      :'head section',
@@ -44,7 +45,7 @@ export default {
   'input'            :'input',
   'inputs'           :'fw sin',
   // Item (Menu)
-  'item':'item',
+  'item'             :'item',
   'inverted'         :'inv',
   'label'            :'label',
   //SnapSlider
@@ -68,7 +69,7 @@ export default {
   'section'          :'section',
   'selectable'       :'select',
   // File (FileExplorer)
-  'selected':'selected',
+  'selected'         :'selected',
   'semi'             :'semi',
   'shadow'           :'sh-',
   'shadowActive'     :'sha',
