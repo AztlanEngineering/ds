@@ -8,8 +8,12 @@ Classes :
 */
 
 .input {
-  > input,
-  > textarea {
-    width: 100%;
+  .inside {
+    display: flex;
+
+    input,
+    textarea {
+      width: 100%;
+    }
   }
 }

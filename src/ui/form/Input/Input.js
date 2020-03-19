@@ -5,13 +5,19 @@ import PropTypes from 'prop-types'
 import {
   HTMLInput,
   HTMLTextarea,
-  HTMLChoice
+  HTMLChoice,
+  SVGChoice,
+  CardChoice,
+
+  InputLabel,
+  InputDescription,
+  InputSide
 } from './common'
 
 
 
-/* Config
-   import C from 'ui/cssClasses' */
+/* Config*/
+import C from 'ui/cssClasses'
 
 /* Relative imports
    import styles from './input.scss' */
@@ -45,25 +51,45 @@ const Input = ({
   name,
   disabled,
 
+  value,
+  onChange,
+
   inputId,
   inputClassName,
   inputStyle,
   inputDisabled,
 
+  label,
+  labelId,
+  labelClassName,
+  labelStyle,
+
   options,
-  multiple,
   other,
   otherId,
 
-  as:Wrapper
-}) => {
+  as:Wrapper,
+  aesthetic,
+  variant,
 
+  description,
+  descriptionAs,
+  descriptionClassName,
+  descriptionStyle,
+
+  leftSide,
+  rightSide,
+  sidesClassName,
+  sidesStyle
+}) => {
+  console.log(onChange)
   if (AcceptedHTMLInputTypes.includes(type)) return(
     <Wrapper
       className={
         [
           //styles[baseClassName],
           baseClassName,
+          aesthetic,
           className
         ].filter(e => e).join(' ')
       }
@@ -71,20 +97,62 @@ const Input = ({
       style={ style }
       disabled={ Wrapper === 'fieldset' ? disabled : undefined }
     >
-      <HTMLInput
-        type={ type }
-        placeholder={ placeholder }
-        name={ name }
-        className={
-          [
-            //styles[baseClassName],
-            inputClassName
-          ].filter(e => e).join(' ')
+      { label &&
+        <InputLabel
+          id={ labelId }
+          className={ labelClassName }
+          style={ labelStyle }
+          htmlFor={ inputId }
+        >
+          { label }
+        </InputLabel>
+      }
+      <div className={ C.inside }>
+        { leftSide &&
+          <InputSide
+            side='left'
+            className={ sidesClassName }
+            style={ sidesStyle }
+          >
+            { leftSide }
+          </InputSide>
         }
-        id={ inputId }
-        style={ inputStyle }
-        disabled={ inputDisabled }
-      />
+        <HTMLInput
+          type={ type }
+          placeholder={ placeholder }
+          name={ name }
+          className={
+            [
+            //styles[baseClassName],
+              inputClassName
+            ].filter(e => e).join(' ')
+          }
+          id={ inputId }
+          style={ inputStyle }
+          disabled={ inputDisabled }
+
+          value={ value }
+          onChange={ onChange }
+        />
+        { rightSide &&
+          <InputSide
+            side='right'
+            className={ sidesClassName }
+            style={ sidesStyle }
+          >
+            { rightSide }
+          </InputSide>
+        }
+      </div>
+      { description &&
+        <InputDescription
+          as={ descriptionAs }
+          className={ descriptionClassName }
+          style={ descriptionStyle }
+        >
+          { description }
+        </InputDescription>
+      }
     </Wrapper>
   )
 
@@ -94,6 +162,7 @@ const Input = ({
         [
           //styles[baseClassName],
           baseClassName,
+          aesthetic,
           className
         ].filter(e => e).join(' ')
       }
@@ -102,20 +171,44 @@ const Input = ({
       disabled={ Wrapper === 'fieldset' ? disabled : undefined }
 
     >
-      <HTMLTextarea
-        type={ type }
-        placeholder={ placeholder }
-        name={ name }
-        className={
-          [
+      { label &&
+        <InputLabel
+          id={ labelId }
+          className={ labelClassName }
+          style={ labelStyle }
+          htmlFor={ inputId }
+        >
+          { label }
+        </InputLabel>
+      }
+      <div className={ C.inside }>
+        <HTMLTextarea
+          type={ type }
+          placeholder={ placeholder }
+          name={ name }
+          className={
+            [
             //styles[baseClassName],
-            inputClassName
-          ].filter(e => e).join(' ')
-        }
-        id={ inputId }
-        style={ inputStyle }
-        disabled={ inputDisabled }
-      />
+              inputClassName
+            ].filter(e => e).join(' ')
+          }
+          id={ inputId }
+          style={ inputStyle }
+          disabled={ inputDisabled }
+
+          value={ value }
+          onChange={ onChange }
+        />
+      </div>
+      { description &&
+        <InputDescription
+          as={ descriptionAs }
+          className={ descriptionClassName }
+          style={ descriptionStyle }
+        >
+          { description }
+        </InputDescription>
+      }
     </Wrapper>
 
   )
@@ -126,6 +219,7 @@ const Input = ({
         [
           //styles[baseClassName],
           baseClassName,
+          aesthetic,
           className
         ].filter(e => e).join(' ')
       }
@@ -134,6 +228,16 @@ const Input = ({
       disabled={ Wrapper === 'fieldset' ? disabled : undefined }
 
     >
+      { label &&
+        <InputLabel
+          id={ labelId }
+          className={ labelClassName }
+          style={ labelStyle }
+          as='legend'
+        >
+          { label }
+        </InputLabel>
+      }
       <HTMLChoice
         type={ type }
         name={ name }
@@ -150,7 +254,135 @@ const Input = ({
         options={ options }
         other={ other }
         otherId={ otherId }
+
+        value={ value }
+        onChange={ onChange }
       />
+      { description &&
+        <InputDescription
+          as={ descriptionAs }
+          className={ descriptionClassName }
+          style={ descriptionStyle }
+        >
+          { description }
+        </InputDescription>
+      }
+    </Wrapper>
+
+  )
+
+  else if ([ 'svg-checkboxes', 'svg-radios' ].includes(type)) return(
+    <Wrapper
+      className={
+        [
+          //styles[baseClassName],
+          baseClassName,
+          aesthetic,
+          className
+        ].filter(e => e).join(' ')
+      }
+      id={ id }
+      style={ style }
+      disabled={ Wrapper === 'fieldset' ? disabled : undefined }
+
+    >
+      { label &&
+        <InputLabel
+          id={ labelId }
+          className={ labelClassName }
+          style={ labelStyle }
+          as='legend'
+        >
+          { label }
+        </InputLabel>
+      }
+      <SVGChoice
+        type={ type }
+        name={ name }
+        className={
+          [
+            //styles[baseClassName],
+            inputClassName
+          ].filter(e => e).join(' ')
+        }
+        id={ inputId }
+        style={ inputStyle }
+        disabled={ inputDisabled }
+        multiple={ type === 'svg-checkboxes' ? true : false }
+        options={ options }
+        other={ other }
+        otherId={ otherId }
+        variant={ variant }
+
+        value={ value }
+        onChange={ onChange }
+      />
+      { description &&
+        <InputDescription
+          as={ descriptionAs }
+          className={ descriptionClassName }
+          style={ descriptionStyle }
+        >
+          { description }
+        </InputDescription>
+      }
+    </Wrapper>
+
+  )
+
+  else if ([ 'card-checkboxes', 'card-radios' ].includes(type)) return(
+    <Wrapper
+      className={
+        [
+          //styles[baseClassName],
+          baseClassName,
+          aesthetic,
+          className
+        ].filter(e => e).join(' ')
+      }
+      id={ id }
+      style={ style }
+      disabled={ Wrapper === 'fieldset' ? disabled : undefined }
+
+    >
+      { label &&
+        <InputLabel
+          id={ labelId }
+          className={ labelClassName }
+          style={ labelStyle }
+          as='legend'
+        >
+          { label }
+        </InputLabel>
+      }
+      <CardChoice
+        type={ type }
+        name={ name }
+        className={
+          [
+            //styles[baseClassName],
+            inputClassName
+          ].filter(e => e).join(' ')
+        }
+        id={ inputId }
+        style={ inputStyle }
+        disabled={ inputDisabled }
+        multiple={ type === 'card-checkboxes' ? true : false }
+        options={ options }
+        other={ other }
+        otherId={ otherId }
+        variant={ variant }
+        value={ value }
+      />
+      { description &&
+        <InputDescription
+          as={ descriptionAs }
+          className={ descriptionClassName }
+          style={ descriptionStyle }
+        >
+          { description }
+        </InputDescription>
+      }
     </Wrapper>
 
   )
@@ -174,6 +406,11 @@ Input.propTypes = {
   style:PropTypes.object,
 
   /**
+   * The input name
+   */
+  name:PropTypes.string.isRequired,
+
+  /**
    * Whether the input is disabled. This property is applied at the wrapper level, and only if the wrapper is a fieldset
    */
   disabled:PropTypes.bool,
@@ -181,7 +418,7 @@ Input.propTypes = {
   /**
    * Provide an HTML id to the input
    */
-  inputId:PropTypes.string,
+  inputId:PropTypes.string.isRequired,
 
   /**
    * The html class names to be provided to the input
@@ -197,6 +434,29 @@ Input.propTypes = {
    * Whether the input is disabled. Do not apply at the same time as 'disabled'
    */
   inputDisabled:PropTypes.bool,
+
+  /**
+   * The content of the label
+   */
+  label:PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object
+  ]),
+
+  /**
+   * Provide an HTML id to the label
+   */
+  labelId:PropTypes.string,
+
+  /**
+   * The html class names to be provided to the label
+   */
+  labelClassName:PropTypes.string,
+
+  /**
+   * The JSX-Written, css styles to apply to the label.
+   */
+  labelStyle:PropTypes.object,
 
   /**
    *  The children JSX
@@ -220,6 +480,10 @@ Input.propTypes = {
     'textarea',
     'checkboxes',
     'radios',
+    'card-checkboxes',
+    'card-radios',
+    'svg-checkboxes',
+    'svg-radios',
   ]
   ),
 
@@ -229,9 +493,47 @@ Input.propTypes = {
   placeholder:PropTypes.string,
 
   /**
-   * The input name
+   * The input description
    */
-  name:PropTypes.string.isRequired,
+  description:PropTypes.string,
+
+  /**
+   * The html class names to be provided to the input description
+   */
+  descriptionClassName:PropTypes.string,
+
+  /**
+   * The JSX-Written, css styles to apply to the input description.
+   */
+  descriptionStyle:PropTypes.object,
+
+  /**
+   * A text to display on the input left side (only valid for inputs assimilated to text)
+   */
+  leftSide:PropTypes.string,
+
+  /**
+   * A text to display on the input right side (only valid for inputs assimilated to text)
+   */
+  rightSide:PropTypes.string,
+
+  /**
+   * The html class names to be provided to the input sides
+   */
+  sidesClassName:PropTypes.string,
+
+  /**
+   * The JSX-Written, css styles to apply to the input sides.
+   */
+  sidesStyle:PropTypes.object,
+
+  /**
+   * Which html tag to use
+   */
+  descriptionAs:PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object
+  ]),
 
   /**
    * The input options, necessary for
@@ -258,7 +560,17 @@ Input.propTypes = {
   /**
    * In case options are defined and we enable a user-defined value, let's give it an ID
    */
-  otherId:PropTypes.string
+  otherId:PropTypes.string,
+
+  /**
+   * The variant. Look at exact components documentation. See SVGChoice
+   */
+  variant:PropTypes.string,
+
+  /**
+   * The display style.
+   */
+  aesthetic:PropTypes.oneOf(['mars', 'saturn']),
 
   /*
   : PropTypes.shape({
@@ -267,15 +579,27 @@ Input.propTypes = {
     state: PropTypes.string.isRequired,
   }),
   : PropTypes.func,
-  : PropTypes.func,
   */
+  /**
+   * The value of the input, for controlled inputs
+   */
+  value:PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.string,
+  ]),
+
+  /**
+   * Which function to call on value change, for controlled inputs
+   */
+  onChange:PropTypes.func,
 }
 
 Input.defaultProps = {
   type       :'text',
   placeholder:'please enter your email here',
   as         :'fieldset',
-  disabled   :false
+  disabled   :false,
+  aesthetic  :'mars'
   /* height:'2.2em',
      as:'p', */
 }

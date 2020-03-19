@@ -193,7 +193,18 @@ SVGChoice.propTypes = {
   /**
    * In case we enable the other value, let's give it an ID
    */
-  otherId:PropTypes.string
+  otherId:PropTypes.string,
+
+
+  /**
+   * Which variant to display. Look at the examples for usage info
+   */
+  variant:PropTypes.oneOf([
+    'cross',
+    'check',
+    'circle',
+    'dot'
+  ])
 }
 
 SVGChoice.defaultProps = {

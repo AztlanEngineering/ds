@@ -50,7 +50,7 @@ const ALL_COLORS = [
   ...MODALS
 ]
 
-const FONT_FAMILY_HEADINGS = 'px grotesk'
+const FONT_FAMILY_HEADINGS = 'pxg'
 const FONT_FAMILY_PARAGRAPH = 'us'
 
 export {

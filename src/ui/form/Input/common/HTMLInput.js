@@ -25,7 +25,10 @@ const HTMLInput = ({
   type,
   placeholder,
   name,
-  disabled
+  disabled,
+
+  value,
+  onChange
 }) => {
 
 
@@ -43,6 +46,8 @@ const HTMLInput = ({
       placeholder={ placeholder }
       name={ name }
       disabled={ disabled }
+      value={ value }
+      onChange={ onChange }
     />
   )}
 
@@ -97,10 +102,19 @@ HTMLInput.propTypes = {
     title: PropTypes.string.isRequired,
     state: PropTypes.string.isRequired,
   }),
-  : PropTypes.func,
-  : PropTypes.func,
-  : PropTypes.oneOf(['', ''])
   */
+  /**
+   * The value of the input, for controlled inputs
+   */
+  value:PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.string,
+  ]),
+
+  /**
+   * Which function to call on value change, for controlled inputs
+   */
+  onChange:PropTypes.func,
 }
 
 HTMLInput.defaultProps = {

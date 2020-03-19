@@ -44,11 +44,14 @@ export default {
   'independent'      :'indep',
   'input'            :'input',
   'inputs'           :'fw sin',
+  'inverted'         :'inv',
+  // Input
+  'inside'           :'inside',
   // Item (Menu)
   'item'             :'item',
-  'inverted'         :'inv',
+  // Inside (form input )
   'label'            :'label',
-  //SnapSlider
+  //SnapSlider, InputSide(input)
   'left'             :'left',
   'lib'              :'fw',
   'light'            :'light',
@@ -61,7 +64,7 @@ export default {
   'part'             :'part',
   'question'         :'ref',
   'relativeSize'     :'r-',
-  //SnapSlider
+  //SnapSlider, InputSide(input)
   'right'            :'rgt',
   //CircleInfo
   'row'              :'row',

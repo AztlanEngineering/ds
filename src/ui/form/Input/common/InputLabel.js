@@ -4,99 +4,86 @@ import PropTypes from 'prop-types'
 
 
 
-//Config
-//import C from 'ui/cssClasses'
+/* Config
+   import C from 'ui/cssClasses' */
 
-//Relative imports
-//import styles from './input_label.scss'
-import './input_label.scss'
+/* Relative imports
+   import styles from './input_label.scss'
+   import './input_label.scss' */
 
-const baseClassName = 'input_label'
+//const baseClassName = 'input_label'
 
 
 /**
  * Use `InputLabel` to
- * Has color `x` 
+ * Has color `x`
  */
 const InputLabel = ({
   id,
   className,
-  style
+  style,
+  children,
+
+  htmlFor,
+
+  as:Wrapper
 }) => {
-  
-  
+
   return (
-  <div 
-    className={
-      [
-        //styles[baseClassName],
-        baseClassName,
-        className
-      ].filter(e => e).join(' ')
-  }
-    id={ id }
-    style={ style }
-  >
-    <h2>Welcome to the InputLabel component</h2>
-  </div>
-)}
+    <Wrapper
+      className={
+        [
+        /* styles[baseClassName],
+           baseClassName, */
+          className
+        ].filter(e => e).join(' ')
+      }
+      id={ id }
+      style={ style }
+
+      htmlFor={ (Wrapper === 'label') ? htmlFor : undefined }
+    >
+      { children }
+    </Wrapper>
+  )}
 
 InputLabel.propTypes = {
   /**
    * Provide an HTML id to this element
    */
-  id: PropTypes.string,
+  id:PropTypes.string,
 
   /**
    * The html class names to be provided to this element
    */
-  className: PropTypes.string,
+  className:PropTypes.string,
 
   /**
    * The JSX-Written, css styles to apply to the element.
    */
-  style: PropTypes.object,
+  style:PropTypes.object,
 
   /**
    *  The children JSX
    */
-  children: PropTypes.node,
+  children:PropTypes.node,
 
   /**
    * Which html tag to use
    */
-  as: PropTypes.oneOfType([
+  as:PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object
-  ]), 
-  //as: PropTypes.string,
+  ]),
 
   /**
-   * The height of the element
+   * The html "for" property. Only valid if as = label
    */
-  height: PropTypes.string,
-
-  /**
-   * The width of the element
-   */
-  width: PropTypes.string,
-  /*
-  : PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    state: PropTypes.string.isRequired,
-  }),
-  : PropTypes.func,
-  : PropTypes.func,
-  : PropTypes.oneOf(['', ''])
-  */
+  htmlFor:PropTypes.string,
 }
 
-/*
 InputLabel.defaultProps = {
-  status: 'neutral',
-  //height:'2.2em',
-  //as:'p',
+  as:'label',
 }
-*/
+
 export default InputLabel
