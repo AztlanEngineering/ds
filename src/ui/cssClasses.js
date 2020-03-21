@@ -13,13 +13,14 @@ export default {
   'center'           :'ctr',
   // CircleInfo, Label
   'circle'           :'circle',
-  //LocalIndex, CardChoice (Input)
+  //LocalIndex, CardChoice (Input), Input
   'compact'          :'compact',
   //CardChoice (Input)
   'content'          :'content',
   'contour'          :'contour',
   'disabled'         :'disabled',
-  'error'            :'err',
+  // Input
+  'error'            :'error',
   // StatusBar
   'fixed'            :'fixed',
   // Group (Button)
@@ -28,7 +29,7 @@ export default {
   'header'           :'header',
   // Group (Button)
   'horizontalStretch':'hstretch',
-  // (CaretDown) Page
+  // (CaretDown) Page, InputIcon,
   'icon'             :'fi',
   // Button
   'iconInside'       :'i',
@@ -51,7 +52,7 @@ export default {
   'item'             :'item',
   // Inside (form input )
   'label'            :'label',
-  //SnapSlider, InputSide(input)
+  //SnapSlider
   'left'             :'left',
   'lib'              :'fw',
   'light'            :'light',
@@ -64,7 +65,7 @@ export default {
   'part'             :'part',
   'question'         :'ref',
   'relativeSize'     :'r-',
-  //SnapSlider, InputSide(input)
+  //SnapSlider
   'right'            :'rgt',
   //CircleInfo
   'row'              :'row',
@@ -89,7 +90,8 @@ export default {
   'transparent'      :'alpha',
   // GrayscaleIcon, Label
   'transition'       :'t',
-  'valid'            :'val',
+  // Input
+  'valid'            :'valid',
   'vertical'         :'vrt',
   // Group (Button)
   'verticalStretch'  :'v-stretch',

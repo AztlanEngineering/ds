@@ -4,7 +4,12 @@ import React, { useState } from 'react'
 //import { action } from '@storybook/addon-actions'
 
 import { Input } from 'ui'
-import { InputSide, InputLabel, InputDescription } from 'ui/form/Input/common'
+import {
+  InputIcon,
+  InputSide,
+  InputLabel,
+  InputDescription
+} from 'ui/form/Input/common'
 /* import QUERY from './graphql/query.graphql'
    import { AplProvider } from 'stories/utils'
    import { Router } from 'stories/utils'
@@ -20,7 +25,8 @@ export default {
   subcomponents:{
     InputLabel,
     InputDescription,
-    InputSide
+    InputSide,
+    InputIcon
   },
   parameters:{
     decorators:[
@@ -86,6 +92,52 @@ export const Disabled = () => (
   />
 )
 
+export const Optional = () => (
+  <Input
+    type='email'
+    name='formeremail'
+    label='Your last stay with us'
+    inputId='optional-else'
+    optional
+  />
+)
+
+export const Compact = () => (
+  <Input
+    type='email'
+    name='formeremail'
+    label='Your last stay with us'
+    inputId='optional-else'
+    compact
+  />
+)
+
+export const Valid = () => (
+  <Input
+    name={ 'token' }
+    label='Access token'
+    type='text'
+    inputId='thisworks'
+    leftSide='token id'
+    valid='Everything looks good'
+    rightIcon='b'
+    description='Enter here the token you have been provided'
+  />
+)
+
+export const Error = () => (
+  <Input
+    name={ 'token' }
+    label='Access token'
+    type='text'
+    inputId='token_error'
+    leftSide='token id'
+    error='Please input a valid token'
+    rightIcon='h'
+    description='Enter here the token you have been provided'
+  />
+)
+
 export const LeftSide = () => {
   const [value, setValue] = useState()
   const onChange = (e) => {
@@ -120,6 +172,67 @@ export const RightSide = () => {
       label='Number of employees'
       inputId='employees'
       rightSide='employees'
+      placeholder={ '120' }
+    />
+
+  )
+}
+
+export const LeftIcon = () => {
+  const [value, setValue] = useState()
+  const onChange = (e) => {
+    console.log('%%%%%', e)
+  }
+  return (
+    <Input
+      name={ 'employees' }
+      type='number'
+      value={ value }
+      onChange={ onChange }
+      label='Number of employees'
+      inputId='employees'
+      leftIcon='i'
+      placeholder={ '120' }
+    />
+
+  )
+}
+
+export const RightIcon = () => {
+  const [value, setValue] = useState()
+  const onChange = (e) => {
+    console.log('%%%%%', e)
+  }
+  return (
+    <Input
+      name={ 'employees' }
+      type='number'
+      value={ value }
+      onChange={ onChange }
+      label='Number of employees'
+      inputId='employees'
+      rightIcon='d'
+      placeholder={ '120' }
+    />
+
+  )
+}
+
+export const IconAndSide = () => {
+  const [value, setValue] = useState()
+  const onChange = (e) => {
+    console.log('%%%%%', e)
+  }
+  return (
+    <Input
+      name={ 'gasoline' }
+      type='number'
+      value={ value }
+      onChange={ onChange }
+      label='How much gasoline ?'
+      inputId='gasoline'
+      rightIcon='d'
+      rightSide='onces'
       placeholder={ '120' }
     />
 

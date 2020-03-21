@@ -6,7 +6,9 @@ export {
   HTMLChoice,
   SVGChoice,
   CardChoice,
+
   InputLabel,
   InputDescription,
   InputSide,
+  InputIcon
 } from './common' //All of this is uneccessary because only used internally by the local component

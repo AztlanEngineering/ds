@@ -11,7 +11,8 @@ import {
 
   InputLabel,
   InputDescription,
-  InputSide
+  InputSide,
+  InputIcon
 } from './common'
 
 
@@ -36,6 +37,82 @@ const AcceptedHTMLInputTypes = [
   'tel'
 ]
 
+// Undocumented. Wraps every input
+const Holder = ({
+  className,
+  id,
+  style,
+  children,
+
+  error,
+  valid,
+
+  disabled,
+  optional,
+
+  as:Wrapper,
+  aesthetic,
+  compact,
+
+  inputId,
+
+  label,
+  labelAs, //This is the only new prop compared to Input
+  labelId,
+  labelClassName,
+  labelStyle,
+
+  description,
+  descriptionAs,
+  descriptionClassName,
+  descriptionStyle,
+}) => {
+  return(
+    <Wrapper
+      className={[
+      //styles[baseClassName],
+        baseClassName,
+        className,
+        aesthetic,
+        error && C.error,
+        valid && C.valid,
+        compact && C.compact
+      ].filter(e => e).join(' ')
+      }
+      id={ id }
+      style={ style }
+      disabled={ Wrapper === 'fieldset' ? disabled : undefined }
+    >
+      { label &&
+        <InputLabel
+          id={ labelId }
+          className={ labelClassName }
+          style={ labelStyle }
+          htmlFor={ inputId }
+          optional={ optional }
+          labelAs={ labelAs }
+        >
+          { label }
+        </InputLabel>
+      }
+      { children }
+      { (description || error || valid) &&
+        <InputDescription
+          as={ descriptionAs }
+          className={[
+            descriptionClassName,
+            error && C.error,
+            valid && C.valid
+          ].filter( e => e ).join(' ') }
+          style={ descriptionStyle }
+        >
+          { error || valid || description }
+        </InputDescription>
+      }
+    </Wrapper>
+  )
+}
+
 
 /**
  * Use `Input` to
@@ -50,9 +127,13 @@ const Input = ({
   placeholder,
   name,
   disabled,
+  optional,
 
   value,
   onChange,
+
+  error,
+  valid,
 
   inputId,
   inputClassName,
@@ -68,9 +149,10 @@ const Input = ({
   other,
   otherId,
 
-  as:Wrapper,
+  as,
   aesthetic,
   variant,
+  compact,
 
   description,
   descriptionAs,
@@ -80,42 +162,69 @@ const Input = ({
   leftSide,
   rightSide,
   sidesClassName,
-  sidesStyle
+  sidesStyle,
+
+  leftIcon,
+  rightIcon,
+  iconsClassName,
+  iconsStyle,
+  validIcon,
+  errorIcon,
 }) => {
+
   console.log(onChange)
+
+  const holder_props = {
+    //A) props passed
+    className,
+    id,
+    style,
+
+    error,
+    valid,
+
+    disabled,
+    optional,
+
+    as,
+    aesthetic,
+    compact,
+
+    inputId,
+
+    label,
+    labelId,
+    labelClassName,
+    labelStyle,
+
+    description,
+    descriptionAs,
+    descriptionClassName,
+    descriptionStyle,
+
+    // The props labelAs and children are new props
+  }
+
   if (AcceptedHTMLInputTypes.includes(type)) return(
-    <Wrapper
-      className={
-        [
-          //styles[baseClassName],
-          baseClassName,
-          aesthetic,
-          className
-        ].filter(e => e).join(' ')
-      }
-      id={ id }
-      style={ style }
-      disabled={ Wrapper === 'fieldset' ? disabled : undefined }
+    <Holder
+      { ...holder_props }
     >
-      { label &&
-        <InputLabel
-          id={ labelId }
-          className={ labelClassName }
-          style={ labelStyle }
-          htmlFor={ inputId }
-        >
-          { label }
-        </InputLabel>
-      }
       <div className={ C.inside }>
         { leftSide &&
           <InputSide
-            side='left'
             className={ sidesClassName }
             style={ sidesStyle }
           >
             { leftSide }
           </InputSide>
+        }
+        {
+          leftIcon &&
+            <InputIcon
+              className={ iconsClassName }
+              style={ iconsStyle }
+              icon={ leftIcon }
+            />
         }
         <HTMLInput
           type={ type }
@@ -134,9 +243,19 @@ const Input = ({
           value={ value }
           onChange={ onChange }
         />
+        {
+          rightIcon &&
+            <InputIcon
+              className={ iconsClassName }
+              style={ iconsStyle }
+              icon={
+                (error && errorIcon) ||
+                (valid && validIcon) ||
+                rightIcon }
+            />
+        }
         { rightSide &&
           <InputSide
-            side='right'
             className={ sidesClassName }
             style={ sidesStyle }
           >
@@ -144,43 +263,13 @@ const Input = ({
           </InputSide>
         }
       </div>
-      { description &&
-        <InputDescription
-          as={ descriptionAs }
-          className={ descriptionClassName }
-          style={ descriptionStyle }
-        >
-          { description }
-        </InputDescription>
-      }
-    </Wrapper>
+    </Holder>
   )
 
   else if (type === 'textarea') return(
-    <Wrapper
-      className={
-        [
-          //styles[baseClassName],
-          baseClassName,
-          aesthetic,
-          className
-        ].filter(e => e).join(' ')
-      }
-      id={ id }
-      style={ style }
-      disabled={ Wrapper === 'fieldset' ? disabled : undefined }
-
+    <Holder
+      { ...holder_props }
     >
-      { label &&
-        <InputLabel
-          id={ labelId }
-          className={ labelClassName }
-          style={ labelStyle }
-          htmlFor={ inputId }
-        >
-          { label }
-        </InputLabel>
-      }
       <div className={ C.inside }>
         <HTMLTextarea
           type={ type }
@@ -200,44 +289,15 @@ const Input = ({
           onChange={ onChange }
         />
       </div>
-      { description &&
-        <InputDescription
-          as={ descriptionAs }
-          className={ descriptionClassName }
-          style={ descriptionStyle }
-        >
-          { description }
-        </InputDescription>
-      }
-    </Wrapper>
+    </Holder>
 
   )
 
   else if ([ 'checkboxes', 'radios' ].includes(type)) return(
-    <Wrapper
-      className={
-        [
-          //styles[baseClassName],
-          baseClassName,
-          aesthetic,
-          className
-        ].filter(e => e).join(' ')
-      }
-      id={ id }
-      style={ style }
-      disabled={ Wrapper === 'fieldset' ? disabled : undefined }
-
+    <Holder
+      { ...holder_props }
+      labelAs='legend'
     >
-      { label &&
-        <InputLabel
-          id={ labelId }
-          className={ labelClassName }
-          style={ labelStyle }
-          as='legend'
-        >
-          { label }
-        </InputLabel>
-      }
       <HTMLChoice
         type={ type }
         name={ name }
@@ -258,44 +318,15 @@ const Input = ({
         value={ value }
         onChange={ onChange }
       />
-      { description &&
-        <InputDescription
-          as={ descriptionAs }
-          className={ descriptionClassName }
-          style={ descriptionStyle }
-        >
-          { description }
-        </InputDescription>
-      }
-    </Wrapper>
+    </Holder>
 
   )
 
   else if ([ 'svg-checkboxes', 'svg-radios' ].includes(type)) return(
-    <Wrapper
-      className={
-        [
-          //styles[baseClassName],
-          baseClassName,
-          aesthetic,
-          className
-        ].filter(e => e).join(' ')
-      }
-      id={ id }
-      style={ style }
-      disabled={ Wrapper === 'fieldset' ? disabled : undefined }
-
+    <Holder
+      { ...holder_props }
+      labelAs='legend'
     >
-      { label &&
-        <InputLabel
-          id={ labelId }
-          className={ labelClassName }
-          style={ labelStyle }
-          as='legend'
-        >
-          { label }
-        </InputLabel>
-      }
       <SVGChoice
         type={ type }
         name={ name }
@@ -326,35 +357,15 @@ const Input = ({
           { description }
         </InputDescription>
       }
-    </Wrapper>
+    </Holder>
 
   )
 
   else if ([ 'card-checkboxes', 'card-radios' ].includes(type)) return(
-    <Wrapper
-      className={
-        [
-          //styles[baseClassName],
-          baseClassName,
-          aesthetic,
-          className
-        ].filter(e => e).join(' ')
-      }
-      id={ id }
-      style={ style }
-      disabled={ Wrapper === 'fieldset' ? disabled : undefined }
-
+    <Holder
+      { ...holder_props }
+      labelAs='legend'
     >
-      { label &&
-        <InputLabel
-          id={ labelId }
-          className={ labelClassName }
-          style={ labelStyle }
-          as='legend'
-        >
-          { label }
-        </InputLabel>
-      }
       <CardChoice
         type={ type }
         name={ name }
@@ -383,7 +394,7 @@ const Input = ({
           { description }
         </InputDescription>
       }
-    </Wrapper>
+    </Holder>
 
   )
 
@@ -414,6 +425,11 @@ Input.propTypes = {
    * Whether the input is disabled. This property is applied at the wrapper level, and only if the wrapper is a fieldset
    */
   disabled:PropTypes.bool,
+
+  /**
+   * Whether the input is optional. Is considered a better practice than to mark the required fields
+   */
+  optional:PropTypes.bool,
 
   /**
    * Provide an HTML id to the input
@@ -508,6 +524,14 @@ Input.propTypes = {
   descriptionStyle:PropTypes.object,
 
   /**
+   * Which html tag to use
+   */
+  descriptionAs:PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object
+  ]),
+
+  /**
    * A text to display on the input left side (only valid for inputs assimilated to text)
    */
   leftSide:PropTypes.string,
@@ -528,12 +552,34 @@ Input.propTypes = {
   sidesStyle:PropTypes.object,
 
   /**
-   * Which html tag to use
+   * Which icon to display on the left side of the input. Refer to "Storybook/Icons/Default" for possible choices
    */
-  descriptionAs:PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.object
-  ]),
+  leftIcon:PropTypes.string,
+
+  /**
+   * Which icon to display on the right side of the input. Refer to "Storybook/Icons/Default" for possible choices. Please not that the rightIcon is superseded by the State Icon Class
+   */
+  rightIcon:PropTypes.string,
+
+  /**
+   * The icon to be displayed on the right side of the input when valid. Refer to "Storybook/Icons/Default" for possible choices.
+   */
+  validIcon:PropTypes.string,
+
+  /**
+   * The icon to be displayed on the right side of the input when invalid. Refer to"Storybook/Icons/Default" for possible choices.
+   */
+  errorIcon:PropTypes.string,
+
+  /**
+   * The html class names to be provided to the input icons
+   */
+  iconsClassName:PropTypes.string,
+
+  /**
+   * The JSX-Written, css styles to apply to the input icons.
+   */
+  iconsStyle:PropTypes.object,
 
   /**
    * The input options, necessary for
@@ -580,6 +626,7 @@ Input.propTypes = {
   }),
   : PropTypes.func,
   */
+
   /**
    * The value of the input, for controlled inputs
    */
@@ -592,6 +639,19 @@ Input.propTypes = {
    * Which function to call on value change, for controlled inputs
    */
   onChange:PropTypes.func,
+
+  /**
+   * Whether the input is on an error state. Will be displayed before the description.
+   */
+  error:PropTypes.string,
+
+  /**
+   * Whether the input is valid. If a sentence, will be displayed before the description.
+   */
+  valid:PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.string,
+  ]),
 }
 
 Input.defaultProps = {
@@ -599,7 +659,10 @@ Input.defaultProps = {
   placeholder:'please enter your email here',
   as         :'fieldset',
   disabled   :false,
-  aesthetic  :'mars'
+  aesthetic  :'mars',
+  optional   :false,
+  validIcon  :'o',
+  errorIcon  :'p'
   /* height:'2.2em',
      as:'p', */
 }

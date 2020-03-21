@@ -24,7 +24,7 @@ const InputSide = ({
   style,
   children,
 
-  side,
+  //side,
 }) => {
   
   
@@ -34,7 +34,6 @@ const InputSide = ({
       [
         //styles[baseClassName],
         baseClassName,
-        side,
         className
       ].filter(e => e).join(' ')
   }
@@ -71,7 +70,7 @@ InputSide.propTypes = {
   /**
    * The side of the input on which to display this
    */
-  side: PropTypes.oneOf(['left', 'right']).isRequired
+  //side: PropTypes.oneOf(['left', 'right']).isRequired
 }
 
 /*

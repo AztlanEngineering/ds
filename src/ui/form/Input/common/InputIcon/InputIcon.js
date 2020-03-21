@@ -5,45 +5,48 @@ import PropTypes from 'prop-types'
 
 
 //Config
-//import C from 'ui/cssClasses'
+import C from 'ui/cssClasses'
 
 //Relative imports
-//import styles from './input_description.scss'
-//import './input_description.scss'
+//import styles from './input_icon.scss'
+import './input_icon.scss'
 
-const baseClassName = 'description'
+const baseClassName = 'input_icon'
 
 
 /**
- * Use `InputDescription` to
+ * Use `InputIcon` to
  * Has color `x` 
  */
-const InputDescription = ({
+const InputIcon = ({
   id,
   className,
   style,
-  children,
-  as:Wrapper
+
+  icon
 }) => {
   
   
   return (
-  <Wrapper 
+  <div 
     className={
       [
         //styles[baseClassName],
         baseClassName,
+        C.icon,
         className
       ].filter(e => e).join(' ')
   }
     id={ id }
     style={ style }
   >
-    { children }
-  </Wrapper>
+    <p>
+    { icon }
+    </p>
+  </div>
 )}
 
-InputDescription.propTypes = {
+InputIcon.propTypes = {
   /**
    * Provide an HTML id to this element
    */
@@ -60,21 +63,16 @@ InputDescription.propTypes = {
   style: PropTypes.object,
 
   /**
-   *  The children JSX
+   * The icon to display
    */
-  children: PropTypes.node,
-
-  /**
-   * Which html tag to use
-   */
-  as: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.object
-  ]), 
+  icon: PropTypes.string.isRequired,
 }
 
-InputDescription.defaultProps = {
-  as:'p',
+/*
+InputIcon.defaultProps = {
+  status: 'neutral',
+  //height:'2.2em',
+  //as:'p',
 }
-
-export default InputDescription
+*/
+export default InputIcon

@@ -2,7 +2,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-
+import {
+  Label
+} from 'ui/common'
 
 /* Config
    import C from 'ui/cssClasses' */
@@ -26,14 +28,17 @@ const InputLabel = ({
 
   htmlFor,
 
-  as:Wrapper
+  as:Wrapper,
+
+  optional,
+  optionalText,
 }) => {
 
   return (
     <Wrapper
       className={
         [
-        /* styles[baseClassName],
+          /* styles[baseClassName],
            baseClassName, */
           className
         ].filter(e => e).join(' ')
@@ -44,6 +49,16 @@ const InputLabel = ({
       htmlFor={ (Wrapper === 'label') ? htmlFor : undefined }
     >
       { children }
+      { optional &&
+        <Label
+          className='ls s-2 x-blue'
+          simple
+        >
+          (
+          { optionalText }
+          )
+        </Label>
+      }
     </Wrapper>
   )}
 
@@ -80,10 +95,22 @@ InputLabel.propTypes = {
    * The html "for" property. Only valid if as = label
    */
   htmlFor:PropTypes.string,
+
+  /**
+   * Whether the input is optional. Is considered a better practice than to mark the required fields
+   */
+  optional:PropTypes.bool,
+
+  /**
+   * The text to display if the input is optional
+   */
+  optionalText:PropTypes.string,
 }
 
 InputLabel.defaultProps = {
-  as:'label',
+  as          :'label',
+  optional    :false,
+  optionalText:'optional'
 }
 
 export default InputLabel
