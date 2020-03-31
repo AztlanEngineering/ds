@@ -33,9 +33,7 @@ const SnapSlider = ({
           baseClassName,
           !scrollbar && 'nsb-xs',
           compact && C.compact,
-          (pin == 'left') && C.left,
-          (pin == 'right') && C.right,
-          (pin == 'center') && C.center,
+          C[pin], //pin being 'center', 'right', or 'left'
           className
         ].filter(e => e).join(' ')
       }

@@ -60,7 +60,7 @@ $scrollPadding:$inBetweenMargin * 2;
     }
   }
 
-  &.rgt {
+  &.right {
     scroll-padding: 0 $scrollPadding 0;
 
     > * {

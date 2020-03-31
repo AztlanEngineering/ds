@@ -9,6 +9,8 @@ export default {
   // Label, Button
   'basicHover'       :'hbasic',
   'block'            :'block',
+  // Popup
+  'bottom'           :'bottom',
   //SnapSlider
   'center'           :'ctr',
   // CircleInfo, Label
@@ -52,7 +54,7 @@ export default {
   'item'             :'item',
   // Inside (form input )
   'label'            :'label',
-  //SnapSlider
+  //SnapSlider, Popup
   'left'             :'left',
   'lib'              :'fw',
   'light'            :'light',
@@ -65,8 +67,8 @@ export default {
   'part'             :'part',
   'question'         :'ref',
   'relativeSize'     :'r-',
-  //SnapSlider
-  'right'            :'rgt',
+  //SnapSlider, Popup
+  'right'            :'right',
   //CircleInfo
   'row'              :'row',
   // Section (Card)
@@ -87,12 +89,16 @@ export default {
   'stroke'           :'stroke',
   'svg'              :'svg',
   'title'            :'title',
+  // Popup
+  'top'              :'top',
   'transparent'      :'alpha',
   // GrayscaleIcon, Label
   'transition'       :'t',
   // Input
   'valid'            :'valid',
   'vertical'         :'vrt',
+  //Popup
+  'visible':'visible',
   // Group (Button)
   'verticalStretch'  :'v-stretch',
 }
