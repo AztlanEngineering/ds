@@ -37,6 +37,7 @@
     "apollo-link": "^1.2.13",
     "apollo-link-http": "^1.5.16",
     "apollo-link-retry": "^2.2.15",
+    "downshift": "^5.0.5",
     "graphql": "^14.6.0",
     "graphql-tag": "^2.10.3",
     "history": "^4.10.1",

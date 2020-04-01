@@ -13,27 +13,29 @@ Classes :
   background: blue;
 
   &:not(.visible) {
-    display:none;
-  };
+    display: none;
+  }
 
   &.left {
-    top:0;
-    right:100%;
-    background:grey;
+    top: 0;
+    right: 100%;
+    background: grey;
   }
 
   &.right {
-    top:0;
-    left:100%;
-    background:yellow;
+    top: 0;
+    left: 100%;
+    background: yellow;
   }
 
   &.top {
-    bottom:100%;
-    background:red;
+    bottom: 100%;
+    left: 0;
+    background: red;
   }
 
   &.bottom {
-
+    top: 100%;
+    left: 0
   }
 }

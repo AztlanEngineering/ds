@@ -6,10 +6,10 @@ import { InnerContent } from 'ui'
 import { TEXT_XXS_ESC, TEXT_XXS, TEXT_XS, TEXT } from '../utils/Dummy'
 
 export default {
-  title: 'common/InnerContent',
-  component:InnerContent,
-  parameters: {
-    decorators: [
+  title     :'common/InnerContent',
+  component :InnerContent,
+  parameters:{
+    decorators:[
       //storyfn => <div className="">{ storyfn() }</div>,
     ]
   }
@@ -19,5 +19,5 @@ export default {
 
 export const Default = () =>
   <InnerContent
-    dangerouslySetInnerHTML={{ __html:TEXT }}
+    dangerouslySetInnerHTML={{ __html: TEXT }}
   />

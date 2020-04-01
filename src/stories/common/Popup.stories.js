@@ -28,6 +28,8 @@ export default {
   }
 }
 
+const width='200px'
+
 export const Default = () => {
   const [isVisible, setVisible] = useState(true)
 
@@ -37,19 +39,28 @@ export const Default = () => {
         <InnerContent
           dangerouslySetInnerHTML={{ __html: TEXT_XS }}
         />
-        <div className='yib' id='hello' style={ {
-          marginLeft:'20px',
-          background:'green',
-          position:'relative'
-          }}>
-        <button onClick={ () => setVisible(!isVisible) }>
-          <div className='x-red cx h1'>
-            Make it&nbsp;
-            { isVisible ? 'invisible' : 'visible' }
-          </div>
-        </button>
-        <Popup isVisible={ isVisible }>{ TEXT_XXS_ESC }</Popup>
-      </div>
+        <div
+          className='yib'
+          id='hello'
+          style={ {
+            marginLeft:'20px',
+            background:'green',
+            position  :'relative'
+          }}
+        >
+          <button onClick={ () => setVisible(!isVisible) }>
+            <div className='x-red cx h1'>
+              Make it&nbsp;
+              { isVisible ? 'invisible' : 'visible' }
+            </div>
+          </button>
+          <Popup
+            isVisible={ isVisible }
+            style={{ width }}
+          >
+            { TEXT_XXS_ESC }
+          </Popup>
+        </div>
       </div>
       <InnerContent
         dangerouslySetInnerHTML={{ __html: TEXT }}
@@ -67,23 +78,31 @@ export const Order = () => {
         <InnerContent
           dangerouslySetInnerHTML={{ __html: TEXT_XS }}
         />
-        <div className='yib' id='hello' style={ {
-          marginLeft:'20px',
-          background:'green',
-          position:'relative'
-          }}>
-        <button onClick={ () => setVisible(!isVisible) }>
-          <div className='x-red cx h1'>
-            Make it&nbsp;
-            { isVisible ? 'invisible' : 'visible' }
-          </div>
-        </button>
-        <Popup 
-          preferredOrder={['left', 'bottom', 'right', 'top']}
-          isVisible={ isVisible }
+        <div
+          className='yib'
+          id='hello'
+          style={ {
+            marginLeft:'20px',
+            background:'green',
+            position  :'relative'
+          }}
         >
-          { TEXT_XXS_ESC }</Popup>
-      </div>
+          <button onClick={ () => setVisible(!isVisible) }>
+            <div className='x-red cx h1'>
+              Make it&nbsp;
+              { isVisible ? 'invisible' : 'visible' }
+            </div>
+          </button>
+          <Popup
+            preferredOrder={['left', 'bottom', 'right', 'top']}
+            style={{ width }}
+            isVisible={ isVisible }
+          >
+            Hey this is a test lets see if the last version works
+            Hey this is a test lets see if the last version works
+            Hey this is a test lets see if the last version works
+          </Popup>
+        </div>
       </div>
       <InnerContent
         dangerouslySetInnerHTML={{ __html: TEXT }}
