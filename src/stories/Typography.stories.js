@@ -60,7 +60,7 @@ export const text_variables = () =>
     {
       ['tl', 'ti', 'ts', 'tsm', 'tb', 'tu', 'tv', 'tw', 'tos','to', 'tn'].map((e, i) =>
         <p
-          className={e + ' x-primary cx'}
+          className={e + ' x-primary c-x'}
           key={i}
         >
           { e }

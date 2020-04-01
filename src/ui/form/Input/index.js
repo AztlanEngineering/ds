@@ -1,5 +1,6 @@
 /* @fwrlines/generator-react-component 1.4.0 */
 export { default as Input } from './Input'
+
 export {
   HTMLInput,
   HTMLTextarea,
@@ -12,3 +13,11 @@ export {
   InputSide,
   InputIcon
 } from './common' //All of this is uneccessary because only used internally by the local component
+
+export {
+  Holder
+} from './elements'
+
+export {
+  DownshiftSelect
+} from './compositions'

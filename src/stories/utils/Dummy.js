@@ -43,24 +43,24 @@ const TEXT = `
 const QA = [
   {
     anchor:'cosa',
-    Q:'Cos\'è la cinghia di distribuzione e a cosa serve?',
+    Q     :'Cos\'è la cinghia di distribuzione e a cosa serve?',
     __html:`<p>La cinghia di distribuzione è una delle componenti più importanti del motore di auto, moto e scooter. La cinghia, come si deduce dal nome, è un <strong>nastro dentato di materiale elastico o gommato, rinforzato da parti metalliche, che costringe tutte gli ingranaggi a cui è connessa a muoversi contemporaneamente in modo sincronizzato</strong>. La sua funzione primaria è di unire il moto dell'albero motore, che trasmette l'energia dei pistoni alla trasmissione, con l'albero a camme, che regola il movimento di pistoni e valvole. Se la cinghia è rotta o danneggiata, <strong>il motore non può funzionare bene </strong> e in poco tempo si danneggerà irrevocabilmente, causando migliaia di euro di danni.</p>`
   },
 
   {
     anchor:'quando',
-    Q:'Quando va cambiata la cinghia di distribuzione?',
+    Q     :'Quando va cambiata la cinghia di distribuzione?',
     __html:`<p>Se danneggiata la cinghia di distribuzione va cambiata subito, come spiegheremo meglio di seguito. In condizioni normali la cinghia va invece cambiata ogni <strong>100-180 mila chilometri</strong> o <strong>ogni 5-6 anni</strong>. A tutti è chiaro che più chilometri risultino in più usura per tutte le componenti, cinghia inclusa; cosa deve fare però se si usa poco l'auto e ci viene comunque consigliato di cambiare la cinghia dopo 5 anni? Ebbene a causa delle normali <strong>condizioni ambientali</strong>, il materiale gommoso della cinghia andrà a <strong>seccarsi, assottigliarsi o perdere la necessaria elasticità</strong>, diventando più fragile e quindi da cambiare. In ogni caso, per sapere dopo quanti chilometri cambiare la cinghia di distribuzione della tua auto, controlla il libretto d'uso e manutenzione e trova l'intervallo in anni o chilometri consigliato dal produttore.</p>`
   },
 
   {
     anchor:'quanto',
-    Q:'Quanto costa cambiare la cinghia di distribuzione?',
+    Q     :'Quanto costa cambiare la cinghia di distribuzione?',
     __html:`<p>Il costo della sostituzione della cinghia dipende moltissimo dalle dimensioni e dalla marca della vettura. La cinghia di ricambio generalmente costa dai 40€ ai 150€, gran parte del costo risiede però nel lavoro del meccanico che può variare dai 500€ fino a 1000€. Più l'auto è grossa più diventa infatti fisicamente difficile raggiungere la cinghia che è spesso posizionata in parti poco accessibili del motore. Inoltre se la cinghia è danneggiata probabilmente lo sono anche altre componenti come i cuscinetti, i tendicinghia o la pompa dell'acqua; se vanno sostituiti il prezzo purtroppo lievita. Per le auto di lusso poi un cambio di cinghia di distribuzione può arrivare a costare facilmente sopra i 1000€ a causa dell'elevato costo dei ricambi originali. Una cosa è certa, <strong>i danni causati alla macchina da una cinghia rotta o troppo usurata sono in media 4 o 5 volte il costo della sostituzione</strong>; il tipico esempio di come la buona manutenzione dell'auto sia un investimento, e non una spesa, per le nostre tasche.</p></strong>`
   },
 	    {
     anchor:'quali',
-    Q:'Quali sono i sintomi della cinghia di distribuzione rotta?',
+    Q     :'Quali sono i sintomi della cinghia di distribuzione rotta?',
     __html:`<p>Premesso che non si dovrebbe mai ricorrere all'autodiagnosi per valutare le condizioni della cinghia della propria macchina, ma ci si dovrebbe sempre affidare agli specialisti, ci sono alcuni campanelli d'allarme:</p>
 			<p><ul>
 			<li><strong>Rumore di ticchettio da dentro il motore</strong>, suggerisce un/'irregolare combustione del carburante</li>
@@ -73,11 +73,90 @@ const QA = [
 
   {
     anchor:'fare',
-    Q:'Cosa fare se si rompe la cinghia di distribuzione?',
+    Q     :'Cosa fare se si rompe la cinghia di distribuzione?',
     __html:`<p>Se pensi che la cinghia della tua auto o scooter si sia rotta, il consiglio è di <strong>non accenderla o muoverla assolutamente, nemmeno di pochi metri!</strong> Bastano infatti <strong>pochi giri del motore</strong> con la cinghia rotta per far scontrare le valvole con i pistoni, rovinare i cilindri e danneggiare la testata motore causando importanti danni e rendendo l'auto inutilizzabile. Chiama subito un buon meccanico e, se necessario, <strong>portagli l'auto in officina tramite un carro attrezzi</strong>; puoi stare certo che il costo del carro attrezzi è davvero nulla rispetto a quello di dover rifare il motore per i danni causati dalla cinghia rotta.</p>`,
   },
 
 
+]
+
+const LIST = [
+  'Apple',
+  'Apricot',
+  'Avocado',
+  'Banana',
+  'Bilberry',
+  'Blackberry',
+  'Blackcurrant',
+  'Blueberry',
+  'Currant',
+  'Cherry',
+  'Cherimoya',
+  'Clementine',
+  'Date',
+  'Damson',
+  'Durian',
+  'Eggplant',
+  'Elderberry',
+  'Feijoa',
+  'Gooseberry',
+  'Grape',
+  'Grapefruit',
+  'Guava',
+  'Huckleberry',
+  'Jackfruit',
+  'Jambul',
+  'Kiwi fruit',
+  'Kumquat',
+  'Legume',
+  'Lemon',
+  'Lime',
+  'Lychee',
+  'Mango',
+  'Mangostine',
+  'Melon',
+  'Cantaloupe',
+  'Honeydew melon',
+  'Watermelon',
+  'Rock melon',
+  'Nectarine',
+  'Orange',
+  'Peach',
+  'Pear',
+  'Williams pear or Bartlett pear',
+  'Pitaya',
+  'Physalis',
+  'Plum/prune (dried plum)',
+  'Pineapple',
+  'Pomegranate',
+  'Raisin',
+  'Raspberry',
+  'Western raspberry (blackcap)',
+  'Rambutan',
+  'Redcurrant',
+  'Salal berry',
+  'Satsuma',
+  'Star fruit',
+  'Strawberry',
+  'Tangerine',
+  'Tomato',
+  'Ugli fruit',
+  'Watermelon',
+  'Ziziphus mauritiana'
+]
+
+const LIST_XS = [
+  'Apple',
+  'Melon',
+  'Cantaloupe',
+  'Honeydew melon',
+  'Watermelon',
+  'Rock melon',
+  'Nectarine',
+  'Orange',
+  'Peach',
+  'Pear',
+  'Williams pear or Bartlett pear',
 ]
 
 
@@ -86,5 +165,7 @@ export {
   TEXT_XS,
   TEXT_XXS,
   TEXT_XXS_ESC,
+  LIST,
+  LIST_XS,
   QA
 }

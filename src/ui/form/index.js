@@ -5,5 +5,7 @@ export {
   HTMLTextarea,
   HTMLChoice,
   SVGChoice,
-  CardChoice
+  CardChoice,
+  DownshiftSelect,
+  Holder,
 } from './Input'

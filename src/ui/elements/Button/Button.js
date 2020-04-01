@@ -29,7 +29,9 @@ const Button = ({
   loaderType='bars',
 
   as:Element,
-  dangerouslySetInnerHTML
+  dangerouslySetInnerHTML,
+
+  ...additionalProps
 }) => {
 
   return (
@@ -54,6 +56,7 @@ const Button = ({
         ].filter(e => e).join(' ')
       }
       disabled={ disabled }
+      { ...additionalProps }
     >
       { loading ?
         <>

@@ -15,7 +15,9 @@ import {
   InputIcon
 } from './common'
 
-
+import {
+  Holder
+} from './elements'
 
 /* Config*/
 import C from 'ui/cssClasses'
@@ -24,7 +26,7 @@ import C from 'ui/cssClasses'
    import styles from './input.scss' */
 import './input.scss'
 
-const baseClassName = 'input'
+//const baseClassName = 'input' // Better define in holder
 
 const AcceptedHTMLInputTypes = [
   'text',
@@ -36,82 +38,6 @@ const AcceptedHTMLInputTypes = [
   'month',
   'tel'
 ]
-
-// Undocumented. Wraps every input
-const Holder = ({
-  className,
-  id,
-  style,
-  children,
-
-  error,
-  valid,
-
-  disabled,
-  optional,
-
-  as:Wrapper,
-  aesthetic,
-  compact,
-
-  inputId,
-
-  label,
-  labelAs, //This is the only new prop compared to Input
-  labelId,
-  labelClassName,
-  labelStyle,
-
-  description,
-  descriptionAs,
-  descriptionClassName,
-  descriptionStyle,
-}) => {
-  return(
-    <Wrapper
-      className={[
-      //styles[baseClassName],
-        baseClassName,
-        className,
-        aesthetic,
-        error && C.error,
-        valid && C.valid,
-        compact && C.compact
-      ].filter(e => e).join(' ')
-      }
-      id={ id }
-      style={ style }
-      disabled={ Wrapper === 'fieldset' ? disabled : undefined }
-    >
-      { label &&
-        <InputLabel
-          id={ labelId }
-          className={ labelClassName }
-          style={ labelStyle }
-          htmlFor={ inputId }
-          optional={ optional }
-          labelAs={ labelAs }
-        >
-          { label }
-        </InputLabel>
-      }
-      { children }
-      { (description || error || valid) &&
-        <InputDescription
-          as={ descriptionAs }
-          className={[
-            descriptionClassName,
-            error && C.error,
-            valid && C.valid
-          ].filter( e => e ).join(' ') }
-          style={ descriptionStyle }
-        >
-          { error || valid || description }
-        </InputDescription>
-      }
-    </Wrapper>
-  )
-}
 
 
 /**
@@ -398,6 +324,14 @@ const Input = ({
 
   )
 
+  else if ( type == 'downshift-select' ) return(
+    <>h</>
+  )
+
+  else if ( type == 'downshift-combobox' ) return(
+    <>h</>
+  )
+
 }
 
 Input.propTypes = {
@@ -500,6 +434,8 @@ Input.propTypes = {
     'card-radios',
     'svg-checkboxes',
     'svg-radios',
+    'downshift-combobox',
+    'downshift-select'
   ]
   ),
 
@@ -612,6 +548,11 @@ Input.propTypes = {
    * The variant. Look at exact components documentation. See SVGChoice
    */
   variant:PropTypes.string,
+
+  /**
+   * Whether the input is compact
+   */
+  compact:PropTypes.bool,
 
   /**
    * The display style.

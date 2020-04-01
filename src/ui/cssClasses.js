@@ -45,6 +45,7 @@ export default {
   'in3dHover'        :'hin3d',
   // Group( Button )
   'independent'      :'indep',
+  // Holder (Input)
   'input'            :'input',
   'inputs'           :'fw sin',
   'inverted'         :'inv',

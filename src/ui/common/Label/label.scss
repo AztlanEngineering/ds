@@ -23,7 +23,7 @@ $line-height:.9em;
   background: var(--x, transparent);
   padding: $padding;
   vertical-align: $vertical-align;
-  color: var(--x-on, var(--black));
+  color: var(--on-x, var(--black));
   line-height:$line-height;
   font-family: $fontFamily;
   font-weight: $font-weight;

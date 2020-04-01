@@ -33,7 +33,7 @@ $iconTransitionTime:0.3s;
   cursor: pointer;
   overflow: hidden;
   line-height: $lineHeight;
-  color: var(--x-on, var(--black));
+  color: var(--on-x, var(--black));
   font-family: $fontFamily;
   font-weight: $fontWeight;
   -webkit-tap-highlight-color: $tapColor;
@@ -50,14 +50,14 @@ $iconTransitionTime:0.3s;
 
 
   &:disabled {
-    background: var(--x-light, var(--dark-white));
+    background: var(--light-x, var(--dark-white));
     cursor: unset;
-    color: var(--x-on, var(--dark-grey));
+    color: var(--on-x, var(--dark-grey));
   }
 
   &:not(:disabled) {
     &:hover {
-      background: var(--x-light, var(--dark-white));
+      background: var(--light-x, var(--dark-white));
     }
 
     &:focus,

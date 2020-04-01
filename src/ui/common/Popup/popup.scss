@@ -11,6 +11,7 @@ Classes :
   display: inline-block;
   position: absolute;
   background: blue;
+  //overflow-y:scroll;
 
   &:not(.visible) {
     display: none;

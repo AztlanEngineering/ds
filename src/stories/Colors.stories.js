@@ -87,22 +87,22 @@ const setterTester = (MAP) => (
   MAP.map((e,i) =>
     <div className={ 'x-' + e } key={i}>
       <span style={{
-        background:'var(--x-dark)',
-        color:'var(--x-on)',
+        background:'var(--dark-x)',
+        color:'var(--on-x)',
       }}
       >
           Dark
       </span>
       <span style={{
         background:'var(--x)',
-        color:'var(--x-on)',
+        color:'var(--on-x)',
       }}
       >
           Base
       </span>
       <span style={{
-        background:'var(--x-light)',
-        color:'var(--x-on)',
+        background:'var(--light-x)',
+        color:'var(--on-x)',
       }}
       >
           Light
@@ -125,26 +125,26 @@ const getterTester = (MAP) => (
   MAP.map((e,i) =>
     <>
       <div className={ 'x-' + e }>
-        <span className={ 'bx-dark cx-on' }>Back Dark</span>
-        <span className={ 'bx cx-on' }>Back Base</span>
-        <span className={ 'bx-light cx-on' }>Back Light</span>
+        <span className={ 'b-dark-x c-on-x' }>Back Dark</span>
+        <span className={ 'b-x c-on-x' }>Back Base</span>
+        <span className={ 'b-light-x c-on-x' }>Back Light</span>
       </div>
       <br/>
       <div className={ 'y-' + e }>
         <span
-          className={ 'dy-dark cy-dark' }
+          className={ 'd-dark-y c-dark-y' }
           style={{ borderWidth:'10px', borderStyle:'solid' }}
         >
           Border dark
         </span>
         <span
-          className={ 'dy cy' }
+          className={ 'd-y c-y' }
           style={{ borderWidth:'10px', borderStyle:'solid' }}
         >
           Border base
         </span>
         <span
-          className={ 'dy-light cy-light' }
+          className={ 'd-light-y c-light-y' }
           style={{ borderWidth:'10px', borderStyle:'solid' }}
         >
           Border light
@@ -152,9 +152,9 @@ const getterTester = (MAP) => (
       </div>
       <br/>
       <div className={ 'z-' + e }>
-        <span className='cz-dark'>Color Dark</span>
-        <span className='cz'>Color Base</span>
-        <span className='cz-light'>Color Light</span>
+        <span className='c-dark-z'>Color Dark</span>
+        <span className='c-z'>Color Base</span>
+        <span className='c-light-z'>Color Light</span>
       </div>
     </>
   ))

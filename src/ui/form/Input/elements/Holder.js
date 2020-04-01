@@ -44,7 +44,7 @@ const Holder = ({
   labelId,
   labelClassName,
   labelStyle,
-  labelExtraProps, // This as well. For downshift
+  labelAdditionalProps, // This as well. For downshift
 
   description,
   descriptionAs,
@@ -75,7 +75,7 @@ const Holder = ({
           htmlFor={ inputId }
           optional={ optional }
           labelAs={ labelAs }
-          { ...labelExtraProps }
+          { ...labelAdditionalProps }
         >
           { label }
         </InputLabel>
@@ -167,6 +167,7 @@ Holder.propTypes = {
    * The display style.
    */
   aesthetic:PropTypes.oneOf(['mars', 'saturn']),
+
   /**
    * Provide an HTML id to the input
    */
@@ -190,7 +191,7 @@ Holder.propTypes = {
   /**
    * The extra props passed to the label ( useful in downshift for instance) ( this prop doesn't exist in the input component )
    */
-  labelExtraProps:PropTypes.object,
+  labelAdditionalProps:PropTypes.object,
 
   /**
    * Which html tag to use to display the label (This prop doesnt exist in the input component)
