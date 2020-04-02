@@ -1,5 +1,5 @@
 /* @fwrlines/generator-storybook-story 1.3.0 */
-import React from 'react'
+import * as React from 'react'
 
 //import { action } from '@storybook/addon-actions'
 

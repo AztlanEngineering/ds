@@ -1,5 +1,5 @@
 /* @fwrlines/generator-storybook-story 1.0.1 */
-import React from 'react'
+import * as React from 'react'
 
 //import { action } from '@storybook/addon-actions'
 
@@ -11,10 +11,10 @@ import { Quote } from 'ui'
 //const endpoint = 'https://api.fwrlines.com/graphql'
 
 export default {
-  title: 'elements/Quote',
-  component:Quote,
-  parameters: {
-    decorators: [
+  title     :'elements/Quote',
+  component :Quote,
+  parameters:{
+    decorators:[
       /* storyfn => <div className="">{ storyfn() }</div>,
          storyfn => <AplProvider endpoint={ endpoint }>{ storyfn() }</AplProvider>,
          storyfn => <Router>{ storyfn() }</Router>, */

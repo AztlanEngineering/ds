@@ -1,5 +1,5 @@
 /* @fwrlines/generator-storybook-story 1.0.1 */
-import React from 'react'
+import * as React from 'react'
 
 
 import { Page, InnerContent, Heading } from 'ui'
@@ -7,15 +7,15 @@ import { LocalHelmet } from 'ui/site/Page/common'
 import { TEXT_XXS_ESC, TEXT_XXS, TEXT_XS, TEXT } from '../utils'
 
 export default {
-  title: 'site/Page',
-  component:Page,
+  title        :'site/Page',
+  component    :Page,
   subcomponents:{
     'Section':Page.Section,
 
     'LocalHelmet':LocalHelmet
   },
-  parameters: {
-    decorators: [
+  parameters:{
+    decorators:[
       //storyfn => <Router>{ storyfn() }</Router>,
     ]
   }
@@ -25,53 +25,53 @@ const id = 'homepage'
 const titles = [
 
   {
-    heading:'Spartacus',
-    subtitle:'Stanley Kubrick, 1960',
-    headingAs:'h1',
-    align:'uc',
-    label:'Film',
-    labelBasic:true,
-    labelClassName:'x-red',
+    heading         :'Spartacus',
+    subtitle        :'Stanley Kubrick, 1960',
+    headingAs       :'h1',
+    align           :'uc',
+    label           :'Film',
+    labelBasic      :true,
+    labelClassName  :'x-red',
     headingClassName:'ts-green'
   },
   {
-    heading:'Lolita',
-    subtitle:'Stanley Kubrick, 1962',
-    headingAs:'h2',
-    align:'uc',
-    label:'Today\'s cinema',
+    heading       :'Lolita',
+    subtitle      :'Stanley Kubrick, 1962',
+    headingAs     :'h2',
+    align         :'uc',
+    label         :'Today\'s cinema',
     labelClassName:'x-orange'
   },
   {
-    heading:'Dr. Strangelove',
-    subtitle:'Stanley Kubrick, 1964',
-    headingAs:'h3',
-    align:'ur',
-    label:'Movie time',
+    heading       :'Dr. Strangelove',
+    subtitle      :'Stanley Kubrick, 1964',
+    headingAs     :'h3',
+    align         :'ur',
+    label         :'Movie time',
     labelClassName:'x-red'
   },
 ]
 
 const helmet = {
-  robots:'noindex, nofollow',
-  title: 'test of the title',
-  title_tag: 'this should appear in the title tag',
-  canonical: 'https://home.com/description',
-  meta_description: 'This is the meta description. 170 chars.',
-  twitter_title: 'For twitter, a title',
+  robots             :'noindex, nofollow',
+  title              :'test of the title',
+  title_tag          :'this should appear in the title tag',
+  canonical          :'https://home.com/description',
+  meta_description   :'This is the meta description. 170 chars.',
+  twitter_title      :'For twitter, a title',
   twitter_description:'',
-  twitter_image: '',
-  og_title: 'This is the open graph title',
-  og_description: '',
-  og_image:'',
-  og_type:'',
-  og_url:'',
+  twitter_image      :'',
+  og_title           :'This is the open graph title',
+  og_description     :'',
+  og_image           :'',
+  og_type            :'',
+  og_url             :'',
 }
 
 
 export const Default = () => (
   <Page id={ id }>
-		READ SOURCE
+    READ SOURCE
   </Page>
 )
 export const DefaultWithSchema = () => (
@@ -81,7 +81,7 @@ export const DefaultWithSchema = () => (
     canonical='meccamico.com/blah'
     HELMET={ helmet }
   >
-		FAQ/PAGE READ SOURCE
+    FAQ/PAGE READ SOURCE
   </Page>
 )
 export const Head = () => (
@@ -181,7 +181,7 @@ export const PluralCaretDown = () => (
       className='pu u2'
     >
       <h2>Section A2</h2>
-      <p dangerouslySetInnerHTML={{ __html:TEXT_XS }}></p>
+      <p dangerouslySetInnerHTML={{ __html: TEXT_XS }}></p>
 
     </Page.Section>
   </Page>
@@ -206,7 +206,7 @@ export const Content = () => (
       className='pu u2'
     >
       <InnerContent
-        dangerouslySetInnerHTML={{ __html:TEXT }}
+        dangerouslySetInnerHTML={{ __html: TEXT }}
       />
 
     </Page.Section>

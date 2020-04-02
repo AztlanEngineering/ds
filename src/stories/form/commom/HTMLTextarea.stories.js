@@ -1,49 +1,49 @@
 /* @fwrlines/generator-storybook-story 1.3.0 */
-import React from 'react'
+import * as React from 'react'
 
 //import { action } from '@storybook/addon-actions'
 
 import { HTMLTextarea } from 'ui'
-//import QUERY from './graphql/query.graphql'
-//import { AplProvider } from 'stories/utils'
-//import { Router } from 'stories/utils'
-//import {ALL_COLORS, SIZES } from '../config.js'
-//import { TEXT_XXS_ESC, TEXT_XXS, TEXT_XS, TEXT } from '../utils/Dummy'
+/* import QUERY from './graphql/query.graphql'
+   import { AplProvider } from 'stories/utils'
+   import { Router } from 'stories/utils'
+   import {ALL_COLORS, SIZES } from '../config.js'
+   import { TEXT_XXS_ESC, TEXT_XXS, TEXT_XS, TEXT } from '../utils/Dummy' */
 
 //const endpoint = 'https://api.fwrlines.com/graphql'
 
 export default {
-  title: 'form/Input/common/HTMLTextarea',
-  component:HTMLTextarea,
+  title        :'form/Input/common/HTMLTextarea',
+  component    :HTMLTextarea,
   //componentSubtitle:'Component subtitle',
-  subcomponents: {
+  subcomponents:{
     //Textarea.Item
   },
-  parameters: {
-    decorators: [ 
-      //storyfn => <div className="">{ storyfn() }</div>,
-      //storyfn => <AplProvider endpoint={ endpoint }>{ storyfn() }</AplProvider>,
-      //storyfn => <Router>{ storyfn() }</Router>,
+  parameters:{
+    decorators:[
+      /* storyfn => <div className="">{ storyfn() }</div>,
+         storyfn => <AplProvider endpoint={ endpoint }>{ storyfn() }</AplProvider>,
+         storyfn => <Router>{ storyfn() }</Router>, */
     ]
   }
 }
 
 export const Default = () => (
-  <HTMLTextarea 
+  <HTMLTextarea
     name='some_input'
     placeholder='blah blah blah input textarea'
   />
 )
 
 export const Variant = () => (
-  <HTMLTextarea 
+  <HTMLTextarea
     name='some_input'
     placeholder='blah blah blah input textarea'
   />
 )
 
 export const Disabled = () => (
-  <HTMLTextarea 
+  <HTMLTextarea
     name='some_input'
     disabled
     placeholder={ 'This input is disabled' }

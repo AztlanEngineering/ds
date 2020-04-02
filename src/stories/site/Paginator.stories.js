@@ -1,5 +1,5 @@
 /* @fwrlines/generator-storybook-story 1.0.1 */
-import React from 'react'
+import * as React from 'react'
 
 //import { action } from '@storybook/addon-actions'
 
@@ -16,16 +16,16 @@ import { Router } from 'stories/utils'
 import POSTS from '../mockData/testposts.json'
 
 export default {
-  title: 'site/Paginator',
-  component:Paginator,
+  title        :'site/Paginator',
+  component    :Paginator,
   subcomponents:{
-    'ArrowButton':ArrowButton,
-    'JumpButton':JumpButton,
-    'PageNumberButton':PageNumberButton,
-    "SpreadPageNumbersButtons":SpreadPageNumbersButtons,
+    'ArrowButton'             :ArrowButton,
+    'JumpButton'              :JumpButton,
+    'PageNumberButton'        :PageNumberButton,
+    'SpreadPageNumbersButtons':SpreadPageNumbersButtons,
   },
-  parameters: {
-    decorators: [
+  parameters:{
+    decorators:[
       storyfn => <Router>{ storyfn() }</Router>,
     ]
   }
@@ -120,7 +120,7 @@ export const CustomLabels = () => (
     buttonClassName='ks s3 x-indigo'
     paginator={ pagThree }
     spread={ 4 }
-    TEXT={{ PREV:'GABADI', NEXT:'GABADA' }}
+    TEXT={{ PREV: 'GABADI', NEXT: 'GABADA' }}
     getLink={ getLink }
   />
 )

@@ -1,5 +1,5 @@
 /* @fwrlines/generator-storybook-story 1.0.1 */
-import React from 'react'
+import * as React from 'react'
 
 //import { action } from '@storybook/addon-actions'
 
@@ -11,10 +11,10 @@ import { RoundProgress } from 'ui'
 //const endpoint = 'https://api.fwrlines.com/graphql'
 
 export default {
-  title: 'elements/RoundProgress',
-  component:RoundProgress,
-  parameters: {
-    decorators: [
+  title     :'elements/RoundProgress',
+  component :RoundProgress,
+  parameters:{
+    decorators:[
       /* storyfn => <div className="">{ storyfn() }</div>,
          storyfn => <AplProvider endpoint={ endpoint }>{ storyfn() }</AplProvider>,
          storyfn => <Router>{ storyfn() }</Router>, */
@@ -24,38 +24,38 @@ export default {
 
 const variants = [
   {
-    number:45,
-    max:100,
-    unit:'%',
+    number   :45,
+    max      :100,
+    unit     :'%',
     className:'',
-    title:'Create a company'
+    title    :'Create a company'
   },
   {
     number:95,
-    max:100,
-    unit:'%',
-    title:'Are blond'
+    max   :100,
+    unit  :'%',
+    title :'Are blond'
   },
   {
-    number:4,
-    max:5,
-    unit:'',
+    number   :4,
+    max      :5,
+    unit     :'',
     className:'x-grey y-blue',
-    title:'Live in an appartment'
+    title    :'Live in an appartment'
   },
   {
-    number:60,
-    max:60,
-    unit:'',
+    number   :60,
+    max      :60,
+    unit     :'',
     className:'x-blue y-grey',
-    title:'Time savings',
+    title    :'Time savings',
   },
   {
-    number:10,
-    max:100,
-    unit:'%',
+    number   :10,
+    max      :100,
+    unit     :'%',
     className:'x-black y-green',
-    title:'Do sports',
+    title    :'Do sports',
   },
 ]
 
@@ -63,7 +63,7 @@ const variants = [
 export const Default = () => (
   <div
     className='p1'
-    style={{ width:'200px' }}
+    style={{ width: '200px' }}
   >
     <RoundProgress
       { ...variants[0] }
@@ -76,7 +76,7 @@ export const Variant = () => (
   variants.map((e,i) =>
     <div
       className='p1'
-      style={{ width:150 + 60*i + 'px'}}
+      style={{ width: 150 + 60*i + 'px'}}
     >
       <RoundProgress
         {...e}

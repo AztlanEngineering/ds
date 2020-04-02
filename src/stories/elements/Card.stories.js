@@ -1,5 +1,5 @@
 /* @fwrlines/generator-storybook-story 1.0.1 */
-import React from 'react'
+import * as React from 'react'
 
 import { Card, SVG } from 'ui'
 import { ALL_COLORS } from '../config'

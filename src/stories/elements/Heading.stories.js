@@ -1,5 +1,5 @@
 /* @fwrlines/generator-storybook-story 1.0.1 */
-import React from 'react'
+import * as React from 'react'
 
 //import { action } from '@storybook/addon-actions'
 import {ALL_COLORS, SIZES } from '../config.js'
@@ -50,11 +50,11 @@ const variants = [
     labelClassName:'x-red'
   },
   {
-    title         :'2001 : A Space Odyssey',
-    sub           :'Stanley Kubrick, 1968',
-    as            :'h4',
-    align         :'uc',
-    label         :'The best of 1968',
+    title:'2001 : A Space Odyssey',
+    sub  :'Stanley Kubrick, 1968',
+    as   :'h4',
+    align:'uc',
+    label:'The best of 1968',
     //labelClassName:'b-green'
   },
   {

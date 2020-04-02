@@ -1,5 +1,5 @@
 /* @fwrlines/generator-storybook-story 1.0.1 */
-import React from 'react'
+import * as React from 'react'
 
 //import { action } from '@storybook/addon-actions'
 
@@ -74,17 +74,17 @@ export const Variants = () =>(
       key={i}
     >
       <p>
-Num
+        Num
         { e.number }
         {' '}
-| Duration :
+        | Duration :
         { e.duration }
         { e.suffix && ' | Suffix : ' + e.suffix }
       </p>
       <NumberIncrease
         number={ e.number }
         duration={ e.duration }
-      className='s3 ks'
+        className='s3 ks'
       />
     </div>
 
@@ -106,10 +106,10 @@ export const WithSuffixClass = () => (
   variants.map((e,i) =>
     <>
       <p>
-Num
+        Num
         { e.number }
         {' '}
-| Duration :
+        | Duration :
         { e.duration }
         { e.suffix && ' | Suffix : ' + e.suffix }
       </p>
@@ -117,7 +117,7 @@ Num
         number={ e.number }
         duration={ e.duration }
         suffix={ i % 2 == 0 ? 'km' : 'years' }
-      className='s2 ks'
+        className='s2 ks'
         suffixClassName={ i % 2 == 0 ? 'cx x-red' : 'cx x-green' }
       />
     </>

@@ -1,13 +1,13 @@
 /* @fwrlines/generator-storybook-story 1.0.1 */
-import React from 'react'
+import * as React from 'react'
 
 import { Subtitle } from 'ui'
 
 export default {
-  title: 'common/Subtitle',
-  component:Subtitle,
-  parameters: {
-    decorators: [
+  title     :'common/Subtitle',
+  component :Subtitle,
+  parameters:{
+    decorators:[
       //storyfn => <div className="">{ storyfn() }</div>,
     ]
   }

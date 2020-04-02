@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import { Meta, Typeset } from '@storybook/addon-docs/blocks'
 import {
   FONT_FAMILY_PARAGRAPH,

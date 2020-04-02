@@ -1,5 +1,5 @@
 /* @fwrlines/generator-storybook-story 1.0.1 */
-import React from 'react'
+import * as React from 'react'
 
 //import { action } from '@storybook/addon-actions'
 import {ALL_COLORS, SIZES } from '../config.js'
@@ -40,40 +40,40 @@ export const Stroke = () => (
 
 export const Animated = () => (
   <>
-  <SVG
-    height='200'
-    width='200'
-    target='engine'
-    className='y-red'
-    animated
-  />
-  <SVG
-    height='200'
-    width='200'
-    target='engine'
-    className='y-indigo'
-    animated
-    style={{
-      '--svg-odo':100, // Origin dash offset
-      '--svg-tdo':10000, // Target dash offset
-      '--svg-at':'10s', //Duration
-      '--svg-ar':'3', //Repeats
-      '--svg-sw':9 // Stroke width
-    }}
-  />
-  <SVG
-    height='200'
-    width='200'
-    target='engine'
-    className='y-red'
-    style={{
-      '--svg-odo':5000, // Origin dash offset
-      '--svg-tdo':0, // Target dash offset
-      '--svg-at':'20s', //Duration
-      '--svg-ar':'infinite' //Repeats
-    }}
-    animated
-  />
+    <SVG
+      height='200'
+      width='200'
+      target='engine'
+      className='y-red'
+      animated
+    />
+    <SVG
+      height='200'
+      width='200'
+      target='engine'
+      className='y-indigo'
+      animated
+      style={{
+        '--svg-odo':100, // Origin dash offset
+        '--svg-tdo':10000, // Target dash offset
+        '--svg-at' :'10s', //Duration
+        '--svg-ar' :'3', //Repeats
+        '--svg-sw' :9 // Stroke width
+      }}
+    />
+    <SVG
+      height='200'
+      width='200'
+      target='engine'
+      className='y-red'
+      style={{
+        '--svg-odo':5000, // Origin dash offset
+        '--svg-tdo':0, // Target dash offset
+        '--svg-at' :'20s', //Duration
+        '--svg-ar' :'infinite' //Repeats
+      }}
+      animated
+    />
   </>
 )
 
@@ -106,5 +106,5 @@ export const StrokeColors = () => (
         className={'y-' + e}
       />
     </>
-    )
+  )
 )

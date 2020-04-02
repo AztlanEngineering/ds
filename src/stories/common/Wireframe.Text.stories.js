@@ -1,15 +1,15 @@
 /* @fwrlines/generator-storybook-story 1.0.1 */
-import React from 'react'
+import * as React from 'react'
 
 //import { action } from '@storybook/addon-actions'
 
 import { Wireframe } from 'ui'
 
 export default {
-  title: 'common/Wireframe.Text',
-  component:Wireframe.Text,
-  parameters: {
-    decorators: [
+  title     :'common/Wireframe.Text',
+  component :Wireframe.Text,
+  parameters:{
+    decorators:[
       /* storyfn => <div className="">{ storyfn() }</div>,*/
     ]
   }

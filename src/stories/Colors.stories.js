@@ -1,10 +1,9 @@
-
-import React from 'react'
+import * as React from 'react'
 import { ColorItem, ColorPalette } from '@storybook/addon-docs/blocks'
 
 export default {
-  title: 'Colors',
-  component: ColorPalette,
+  title    :'Colors',
+  component:ColorPalette,
 }
 
 const THEME = [
@@ -37,7 +36,7 @@ const MODALS = [
 const getColorMap = (prefix, list) => {
   const a = []
   list.forEach((color) => a.push({
-    title:`${prefix}.${color}`,
+    title :`${prefix}.${color}`,
     //subtitle:'',
     colors:[
       `var(--dark-${color})`,
@@ -85,27 +84,30 @@ export const defaultStyle = () => (
 
 const setterTester = (MAP) => (
   MAP.map((e,i) =>
-    <div className={ 'x-' + e } key={i}>
+    <div
+      className={ 'x-' + e }
+      key={i}
+    >
       <span style={{
         background:'var(--dark-x)',
-        color:'var(--on-x)',
+        color     :'var(--on-x)',
       }}
       >
-          Dark
+        Dark
       </span>
       <span style={{
         background:'var(--x)',
-        color:'var(--on-x)',
+        color     :'var(--on-x)',
       }}
       >
-          Base
+        Base
       </span>
       <span style={{
         background:'var(--light-x)',
-        color:'var(--on-x)',
+        color     :'var(--on-x)',
       }}
       >
-          Light
+        Light
       </span>
     </div>
   ))
@@ -133,19 +135,19 @@ const getterTester = (MAP) => (
       <div className={ 'y-' + e }>
         <span
           className={ 'd-dark-y c-dark-y' }
-          style={{ borderWidth:'10px', borderStyle:'solid' }}
+          style={{ borderWidth: '10px', borderStyle: 'solid' }}
         >
           Border dark
         </span>
         <span
           className={ 'd-y c-y' }
-          style={{ borderWidth:'10px', borderStyle:'solid' }}
+          style={{ borderWidth: '10px', borderStyle: 'solid' }}
         >
           Border base
         </span>
         <span
           className={ 'd-light-y c-light-y' }
-          style={{ borderWidth:'10px', borderStyle:'solid' }}
+          style={{ borderWidth: '10px', borderStyle: 'solid' }}
         >
           Border light
         </span>

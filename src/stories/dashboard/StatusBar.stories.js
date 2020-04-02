@@ -1,5 +1,5 @@
 /* @fwrlines/generator-storybook-story 1.1.1 */
-import React from 'react'
+import * as React from 'react'
 
 //import { action } from '@storybook/addon-actions'
 import { Button } from 'ui/elements'

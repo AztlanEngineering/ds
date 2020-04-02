@@ -1,15 +1,16 @@
 /* @fwrlines/generator-storybook-story 1.0.1 */
-import React, { useState }from 'react'
+import * as React from 'react'
+import { useState }from 'react'
 
 //import { action } from '@storybook/addon-actions'
 
 import { AnimatedVCaret } from 'ui'
 
 export default {
-  title: 'common/AnimatedVCaret',
-  component:AnimatedVCaret,
-  parameters: {
-    decorators: [
+  title     :'common/AnimatedVCaret',
+  component :AnimatedVCaret,
+  parameters:{
+    decorators:[
       //storyfn => <div className="">{ storyfn() }</div>,
     ]
   }

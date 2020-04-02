@@ -1,5 +1,5 @@
 /* @fwrlines/generator-storybook-story 1.0.1 */
-import React from 'react'
+import * as React from 'react'
 
 //import { action } from '@storybook/addon-actions'
 
@@ -11,10 +11,10 @@ import { Wireframe } from 'ui'
 //const endpoint = 'https://api.fwrlines.com/graphql'
 
 export default {
-  title: 'common/Wireframe.Image',
-  component:Wireframe.Image,
-  parameters: {
-    decorators: [
+  title     :'common/Wireframe.Image',
+  component :Wireframe.Image,
+  parameters:{
+    decorators:[
       /* storyfn => <div className="">{ storyfn() }</div>,
          storyfn => <AplProvider endpoint={ endpoint }>{ storyfn() }</AplProvider>,
          storyfn => <Router>{ storyfn() }</Router>, */
@@ -25,15 +25,15 @@ export default {
 const dimensions_list = [
   {
     height:'100px',
-    width:'100%',
+    width :'100%',
   },
   {
     height:'200px',
-    width:'200px',
+    width :'200px',
   },
   {
     height:'40px',
-    width:'500%',
+    width :'500%',
   }
 ]
 

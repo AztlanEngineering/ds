@@ -1,18 +1,18 @@
 /* @fwrlines/generator-storybook-story 1.0.1 */
-import React from 'react'
+import * as React from 'react'
 
 
 import { FileExplorer } from 'ui'
 
 export default {
-  title: 'elements/FileExplorer',
-  component:FileExplorer,
+  title        :'elements/FileExplorer',
+  component    :FileExplorer,
   subcomponents:{
-    'File':FileExplorer.File,
+    'File'  :FileExplorer.File,
     'Folder':FileExplorer.Folder
   },
-  parameters: {
-    decorators: [
+  parameters:{
+    decorators:[
       /* storyfn => <div className="">{ storyfn() }</div>,*/
     ]
   }
