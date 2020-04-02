@@ -4,10 +4,10 @@ import React from 'react'
 import { GreenTick } from 'ui'
 
 export default {
-  title: 'common/GreenTick',
-  component:GreenTick,
-  parameters: {
-    decorators: [
+  title     :'common/GreenTick',
+  component :GreenTick,
+  parameters:{
+    decorators:[
       //storyfn => <div className="">{ storyfn() }</div>,
     ]
   }
@@ -16,21 +16,21 @@ export default {
 const sizes = [
   {
     height:'200px',
-    back:'x-black bx',
+    back  :'x-black b-x',
   },
   {
     height:'300px',
-    back:'x-blue bx',
+    back  :'x-blue b-x',
   },
   {
     height:'450px',
-    back:'x-violet bx',
+    back  :'x-violet b-x',
   },
 ]
 
 export const Default = () =>(
-  <div style={{ height:'300px' }}>
-  <GreenTick/>
+  <div style={{ height: '300px' }}>
+    <GreenTick/>
   </div>
 )
 
@@ -40,7 +40,7 @@ export const Variant = () =>
     <div
       key={i}
       className={e.back}
-      style={{ height:e.height, width:e.width }}
+      style={{ height: e.height, width: e.width }}
     >
       <GreenTick />
     </div>

@@ -4,10 +4,10 @@ import React from 'react'
 import { Checklist } from 'ui'
 
 export default {
-  title: 'common/Checklist',
-  component:Checklist,
-  parameters: {
-    decorators: [
+  title     :'common/Checklist',
+  component :Checklist,
+  parameters:{
+    decorators:[
       //storyfn => <div className="">{ storyfn() }</div>,
     ]
   }
@@ -24,8 +24,8 @@ const items = [
     content:'That you won\'t find somewhere else'
   },
   {
-    content:'More than 5 hours of battery life. Only 3kg of weight. Available in 36 colors. Super silent.',
-    className:'y-red x-blue z-primary cx xh-orange'
+    content  :'More than 5 hours of battery life. Only 3kg of weight. Available in 36 colors. Super silent.',
+    className:'y-red x-blue z-primary c-x xh-orange'
   }
 ]
 
@@ -40,7 +40,7 @@ export const Default = () =>(
 )
 
 export const OtherColor = () => (
-  <Checklist className='cc-green'>
+  <Checklist>
     { items.map(({content, ...e}, i) =>
       <Checklist.Item
         {...e}
@@ -53,7 +53,7 @@ export const OtherColor = () => (
 )
 
 export const WithCross = () => (
-  <Checklist className='cc-green'>
+  <Checklist>
     { items.map(({content, ...e}, i) =>
       <Checklist.Item
         {...e}
@@ -67,7 +67,7 @@ export const WithCross = () => (
 )
 
 export const MultilineTest = () => (
-  <Checklist style={{width:'200px'}}>
+  <Checklist style={{width: '200px'}}>
     { items.map(({content, ...e}, i) =>
       <Checklist.Item
         key={i}

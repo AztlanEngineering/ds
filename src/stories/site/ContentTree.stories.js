@@ -57,8 +57,8 @@ export const PastStyle = () => (
     		left      :'0',
 		    background:'beige'
 		  }}
-      pastClassName='cx x-red ti'
-      activeClassName='cx x-blue'
+      pastClassName='c-x x-red ti'
+      activeClassName='c-x x-blue'
       elementClassName='nt'
     />
     <div
@@ -80,7 +80,7 @@ export const UnfoldActive = () => (
     		left      :'0',
 		    background:'beige'
 		  }}
-      activeClassName='cx x-red'
+      activeClassName='c-x x-red'
       unfoldActive
     />
     <div
@@ -100,12 +100,12 @@ export const As = () => (
       as={ Button.Group }
       itemAs={ Button }
       style={{
-    		position  :'fixed',
-    		top       :'0',
-    		left      :'0',
+    		position:'fixed',
+    		top     :'0',
+    		left    :'0',
 		    //background:'beige'
 		  }}
-      activeClassName='cx x-red'
+      activeClassName='c-x x-red'
     />
     <div
       className='content'

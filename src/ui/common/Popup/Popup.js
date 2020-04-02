@@ -48,7 +48,7 @@ const Popup = ({
 
   const position = useDynamicPosition({
     popupRef:wrapperRef,
-    visible:isVisible,
+    visible :isVisible,
     offsetXPx,
     offsetYPx,
     preferredOrder,
@@ -149,8 +149,8 @@ Popup.defaultProps = {
   //height:'2.2em',
   as       :'div',
   isVisible:false,
-  offsetXPx :0,
-  offsetYPx :0,
+  offsetXPx:0,
+  offsetYPx:0,
 }
 
 export default Popup

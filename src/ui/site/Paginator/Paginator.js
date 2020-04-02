@@ -44,6 +44,9 @@ const Paginator = ({
   stretch,
   getLink,
 
+  leftIcon,
+  rightIcon,
+
   TEXT:T
 }) => {
 
@@ -72,7 +75,7 @@ const Paginator = ({
             <>
               <ArrowButton
                 iconSide='l'
-                icon='j'
+                icon={ leftIcon }
                 basic={ basic }
                 pageNumber={ 1 }
               >
@@ -114,7 +117,7 @@ const Paginator = ({
               />
               <ArrowButton
                 iconSide='r'
-                icon='g'
+                icon={ rightIcon }
                 basic={ basic }
                 pageNumber={ totalPages }
               >
@@ -188,6 +191,15 @@ Paginator.propTypes = {
    */
   getLink:PropTypes.func,
 
+  /**
+   * The icon for the left arrow
+   */
+  leftIcon:PropTypes.string,
+
+  /**
+   * The icon for the right arrow
+   */
+  rightIcon:PropTypes.string,
 }
 
 Paginator.defaultProps = {
@@ -199,7 +211,9 @@ Paginator.defaultProps = {
   TEXT               :{
     PREV:'Recent',
     NEXT:'Older'
-  }
+  },
+  leftIcon :'h',
+  rightIcon:'l',
 }
 
 export default Paginator

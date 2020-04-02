@@ -24,13 +24,13 @@ const variants = [
   {
     alt      :'New York Times',
     src      :'/press_nyt.png',
-    className:'bx x-indigo',
+    className:'b-x x-indigo',
     link     :'blah.com'
   },
   {
     alt      :'Stampa',
     src      :'/press_stampa.svg',
-    className:'bx x-red',
+    className:'b-x x-red',
     link     :'blah.com'
   }
 ]

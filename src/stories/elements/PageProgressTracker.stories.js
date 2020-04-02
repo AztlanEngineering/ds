@@ -41,7 +41,7 @@ export const ContentId = () => (
     />
     <div
       id='txt'
-      className='x-blue cx'
+      className='x-blue c-x'
     >
       <span dangerouslySetInnerHTML={{__html: TEXT_XS}}></span>
       <span dangerouslySetInnerHTML={{__html: TEXT_XS}}></span>
@@ -67,7 +67,7 @@ export const InitialId = () => (
     />
     <div
       id='txt'
-      className='x-blue cx'
+      className='x-blue c-x'
     >
       <span dangerouslySetInnerHTML={{__html: TEXT_XS}}></span>
       <span dangerouslySetInnerHTML={{__html: TEXT_XS}}></span>
@@ -98,7 +98,7 @@ export const Color = () => (
     />
     <div
       id='txt'
-      className='x-blue cx'
+      className='x-blue c-x'
     >
       <span dangerouslySetInnerHTML={{__html: TEXT_XS}}></span>
       <span dangerouslySetInnerHTML={{__html: TEXT_XS}}></span>
@@ -141,7 +141,7 @@ export const Gradient = () => (
     <div
       dangerouslySetInnerHTML={{ __html: TEXT_XS }}
       style={{ marginTop: '200px' }}
-      className='b-off-white'
+      //className='b-off-white' //TODO
     />
   </>
 )
@@ -179,7 +179,7 @@ export const StrokeWidth = () => (
     <div
       dangerouslySetInnerHTML={{ __html: TEXT_XS }}
       style={{ marginTop: '200px' }}
-      className='b-off-white'
+      //className='b-off-white' //TODO
     />
   </>
 )

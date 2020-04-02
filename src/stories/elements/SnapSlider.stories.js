@@ -12,17 +12,17 @@ import { SnapSlider } from 'ui'
 const Outside = ({className, children}) =>(
   <div
     className={'' + className}
-    style={{ width:'400px' }}
+    style={{ width: '400px' }}
   >
     { children }
   </div>
 )
 
 export default {
-  title: 'elements/SnapSlider',
-  component:SnapSlider,
-  parameters: {
-    decorators: [
+  title     :'elements/SnapSlider',
+  component :SnapSlider,
+  parameters:{
+    decorators:[
       storyfn => <Outside className=''>{ storyfn() }</Outside>,
       /* storyfn => <AplProvider endpoint={ endpoint }>{ storyfn() }</AplProvider>,
          storyfn => <Router>{ storyfn() }</Router>, */
@@ -54,8 +54,8 @@ const elements_map = [
 const ItemsInside = ({ className }) =>
   elements_map.map((e,i) =>
     <div
-      className={ className || '' + ' bx x-' + e.back}
-      style={{ minWidth:'200px', height:'200px' }}
+      className={ className || '' + ' b-x x-' + e.back}
+      style={{ minWidth: '200px', height: '200px' }}
       key={i}
     />
   )

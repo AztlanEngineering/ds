@@ -11,10 +11,10 @@ import { InlineLoader } from 'ui'
 //const endpoint = 'https://api.fwrlines.com/graphql'
 
 export default {
-  title: 'common/InlineLoader',
-  component:InlineLoader,
-  parameters: {
-    decorators: [
+  title     :'common/InlineLoader',
+  component :InlineLoader,
+  parameters:{
+    decorators:[
       /* storyfn => <div className="">{ storyfn() }</div>,
          storyfn => <AplProvider endpoint={ endpoint }>{ storyfn() }</AplProvider>,
          storyfn => <Router>{ storyfn() }</Router>, */
@@ -24,20 +24,20 @@ export default {
 
 const item_map=[
   {
-    color:'blue',
+    color :'blue',
     height:'40',
   },
   {
-    color:'green',
+    color :'green',
     height:'80',
   },
   {
-    color:'yellow',
+    color :'yellow',
     height:'100',
-    back:'blue',
+    back  :'blue',
   },
   {
-    color:'red',
+    color :'red',
     height:'200',
   }
 ]
@@ -59,7 +59,7 @@ export const Variant = () =>
         >
           <InlineLoader
             className={
-			    (e.back ? 'by y-'+e.back:'')
+			    (e.back ? 'b-y y-'+e.back:'')
 			  }
             loaderClassName={'x-'+e.color}
             height={e.height }
@@ -79,7 +79,7 @@ export const Circle = () =>
         >
           <InlineLoader
             className={
-			    (e.back ? 'by y-'+e.back:'')
+			    (e.back ? 'b-y y-'+e.back:'')
 			  }
             type='circle'
             loaderClassName={' x-'+e.color}

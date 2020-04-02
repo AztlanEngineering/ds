@@ -112,7 +112,7 @@ export const Colors = () =>
       headingAs='h3'
       subtitle={ variants[3].sub }
       className='mu u2 uc'
-      headingClassName={ 'cx x-' + e }
+      headingClassName={ 'c-x x-' + e }
       heading={ variants[3].title }
     />
   )
@@ -145,7 +145,7 @@ export const WithLabel = () =>
 export const LabelAs = () =>{
   const LabelWrapper = ({ className='', ...props }) =>
     <span
-      className={ 'mu u0 h5 bx x-indigo cx-on' + className }
+      className={ 'mu u0 h5 b-x x-indigo c-x-on' + className }
       {...props}
     />
   return(

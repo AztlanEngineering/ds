@@ -45,7 +45,7 @@ const FileExplorer = ({
       { rootName &&
         <span
           data-icon={ rootIcon }
-          className='tb tu tls x-metadata cx root'
+          className='tb tu tls x-metadata c-x root'
         >
           { rootName }
         </span>
