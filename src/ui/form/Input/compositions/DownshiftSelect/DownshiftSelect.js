@@ -1,5 +1,6 @@
 /* @fwrlines/generator-react-component 1.4.0 */
-import React, { useMemo } from 'react'
+import * as React from 'react'
+import { useMemo } from 'react'
 import PropTypes from 'prop-types'
 
 import { useSelect } from 'downshift'

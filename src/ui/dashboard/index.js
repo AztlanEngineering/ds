@@ -1,5 +1,4 @@
 export { Menu as DashboardMenu } from './Menu'
-export { StatusBar as DashboardStatusBar } from './StatusBar'
 export { PageInput as DashboardPageInput} from './PageInput'
 export { AdminPage as DashboardAdminPage } from './AdminPage'
 export { ProfileContext, ProfileContextProvider } from './ProfileContext'

@@ -1,5 +1,6 @@
 /* @fwrlines/generator-react-component 1.0.1 */
-import React, { useState }from 'react'
+import * as React from 'react'
+import { useState }from 'react'
 import PropTypes from 'prop-types'
 
 import { useInterval } from '@fwrlines/utils'

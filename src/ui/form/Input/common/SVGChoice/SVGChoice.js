@@ -1,5 +1,6 @@
 /* @fwrlines/generator-react-component 1.4.0 */
-import React, { memo, useState } from 'react'
+import * as React from 'react'
+import { memo, useState } from 'react'
 import PropTypes from 'prop-types'
 
 import {
@@ -116,7 +117,7 @@ const SVGChoice = ({
           >
             { typeof(other) === 'string' ? other : 'Other' }
             &nbsp;
-            : 
+            :
             &nbsp;
             <input
               type='text'

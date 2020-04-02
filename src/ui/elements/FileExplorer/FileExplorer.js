@@ -1,5 +1,6 @@
 /* @fwrlines/generator-react-component 1.1.0 */
-import React, { useState, memo } from 'react'
+import * as React from 'react'
+import { useState, memo } from 'react'
 import PropTypes from 'prop-types'
 
 //Relative imports

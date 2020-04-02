@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import * as React from 'react'
+import { Component } from 'react'
 import PropTypes from 'prop-types'
 import C from 'ui/cssClasses'
 
@@ -9,7 +10,7 @@ class ContextProvider extends Component {
     super(props)
     this.state = {
       contentTree:[],
-      idList:[]
+      idList     :[]
     }
   }
 
@@ -23,14 +24,14 @@ class ContextProvider extends Component {
     const elArray = Array.from(elNodeList)
     const contentTree = []
 
-    var a = { children : [] }
+    var a = { children: [] }
 
     elArray.forEach((e,i) => {
       const { id, innerText } = e
       if (e.tagName.toLowerCase() == 'h2'){
         if (a.id) {
           contentTree.push(a)
-          a = { children:[] }
+          a = { children: [] }
         }
         a.id = id
         a.innerText = innerText
@@ -80,7 +81,7 @@ ContextProvider.propTypes = {
   /**
    * How many levels we should make the tree for
    */
-  levels: PropTypes.number,
+  levels:PropTypes.number,
 
   /**
    * The JSX children of this Context Provider

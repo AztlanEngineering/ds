@@ -1,5 +1,5 @@
 /* @fwrlines/generator-react-component 1.1.2 */
-import React from 'react'
+import * as React from 'react'
 import PropTypes from 'prop-types'
 
 
@@ -44,22 +44,22 @@ Item.propTypes = {
   /**
    * Provide an HTML id to this element
    */
-  id: PropTypes.string,
+  id:PropTypes.string,
 
   /**
    * The html class names to be provided to this element
    */
-  className: PropTypes.string,
+  className:PropTypes.string,
 
   /**
    * The JSX-Written, css styles to apply to the element.
    */
-  style: PropTypes.object,
+  style:PropTypes.object,
 
   /**
    *  The children JSX
    */
-  children: PropTypes.node,
+  children:PropTypes.node,
 
   /**
    *  Whether it's a cross

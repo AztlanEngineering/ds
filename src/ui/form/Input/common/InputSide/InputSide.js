@@ -1,5 +1,5 @@
 /* @fwrlines/generator-react-component 1.4.0 */
-import React from 'react'
+import * as React from 'react'
 import PropTypes from 'prop-types'
 
 
@@ -7,8 +7,8 @@ import PropTypes from 'prop-types'
 //Config
 import C from 'ui/cssClasses'
 
-//Relative imports
-//import styles from './input_side.scss'
+/* Relative imports
+   import styles from './input_side.scss' */
 import './input_side.scss'
 
 const baseClassName = 'side'
@@ -16,7 +16,7 @@ const baseClassName = 'side'
 
 /**
  * Use `InputSide` to
- * Has color `x` 
+ * Has color `x`
  */
 const InputSide = ({
   id,
@@ -26,46 +26,46 @@ const InputSide = ({
 
   //side,
 }) => {
-  
-  
+
+
   return (
-  <div 
-    className={
-      [
+    <div
+      className={
+        [
         //styles[baseClassName],
-        baseClassName,
-        className
-      ].filter(e => e).join(' ')
-  }
-    id={ id }
-    style={ style }
-  >
-    <p>
-    { children }
-    </p>
-  </div>
-)}
+          baseClassName,
+          className
+        ].filter(e => e).join(' ')
+      }
+      id={ id }
+      style={ style }
+    >
+      <p>
+        { children }
+      </p>
+    </div>
+  )}
 
 InputSide.propTypes = {
   /**
    * Provide an HTML id to this element
    */
-  id: PropTypes.string,
+  id:PropTypes.string,
 
   /**
    * The html class names to be provided to this element
    */
-  className: PropTypes.string,
+  className:PropTypes.string,
 
   /**
    * The JSX-Written, css styles to apply to the element.
    */
-  style: PropTypes.object,
+  style:PropTypes.object,
 
   /**
    *  The children JSX
    */
-  children: PropTypes.node,
+  children:PropTypes.node,
 
   /**
    * The side of the input on which to display this

@@ -1,5 +1,5 @@
 /* @fwrlines/generator-react-component 1.4.0 */
-import React from 'react'
+import * as React from 'react'
 import PropTypes from 'prop-types'
 
 
@@ -171,7 +171,7 @@ Holder.propTypes = {
   /**
    * Provide an HTML id to the input
    */
-  inputId  :PropTypes.string.isRequired,
+  inputId:PropTypes.string.isRequired,
 
   /**
    * Provide an HTML id to the label

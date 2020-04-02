@@ -1,5 +1,5 @@
 /* @fwrlines/generator-react-component 1.4.0 */
-import React from 'react'
+import * as React from 'react'
 import PropTypes from 'prop-types'
 
 
@@ -7,8 +7,8 @@ import PropTypes from 'prop-types'
 //Config
 import C from 'ui/cssClasses'
 
-//Relative imports
-//import styles from './card_choice.scss'
+/* Relative imports
+   import styles from './card_choice.scss' */
 import './card_choice.scss'
 
 const baseClassName = 'card_choice'
@@ -16,7 +16,7 @@ const baseClassName = 'card_choice'
 
 /**
  * Use `CardChoice` to
- * Has color `x` 
+ * Has color `x`
  */
 const CardChoice = ({
   id,
@@ -29,8 +29,8 @@ const CardChoice = ({
   disabled,
 
 }) => {
-  
-  
+
+
   return (
     <>
       { options.map((e,i) =>
@@ -53,21 +53,22 @@ const CardChoice = ({
             value={ e.value }
             disabled={ disabled || e.disabled }
           />
-    <div
-      className={
+          <div
+            className={
 	    C.content
 	  }
-      style={ style }
-      tabIndex='0'
-    >
-      <label htmlFor={ e.id }>{ typeof(e.label) === 'object' ? e.label : <span>{ e.label }</span>
-            }
-    </label>
-      </div>
+            style={ style }
+            tabIndex='0'
+          >
+            <label htmlFor={ e.id }>
+              { typeof(e.label) === 'object' ? e.label : <span>{ e.label }</span>
+              }
+            </label>
+          </div>
         </div>
       ) }
     </>
-)}
+  )}
 
 CardChoice.propTypes = {
   /**

@@ -1,5 +1,5 @@
 /* @fwrlines/generator-react-component 1.0.1 */
-import React from 'react'
+import * as React from 'react'
 import PropTypes from 'prop-types'
 
 
@@ -127,63 +127,63 @@ AnimatedVCaret.propTypes = {
   /**
    * Provide an HTML id to this element
    */
-  id: PropTypes.string,
+  id:PropTypes.string,
 
   /**
    * The html class names to be provided to this element
    */
-  className: PropTypes.string,
+  className:PropTypes.string,
 
   /**
    * The JSX-Written, css styles to apply to the element.
    */
-  style: PropTypes.object,
+  style:PropTypes.object,
 
   /**
    *  The children JSX
    */
-  children: PropTypes.node,
+  children:PropTypes.node,
 
   /**
    * The height of the SVG node
    */
-  height: PropTypes.string,
+  height:PropTypes.string,
 
   /**
    * The width of the SVG node
    */
-  width: PropTypes.string,
+  width:PropTypes.string,
 
   /**
    * The duration of the animation in seconds
    */
-  duration: PropTypes.number,
+  duration:PropTypes.number,
 
   /**
    * The stroke width SVG  Property
    */
-  strokeWidth: PropTypes.number,
+  strokeWidth:PropTypes.number,
 
   /**
    * The stroke line cap SVG Property
    */
-  strokeLinecap: PropTypes.oneOf(['round', 'square', 'butt']),
+  strokeLinecap:PropTypes.oneOf(['round', 'square', 'butt']),
 
   /**
    * Whether the position is down
    */
-  active: PropTypes.bool.isRequired,
+  active:PropTypes.bool.isRequired,
 
   /**
    * Callback on click
    */
-  setActive: PropTypes.func,
+  setActive:PropTypes.func,
 }
 
 AnimatedVCaret.defaultProps = {
   strokeLinecap:'round',
-  duration:0.6,
-  active:false,
-  setActive:() => null,
+  duration     :0.6,
+  active       :false,
+  setActive    :() => null,
 }
 export default AnimatedVCaret

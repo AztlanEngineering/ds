@@ -1,5 +1,6 @@
 /* @fwrlines/generator-react-component 1.1.2 */
-import React, { useContext } from 'react'
+import * as React from 'react'
+import { useContext } from 'react'
 import PropTypes from 'prop-types'
 
 import C from 'ui/cssClasses'

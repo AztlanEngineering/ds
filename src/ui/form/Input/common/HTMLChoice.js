@@ -1,5 +1,6 @@
 /* @fwrlines/generator-react-component 1.4.0 */
-import React, { useState } from 'react'
+import * as React from 'react'
+import { useState } from 'react'
 import PropTypes from 'prop-types'
 
 
@@ -89,7 +90,7 @@ const HTMLChoice = ({
           >
             { typeof(other) === 'string' ? other : 'Other' }
             &nbsp;
-            : 
+            :
             &nbsp;
             <input
               type='text'

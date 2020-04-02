@@ -1,5 +1,6 @@
 /* @fwrlines/generator-react-component 1.1.2 */
-import React, { memo, useMemo }from 'react'
+import * as React from 'react'
+//import { memo, useMemo } from 'react'
 import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
 

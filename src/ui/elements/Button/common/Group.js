@@ -1,5 +1,5 @@
 /* @fwrlines/generator-react-component 1.1.2 */
-import React from 'react'
+import * as React from 'react'
 import PropTypes from 'prop-types'
 
 
@@ -79,7 +79,7 @@ Group.propTypes = {
 }
 
 Group.defaultProps = {
-  vertical:false,
+  vertical   :false,
   independent:false,
 }
 

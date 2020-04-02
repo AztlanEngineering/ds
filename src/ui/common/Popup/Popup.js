@@ -1,5 +1,6 @@
 /* @fwrlines/generator-react-component 1.4.0 */
-import React, { useEffect, useRef } from 'react'
+import * as React from 'react'
+import { useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
 
 import { useDynamicPosition } from '@fwrlines/utils'

@@ -1,5 +1,5 @@
 /* @fwrlines/generator-react-component 1.1.0 */
-import React from 'react'
+import * as React from 'react'
 import PropTypes from 'prop-types'
 
 
@@ -8,8 +8,8 @@ import { gql } from 'graphql-tag'
 
 import C from 'ui/cssClasses'
 
-//Relative imports
-//import styles from './snap_slider.scss'
+/* Relative imports
+   import styles from './snap_slider.scss' */
 import './snap_slider.scss'
 
 const baseClassName = 'snap_slider'
@@ -29,7 +29,7 @@ const SnapSlider = ({
     <div
       className={
         [
-         // styles[baseClassName],
+          // styles[baseClassName],
           baseClassName,
           !scrollbar && 'nsb-xs',
           compact && C.compact,
@@ -48,42 +48,42 @@ SnapSlider.propTypes = {
   /**
    * Provide an HTML id to this element
    */
-  id: PropTypes.string,
+  id:PropTypes.string,
 
   /**
    * The html class names to be provided to this element
    */
-  className: PropTypes.string,
+  className:PropTypes.string,
 
   /**
    * The JSX-Written, css styles to apply to the element.
    */
-  style: PropTypes.object,
+  style:PropTypes.object,
 
   /**
    *  The children JSX. They need to have a min-width to provoke an overflow-x of the SnapSlider
    */
-  children: PropTypes.node.isRequired,
+  children:PropTypes.node.isRequired,
 
   /**
    * Whether to show the scrollbar
    */
-  scrollbar: PropTypes.bool,
+  scrollbar:PropTypes.bool,
 
   /**
    * Whether the items are compact (less space btw them)
    */
-  compact: PropTypes.bool,
+  compact:PropTypes.bool,
 
   /**
    * Where to pin the items
    */
-  pin: PropTypes.oneOf(['left', 'center', 'right'])
+  pin:PropTypes.oneOf(['left', 'center', 'right'])
 }
 
 SnapSlider.defaultProps = {
-  compact:false,
-  pin:'center',
+  compact  :false,
+  pin      :'center',
   scrollbar:false,
 }
 

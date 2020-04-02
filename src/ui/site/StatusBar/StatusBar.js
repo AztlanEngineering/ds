@@ -1,5 +1,5 @@
 /* @fwrlines/generator-react-component 1.2.2 */
-import React from 'react'
+import * as React from 'react'
 import PropTypes from 'prop-types'
 
 
@@ -41,7 +41,7 @@ const StatusBar = ({
       id={ id }
       style={ style }
     >
-      <p className='yib h5 cx-light s0 ls'>{ status }</p>
+      <p className='yib h5 c-light-x s0 ls'>{ status }</p>
       { children }
     </div>
   )}

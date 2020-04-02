@@ -4,7 +4,7 @@ import * as React from 'react'
 //import { action } from '@storybook/addon-actions'
 import { Button } from 'ui/elements'
 
-import { DashboardStatusBar as StatusBar } from 'ui'
+import { StatusBar } from 'ui'
 /* import QUERY from './graphql/query.graphql'
    import { AplProvider } from 'stories/utils'
    import { Router } from 'stories/utils'
@@ -14,7 +14,7 @@ import { DashboardStatusBar as StatusBar } from 'ui'
 //const endpoint = 'https://api.fwrlines.com/graphql'
 
 export default {
-  title        :'dashboard/StatusBar',
+  title        :'site/StatusBar',
   component    :StatusBar,
   //componentSubtitle:'Component subtitle',
   subcomponents:{

@@ -1,5 +1,6 @@
 /* @fwrlines/generator-react-component 1.1.2 */
-import React, { useEffect, useContext, memo } from 'react'
+import * as React from 'react'
+import { useEffect, useContext } from 'react'
 import PropTypes from 'prop-types'
 
 import { useScrollspy } from '@fwrlines/utils'
@@ -7,12 +8,16 @@ import { useScrollspy } from '@fwrlines/utils'
 import C from 'ui/cssClasses'
 
 import { LocalIndex } from 'ui/elements'
-import { Link as ScrollLink } from 'react-scroll'
+//import { Link as ScrollLink } from 'react-scroll'
 
 /* Relative imports
    import styles from './content_tree.scss' */
 import './content_tree.scss'
-import { Context, Provider, DisplayTree } from './common'
+import {
+  Context,
+  //Provider,
+  DisplayTree
+} from './common'
 
 
 const defaultDurationFromDistance = (distance) => Math.abs(distance) / 2
