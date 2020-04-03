@@ -172,11 +172,11 @@ InputInside.propTypes = {
   iconsStyle:PropTypes.object,
 }
 
-/*
 InputInside.defaultProps = {
-  status: 'neutral',
+  validIcon  :'o',
+  errorIcon  :'p'
   //height:'2.2em',
   //as:'p',
 }
-*/
+
 export default InputInside

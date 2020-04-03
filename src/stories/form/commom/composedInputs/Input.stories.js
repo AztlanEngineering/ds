@@ -1,33 +1,24 @@
-/* @fwrlines/generator-storybook-story 1.3.0 */
+/* @fwrlines/generator-storybook-story 1.5.0 */
 import * as React from 'react'
 import { useState } from 'react'
 
 //import { action } from '@storybook/addon-actions'
 
 import { Input } from 'ui'
-import {
-  InputIcon,
-  InputSide,
-  InputLabel,
-  InputDescription
-} from 'ui/form/Input/common'
 /* import QUERY from './graphql/query.graphql'
    import { AplProvider } from 'stories/utils'
    import { Router } from 'stories/utils'
    import {ALL_COLORS, SIZES } from '../config.js'
-   import { TEXT_XXS_ESC, TEXT_XXS, TEXT_XS, TEXT } from '../utils/Dummy' */
+   import { LIST, LIST_XS, TEXT_XXS_ESC, TEXT_XXS, TEXT_XS, TEXT } from '../utils/Dummy' */
 
 //const endpoint = 'https://api.fwrlines.com/graphql'
 
 export default {
-  title        :'form/Input/styles/default',
+  title        :'form/common/composedInputs/Input',
   component    :Input,
   //componentSubtitle:'Component subtitle',
   subcomponents:{
-    InputLabel,
-    InputDescription,
-    InputSide,
-    InputIcon
+    //Input.Item
   },
   parameters:{
     decorators:[
@@ -38,6 +29,7 @@ export default {
   }
 }
 
+
 export const Default = () => {
   const [value, setValue] = useState()
   const onChange = (e) => {
@@ -45,6 +37,7 @@ export const Default = () => {
   }
   return (
     <Input
+      type='email'
       name={ 'contact_email' }
       value={ value }
       onChange={ onChange }
@@ -56,33 +49,6 @@ export const Default = () => {
   )
 }
 
-
-export const Uncontrolled = () => (
-  <Input
-    name={ 'contact_email' }
-  />
-)
-
-export const Placeholder = () => (
-  <Input
-    type='password'
-    placeholder='a safe password, not 12345'
-    name={ 'password' }
-    label='Your password'
-    inputId='pwd'
-    description='Please make sure your password is strong enough'
-  />
-)
-
-export const Type = () => (
-  <Input
-    type='textarea'
-    name={ 'openquestion' }
-    label='Your story'
-    inputId='story'
-  />
-)
-
 export const Disabled = () => (
   <Input
     type='email'
@@ -90,6 +56,7 @@ export const Disabled = () => (
     disabled
     label='Something else'
     inputId='else'
+    aesthetic='mars'
   />
 )
 
@@ -99,6 +66,7 @@ export const Optional = () => (
     name='formeremail'
     label='Your last stay with us'
     inputId='optional-else'
+    aesthetic='mars'
     optional
   />
 )
@@ -109,6 +77,7 @@ export const Compact = () => (
     name='formeremail'
     label='Your last stay with us'
     inputId='optional-else'
+    aesthetic='mars'
     compact
   />
 )
@@ -123,6 +92,7 @@ export const Valid = () => (
     valid='Everything looks good'
     rightIcon='b'
     description='Enter here the token you have been provided'
+    aesthetic='mars'
   />
 )
 
@@ -136,6 +106,7 @@ export const Error = () => (
     error='Please input a valid token'
     rightIcon='h'
     description='Enter here the token you have been provided'
+    aesthetic='mars'
   />
 )
 
@@ -154,6 +125,7 @@ export const LeftSide = () => {
       placeholder='40000'
       inputId='salary'
       leftSide='$'
+      aesthetic='mars'
     />
 
   )
@@ -174,6 +146,7 @@ export const RightSide = () => {
       inputId='employees'
       rightSide='employees'
       placeholder={ '120' }
+      aesthetic='mars'
     />
 
   )
@@ -194,6 +167,7 @@ export const LeftIcon = () => {
       inputId='employees'
       leftIcon='i'
       placeholder={ '120' }
+      aesthetic='mars'
     />
 
   )
@@ -214,6 +188,7 @@ export const RightIcon = () => {
       inputId='employees'
       rightIcon='d'
       placeholder={ '120' }
+      aesthetic='mars'
     />
 
   )
@@ -235,107 +210,8 @@ export const IconAndSide = () => {
       rightIcon='d'
       rightSide='onces'
       placeholder={ '120' }
+      aesthetic='mars'
     />
 
   )
 }
-
-
-export const Choices = () => (
-  <Input
-    type='radios' //checkboxes
-    name='composer'
-    options={[
-      {
-        value   :'valhalla',
-        label   :'Wagner',
-        id      :'wag',
-        disabled:true
-      },
-      {
-        value:'viaggio',
-        label:'Rossini',
-        id   :'ross'
-      },
-      {
-        value:'pelleas',
-        label:<span>
-          <b>Claude</b>
-          {' '}
-          Debussy
-              </span>,
-        id:'debu'
-      }
-    ]}
-    other='Altro'
-    otherId='yoho'
-    label='Whats your favourite composer'
-    inputId='compo'
-  />
-)
-
-export const SVGChoices = () => (
-  <Input
-    type='svg-radios' //checkboxes
-    name='composer'
-    inputClassName='y-indigo'
-    options={[
-      {
-        value:'valhalla',
-        label:'Wagner',
-        id   :'wag',
-      },
-      {
-        value   :'viaggio',
-        label   :'Rossini',
-        id      :'ross',
-        disabled:true,
-      },
-      {
-        value:'pelleas',
-        label:<span>
-          <b>Claude</b>
-          {' '}
-          Debussy
-              </span>,
-        id:'debu'
-      }
-    ]}
-    other='Altro'
-    otherId='yoho'
-    label='Whats your favourite composer'
-    inputId='compo2'
-  />
-)
-
-export const CardChoices = () => (
-  <Input
-    type='card-checkboxes' //radios
-    name='composer'
-    inputClassName='y-indigo'
-    options={[
-      {
-        value:'valhalla',
-        label:'Wagner',
-        id   :'wag',
-      },
-      {
-        value   :'viaggio',
-        label   :'Rossini',
-        id      :'ross',
-        disabled:true,
-      },
-      {
-        value:'pelleas',
-        label:<span>
-          <em>Claude</em>
-          {' '}
-          Debussy
-              </span>,
-        id:'debu'
-      }
-    ]}
-    label='Whats your favourite composer'
-    inputId='compo3'
-  />
-)
