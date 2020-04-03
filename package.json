@@ -1,7 +1,7 @@
 {
   "name": "@fwrlines/ds",
   "author": "",
-  "version": "1.10.3",
+  "version": "1.10.2",
   "description": "",
   "main": "dist/cjs/index.js",
   "module": "dist/es/index.js",
@@ -13,7 +13,7 @@
     "test-eslint": "eslint .storybook/main.js --no-ignore",
     "now-build": "mkdir ./public && npm run build-storybook --quiet",
     "copy-css:cjs": "copyfiles -u 2 src/ui/**/*.scss dist/cjs",
-    "copy-css:ss": "copyfiles -u 2 src/ui/**/*.scss dist/cjs",
+    "copy-css:es": "copyfiles -u 2 src/ui/**/*.scss dist/cjs",
     "compile:cjs": "NODE_ENV=cjs babel src/ui --out-dir dist/cjs --ignore **/storie*/*.js",
     "compile:es": "NODE_ENV=es babel src/ui --out-dir dist/es --ignore **/stories/*.js",
     "build:cjs": "npm run compile:cjs && npm run copy-css:cjs",
