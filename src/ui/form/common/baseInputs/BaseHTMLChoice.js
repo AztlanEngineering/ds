@@ -76,7 +76,7 @@ const HTMLChoice = ({
         </li>
       ) }
 
-      { other &&
+      { !multiple && other &&
         <li
           className={
             [
@@ -178,7 +178,7 @@ HTMLChoice.propTypes = {
   ),
 
   /**
-   * Whether we accept a custom user-defined value
+   * Whether we accept a custom user-defined value. Only for radios (multiple = true)
    */
   other:PropTypes.oneOfType([
     PropTypes.bool,
@@ -186,9 +186,9 @@ HTMLChoice.propTypes = {
   ]),
 
   /**
-   * In case we enable the other value, let's give it an ID
+   * In case we enable the other value, let's give it an ID. Only for radios (multiple = true)
    */
-  otherId:PropTypes.string
+  otherId:PropTypes.string,
 
   /*
   : PropTypes.shape({

@@ -100,7 +100,7 @@ const BaseSVGChoice = ({
         </li>
       )}
 
-      { other &&
+      { !multiple && other &&
         <li
           className={
             [
@@ -207,7 +207,7 @@ BaseSVGChoice.propTypes = {
   ),
 
   /**
-   * Whether we accept a custom user-defined value
+   * In case options are provided, whether we accept a custom user-defined value. Only for radios (multiple = false)
    */
   other:PropTypes.oneOfType([
     PropTypes.bool,
@@ -215,7 +215,7 @@ BaseSVGChoice.propTypes = {
   ]),
 
   /**
-   * In case we enable the other value, let's give it an ID
+   * In case options are defined and we enable a user-defined value, let's give it an ID. Only for radios (multiple = false).
    */
   otherId:PropTypes.string,
 

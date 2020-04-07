@@ -39,7 +39,8 @@ export const Default = () => (
     context={ context }
     initialValues={{
       'planet_name':'jupyter',
-      'story'      :'april is the cruellest month, breeding, lilacs out of the dead land, mixing, memory and desire'
+      'story'      :'april is the cruellest month, breeding, lilacs out of the dead land, mixing, memory and desire',
+      'fellini'    :new Set(['saty', 'otto'])
     }}
   >
     <FormInput

@@ -288,7 +288,7 @@ SVGChoice.propTypes = {
   ).isRequired,
 
   /**
-   * In case options are provided, whether we accept a custom user-defined value
+   * In case options are provided, whether we accept a custom user-defined value. Only for radios (multiple = false)
    */
   other:PropTypes.oneOfType([
     PropTypes.bool,
@@ -296,9 +296,10 @@ SVGChoice.propTypes = {
   ]),
 
   /**
-   * In case options are defined and we enable a user-defined value, let's give it an ID
+   * In case options are defined and we enable a user-defined value, let's give it an ID. Only for radios (multiple = false).
    */
   otherId:PropTypes.string,
+
 
 
   /**
@@ -317,6 +318,7 @@ SVGChoice.propTypes = {
   value:PropTypes.oneOfType([
     PropTypes.bool,
     PropTypes.string,
+    PropTypes.instanceOf(Set)
   ]),
 
   /**

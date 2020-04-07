@@ -309,6 +309,7 @@ CardChoice.propTypes = {
   value:PropTypes.oneOfType([
     PropTypes.bool,
     PropTypes.string,
+    PropTypes.instanceOf(Set)
   ]),
 
   /**

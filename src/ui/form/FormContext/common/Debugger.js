@@ -55,7 +55,7 @@ const Debugger = ({
             <li key={i}>
               <em>{ e }</em>
 &nbsp;:&nbsp;
-              { values[e] }
+              { (values[e] && values[e].size) ? '[' + [...values[e]].join(', ')+ ']' : values[e] }
             </li>
           )
           }

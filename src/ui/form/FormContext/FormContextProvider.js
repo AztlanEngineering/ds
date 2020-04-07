@@ -31,7 +31,7 @@ const FormContextProvider = ({
     initialTouched,
   })
 
-  console.warn(12309, contextValues)
+  // console.warn(12309, contextValues)
 
   return (
     <Context.Provider
@@ -55,7 +55,7 @@ FormContextProvider.propTypes = {
   /**
    * A map of input names to values to initialiwe the values of the inputs
    */
-  initialValues:PropTypes.string,
+  initialValues:PropTypes.object,
 
   /**
    * A map of input names to boolean values to initialiwe the touched attribute of the inputs
