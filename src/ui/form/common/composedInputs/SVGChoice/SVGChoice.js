@@ -62,6 +62,9 @@ const SVGChoice = ({
 
   value,
   onChange,
+  onToggle,
+  onFocus,
+  //onBlue,
 
   variant,
 
@@ -120,7 +123,9 @@ const SVGChoice = ({
     otherId,
 
     value,
-    onChange,
+    onChange:multiple ? onToggle : onChange,
+    onFocus,
+    //onBlur,
 
     variant,
 
@@ -151,19 +156,6 @@ SVGChoice.propTypes = {
    * The JSX-Written, css styles to apply to the wrapper.
    */
   style:PropTypes.object,
-
-  /**
-   * The value of the input, for controlled inputs
-   */
-  value:PropTypes.oneOfType([
-    PropTypes.bool,
-    PropTypes.string,
-  ]),
-
-  /**
-   * Which function to call on value change, for controlled inputs
-   */
-  onChange:PropTypes.func,
 
   /**
    * Whether the input is on an error state. Will be displayed before the description.
@@ -317,15 +309,45 @@ SVGChoice.propTypes = {
     'check',
     'circle',
     'dot'
-  ])
+  ]),
+
+  /**
+   * The value of the input, for controlled inputs
+   */
+  value:PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.string,
+  ]),
+
+  /**
+   * Which function to call on value change, for controlled inputs
+   */
+  onChange:PropTypes.func,
+
+  /**
+   * Which function to call on value toggle, for controlled multiple choice inputs
+   */
+  onToggle:PropTypes.func,
+
+  /**
+   * Which function to call on input focus
+   */
+  onFocus:PropTypes.func,
+
+  /**
+   * Which function to call on input blur
+   */
+  //onBlur:PropTypes.func,
 }
 
 SVGChoice.defaultProps = {
+  /* Already defined in the baseinput
   multiple:false,
   other   :false,
   disabled:false,
   compact :false,
   variant:'cross',
+  */
 }
 
 export default SVGChoice

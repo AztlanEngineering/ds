@@ -3,6 +3,10 @@ import * as React from 'react'
 import PropTypes from 'prop-types'
 
 import {
+  useFormInput
+} from '@fwrlines/utils'
+
+import {
   Input,
   Textarea,
   Choice,
@@ -10,8 +14,11 @@ import {
   CardChoice,
 } from '../common'
 
+import { FormContext } from '../FormContext'
+
 /* Config*/
 import C from 'ui/cssClasses'
+import formConfig from '../formConfig'
 
 /* Relative imports
    import styles from './input.scss' */
@@ -34,24 +41,35 @@ const AcceptedHTMLInputTypes = [
  * Use `FormInput` to
  * Has color `x`
  * All the other props than type are passed to the particular input
+ * Needs to be wrapped in FormContextProvider
  */
 const FormInput = ({
+  context,
   type,
+  name,
   ...allProps
 }) => {
 
-  console.log(allProps.onChange)
+  const inputProps = useFormInput(name, context)
+
+  const passedProps = {
+    ...allProps,
+    ...inputProps,
+    name,
+  }
+
+  //console.log(passedProps.onChange)
 
   if (AcceptedHTMLInputTypes.includes(type)) return(
     <Input
       type={ type }
-      { ...allProps }
+      { ...passedProps }
     />
   )
 
   else if (type === 'textarea') return(
     <Textarea
-      { ...allProps }
+      { ...passedProps }
     />
 
   )
@@ -59,7 +77,7 @@ const FormInput = ({
   else if ([ 'checkboxes', 'radios' ].includes(type)) return(
     <Choice
       multiple={ type === 'checkboxes' ? true : false }
-      {...allProps}
+      {...passedProps}
     />
 
   )
@@ -67,7 +85,7 @@ const FormInput = ({
   else if ([ 'svg-checkboxes', 'svg-radios' ].includes(type)) return(
     <SVGChoice
       multiple={ type === 'svg-checkboxes' ? true : false }
-      { ...allProps }
+      { ...passedProps }
     />
 
   )
@@ -75,7 +93,7 @@ const FormInput = ({
   else if ([ 'card-checkboxes', 'card-radios' ].includes(type)) return(
     <CardChoice
       multiple={ type === 'card-checkboxes' ? true : false }
-      { ...allProps }
+      { ...passedProps }
     />
 
   )
@@ -91,6 +109,11 @@ const FormInput = ({
 }
 
 FormInput.propTypes = {
+  /**
+   * A react context object to instantiate the provider
+   */
+  context:PropTypes.object,
+
   /**
    * The type of the input
    */
@@ -115,7 +138,8 @@ FormInput.propTypes = {
 }
 
 FormInput.defaultProps = {
-  aesthetic:'mars',
+  context  :FormContext,
+  aesthetic:formConfig.defaultAesthetic,
   type     :'text',
 }
 

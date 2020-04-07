@@ -15,9 +15,12 @@ import PropTypes from 'prop-types'
 
 /**
  * Use `HTMLInput` to
- * Has color `x`
+ * Has color `x`. Look at composed inputs for props
  */
-const HTMLInput = ({
+const HTMLInput = (
+  props
+
+  /*{
   id,
   className,
   style,
@@ -29,11 +32,14 @@ const HTMLInput = ({
 
   value,
   onChange,
-}) => {
-
+  onBlur,
+}
+*/
+) => {
 
   return (
     <input
+      /*
       className={
         [
         //styles[baseClassName],
@@ -48,6 +54,9 @@ const HTMLInput = ({
       disabled={ disabled }
       value={ value }
       onChange={ onChange }
+      onBlur={ onBlur }
+       */
+      { ...props }
     />
   )}
 
@@ -115,6 +124,11 @@ HTMLInput.propTypes = {
    * Which function to call on value change, for controlled inputs
    */
   onChange:PropTypes.func,
+
+  /**
+   * Which function to call on input blur
+   */
+  onBlur:PropTypes.func,
 }
 
 HTMLInput.defaultProps = {

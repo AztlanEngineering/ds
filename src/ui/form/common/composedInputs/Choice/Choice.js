@@ -59,6 +59,9 @@ const Choice = ({
 
   value,
   onChange,
+  onToggle,
+  onFocus,
+  //onBlur,
 
 }) => {
 
@@ -111,7 +114,9 @@ const Choice = ({
     otherId,
 
     value,
-    onChange
+    onChange:multiple ? onToggle : onChange,
+    onFocus,
+    //onBlur
 
   }
 
@@ -296,6 +301,21 @@ Choice.propTypes = {
    * Which function to call on value change, for controlled inputs
    */
   onChange:PropTypes.func,
+
+  /**
+   * Which function to call on value toggle, for controlled multiple choice inputs
+   */
+  onToggle:PropTypes.func,
+
+  /**
+   * Which function to call on input focus
+   */
+  onFocus:PropTypes.func,
+
+  /**
+   * Which function to call on input blur
+   */
+  //onBlur:PropTypes.func,
 
 }
 

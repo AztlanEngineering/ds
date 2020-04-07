@@ -55,6 +55,8 @@ const Textarea = ({
 
   value,
   onChange,
+  onBlur,
+  onFocus,
 
   //Specific to this input
   placeholder,
@@ -104,13 +106,15 @@ const Textarea = ({
     placeholder,
 
     value,
-    onChange
+    onChange,
+    onBlur,
+    onFocus
 
   }
 
   return (
     <InputHolder
-      { ...holderProps }
+      { ...holderProps }l
     >
       <InputInside >
         <BaseHTMLTextarea
@@ -261,13 +265,24 @@ Textarea.propTypes = {
   onChange:PropTypes.func,
 
   /**
+   * Which function to call on input focus
+   */
+  onFocus:PropTypes.func,
+
+  /**
+   * Which function to call on input blur
+   */
+  onBlur:PropTypes.func,
+
+
+  /**
    * The input placeholder
    */
   placeholder:PropTypes.string,
 }
 
 Textarea.defaultProps = {
-  placeholder:'A default text you\'d like to replace by inputting sth instead here'
+  //placeholder:'A default text you\'d like to replace by inputting sth instead here'
   /* height:'2.2em',
      as:'p', */
 }

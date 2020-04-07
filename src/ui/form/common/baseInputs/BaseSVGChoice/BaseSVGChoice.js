@@ -48,8 +48,16 @@ const BaseSVGChoice = ({
   other,
   otherId,
 
-  variant
+  variant,
+
+  value,
+  ...otherProps
 }) => {
+
+  const {
+    onFocus:onClick,
+    onChange,
+  } = otherProps
 
   const SVGInput = multiple ?
     memo(checkboxVariantsMap[variant], () => true) :
@@ -58,9 +66,11 @@ const BaseSVGChoice = ({
   const [otherValue, setOtherValue] = useState('')
 
   return (
-    <>
+    <ul
+      id={ id }
+    >
       { options.map((e,i) =>
-        <div
+        <li
           key={ i }
           className={
             [
@@ -69,8 +79,8 @@ const BaseSVGChoice = ({
               className
             ].filter(e => e).join(' ')
           }
-          id={ id }
           style={ style }
+          onClick={ onClick }
         >
           <input
             type={ multiple ? 'checkbox' : 'radio' }
@@ -78,15 +88,20 @@ const BaseSVGChoice = ({
             id={ e.id }
             value={ e.value }
             disabled={ disabled || e.disabled }
+            checked={ (multiple && value) ? 
+                value.has(e.value) :
+              value === e.value 
+            }
+            { ...otherProps }
           />
           <label htmlFor={ e.id }>{ e.label }</label>
           <SVGInput />
 
-        </div>
+        </li>
       )}
 
       { other &&
-        <div
+        <li
           className={
             [
             //styles[baseClassName],
@@ -94,8 +109,8 @@ const BaseSVGChoice = ({
               className
             ].filter(e => e).join(' ')
           }
-          id={ id }
           style={ style }
+          onClick={ onClick }
         >
           <input
             type={ multiple ? 'checkbox' : 'radio' }
@@ -103,6 +118,8 @@ const BaseSVGChoice = ({
             id={ otherId }
             value={ otherValue }
             disabled={ disabled }
+            checked={ value === otherValue }
+            { ...otherProps }
           />
           <label
             htmlFor={ otherId }
@@ -128,14 +145,20 @@ const BaseSVGChoice = ({
                   'setter'
                 ].filter(e => e).join('_')
               }
-              onChange={ e => setOtherValue(e.target.value) }
-              onFocus={ e => e.target.parentNode.click() }
+            checked={ value === otherValue }
+            { ...otherProps }
+              onChange={ e => {
+                setOtherValue(e.target.value)
+                onChange(e)
+              }
+              }
+              onFocus={ e => e.target.parentNode.click() } //TODO dubious
             />
           </label>
           <SVGInput />
-        </div>
+        </li>
       }
-    </>
+    </ul>
   )}
 
 BaseSVGChoice.propTypes = {
@@ -210,7 +233,7 @@ BaseSVGChoice.propTypes = {
 
 BaseSVGChoice.defaultProps = {
   multiple:false,
-  options :[],
+  disabled:false,
   other   :false,
   otherId :'other',
 

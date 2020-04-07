@@ -66,9 +66,11 @@ const Input = ({
   errorIcon,
   validIcon,
 
-
+  name,
   value,
   onChange,
+  onBlur,
+  onFocus,
 
   //Specific to this input
   placeholder,
@@ -138,7 +140,9 @@ const Input = ({
     placeholder,
 
     value,
-    onChange
+    onChange,
+    onBlur,
+    onFocus,
 
   }
 
@@ -348,6 +352,16 @@ Input.propTypes = {
   onChange:PropTypes.func,
 
   /**
+   * Which function to call on input focus
+   */
+  onFocus:PropTypes.func,
+
+  /**
+   * Which function to call on input blur
+   */
+  onBlur:PropTypes.func,
+
+  /**
    * The input placeholder
    */
   placeholder:PropTypes.string,
@@ -368,7 +382,7 @@ Input.propTypes = {
 }
 
 Input.defaultProps = {
-  placeholder:'please enter your email here' //TODO remove
+  //placeholder:'please enter your email here' //TODO remove
   /* height:'2.2em',
      as:'p', */
 }

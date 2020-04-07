@@ -30,15 +30,26 @@ const HTMLChoice = ({
   disabled,
 
   other,
-  otherId
+  otherId,
+
+  value,
+
+  ...otherProps //include synthetic even callbacks
 }) => {
+
+  const {
+    onFocus:onClick,
+    onChange,
+  } = otherProps
 
   const [otherValue, setOtherValue] = useState('')
 
   return (
-    <>
+    <ul
+      id={ id }
+    >
       { options.map((e,i) =>
-        <div
+        <li
           key={ i }
           className={
             [
@@ -46,8 +57,8 @@ const HTMLChoice = ({
               className
             ].filter(e => e).join(' ')
           }
-          id={ id }
           style={ style }
+          onClick={ onClick }
         >
           <input
             type={ multiple ? 'checkbox' : 'radio' }
@@ -55,27 +66,34 @@ const HTMLChoice = ({
             id={ e.id }
             value={ e.value }
             disabled={ disabled || e.disabled }
+            checked={ (multiple && value) ? 
+                value.has(e.value) :
+              value === e.value 
+            }
+            { ...otherProps }
           />
           <label htmlFor={ e.id }>{ e.label }</label>
-        </div>
+        </li>
       ) }
 
       { other &&
-        <div
+        <li
           className={
             [
             //styles[baseClassName],
               className
             ].filter(e => e).join(' ')
           }
-          id={ id }
           style={ style }
+          onClick={ onClick }
         >
           <input
             type={ multiple ? 'checkbox' : 'radio' }
             name={ name }
             id={ otherId }
             value={ otherValue }
+            checked={ value === otherValue }
+            { ...otherProps }
           />
           <label
             htmlFor={ otherId }
@@ -101,12 +119,17 @@ const HTMLChoice = ({
                   'setter'
                 ].filter(e => e).join('_')
               }
-              onChange={ e => setOtherValue(e.target.value) }
+              onChange={ e => {
+                setOtherValue(e.target.value)
+                onChange(e)
+              }
+              }
+              onFocus={ e => e.target.parentNode.click() } //TODO dubious
             />
           </label>
-        </div>
+        </li>
       }
-    </>
+    </ul>
   )}
 
 HTMLChoice.propTypes = {
@@ -181,6 +204,7 @@ HTMLChoice.propTypes = {
 
 HTMLChoice.defaultProps = {
   multiple:false,
+  disabled:false,
   other   :false,
   otherId :'other'
 }

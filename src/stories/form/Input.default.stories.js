@@ -4,7 +4,10 @@ import { useState } from 'react'
 
 //import { action } from '@storybook/addon-actions'
 
-import { FormInput } from 'ui'
+import {
+  FormInput,
+  FormContextProvider,
+} from 'ui'
 /* import QUERY from './graphql/query.graphql'
    import { AplProvider } from 'stories/utils'
    import { Router } from 'stories/utils'
@@ -21,7 +24,17 @@ export default {
   },
   parameters:{
     decorators:[
-      /* storyfn => <div className="">{ storyfn() }</div>,
+      storyfn => <FormContextProvider
+        initialValues={{
+
+          contact_email:'john.johnson@gmail.com',
+          password     :'kwak',
+          openquestion :'April is the cruellest month, breeding licacs out the dead land,'
+        }}
+                 >
+        { storyfn() }
+      </FormContextProvider>,
+      /*
          storyfn => <AplProvider endpoint={ endpoint }>{ storyfn() }</AplProvider>,
          storyfn => <Router>{ storyfn() }</Router>, */
     ]
@@ -29,15 +42,15 @@ export default {
 }
 
 export const Default = () => {
+  /*
   const [value, setValue] = useState()
   const onChange = (e) => {
     console.log('%%%%%', e)
   }
+  */
   return (
     <FormInput
       name={ 'contact_email' }
-      value={ value }
-      onChange={ onChange }
       label='Your email'
       inputId='hey'
       description='This field is important, please take the time to fill it correctly.'

@@ -16,9 +16,12 @@ import PropTypes from 'prop-types'
 
 /**
  * Use `HTMLTextarea` to
- * Has color `x`
+ * Has color `x`. Look at composed inputs for props
  */
-const HTMLTextarea = ({
+const HTMLTextarea = (
+  props
+  /*
+  {
   id,
   className,
   style,
@@ -26,12 +29,19 @@ const HTMLTextarea = ({
   placeholder,
   rows,
   name,
-  disabled
-}) => {
+  disabled,
+
+  value,
+  onChange,
+  onBlur
+}*/
+) => {
 
 
   return (
     <textarea
+      { ...props }
+      /*
       className={
         [
         //styles[baseClassName],
@@ -45,6 +55,10 @@ const HTMLTextarea = ({
       name={ name }
       disabled={ disabled }
 
+      value={ value }
+      onChange={ onChange }
+      onBlur={ onBlur }
+       */
     />
   )}
 
@@ -83,6 +97,24 @@ HTMLTextarea.propTypes = {
    * The number of text rows for the textarea
    */
   rows:PropTypes.number,
+
+  /**
+   * The value of the input, for controlled inputs
+   */
+  value:PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.string,
+  ]),
+
+  /**
+   * Which function to call on value change, for controlled inputs
+   */
+  onChange:PropTypes.func,
+
+  /**
+   * Which function to call on input blur
+   */
+  onBlur:PropTypes.func,
 
 
   /*

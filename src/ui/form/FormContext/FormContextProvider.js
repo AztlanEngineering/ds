@@ -1,9 +1,12 @@
 /* @fwrlines/generator-react-component 1.4.0 */
 import * as React from 'react'
+import { useEffect, useState, useReducer } from 'react'
 import PropTypes from 'prop-types'
 
 
 import FormContext from './FormContext'
+
+import { useFormState } from '@fwrlines/utils'
 /* Config
    import C from 'ui/cssClasses' */
 
@@ -14,48 +17,51 @@ import FormContext from './FormContext'
  * Oh. This is a complicated one. Good luck to use it properly.
  * First provide the field names which are going to be mapped to the state
  */
-
 const FormContextProvider = ({
+  context:Context,
+
   children,
+
+  initialValues,
+  initialTouched,
 }) => {
 
+  const contextValues = useFormState({
+    initialValues,
+    initialTouched,
+  })
+
+  console.warn(12309, contextValues)
+
   return (
-    <FormContext.Provider
-      value={{}}
+    <Context.Provider
+      value={ contextValues }
     >
       { children }
-    </FormContext.Provider>
+    </Context.Provider>
   )}
 
 FormContextProvider.propTypes = {
+  /**
+   * A react context object to instantiate the provider
+   */
+  context:PropTypes.object,
+
   /**
    *  The children JSX
    */
   children:PropTypes.node,
 
   /**
-   *  The children JSX
+   * A map of input names to values to initialiwe the values of the inputs
    */
-  fields:PropTypes.arrayOf(PropTypes.string),
+  initialValues:PropTypes.string,
 
   /**
-   * Which html tag to use
+   * A map of input names to boolean values to initialiwe the touched attribute of the inputs
    */
-  as:PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.object
-  ]),
-  //as: PropTypes.string,
+  initialTouched:PropTypes.object,
 
-  /**
-   * The height of the element
-   */
-  height:PropTypes.string,
-
-  /**
-   * The width of the element
-   */
-  width:PropTypes.string,
   /*
   : PropTypes.shape({
     id: PropTypes.string.isRequired,
@@ -68,11 +74,10 @@ FormContextProvider.propTypes = {
   */
 }
 
-/*
 FormContextProvider.defaultProps = {
-  status: 'neutral',
-  //height:'2.2em',
-  //as:'p',
+  context:FormContext,
+  /* height:'2.2em',
+     as:'p', */
 }
-*/
+
 export default FormContextProvider

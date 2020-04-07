@@ -31,20 +31,48 @@ export default {
 
 
 export const Default = () => {
+  const name='contact-email'
+
   const [value, setValue] = useState()
+
+  const [detectedName, setDetectedName] = useState() //Only for testhing
+
   const onChange = (e) => {
-    console.log('%%%%%', e)
+    const {
+      name:dname,
+      value:dvalue
+    } = e.target
+    console.log('The full change event has been logged for debugging puroposes', e)
+    setValue(dvalue)
+    setDetectedName(dname)
   }
   return (
-    <Input
-      type='email'
-      name={ 'contact_email' }
-      value={ value }
-      onChange={ onChange }
-      label='Your email'
-      inputId='hey'
-      description='This field is important, please take the time to fill it correctly.'
-    />
+    <>
+      <Input
+        type='email'
+        name={ name }
+        value={ value }
+        onChange={ onChange }
+        label='Your email'
+        inputId='hey'
+        description='This field is important, please take the time to fill it correctly.'
+      />
+      <pre>
+        BaseName :
+        {' '}
+        { name }
+        {'\n'}
+        Detected Name :
+        {' '}
+        { detectedName }
+        {'\n'}
+        Current Value :
+        {' '}
+        { value }
+        {'\n'}
+        { 'The full change event has been logged for debugging purposes1' }
+      </pre>
+    </>
 
   )
 }

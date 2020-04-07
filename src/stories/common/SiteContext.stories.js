@@ -27,17 +27,19 @@ export default {
     ]
   }
 }
-const config={
-  SITE_NAME     :'Internet 1999',
-  SITE_CANONICAL:'https://internet1999.org',
-  FACEBOOK      :'facebook_id',
-  INSTAGRAM     :'@superaccount',
+
+export const Default = () => {
+  const config={
+    SITE_NAME     :'Internet 1999',
+    SITE_CANONICAL:'https://internet1999.org',
+    FACEBOOK      :'facebook_id',
+    INSTAGRAM     :'@superaccount',
+  }
+  return (
+    <SiteContextProvider config={ config }>
+      This text is inside the context
+    </SiteContextProvider>
+  )
+
 }
-
-export const Default = () => (
-  <SiteContextProvider config={ config }>
-    This text is inside the context
-  </SiteContextProvider>
-)
-
 

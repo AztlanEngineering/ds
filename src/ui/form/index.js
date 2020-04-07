@@ -1,4 +1,8 @@
-export { FormContext, FormContextProvider } from './FormContext'
+export {
+  FormContext,
+  FormContextProvider,
+  FormContextDebugger,
+} from './FormContext'
 
 export { FormInput } from './FormInput'
 

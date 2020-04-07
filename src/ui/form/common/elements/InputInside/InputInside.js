@@ -108,6 +108,7 @@ InputInside.propTypes = {
    *  The children JSX
    */
   children:PropTypes.node,
+
   /**
    * A text to display on the input left side (only valid for inputs assimilated to text)
    */
