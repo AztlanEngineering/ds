@@ -16,12 +16,14 @@ export {
   BaseHTMLChoice,
   BaseCardChoice,
   BaseSVGChoice,
+  BaseHTMLSelect
 } from './baseInputs'
 
 export {
   Input,
   Textarea,
   Choice,
+  Select,
   CardChoice,
   SVGChoice,
   DownshiftSelect,

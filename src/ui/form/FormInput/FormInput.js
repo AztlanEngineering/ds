@@ -10,6 +10,7 @@ import {
   Input,
   Textarea,
   Choice,
+  Select,
   SVGChoice,
   CardChoice,
 } from '../common'
@@ -69,6 +70,14 @@ const FormInput = ({
 
   else if (type === 'textarea') return(
     <Textarea
+      { ...passedProps }
+    />
+
+  )
+
+  else if (type === 'select') return(
+    <Select
+      //multiple={ type === 'checkboxes' ? true : false } //Multiple not implemented because select multiple has a terrible UI
       { ...passedProps }
     />
 

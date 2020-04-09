@@ -3,26 +3,25 @@ import * as React from 'react'
 //import {} from 'react'
 import PropTypes from 'prop-types'
 
-import { BaseCardChoice } from '../../baseInputs'
+import { BaseHTMLSelect } from '../../baseInputs'
 
-import { InputHolder } from '../../elements'
-
+import { InputHolder, InputInside } from '../../elements'
 
 /* Config
    import C from 'ui/cssClasses' */
 
 /* Relative imports
-   import styles from './card_choice.scss' */
-import './card_choice.scss'
+   import styles from './select.scss' */
+import './select.scss'
 
-const baseClassName = 'card_choice'
+const baseClassName = 'select'
 
 
 /**
- * Use `CardChoice` to
+ * Use `Select` to
  * Has color `x`
  */
-const CardChoice = ({
+const Select = ({
   id,
   className,
   style,
@@ -52,24 +51,31 @@ const CardChoice = ({
   descriptionClassName,
   descriptionStyle,
 
+    // From here these are different
+    leftSide,
+    rightSide,
+    sidesClassName,
+    sidesStyle,
+
+    leftIcon,
+    rightIcon,
+    iconsClassName,
+    iconsStyle,
+
+    errorIcon,
+    validIcon,
+
   name,
   multiple,
   options,
-  other,
-  otherId,
 
   value,
   onChange,
-  onToggle,
+  onBlur,
   onFocus,
-  //onBlur,
-
-  variant,
 }) => {
 
   const holderProps = {
-    /* A) props passed
-       className, */
     id,
     className:[
       //styles[baseClassName],
@@ -101,7 +107,26 @@ const CardChoice = ({
     descriptionStyle,
 
     labelAs:'legend',
-    // The prop labelAs is a new prop
+    // The props labelAs and children are new props
+  }
+
+  const insideContainerProps = {
+    error,
+    valid,
+
+    leftSide,
+    rightSide,
+    sidesClassName,
+    sidesStyle,
+
+    leftIcon,
+    rightIcon,
+    iconsClassName,
+    iconsStyle,
+
+    errorIcon,
+    validIcon,
+
   }
 
 
@@ -112,45 +137,42 @@ const CardChoice = ({
     disabled :inputDisabled,
 
     name,
-    multiple,
     options,
 
-    other,
-    otherId,
-
     value,
-    onChange:multiple ? onToggle : onChange,
-    onFocus,
-    //onBlur,
-
-    variant,
+    onChange,
+    onBlur,
+    onFocus
 
   }
-
 
   return (
     <InputHolder
       { ...holderProps }
     >
-      <BaseCardChoice
-        { ...inputProps }
-      />
+      <InputInside
+        { ...insideContainerProps }
+      >
+        <BaseHTMLSelect
+          { ...inputProps }
+        />
+      </InputInside>
     </InputHolder>
   )}
 
-CardChoice.propTypes = {
+Select.propTypes = {
   /**
-   * Provide an HTML id to the wrapper
+   * Provide an HTML id to this element
    */
   id:PropTypes.string,
 
   /**
-   * The html class names to be provided to the wrapper
+   * The html class names to be provided to this element
    */
   className:PropTypes.string,
 
   /**
-   * The JSX-Written, css styles to apply to the wrapper.
+   * The JSX-Written, css styles to apply to the element.
    */
   style:PropTypes.object,
 
@@ -261,6 +283,56 @@ CardChoice.propTypes = {
   ]),
 
   /**
+   * A text to display on the input left side
+   */
+  leftSide:PropTypes.string,
+
+  /**
+   * A text to display on the input right side
+   */
+  rightSide:PropTypes.string,
+
+  /**
+   * The html class names to be provided to the input sides
+   */
+  sidesClassName:PropTypes.string,
+
+  /**
+   * The JSX-Written, css styles to apply to the input sides.
+   */
+  sidesStyle:PropTypes.object,
+
+  /**
+   * Which icon to display on the left side of the input. Refer to "Storybook/Icons/Default" for possible choices
+   */
+  leftIcon:PropTypes.string,
+
+  /**
+   * Which icon to display on the right side of the input. Refer to "Storybook/Icons/Default" for possible choices. Please not that the rightIcon is superseded by the State Icon Class
+   */
+  rightIcon:PropTypes.string,
+
+  /**
+   * The icon to be displayed on the right side of the input when valid. Refer to "Storybook/Icons/Default" for possible choices.
+   */
+  validIcon:PropTypes.string,
+
+  /**
+   * The icon to be displayed on the right side of the input when invalid. Refer to"Storybook/Icons/Default" for possible choices.
+   */
+  errorIcon:PropTypes.string,
+
+  /**
+   * The html class names to be provided to the input icons
+   */
+  iconsClassName:PropTypes.string,
+
+  /**
+   * The JSX-Written, css styles to apply to the input icons.
+   */
+  iconsStyle:PropTypes.object,
+
+  /**
    * The input name
    */
   name:PropTypes.string.isRequired,
@@ -285,42 +357,17 @@ CardChoice.propTypes = {
   ).isRequired,
 
   /**
-   * In case options are provided, whether we accept a custom user-defined value
-   */
-  //other:PropTypes.oneOfType([
-   // PropTypes.bool,
-   // PropTypes.string,
-  //]),
-
-  /**
-   * In case options are defined and we enable a user-defined value, let's give it an ID
-   */
-  //otherId:PropTypes.string,
-
-
-  /**
-   * The variant. Look at exact components documentation. See SVGChoice
-   */
-  variant:PropTypes.string,
-
-  /**
    * The value of the input, for controlled inputs
    */
   value:PropTypes.oneOfType([
     PropTypes.bool,
     PropTypes.string,
-    PropTypes.instanceOf(Set)
   ]),
 
   /**
    * Which function to call on value change, for controlled inputs
    */
   onChange:PropTypes.func,
-
-  /**
-   * Which function to call on value toggle, for controlled multiple choice inputs
-   */
-  onToggle:PropTypes.func,
 
   /**
    * Which function to call on input focus
@@ -330,17 +377,18 @@ CardChoice.propTypes = {
   /**
    * Which function to call on input blur
    */
-  //onBlur:PropTypes.func,
+  onBlur:PropTypes.func,
+
 }
 
-CardChoice.defaultProps = {
-  compact :true,
-  /*
-  multiple:false,
-  other   :false,
+Select.defaultProps = {
+  /* multiple:false,
+     other   :false, */
   disabled:false,
-  variant:'not implemented',
-  */
+  compact :false,
+  rightIcon:'j',
+  /* height:'2.2em',
+     as:'p', */
 }
 
-export default CardChoice
+export default Select

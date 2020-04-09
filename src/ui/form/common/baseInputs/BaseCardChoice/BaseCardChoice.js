@@ -136,7 +136,7 @@ BaseCardChoice.propTypes = {
 BaseCardChoice.defaultProps = {
   multiple:false,
   disabled:false,
-  other   :false,
+  //other   :false,
   otherId :'other',
 }
 

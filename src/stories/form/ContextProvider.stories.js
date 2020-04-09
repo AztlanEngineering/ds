@@ -150,9 +150,32 @@ export const Default = () => (
           id:'saty'
         }
       ]}
-      other='Altro'
-      otherId='yozo'
       label='Do you like these movies by fellini'
+      inputId='compo2'
+    />
+    <FormInput
+      context={ context }
+      type='select' //checkboxes
+      name='coolors'
+      inputClassName='y-indigo'
+      options={[
+        {
+          value:'magenta',
+          label:'magenta',
+          id   :'mag',
+        },
+        {
+          value:'red',
+          label:'red',
+          id   :'red',
+        },
+        {
+          value:'blue',
+          label:'Blue',
+          id:'blu'
+        }
+      ]}
+      label='Favourite color?'
       inputId='compo2'
     />
     <FormContextDebugger context={ context }/>
