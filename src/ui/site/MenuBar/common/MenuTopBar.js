@@ -1,40 +1,53 @@
-/* @fwrlines/generator-react-component 1.1.2 */
+/* @fwrlines/generator-react-component 1.5.0 */
 import * as React from 'react'
+//import {} from 'react'
 import PropTypes from 'prop-types'
 
-
+import {
+  ProgressBar
+} from 'ui/common'
 
 /* Config
    import C from 'ui/cssClasses' */
 
-//Relative imports
-import styles from './menu.scss'
+/* Relative imports
+   import styles from './menu_top_bar.scss' */
+import './menu_top_bar.scss'
 
-const baseClassName = 'menu'
+const baseClassName = 'menu_top_bar'
 
-const Menu = ({
+
+/**
+ * Use `MenuTopBar` to display a horizontal menu bar.
+ * Has background `x` and default color `on-x`
+ */
+const MenuTopBar = ({
   id,
   className,
-  style
+  style,
+  children,
+
+  as:Wrapper
 }) => {
 
 
   return (
-    <div
+    <Wrapper
       className={
         [
-          styles[baseClassName],
+        //styles[baseClassName],
+          baseClassName,
           className
         ].filter(e => e).join(' ')
       }
       id={ id }
       style={ style }
     >
-      <h2>Welcome to the Menu component</h2>
-    </div>
+      { children }
+    </Wrapper>
   )}
 
-Menu.propTypes = {
+MenuTopBar.propTypes = {
   /**
    * Provide an HTML id to this element
    */
@@ -60,19 +73,10 @@ Menu.propTypes = {
    */
   as:PropTypes.oneOfType([
     PropTypes.string,
-    PropTypes.node
+    PropTypes.object
   ]),
   //as: PropTypes.string,
 
-  /**
-   * The height of the element
-   */
-  height:PropTypes.string,
-
-  /**
-   * The width of the element
-   */
-  width:PropTypes.string,
   /*
   : PropTypes.shape({
     id: PropTypes.string.isRequired,
@@ -85,12 +89,9 @@ Menu.propTypes = {
   */
 }
 
-/*
-Menu.defaultProps = {
-  status: 'neutral',
+MenuTopBar.defaultProps = {
   //height:'2.2em',
-  //as:'p',
+  as:'nav',
 }
-*/
 
-export default Menu
+export default MenuTopBar

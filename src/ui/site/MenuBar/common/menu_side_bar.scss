@@ -1,0 +1,46 @@
+/* @fwrlines/generator-react-component 1.5.0 */
+
+/*
+
+Classes :
+.menu_side_bar : default
+
+*/
+.g-sidebar {
+  display: grid;
+  //grid-template-rows: auto;
+  //grid-template-columns:
+  grid-auto-flow: column;
+
+  &.left {
+    grid-template-columns: [sidebar-start] var(--sidebar-width, 300px) [sidebar-end] repeat(12, 1fr);
+  }
+
+  &.right {
+    grid-template-columns: repeat(12, 1fr) [sidebar-start] var(--sidebar-width, 300px) [sidebar-end];
+  }
+
+  > * {
+  }
+}
+
+.menu_side_bar {
+  display: block;
+  grid-column: sidebar-start / sidebar-end;
+
+  //grid-row: 1/-1;,
+  position: relative;
+
+  background: var(--x, var(--background));
+
+  > .inside {
+    display: flex;
+    flex-direction: column;
+    justify-content: safe center;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+  }
+}

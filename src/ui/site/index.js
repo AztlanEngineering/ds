@@ -1,6 +1,7 @@
 export * from './common'
 export { ContentTree, ContentTreeContextProvider} from './ContentTree'
-export { Menu } from './Menu'
+//export { Menu } from './Menu'
+export { MenuTopBar, MenuSideBar } from './MenuBar'
 export { Page } from './Page'
 export { Paginator } from './Paginator'
 export { SchemaQuestion } from './SchemaQuestion'

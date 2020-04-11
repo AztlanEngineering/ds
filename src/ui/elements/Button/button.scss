@@ -94,14 +94,21 @@ $iconTransitionTime:0.3s;
         position: absolute;
         top: 0;
         bottom: 0;
-        opacity: $iconBackOpacity;
         z-index: -1;
-        background: var(--white);
         width: $iconBackWidth;
         content: " ";
         transition: all $iconTransitionTime;
       }
+
     }
+
+    &:not(.simple) i {
+      &::before {
+        opacity: $iconBackOpacity;
+        background: var(--white);
+      }
+    }
+
 
     &[class*="bh-"] {
       &:hover,

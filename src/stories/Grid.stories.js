@@ -1,17 +1,24 @@
 import * as React from 'react'
 
 export default {
-  title:'Grid',
+  title     :'Grid',
+  //component :AnimatedVCaret,
+  parameters:{
+    decorators:[
+      storyfn => <div className='g'>{ storyfn() }</div>,
+    ]
+  }
 }
+
 
 const columns = [
   {
     width:1,
-    back :'brown'
+    back :'azure'
   },
   {
     width:2,
-    back :'pink'
+    back :'secondary'
   },
   {
     width:3,
@@ -23,11 +30,11 @@ const columns = [
   },
   {
     width:5,
-    back :'purple'
+    back :'indigo'
   },
   {
     width:6,
-    back :'teal'
+    back :'accent3'
   },
   {
     width:7,
@@ -35,7 +42,7 @@ const columns = [
   },
   {
     width:8,
-    back :'light-grey'
+    back :'grey'
   },
   {
     width:9,
@@ -56,59 +63,51 @@ const columns = [
 ]
 
 export const Default = () =>
-  <div className='g'>
-    {columns.map((e) =>
-      <div
-        className={ 'g' + e.width + ' bx x-' + e.back }
-        style={{ height: '200px' }}
-      >
-        { 'Column '+ e.width + ' wide' }
-      </div>
-    )}
-  </div>
+  columns.map((e) =>
+    <div
+      className={ 'g' + e.width + ' b-x x-' + e.back }
+      style={{ height: '200px' }}
+    >
+      { 'Column '+ e.width + ' wide' }
+    </div>
+  )
 
 export const SM = () =>
-  <div className='w'>
-    {columns.map((e) =>
-      <div
-        className={ 'g' + e.width + '-sm bx x-' + e.back }
-        style={{ height: '200px' }}
-      >
-        { 'Column '+ e.width + ' wide' }
-      </div>
-    )}
-  </div>
+  columns.map((e) =>
+    <div
+      className={ 'g' + e.width + '-sm b-x x-' + e.back }
+      style={{ height: '200px' }}
+    >
+      { 'Column '+ e.width + ' wide' }
+    </div>
+  )
 
 export const MD = () =>
-  <div className='w'>
-    {columns.map((e) =>
-      <div
-        className={ 'g' + e.width + '-md bx x-' + e.back }
-        style={{ height: '200px' }}
-      >
-        { 'Column '+ e.width + ' wide' }
-      </div>
-    )}
-  </div>
+  columns.map((e) =>
+    <div
+      className={ 'g' + e.width + '-md b-x x-' + e.back }
+      style={{ height: '200px' }}
+    >
+      { 'Column '+ e.width + ' wide' }
+    </div>
+  )
 
 export const LG = () =>
-  <div className='w'>
-    {columns.map((e) =>
-      <div
-        className={ 'g' + e.width + '-lg bx x-' + e.back }
-        style={{ height: '200px' }}
-      >
-        { 'Column '+ e.width + ' wide' }
-      </div>
-    )}
-  </div>
+  columns.map((e) =>
+    <div
+      className={ 'g' + e.width + '-lg b-x x-' + e.back }
+      style={{ height: '200px' }}
+    >
+      { 'Column '+ e.width + ' wide' }
+    </div>
+  )
 
 export const ColumnGaps = () =>
   ['02', '05', '1', '2'].map((f) =>
     <div className={'g i' + f}>
       {columns.map((e) =>
         <div
-          className={ 'g1 bx x-' + e.back }
+          className={ 'g1 b-x x-' + e.back }
           style={{ height: '200px' }}
         >
           { 'Col '+ e.width + ' wide' }
