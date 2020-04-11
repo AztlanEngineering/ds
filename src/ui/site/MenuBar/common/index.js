@@ -1,2 +1,2 @@
-export { default as MenuSideBar } from './MenuSideBar'
-export { default as MenuTopBar } from './MenuTopBar'
+export { default as SideBar } from './SideBar'
+export { default as HorizontalBar } from './HorizontalBar'

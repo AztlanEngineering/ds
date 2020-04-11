@@ -4,7 +4,7 @@ import * as React from 'react'
 
 //import { action } from '@storybook/addon-actions'
 
-import { MenuSideBar } from 'ui'
+import { SideBar } from 'ui'
 /* import QUERY from './graphql/query.graphql'
    import { AplProvider } from 'stories/utils'
    import { Router } from 'stories/utils'
@@ -15,11 +15,11 @@ import { LIST, LIST_XS, TEXT_XXS_ESC, TEXT_XXS, TEXT_XS, TEXT } from '../utils/D
 //const endpoint = 'https://api.fwrlines.com/graphql'
 
 export default {
-  title        :'site/MenuBar/common/MenuSideBar',
-  component    :MenuSideBar,
+  title        :'site/MenuBar/common/SideBar',
+  component    :SideBar,
   //componentSubtitle:'Component subtitle',
   subcomponents:{
-    //MenuSideBar.Item
+    //SideBar.Item
   },
   parameters:{
     decorators:[
@@ -41,7 +41,7 @@ export const Default = () => (
     className='g-sidebar left b-z z-black'
     style={{height: '100%'}}
   >
-    <MenuSideBar>Hola</MenuSideBar>
+    <SideBar>Hola</SideBar>
     <div className='b-x x-yellow g12'></div>
   </div>
 )
@@ -51,7 +51,7 @@ export const Right = () => (
     className='g-sidebar right b-z z-black'
     style={{height: '100%'}}
   >
-    <MenuSideBar>Hola</MenuSideBar>
+    <SideBar>Hola</SideBar>
     <div className='b-x x-yellow g12'></div>
   </div>
 )
@@ -61,7 +61,7 @@ export const Width = () => (
     className='g-sidebar right b-z z-black'
     style={{height: '100%', '--sidebar-width': '70px'}}
   >
-    <MenuSideBar>Hola</MenuSideBar>
+    <SideBar>Hola</SideBar>
     <div className='b-x x-yellow g12'></div>
   </div>
 )
@@ -71,7 +71,7 @@ export const Span2 = () => (
     className='g-sidebar left b-z z-black'
     style={{height: '100%'}}
   >
-    <MenuSideBar style={{gridRowEnd: 'span 2'}}>Hola</MenuSideBar>
+    <SideBar style={{gridRowEnd: 'span 2'}}>Hola</SideBar>
     <div className='b-x x-yellow g12'></div>
     <div className='b-x x-red g12'></div>
   </div>
@@ -82,7 +82,7 @@ export const OverflowTest = () => (
     className='g-sidebar left b-z z-black'
     style={{height: '100%'}}
   >
-    <MenuSideBar><div dangerouslySetInnerHTML={{__html: TEXT_XS}}/></MenuSideBar>
+    <SideBar><div dangerouslySetInnerHTML={{__html: TEXT_XS}}/></SideBar>
     <div className='b-x x-yellow g12'></div>
   </div>
 )
@@ -92,9 +92,9 @@ export const StickyTest = () => (
     className='g-sidebar left b-z z-black'
     style={{height: '100%'}}
   >
-    <MenuSideBar >
+    <SideBar >
       <div dangerouslySetInnerHTML={{__html: TEXT_XS}}/>
-    </MenuSideBar>
+    </SideBar>
     <div className='b-x x-yellow g12'>
       <div
         style={{maxWidth: '400px'}}
@@ -109,12 +109,12 @@ export const FlexTest = () => (
     className='g-sidebar left b-z z-black'
     style={{height: '100%'}}
   >
-    <MenuSideBar
+    <SideBar
       insideClassName='u1 p-u'
     >
       <div dangerouslySetInnerHTML={{__html: TEXT_XXS}}/>
       <div dangerouslySetInnerHTML={{__html: TEXT_XXS}}/>
-    </MenuSideBar>
+    </SideBar>
     <div className='b-x x-yellow g12'>
       <div
         style={{maxWidth: '400px'}}

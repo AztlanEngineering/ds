@@ -3,31 +3,33 @@ import * as React from 'react'
 //import {} from 'react'
 import PropTypes from 'prop-types'
 
-import {
-  ProgressBar
-} from 'ui/common'
 
-/* Config
-   import C from 'ui/cssClasses' */
+
+//  Config
+import C from 'ui/cssClasses'
 
 /* Relative imports
-   import styles from './menu_top_bar.scss' */
-import './menu_top_bar.scss'
+   import styles from './menu_side_bar.scss' */
+import './side_bar.scss'
 
-const baseClassName = 'menu_top_bar'
-
+const baseClassName = 'side_bar'
 
 /**
- * Use `MenuTopBar` to display a horizontal menu bar.
- * Has background `x` and default color `on-x`
+ * Use `SideBar` to
+ * Has color `x`
+ * Please note that some stories should be better seen in canvas than docs
  */
-const MenuTopBar = ({
+const SideBar = ({
   id,
   className,
   style,
   children,
 
-  as:Wrapper
+  as:Wrapper,
+
+  insideClassName,
+
+  //side,
 }) => {
 
 
@@ -37,26 +39,41 @@ const MenuTopBar = ({
         [
         //styles[baseClassName],
           baseClassName,
+          //      C[side],
           className
         ].filter(e => e).join(' ')
       }
       id={ id }
       style={ style }
     >
-      { children }
+      <div
+        className={
+          [
+            C.inside,
+            insideClassName
+          ].filter(e => e).join(' ')
+        }
+      >
+        { children }
+      </div>
     </Wrapper>
   )}
 
-MenuTopBar.propTypes = {
+SideBar.propTypes = {
   /**
    * Provide an HTML id to this element
    */
   id:PropTypes.string,
 
   /**
-   * The html class names to be provided to this element
+   * The html class names to be provided to this element (except width)
    */
   className:PropTypes.string,
+
+  /**
+   * The html class names to be provided to this element (width only)
+   */
+  widthClassName:PropTypes.string,
 
   /**
    * The JSX-Written, css styles to apply to the element.
@@ -77,6 +94,15 @@ MenuTopBar.propTypes = {
   ]),
   //as: PropTypes.string,
 
+  /**
+   * The html class names to be provided to the inside(sticky)
+   */
+  insideClassName:PropTypes.string,
+
+  /**
+   * On which side to display the sidebar
+   */
+  //side:PropTypes.oneOf(['left', 'right'])
   /*
   : PropTypes.shape({
     id: PropTypes.string.isRequired,
@@ -89,9 +115,11 @@ MenuTopBar.propTypes = {
   */
 }
 
-MenuTopBar.defaultProps = {
-  //height:'2.2em',
+SideBar.defaultProps = {
   as:'nav',
+  //side          :'left',
+  /* height:'2.2em',
+     as:'p', */
 }
 
-export default MenuTopBar
+export default SideBar

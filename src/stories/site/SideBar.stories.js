@@ -5,7 +5,7 @@ import { useState } from 'react'
 //import { action } from '@storybook/addon-actions'
 
 import {
-  MenuTopBar,
+  HorizontalBar,
   ProgressBar,
   Button
 } from 'ui'
@@ -18,11 +18,11 @@ import {
 //const endpoint = 'https://api.fwrlines.com/graphql'
 
 export default {
-  title        :'site/MenuBar/common/MenuTopBar',
-  component    :MenuTopBar,
+  title        :'site/MenuBar/common/HorizontalBar',
+  component    :HorizontalBar,
   //componentSubtitle:'Component subtitle',
   subcomponents:{
-    //MenuTopBar.Item
+    //HorizontalBar.Item
   },
   parameters:{
     decorators:[
@@ -34,33 +34,33 @@ export default {
 }
 
 export const Default = () => (
-  <MenuTopBar >
+  <HorizontalBar >
     hello
-  </MenuTopBar>
+  </HorizontalBar>
 )
 
 export const Background = () => (
-  <MenuTopBar
+  <HorizontalBar
     className='x-secondary'
   >
     yoho
-  </MenuTopBar>
+  </HorizontalBar>
 )
 
 export const Padded = () => (
-  <MenuTopBar
+  <HorizontalBar
     className='x-paragraph u1'
   >
     <div className='yf inside'>
       yoho
     </div>
-  </MenuTopBar>
+  </HorizontalBar>
 )
 
 export const Composed = () =>{
   const [progress, setProgress] = useState(70)
   return(
-    <MenuTopBar
+    <HorizontalBar
       className='x-secondary u50'
     >
       <div className='yf inside'>
@@ -87,7 +87,47 @@ export const Composed = () =>{
         current={progress}
         className='x-green xa xst'
       />
-    </MenuTopBar>
+    </HorizontalBar>
+  )
+
+
+}
+
+export const Composed2 = () =>{
+  return(
+    <HorizontalBar
+      className='x-blue u50'
+    >
+      <div className='yf inside'>
+        <Button
+          simple
+          className='x-white xh-white'
+        >
+          Toggle
+        </Button>
+        <div className='b-dark-x ph-u fh s2 ks yib row'>A good title bar menu</div>
+      </div>
+    </HorizontalBar>
+  )
+
+
+}
+
+export const OverflowTest  = () =>{
+  return(
+    <HorizontalBar
+      className='x-blue u50'
+    >
+      <div className='yf inside'>
+        <Button
+          simple
+          className='x-white xh-white'
+        >
+          Toggle
+        </Button>
+        <div className='ph-u fh s3 ks yib row'>A good title bar menu blah blah blah too long really long</div>
+      </div>
+    </HorizontalBar>
   )
 
 

@@ -3,7 +3,7 @@
 /*
 
 Classes :
-.menu_side_bar : default
+.side_bar : default
 
 */
 .g-sidebar {
@@ -24,7 +24,7 @@ Classes :
   }
 }
 
-.menu_side_bar {
+.side_bar {
   display: block;
   grid-column: sidebar-start / sidebar-end;
 
