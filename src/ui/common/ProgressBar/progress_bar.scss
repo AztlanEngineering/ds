@@ -1,12 +1,13 @@
+/* @fwrlines/generator-react-component 1.5.0 */
 /*
 
 Classes :
-.page_progress_tracker : default
+.progress_bar : default
 
 */
 $transitionDuration:0.3s;
 
-.page_progress_tracker {
+.progress_bar{
   width: 100%;
 
   svg {
@@ -22,4 +23,5 @@ $transitionDuration:0.3s;
       fill: var(--fill, var(--x, var(--primary)));
     }
   }
+
 }

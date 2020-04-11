@@ -1,21 +1,24 @@
-/* @fwrlines/generator-react-component 1.1.1 */
+/* @fwrlines/generator-react-component 1.5.0 */
 import * as React from 'react'
+//import {} from 'react'
 import PropTypes from 'prop-types'
 
-import {
-  //useWindowSize,
-  useScrollProgressSpy
-} from '@fwrlines/utils'
+
 
 /* Config
    import C from 'ui/cssClasses' */
 
-//Relative imports
-import './page_progress_tracker.scss'
+/* Relative imports
+   import styles from './progress_bar.scss' */
+import './progress_bar.scss'
 
-const baseClassName = 'page_progress_tracker'
+const baseClassName = 'progress_bar'
 
-const PageProgressTracker = ({
+/**
+ * Use `ProgressBar` to
+ * Has color `x`
+ */
+const ProgressBar = ({
   id,
   className,
   style,
@@ -24,20 +27,9 @@ const PageProgressTracker = ({
   strokeWidth,
   gradientMap,
 
-  initializeAt,
-  spyOn,
-  offsetPx,
-  throttleMs=100
+  maximum,
+  current
 }) => {
-
-  const {
-    progress
-  } = useScrollProgressSpy({
-    activeDefaultId:initializeAt,
-    offsetPx,
-    contentId      :spyOn,
-    throttleMs
-  })
 
   const pathVerticalPosition = strokeWidth / 2
 
@@ -100,7 +92,7 @@ const PageProgressTracker = ({
             strokeDasharray='100'
             id='active'
             style={{
-              '--do':100 - progress,
+              '--do':Math.min(Math.max(maximum - current, 0), maximum)
             }}
             stroke='white'
           />
@@ -125,7 +117,7 @@ const PageProgressTracker = ({
     </div>
   )}
 
-PageProgressTracker.propTypes = {
+ProgressBar.propTypes = {
   /**
    * Provide an HTML id to this element
    */
@@ -147,27 +139,7 @@ PageProgressTracker.propTypes = {
   rectClassName:PropTypes.string,
 
   /**
-   * Offset for the page tracking, in pixels
-   */
-  offsetPx:PropTypes.number,
-
-  /**
-   * An html id representing the target position at module initalization
-   */
-  initializeAt:PropTypes.string,
-
-  /**
-   * The html ID to spy on, for instance a container of content
-   */
-  spyOn:PropTypes.string.isRequired,
-
-  /**
-   * The linecap
-   */
-  //strokeLinecap:PropTypes.string,
-
-  /**
-   *
+   * The height of the bar, sent as svg property strokewidth
    */
   strokeWidth:PropTypes.number,
 
@@ -179,21 +151,23 @@ PageProgressTracker.propTypes = {
     stopColor:PropTypes.string.isRequired,
   })),
 
-  /*
-  : PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    state: PropTypes.string.isRequired,
-  }),
-  : PropTypes.func,
-  : PropTypes.func,
-  : PropTypes.oneOf(['primary', 'stroke', 'flat'])
-  */
+
+  /**
+   * The maximum value
+   */
+  maximum:PropTypes.number,
+
+  /**
+   * The current value
+   */
+  current:PropTypes.number,
+
 }
 
-PageProgressTracker.defaultProps = {
+ProgressBar.defaultProps = {
+  maximum    :100,
   strokeWidth:8,
-  throttleMs :100
+  current    :50,
 }
 
-export default PageProgressTracker
+export default ProgressBar

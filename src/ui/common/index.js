@@ -6,11 +6,12 @@ export { InlineLoader } from './InlineLoader'
 export { InnerContent } from './InnerContent'
 export { Label } from './Label'
 export { NumberIncrease } from './NumberIncrease'
+export { Popup } from './Popup'
+export { ProgressBar } from './ProgressBar'
 export {
   SiteContext,
   SiteContextProvider
 } from './SiteContext'
-export { Popup } from './Popup'
 export { Subtitle } from './Subtitle'
 export { SVG } from './SVG'
 export { Wireframe } from './Wireframe'

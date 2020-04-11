@@ -3,14 +3,14 @@ import * as React from 'react'
 
 //import { action } from '@storybook/addon-actions'
 
-import { PageProgressTracker } from 'ui'
+import { PageProgressBar } from 'ui'
 //import { Router } from 'stories/utils'
 
 import { TEXT_XXS_ESC, TEXT_XXS, TEXT_XS, TEXT } from '../utils'
 
 export default {
-  title     :'elements/PageProgressTracker',
-  component :PageProgressTracker,
+  title     :'elements/PageProgressBar',
+  component :PageProgressBar,
   parameters:{
     decorators:[
       //storyfn => <Router>{ storyfn() }</Router>,
@@ -20,7 +20,7 @@ export default {
 
 export const Default = () => (
   <>
-    <PageProgressTracker style={{ position: 'fixed', top: '0', left: '0' }}/>
+    <PageProgressBar style={{ position: 'fixed', top: '0', left: '0' }}/>
     <div
       dangerouslySetInnerHTML={{ __html: TEXT }}
       style={{ marginTop: '200px' }}
@@ -30,7 +30,7 @@ export const Default = () => (
 
 export const ContentId = () => (
   <>
-    <PageProgressTracker
+    <PageProgressBar
       style={{ position: 'fixed', top: '0', left: '0' }}
       spyOn='txt'
     />
@@ -56,7 +56,7 @@ export const ContentId = () => (
 
 export const InitialId = () => (
   <>
-    <PageProgressTracker
+    <PageProgressBar
       style={{ position: 'fixed', top: '0', left: '0' }}
       initializeAt='txt'
     />
@@ -86,7 +86,7 @@ export const InitialId = () => (
 
 export const Color = () => (
   <>
-    <PageProgressTracker
+    <PageProgressBar
       style={{ position: 'fixed', top: '0', left: '0' }}
       initializeAt='txt'
       rectClassName='x-green'
@@ -114,7 +114,7 @@ export const Color = () => (
 
 export const Gradient = () => (
   <>
-    <PageProgressTracker
+    <PageProgressBar
       style={{ position: 'fixed', top: '0', left: '0' }}
       initializeAt='txt'
       gradientMap={
@@ -148,7 +148,7 @@ export const Gradient = () => (
 
 export const StrokeWidth = () => (
   <>
-    <PageProgressTracker
+    <PageProgressBar
       style={{ position: 'fixed', top: '0', left: '0' }}
       initializeAt='txt'
       strokeWidth={30}
