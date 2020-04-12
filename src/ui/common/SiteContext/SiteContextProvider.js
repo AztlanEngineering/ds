@@ -2,7 +2,9 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
 
-
+import {
+  useTheme
+} from '@fwrlines/utils'
 
 /* Config
    import C from 'ui/cssClasses' */
@@ -17,12 +19,19 @@ import SiteContext from './SiteContext'
  */
 const SiteContextProvider = ({
   children,
+  initialTheme,
   config
 }) => {
 
+  const theme = useTheme(initialTheme)
 
   return (
-    <SiteContext.Provider value={config}>
+    <SiteContext.Provider
+      value={{
+        ...config,
+        ...theme,
+      }}
+    >
       { children }
     </SiteContext.Provider>
   )}
@@ -42,6 +51,11 @@ SiteContextProvider.propTypes = {
     FACEBOOK      :PropTypes.string.isRequired,
     INSTAGRAM     :PropTypes.string.isRequired,
   }).isRequired,
+
+  /**
+   * The initial theme for the website. If undefined, fallbacks on the system
+   */
+  initialTheme:PropTypes.oneOf(['dark', 'light', undefined])
 }
 
 /*

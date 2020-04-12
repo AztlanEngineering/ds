@@ -1,3 +1,8 @@
+const themes = {
+  'dark':'ui-dark',
+  'light':'ui-light'
+}
+
 export default {
   // AnimatedVCaret
   'active'           :'active',
@@ -89,6 +94,8 @@ export default {
   'small'            :'small',
   'stroke'           :'stroke',
   'svg'              :'svg',
+  // useTheme, SiteContext users
+  'themes':themes,
   'title'            :'title',
   // Popup
   'top'              :'top',
