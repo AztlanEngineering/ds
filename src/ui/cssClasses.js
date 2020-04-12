@@ -4,7 +4,7 @@ export default {
   'alt'              :'alt-',
   // SVG
   'anim'             :'anim',
-  // Label, Button
+  // Label, Button, HamburgerIcon
   'basic'            :'basic',
   // Label, Button
   'basicHover'       :'hbasic',
@@ -81,7 +81,7 @@ export default {
   'shadow'           :'sh-',
   'shadowActive'     :'sha',
   'shadowHover'      :'shh-',
-  // Label, Button
+  // Label, Button, HamburgerIcon
   'simple'           :'simple',
   // Button
   'simpleHover'      :'hsimple',

@@ -1,6 +1,7 @@
 export * from './common'
 export { ContentTree, ContentTreeContextProvider} from './ContentTree'
 //export { Menu } from './Menu'
+export { HamburgerIcon } from './common'
 export { HorizontalBar, SideBar } from './MenuBar'
 export { Page } from './Page'
 export { Paginator } from './Paginator'

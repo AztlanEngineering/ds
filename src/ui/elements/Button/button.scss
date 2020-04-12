@@ -29,11 +29,11 @@ $iconTransitionTime:0.3s;
   border: 0;
   border-radius: var(--r);
 
-  background: var(--x, var(--light-grey));
+  background: var(--x, var(--metadata));
   cursor: pointer;
   overflow: hidden;
   line-height: $lineHeight;
-  color: var(--on-x, var(--black));
+  color: var(--on-x, var(--paragraph));
   font-family: $fontFamily;
   font-weight: $fontWeight;
   -webkit-tap-highlight-color: $tapColor;
