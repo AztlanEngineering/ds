@@ -9,8 +9,6 @@ import {
 /* Config
    import C from 'ui/cssClasses' */
 
-
-
 import SiteContext from './SiteContext'
 
 /**

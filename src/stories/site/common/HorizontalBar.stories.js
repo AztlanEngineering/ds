@@ -18,7 +18,7 @@ import {
 //const endpoint = 'https://api.fwrlines.com/graphql'
 
 export default {
-  title        :'site/MenuBar/common/HorizontalBar',
+  title        :'site/HorizontalBar',
   component    :HorizontalBar,
   //componentSubtitle:'Component subtitle',
   subcomponents:{

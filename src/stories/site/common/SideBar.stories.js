@@ -10,12 +10,12 @@ import { SideBar } from 'ui'
    import { Router } from 'stories/utils'
    import {ALL_COLORS, SIZES } from '../config.js'
    */
-import { LIST, LIST_XS, TEXT_XXS_ESC, TEXT_XXS, TEXT_XS, TEXT } from '../utils/Dummy'
+import { LIST, LIST_XS, TEXT_XXS_ESC, TEXT_XXS, TEXT_XS, TEXT } from 'stories/utils/Dummy'
 
 //const endpoint = 'https://api.fwrlines.com/graphql'
 
 export default {
-  title        :'site/MenuBar/common/SideBar',
+  title        :'site/common/SideBar',
   component    :SideBar,
   //componentSubtitle:'Component subtitle',
   subcomponents:{
@@ -123,3 +123,4 @@ export const FlexTest = () => (
     </div>
   </div>
 )
+

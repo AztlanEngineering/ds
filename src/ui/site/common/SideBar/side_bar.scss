@@ -6,23 +6,6 @@ Classes :
 .side_bar : default
 
 */
-.g-sidebar {
-  display: grid;
-  //grid-template-rows: auto;
-  //grid-template-columns:
-  grid-auto-flow: column;
-
-  &.left {
-    grid-template-columns: [sidebar-start] var(--sidebar-width, 300px) [sidebar-end] repeat(12, 1fr);
-  }
-
-  &.right {
-    grid-template-columns: repeat(12, 1fr) [sidebar-start] var(--sidebar-width, 300px) [sidebar-end];
-  }
-
-  > * {
-  }
-}
 
 .side_bar {
   display: block;
