@@ -178,7 +178,7 @@ ContentSlides.propTypes = {
       id   :PropTypes.string.isRequired,
       title:PropTypes.string.isRequired,
       progress:PropTypes.string.isRequired,
-      locqtion:PropTypes.string.isRequired,
+      location:PropTypes.string.isRequired,
     })
   ),
 
