@@ -25,7 +25,14 @@ const reducer = (state, action) => {
       ...state,
       currentIndex:action.payload
     }
+
   case 'SET_CURRENT_SLIDE':
+    return {
+      ...state,
+      ...action.payload
+    }
+
+  case 'SET_EXTRA_CONTEXT':
     return {
       ...state,
       ...action.payload
@@ -46,7 +53,8 @@ const ContentSlides = ({
   style,
   children,
 
-  slides
+  slides,
+  as:Wrapper,
 }) => {
   const history = useHistory()
 
@@ -174,10 +182,6 @@ ContentSlides.propTypes = {
     })
   ),
 
-  /**
-   * The width of the element
-   */
-  width:PropTypes.string,
   /*
   )
   : PropTypes.func,
@@ -186,13 +190,12 @@ ContentSlides.propTypes = {
   */
 }
 
-/*
 ContentSlides.defaultProps = {
   status: 'neutral',
   //height:'2.2em',
-  //as:'p',
+  as:'div',
 }
-*/
+
 ContentSlides.Slide = Slide
 ContentSlides.HorizontalBar = HorizontalBar
 ContentSlides.SideBar = SideBar
