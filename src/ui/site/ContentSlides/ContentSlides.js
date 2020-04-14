@@ -3,6 +3,8 @@ import * as React from 'react'
 import { useReducer, useEffect } from 'react'
 import PropTypes from 'prop-types'
 
+import { useHistory } from 'react-router-dom'
+
 import { Context, Slide, HorizontalBar, SideBar } from './common'
 
 
@@ -46,6 +48,7 @@ const ContentSlides = ({
 
   slides
 }) => {
+  const history = useHistory()
 
   const [state, dispatch] = useReducer(reducer, {
     currentIndex:0,
@@ -75,8 +78,17 @@ const ContentSlides = ({
     })
   }
 
+  const setSlideIndex = index => {
+    if (!isFirst) dispatch({
+      type   :'SET_SLIDE_INDEX',
+      payload:index,
+    })
+  }
+
   const setCurrentSlide = index => {
-    console.log('dispacthing new slide', index, slides[index])
+    const newSlide=slides[index]
+    console.log('dispacthing new slide', index, newSlide)
+    newSlide.location && history.push(newSlide.location)
     dispatch({
       type   :'SET_CURRENT_SLIDE',
       payload:{
@@ -99,6 +111,7 @@ const ContentSlides = ({
         slides,
         setNextSlide,
         setPrevSlide,
+        setSlideIndex,
         dispatch,
         ...state
       }}
@@ -156,7 +169,8 @@ ContentSlides.propTypes = {
     PropTypes.shape({
       id   :PropTypes.string.isRequired,
       title:PropTypes.string.isRequired,
-      state:PropTypes.string.isRequired,
+      progress:PropTypes.string.isRequired,
+      locqtion:PropTypes.string.isRequired,
     })
   ),
 
@@ -182,5 +196,6 @@ ContentSlides.defaultProps = {
 ContentSlides.Slide = Slide
 ContentSlides.HorizontalBar = HorizontalBar
 ContentSlides.SideBar = SideBar
+ContentSlides.Context = Context
 
 export default ContentSlides

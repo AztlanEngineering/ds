@@ -4,14 +4,18 @@ import { useContext } from 'react'
 import PropTypes from 'prop-types'
 
 import {
+  IconList
+} from 'ui/common'
+
+import {
   SideBar as BaseSideBar
-} from '../../common' 
+} from '../../common'
 
 import Context from './Context'
 
 
-/* Config
-   import C from 'ui/cssClasses' */
+/* Config */
+   import C from 'ui/cssClasses' 
 
 /* Relative imports
    import styles from './side_bar.scss'
@@ -36,16 +40,18 @@ const SideBar = ({
 }) => {
 
   const {
+    currentIndex,
     currentSlide,
     setNextSlide,
     setPrevSlide,
+    setSlideIndex,
     isFirst,
     isLast,
     slides,
   } = useContext(Context)
 
   const {
-   id:currentSlideId
+    id:currentSlideId
   } = currentSlide
 
   return (
@@ -62,21 +68,42 @@ const SideBar = ({
       { ...otherProps }
     >
       <header>{ header }</header>
-     <main>
-       <ul>
-         { slides.map((e, i) =>
-          <li 
-            key={i}
-          >
-            { e.title }
-            {
-              currentSlideId == e.id && 'CURRENT'
-            }
-          </li>
-         ) }
+      <main>
+        <IconList>
+          { slides.map((e, i) =>
+            <IconList.Item
+              key={i}
+              icon={
+                (currentIndex == i) ? 'l' :
+                  (i < currentIndex ) && 'o'
+              }
+              iconHover={
+                (i < currentIndex) && 'L'
+              }
+              className={
+                [
+                  (currentIndex == i) ? 'x-primary' :
+                    (i < currentIndex) ? 'x-subtitles xh-paragraph' :
+                    'x-paragraph',
+                  (i < currentIndex) && C.pointer,
+                  'c-x'
+                ].filter(e => e).join(' ')
+              }
+              onClick={
+                (i < currentIndex) && (() => setSlideIndex(i))
+              }
 
-       </ul>
-     </main>
+            >
+              { e.title }
+              {
+              }
+            </IconList.Item>
+          ) }
+        </IconList>
+        <ul>
+
+        </ul>
+      </main>
       <footer>{ footer }</footer>
     </BaseSideBar>
   )}

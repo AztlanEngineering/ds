@@ -1,10 +1,10 @@
 const themes = {
-  'dark':'ui-dark',
+  'dark' :'ui-dark',
   'light':'ui-light'
 }
 
 export default {
-  // AnimatedVCaret
+  // AnimatedVCaret, Slide (ContentSlide)
   'active'           :'active',
   'alt'              :'alt-',
   // SVG
@@ -71,6 +71,8 @@ export default {
   'min'              :'min',
   'name'             :'name',
   'part'             :'part',
+  // SideBar (ContentSlides)
+  'pointer'          :'pointer',
   'question'         :'ref',
   'relativeSize'     :'r-',
   //SnapSlider, Popup
@@ -95,7 +97,7 @@ export default {
   'stroke'           :'stroke',
   'svg'              :'svg',
   // useTheme, SiteContext users
-  'themes':themes,
+  'themes'           :themes,
   'title'            :'title',
   // Popup
   'top'              :'top',
@@ -106,7 +108,7 @@ export default {
   'valid'            :'valid',
   'vertical'         :'vrt',
   //Popup
-  'visible':'visible',
+  'visible'          :'visible',
   // Group (Button)
   'verticalStretch'  :'v-stretch',
 }

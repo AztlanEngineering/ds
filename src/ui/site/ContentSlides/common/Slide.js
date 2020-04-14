@@ -5,8 +5,8 @@ import PropTypes from 'prop-types'
 
 import Context from './Context.js'
 
-/* Config
-   import C from 'ui/cssClasses' */
+/* Config */
+   import C from 'ui/cssClasses' 
 
 /* Relative imports
    import styles from './slide.scss' */
@@ -52,6 +52,8 @@ const Slide = ({
         [
         //styles[baseClassName],
           baseClassName,
+          active && C.active,
+          'u1 p-u t',
           className
         ].filter(e => e).join(' ')
       }

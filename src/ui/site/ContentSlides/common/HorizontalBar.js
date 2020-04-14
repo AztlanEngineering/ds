@@ -60,7 +60,7 @@ const HorizontalBar = ({
       style={ style }
       { ...otherProps }
     >
-      <div className='yf inside'>
+      <div className='yf inside u50 p-u'>
         <Button
           simple
           className='it x-white xh-white'
@@ -75,12 +75,14 @@ const HorizontalBar = ({
             { currentSlide.title }
           </span>
         </div>
+        {/*
         <Button
           className='x-success'
           onClick={() => setNextSlide()}
         >
           Next
         </Button>
+        */}
       </div>
       <ProgressBar
         current={ currentSlide.progress }
