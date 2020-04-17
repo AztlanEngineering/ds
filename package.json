@@ -13,7 +13,7 @@
     "test-eslint": "eslint .storybook/main.js --no-ignore",
     "now-build": "mkdir ./public && npm run build-storybook --quiet",
     "copy-css:cjs": "copyfiles -u 2 src/ui/**/*.scss dist/cjs",
-    "copy-css:es": "copyfiles -u 2 src/ui/**/*.scss dist/cjs",
+    "copy-css:es": "copyfiles -u 2 src/ui/**/*.scss dist/es",
     "compile:cjs": "NODE_ENV=cjs babel src/ui --out-dir dist/cjs --ignore **/storie*/*.js",
     "compile:es": "NODE_ENV=es babel src/ui --out-dir dist/es --ignore **/stories/*.js",
     "build:cjs": "npm run compile:cjs && npm run copy-css:cjs",
