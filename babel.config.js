@@ -8,10 +8,10 @@ module.exports = function (api) {
 
   const modules = isEs ? false : 'commonjs'
   const targets = isProd ?
-    { node:'10' } :
+    { node: '10' } :
     isCjs ?
       { esmodules: true } :
-      { browsers:'last 4 versions' }
+      { browsers: 'last 4 versions' }
 
   const presets = [
     [
@@ -26,7 +26,7 @@ module.exports = function (api) {
   ]
   const plugins = [
     ['module-resolver', {
-      root: ['./src'],
+      root:['./src'],
       /*
       alias:{
         'utils':'@fwrlines/utils'
@@ -35,13 +35,16 @@ module.exports = function (api) {
     }],
     '@babel/plugin-proposal-class-properties',
     ['babel-plugin-inline-import', {
-      'extensions': [
+      'extensions':[
         '.html',
         '.graphql',
         '.gql'
       ]}],
-
+    ['transform-react-remove-prop-types', {
+      'mode':'wrap',
+    }],
     ['add-module-exports'],
+
   ]
 
   /* We comment out this part because it's probably better to remove the proptypes in the final react app instead of in the compilation process
