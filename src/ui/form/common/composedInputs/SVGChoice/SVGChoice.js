@@ -14,7 +14,7 @@ import { InputHolder } from '../../elements'
 
 /* Relative imports
    import styles from './s_v_g_choice.scss' */
-import './svg_choice.scss'
+import('./svg_choice.scss')
 
 const baseClassName = 'svg_choice'
 

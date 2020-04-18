@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
    import C from 'ui/cssClasses' */
 
 //Relative imports
-import './wireframe.scss'
+import('./wireframe.scss')
 import { Text, Image } from './common'
 
 const Wireframe = {

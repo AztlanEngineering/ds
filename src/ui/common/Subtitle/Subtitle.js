@@ -9,7 +9,7 @@ import { gql } from 'graphql-tag'
    import C from 'ui/cssClasses' */
 
 //Relative imports
-import styles from './subtitle.scss'
+import('./subtitle.scss')
 
 const baseClassName = 'subtitle'
 

@@ -8,7 +8,7 @@ import { Subtitle } from 'ui/common'
 import C from 'ui/cssClasses'
 
 //Relative imports
-import './circle_info.scss'
+import('./circle_info.scss')
 
 const baseClassName = 'circle_info'
 
@@ -86,11 +86,11 @@ const CircleInfo = ({
       <div className={ C.content + ' yib wb' }>
         <div className='inside p05'>
           <Wrapper {...wrapperArgs}>
-            <p
-              className='s1 ls u0 mu fh'
+            <span
+              className='s1 ls fh'
             >
               { title }
-            </p>
+            </span>
             { subtitle &&
               <Subtitle
               //upper

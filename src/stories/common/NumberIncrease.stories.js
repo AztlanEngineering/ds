@@ -118,7 +118,7 @@ export const WithSuffixClass = () => (
         duration={ e.duration }
         suffix={ i % 2 == 0 ? 'km' : 'years' }
         className='s2 ks'
-        suffixClassName={ i % 2 == 0 ? 'cx x-red' : 'cx x-green' }
+        suffixClassName={ i % 2 == 0 ? 'c-x x-red' : 'c-x x-green' }
       />
     </>
   )

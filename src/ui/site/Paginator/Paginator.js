@@ -9,7 +9,7 @@ import { Button } from 'ui/elements'
    import C from 'ui/cssClasses' */
 
 //Relative imports
-import styles from './paginator.scss'
+import './paginator.scss'
 import {
   Context as PaginatorContext,
   ArrowButton,
@@ -61,7 +61,7 @@ const Paginator = ({
       <div
         className={
           [
-            styles[baseClassName],
+            baseClassName,
             'row',
             className
           ].filter(e => e).join(' ')

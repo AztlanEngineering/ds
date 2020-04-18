@@ -6,7 +6,7 @@ import { Subtitle, Label } from 'ui/common'
 import C from 'ui/cssClasses'
 
 //Relative imports
-import './heading.scss'
+import('./heading.scss')
 
 const baseClassName = 'heading'
 

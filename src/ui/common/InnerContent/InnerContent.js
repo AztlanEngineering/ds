@@ -3,7 +3,7 @@ import * as React from 'react'
 import PropTypes from 'prop-types'
 
 //Relative imports
-import './inner_content.scss'
+import('./inner_content.scss')
 
 const baseClassName = 'inner_content'
 

@@ -8,9 +8,8 @@ import { gql } from 'graphql-tag'
 
 import C from 'ui/cssClasses'
 
-/* Relative imports
-   import styles from './snap_slider.scss' */
-import './snap_slider.scss'
+/* Relative imports */
+import('./snap_slider.scss')
 
 const baseClassName = 'snap_slider'
 

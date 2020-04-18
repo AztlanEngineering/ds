@@ -13,7 +13,7 @@ import { InputHolder } from '../../elements'
 
 /* Relative imports
    import styles from './card_choice.scss' */
-import './card_choice.scss'
+import('./card_choice.scss')
 
 const baseClassName = 'card_choice'
 

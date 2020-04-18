@@ -6,9 +6,8 @@ import PropTypes from 'prop-types'
 
 import C from 'ui/cssClasses'
 
-/* Relative imports
-   import styles from './rating.scss' */
-import './rating.scss'
+/* Relative imports */
+import('./rating.scss')
 
 const baseClassName = 'rating'
 const starsClassName = 'stars'

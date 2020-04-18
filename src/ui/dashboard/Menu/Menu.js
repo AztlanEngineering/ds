@@ -7,9 +7,8 @@ import PropTypes from 'prop-types'
 /* Config
    import C from 'ui/cssClasses' */
 
-/* Relative imports
-   import styles from './menu.scss' */
-import './menu.scss'
+/* Relative imports */
+import('./menu.scss')
 import { Item } from './common'
 
 const baseClassName = 'dash-menu'

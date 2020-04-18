@@ -11,7 +11,7 @@ import QUERY_GOOGLE from './graphql/oAuth2Google.gql'
 
 /* Relative imports
    import styles from './o_login_button.scss' */
-import './o_login_button.scss'
+import('./o_login_button.scss')
 
 const baseClassName = 'o_login_button'
 

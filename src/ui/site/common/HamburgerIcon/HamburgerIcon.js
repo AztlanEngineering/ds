@@ -13,7 +13,7 @@ import {
 
 /* Relative imports
    import styles from './hamburger_icon.scss' */
-import './hamburger_icon.scss'
+import('./hamburger_icon.scss')
 
 const baseClassName = 'hamburger'
 

@@ -12,7 +12,7 @@ import {
 
 /* Relative imports
    import styles from './menu_top_bar.scss' */
-import './horizontal_bar.scss'
+import('./horizontal_bar.scss')
 
 const baseClassName = 'horizontal_bar'
 

@@ -7,7 +7,7 @@ import PropTypes from 'prop-types'
    import C from 'ui/cssClasses' */
 
 //Relative imports
-import './breadcrumb.scss'
+import('./breadcrumb.scss')
 import { Item } from './common'
 
 const baseClassName = 'breadcrumb'

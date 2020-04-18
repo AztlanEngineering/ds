@@ -14,9 +14,8 @@ import {
 /* Config
    import C from 'ui/cssClasses' */
 
-/* Relative imports
-   import styles from './s_v_g_choice.scss' */
-import './base_svg_choice.scss'
+/* Relative imports */
+import('./base_svg_choice.scss')
 
 const baseClassName = 'base_svg_choice'
 

@@ -9,7 +9,7 @@ import { gql } from 'graphql-tag'
 import C from 'ui/cssClasses'
 
 //Relative imports
-import './dot_info.scss'
+import('./dot_info.scss')
 
 const baseClassName = 'dot_info'
 

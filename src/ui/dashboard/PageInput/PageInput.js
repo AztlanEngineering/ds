@@ -7,9 +7,8 @@ import PropTypes from 'prop-types'
 /* Config
    import C from 'ui/cssClasses' */
 
-/* Relative imports
-   import styles from './page_input.scss' */
-import './page_input.scss'
+/* Relative imports*/
+import('./page_input.scss')
 
 const baseClassName = 'page_input'
 

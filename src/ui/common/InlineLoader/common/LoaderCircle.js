@@ -8,7 +8,7 @@ import PropTypes from 'prop-types'
    import C from 'ui/cssClasses' */
 
 //Relative imports
-import './loader_circle.scss'
+import('./loader_circle.scss')
 
 const baseClassName = 'loader_circle'
 

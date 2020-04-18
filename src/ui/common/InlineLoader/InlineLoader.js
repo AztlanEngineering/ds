@@ -7,7 +7,7 @@ import PropTypes from 'prop-types'
 
 //Relative imports
 import { LoaderBars, LoaderCircle } from './common'
-import './inline_loader.scss'
+import('./inline_loader.scss')
 
 const baseClassName = 'inline_loader'
 

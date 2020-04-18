@@ -23,7 +23,7 @@ import formConfig from '../formConfig'
 
 /* Relative imports
    import styles from './input.scss' */
-//import './form_input.scss'
+//import('./form_input.scss')
 
 //const baseClassName = 'input' // Better define in holder
 

@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
 import C from 'ui/cssClasses'
 
 //Relative imports
-import './section.scss'
+import('./section.scss')
 import Context from './Context'
 import CaretDown from './CaretDown'
 

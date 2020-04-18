@@ -7,9 +7,8 @@ import PropTypes from 'prop-types'
 //import C from 'ui/cssClasses'
 import { Subtitle } from 'ui/common'
 
-/* Relative imports
-   import styles './quote.scss' */
-import  './quote.scss'
+/* Relative imports*/
+import ('./quote.scss')
 
 const baseClassName = 'quote'
 

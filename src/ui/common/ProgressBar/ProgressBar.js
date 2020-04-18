@@ -8,9 +8,8 @@ import PropTypes from 'prop-types'
 /* Config
    import C from 'ui/cssClasses' */
 
-/* Relative imports
-   import styles from './progress_bar.scss' */
-import './progress_bar.scss'
+/* Relative imports */
+import('./progress_bar.scss')
 
 const baseClassName = 'progress_bar'
 

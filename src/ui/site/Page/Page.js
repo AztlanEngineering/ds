@@ -9,7 +9,7 @@ import PropTypes from 'prop-types'
 
 /* Relative imports
    import styles from './page.scss' */
-import './page.scss'
+import('./page.scss')
 
 import {
   Context,

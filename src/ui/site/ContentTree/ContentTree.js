@@ -12,7 +12,7 @@ import { LocalIndex } from 'ui/elements'
 
 /* Relative imports
    import styles from './content_tree.scss' */
-import './content_tree.scss'
+import('./content_tree.scss')
 import {
   Context,
   //Provider,

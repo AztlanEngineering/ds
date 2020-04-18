@@ -7,9 +7,8 @@ import PropTypes from 'prop-types'
 /* Config
    import C from 'ui/cssClasses' */
 
-/* Relative imports
-   import styles from './admin_page.scss' */
-import './admin_page.scss'
+/* Relative imports*/
+import('./admin_page.scss')
 
 const baseClassName = 'admin_page'
 

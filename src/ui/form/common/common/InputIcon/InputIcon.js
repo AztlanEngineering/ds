@@ -9,7 +9,7 @@ import C from 'ui/cssClasses'
 
 /* Relative imports
    import styles from './input_icon.scss' */
-import './input_icon.scss'
+import('./input_icon.scss')
 
 const baseClassName = 'input_icon'
 

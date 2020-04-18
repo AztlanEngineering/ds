@@ -14,7 +14,7 @@ import { InputHolder, InputInside } from '../../elements'
 
 /* Relative imports
    import styles from './textarea.scss' */
-import './textarea.scss'
+import('./textarea.scss')
 
 const baseClassName = 'textarea'
 
@@ -114,7 +114,8 @@ const Textarea = ({
 
   return (
     <InputHolder
-      { ...holderProps }l
+      { ...holderProps }
+      l
     >
       <InputInside >
         <BaseHTMLTextarea

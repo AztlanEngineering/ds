@@ -15,7 +15,7 @@ import {
 
 /* Relative imports
    import styles from './downshift_combobox.scss' */
-import './downshift_combobox.scss'
+import('./downshift_combobox.scss')
 
 const baseClassName = 'downshift_combobox'
 

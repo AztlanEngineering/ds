@@ -8,7 +8,7 @@ import { useInterval } from '@fwrlines/utils'
 //import C from 'ui/cssClasses'
 
 //Relative imports
-import './number_increase.scss'
+import('./number_increase.scss')
 
 const baseClassName = 'number_increase'
 

@@ -8,8 +8,7 @@ import { useDynamicPosition } from '@fwrlines/utils'
 /* Config */
 import C from 'ui/cssClasses'
 
-/* Relative imports
-   import styles from './popup.scss' */
+/* Relative imports*/
 import './popup.scss'
 
 const baseClassName = 'popup'

@@ -9,9 +9,11 @@ Classes :
 
 .input .inside {
   .input_icon {
+    * {
+      color: var(--form-input-color);
+    }
     display: inline-block;
     padding: var(--form-input-padding);
-    color:var(--form-input-color);
 
     p {
       position: relative;
@@ -33,25 +35,30 @@ Classes :
   &:focus,
   &:focus-within {
     .input_icon {
-      color: var(--form-input-focus-color);
+      * {
+        color: var(--form-input-focus-color);
+      }
     }
   }
 }
 
 .input.valid {
   .inside {
-
-      .input_icon {
+    .input_icon {
+      * {
         color: var(--success);
       }
+    }
   }
 }
 
 .input.error {
   .inside {
-      .input_icon {
+    .input_icon {
+      * {
         color: var(--error);
       }
+    }
   }
 }
 

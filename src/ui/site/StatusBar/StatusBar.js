@@ -7,7 +7,7 @@ import C from 'ui/cssClasses'
 
 /* Relative imports
    import styles from './status_bar.scss' */
-import './status_bar.scss'
+import('./status_bar.scss')
 
 const baseClassName = 'status_bar'
 

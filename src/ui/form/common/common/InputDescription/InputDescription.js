@@ -7,9 +7,8 @@ import PropTypes from 'prop-types'
 /* Config
    import C from 'ui/cssClasses' */
 
-/* Relative imports
-   import styles from './input_description.scss' */
-import './input_description.scss'
+/* Relative imports */
+import('./input_description.scss')
 
 const baseClassName = 'description'
 

@@ -6,13 +6,14 @@ import PropTypes from 'prop-types'
 import C from 'ui/cssClasses'
 
 //Relative imports
-import './checklist.scss'
+import('./checklist.scss')
 import { Item } from './common'
 
 const baseClassName = 'checklist'
 
 
 /**
+ * ! DEPRECATED ! Use `Iconlist` instead
  * Use `Checklist` to display a list with checkmarks
  * Has class `C.list`
  * Before has color `y, x`, and `z, x` on hover

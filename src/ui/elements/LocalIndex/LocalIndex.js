@@ -6,7 +6,7 @@ import C from 'ui/cssClasses'
 
 import { Subtitle } from 'ui/common'
 //Relative imports
-import './local_index.scss'
+import('./local_index.scss')
 import { Item } from './common'
 
 const baseClassName = 'local_index'

@@ -13,7 +13,7 @@ import { Button } from 'ui/elements'
    import C from 'ui/cssClasses' */
 
 //Relative imports
-import styles from './back_to_button.scss'
+import('./back_to_button.scss')
 
 const baseClassName = 'back_to_button'
 

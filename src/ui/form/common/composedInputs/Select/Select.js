@@ -12,7 +12,7 @@ import { InputHolder, InputInside } from '../../elements'
 
 /* Relative imports
    import styles from './select.scss' */
-import './select.scss'
+import('./select.scss')
 
 const baseClassName = 'select'
 

@@ -6,7 +6,7 @@ import C from 'ui/cssClasses'
 import { InlineLoader } from 'ui/common'
 
 //Relative imports
-import(/* webpackPrefetch: true, webpackChunkName: "ds.button"*/ './button.scss')
+import( './button.scss')
 import { Group } from './common'
 
 const baseClassName = 'button'
@@ -58,13 +58,12 @@ const Button = ({
       disabled={ disabled }
       { ...additionalProps }
     >
-      HELLO2
       { loading ?
         <>
           <InlineLoader
             height='100%'
             type={ loaderType }
-            style={{ '--x': 'var(--x-on)' }}
+            style={{ '--x': 'var(--on-x)' }}
           />
         </>
 	  :

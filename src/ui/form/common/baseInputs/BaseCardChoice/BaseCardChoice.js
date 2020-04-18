@@ -7,9 +7,8 @@ import PropTypes from 'prop-types'
 //Config
 import C from 'ui/cssClasses'
 
-/* Relative imports
- import styles from './card_choice.scss' */
-import './base_card_choice.scss'
+/* Relative imports */
+import('./base_card_choice.scss')
 
 const baseClassName = 'base_card_choice'
 

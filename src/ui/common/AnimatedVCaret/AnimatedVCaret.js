@@ -9,7 +9,7 @@ import { gql } from 'graphql-tag'
 import C from 'ui/cssClasses'
 
 //Relative imports
-import './animated_v_caret.scss'
+import('./animated_v_caret.scss')
 
 const baseClassName = 'animated_v_caret'
 

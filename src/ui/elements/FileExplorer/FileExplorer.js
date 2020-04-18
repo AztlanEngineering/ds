@@ -4,7 +4,7 @@ import { useState, memo } from 'react'
 import PropTypes from 'prop-types'
 
 //Relative imports
-import './file_explorer.scss'
+import('./file_explorer.scss')
 import {
   FileExplorerContext,
   CurrentFolderContext

@@ -13,9 +13,9 @@ import C from 'ui/cssClasses'
 
 /* Relative imports
    import styles from './inside.scss'
-   import './inside.scss' */
+   import('./inside.scss' */
 
-import './input_inside.scss'
+import('./input_inside.scss')
 const baseClassName = C.inside
 
 
@@ -174,10 +174,10 @@ InputInside.propTypes = {
 }
 
 InputInside.defaultProps = {
-  validIcon  :'o',
-  errorIcon  :'p'
-  //height:'2.2em',
-  //as:'p',
+  validIcon:'o',
+  errorIcon:'p'
+  /* height:'2.2em',
+     as:'p', */
 }
 
 export default InputInside

@@ -13,7 +13,7 @@ import C from 'ui/cssClasses'
 /* Relative imports
    import styles from './wrapper.scss' */
 
-import './input_holder.scss'
+import('./input_holder.scss')
 const baseClassName = C.input // should equal input by default
 
 

@@ -13,7 +13,7 @@ import { Context, Slide, HorizontalBar, SideBar } from './common'
 
 /* Relative imports
    import styles from './content_slides.scss' */
-import './content_slides.scss'
+import('./content_slides.scss')
 
 const baseClassName = 'content_slides'
 

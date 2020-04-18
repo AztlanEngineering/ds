@@ -7,7 +7,7 @@ import PropTypes from 'prop-types'
 import C from 'ui/cssClasses'
 
 //Relative imports
-import './card.scss'
+import('./card.scss')
 import {
   Section,
   Divider,

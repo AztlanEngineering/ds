@@ -21,7 +21,7 @@ import {
 
 /* Relative imports
    import styles from './downshift_select.scss' */
-import './downshift_select.scss'
+import('./downshift_select.scss')
 
 const baseClassName = 'downshift_select'
 

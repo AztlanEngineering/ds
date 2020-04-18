@@ -10,9 +10,8 @@ import {
 /* Config */
 import C from 'ui/cssClasses'
 
-/* Relative imports
-   import styles from './icon_list.scss' */
-import './icon_list.scss'
+/* Relative imports*/
+import('./icon_list.scss')
 
 const baseClassName = 'icon_list'
 

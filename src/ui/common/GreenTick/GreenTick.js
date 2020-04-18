@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
    import C from 'ui/cssClasses' */
 
 //Relative imports
-import './green_tick.scss'
+import('./green_tick.scss')
 
 const baseClassName = 'green_tick'
 

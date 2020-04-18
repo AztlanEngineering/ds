@@ -12,7 +12,7 @@ import { InputHolder } from '../../elements'
 
 /* Relative imports
    import styles from './choice.scss' */
-import './choice.scss'
+import('./choice.scss')
 
 const baseClassName = 'choice'
 

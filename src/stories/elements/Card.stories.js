@@ -142,7 +142,7 @@ export const IconCard = () => (
         <SVG
           width='120'
           target='engine'
-          className='f-teal'
+          className='x-blue f-x'
           anim
         />
       </Card.Section>
