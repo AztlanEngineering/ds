@@ -6,7 +6,7 @@ import C from 'ui/cssClasses'
 import { InlineLoader } from 'ui/common'
 
 //Relative imports
-import './button.scss'
+import(/* webpackPrefetch: true, webpackChunkName: "ds.button"*/ './button.scss')
 import { Group } from './common'
 
 const baseClassName = 'button'
@@ -58,6 +58,7 @@ const Button = ({
       disabled={ disabled }
       { ...additionalProps }
     >
+      HELLO2
       { loading ?
         <>
           <InlineLoader

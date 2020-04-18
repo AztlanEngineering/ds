@@ -16,6 +16,10 @@ module.exports = {
         {
           loader: 'css-loader',
           options: {
+            //modules:{
+            //  mode:'global',
+            //},
+            //localIdentName:"[name]__hello_[local]__[hash:base64:5]"
           },
         },
         { 
