@@ -1,9 +1,11 @@
-import { ApolloClient } from 'apollo-client'
-import { ApolloLink } from 'apollo-link'
-import { createHttpLink } from 'apollo-link-http'
-import { RetryLink } from 'apollo-link-retry'
+import {
+  ApolloClient,
+  ApolloLink, //apollo-link
+  createHttpLink, //apollo-link-http
+} from '@apollo/client'
+import { RetryLink } from '@apollo/link-retry'
 //import { setContext } from 'apollo-link-context'
-import { InMemoryCache } from 'apollo-cache-inmemory'
+import { InMemoryCache } from '@apollo/client/cache'
 
 function getLink(endpoint) {
   const httpLink = createHttpLink({ uri: endpoint })

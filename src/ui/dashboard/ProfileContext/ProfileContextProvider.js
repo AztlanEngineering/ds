@@ -1,6 +1,6 @@
 /* @fwrlines/generator-react-component 1.2.2 */
 import * as React from 'react'
-import { useState } from 'react'
+import { useState, useMutation } from 'react'
 import PropTypes from 'prop-types'
 
 /* Config
@@ -9,33 +9,11 @@ import PropTypes from 'prop-types'
 import ProfileContext from './ProfileContext'
 
 import gql from 'graphql-tag'
-import { useQuery } from '@apollo/react-hooks'
+import { useQuery } from '@apollo/client'
 import QUERY_ME from './graphql/me.gql'
 
 const DataProcessor = (data) => {
-  if (data.me){
-
-    const {
-      id,
-      first_name,
-      last_name,
-      username,
-      email,
-    } = data.me
-
-    return {
-      id,
-      first_name,
-      last_name,
-      username,
-      email,
-
-
-      //session_ends,
-    }
-  }
-  else return {
-  }
+  if (data.me) return { ...data.me }
 }
 /**
  * Use `ProfileContextProvider` to
@@ -44,25 +22,23 @@ const DataProcessor = (data) => {
 
 const ProfileContextProvider = ({
   children,
-  query,
+  GQL_QUERY_ME,
 
   processor,
 
   loginUri,
-  logoutUri
+  logoutUri,
 }) => {
-  const [
-    sessionExpires,
-    setSessionExpires,
-  ] = useState()
+
+  const [ sessionExpires, setSessionExpires ] = useState()
 
   const {
     error,
     loading,
     data={}
-  } = useQuery(gql(query))
+  } = useQuery(gql(GQL_QUERY_ME))
 
-  const val = {
+  const contextValue = {
     ...processor(data),
     loading,
     error
@@ -75,19 +51,14 @@ const ProfileContextProvider = ({
     )
   }
 
-  if ( val.id ) {
-    val.logoutUri = logoutUri,
-    val.setExpiration = setExpiration
-    val.sessionExpires = sessionExpires
-  } else {
-    val.loginUri = loginUri
-    //TODO Remove causeo nly 4 tests
-    val.setExpiration = setExpiration
-    val.sessionExpires = sessionExpires
-  }
+  contextValue.setExpiration = setExpiration
+  contextValue.sessionExpires = sessionExpires
+
+  contextValue.logoutUri = logoutUri
+  contextValue.loginUri = loginUri
 
   return (
-    <ProfileContext.Provider value={ val } >
+    <ProfileContext.Provider value={ contextValue } >
       { children }
     </ProfileContext.Provider>
   )}
@@ -136,10 +107,15 @@ ProfileContextProvider.propTypes = {
   /**
    * The graphql query
    */
-  query:PropTypes.string,
+  GQL_QUERY_ME:PropTypes.string,
 
   /**
-   * A function that transforms the query data result in a hash passed to context
+   * The graphql query
+   */
+  GQL_MUTATION_OAUTH2_LOGIN:PropTypes.string,
+
+  /**
+   * A function that transforms the query data result in a dictionnary deconstructed passed to context
    */
   processor:PropTypes.func,
 }

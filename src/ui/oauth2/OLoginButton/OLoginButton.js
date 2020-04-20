@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
    import C from 'ui/cssClasses' */
 import { Button } from 'ui'
 import gql from 'graphql-tag'
-import { useQuery } from '@apollo/react-hooks'
+import { useQuery } from '@apollo/client'
 import QUERY_GOOGLE from './graphql/oAuth2Google.gql'
 
 /* Relative imports
