@@ -3,9 +3,9 @@ import * as React from 'react'
 
 //import { action } from '@storybook/addon-actions'
 
-import { ProfileContextProvider } from 'ui'
+import { ProfileContextProvider, Logout } from 'ui'
 /* import QUERY from './graphql/query.graphql' */
-import { AplProvider } from 'stories/utils'
+import { Router, AplProvider } from 'stories/utils'
 
 //const endpoint = 'https://api.fwrlines.com/graphql'
 
@@ -14,11 +14,12 @@ export default {
   component    :ProfileContextProvider,
   //componentSubtitle:'Component subtitle',
   subcomponents:{
-    //ProfileContext.Item
+    Logout:Logout
   },
   parameters:{
     decorators:[
       storyfn => <AplProvider>{ storyfn() }</AplProvider>,
+         storyfn => <Router>{ storyfn() }</Router>
     ]
   }
 }
