@@ -40,9 +40,11 @@ module.exports = function (api) {
         '.graphql',
         '.gql'
       ]}],
+    /*
     ['transform-react-remove-prop-types', {
       'mode':'wrap',
     }],
+    */
     ['add-module-exports'],
 
   ]
