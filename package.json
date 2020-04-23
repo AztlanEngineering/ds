@@ -26,7 +26,7 @@
     "prepare": "npm run compile",
     "commit": "git add . && git commit -m 'Version bump' && git push",
     "bd": "npm run build&&npm run commit ",
-    "npre":"nodemon --watch src --exec 'npm run prepare'"
+    "npre": "nodemon --watch src --exec 'npm run compile:es && echo done'"
   },
   "keywords": [],
   "license": "ISC",
@@ -40,7 +40,6 @@
     "graphql-tag": "^2.10.3",
     "history": "^4.10.1",
     "react": "^16.13.1",
-    "react-cookie": "^4.0.3",
     "react-dom": "^16.13.1",
     "react-helmet": "^6.0.0",
     "react-router": "^5.1.2",
@@ -48,7 +47,8 @@
     "react-scroll": "^1.7.16",
     "stylelint": "^13.3.2",
     "stylelint-config-palantir": "^5.0.0",
-    "stylelint-scss": "^3.17.0"
+    "stylelint-scss": "^3.17.0",
+    "universal-cookie": "^4.0.3"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",

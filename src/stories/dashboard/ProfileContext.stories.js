@@ -10,7 +10,7 @@ import { Router, AplProvider } from 'stories/utils'
 //const endpoint = 'https://api.fwrlines.com/graphql'
 
 export default {
-  title        :'dashboard/ProfileContextProvider',
+  title        :'dashboard/common/ProfileContextProvider',
   component    :ProfileContextProvider,
   //componentSubtitle:'Component subtitle',
   subcomponents:{
@@ -25,9 +25,8 @@ export default {
 }
 
 export const Default = () => (
-  <ProfileContextProvider>
-    this text is inside the context
-  </ProfileContextProvider>
+  'This component needn\'t be visually tested'
 )
+
 
 

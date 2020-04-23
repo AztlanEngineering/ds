@@ -4,5 +4,10 @@ export { AdminPage as DashboardAdminPage } from './AdminPage'
 export {
   ProfileContext,
   ProfileContextProvider,
+} from './common'
+export {
   Logout
-} from './ProfileContext'
+} from './Logout'
+export {
+  PrivateRoute
+} from './PrivateRoute'

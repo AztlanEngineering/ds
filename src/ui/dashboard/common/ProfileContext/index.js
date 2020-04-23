@@ -1,3 +1,3 @@
 /* @fwrlines/generator-react-component 1.2.2 */
-export { ProfileContext, Logout } from './common'
+export { ProfileContext } from './common'
 export { default as ProfileContextProvider } from './ProfileContextProvider'

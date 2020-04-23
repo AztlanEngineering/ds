@@ -3,7 +3,7 @@ import * as React from 'react'
 import { useEffect, useContext } from 'react'
 import PropTypes from 'prop-types'
 
-import ProfileContext from './Context'
+import { ProfileContext } from '../common/ProfileContext'
 
 /* Config
    import C from 'ui/cssClasses' */
