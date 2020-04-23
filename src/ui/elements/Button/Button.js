@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import C from 'ui/cssClasses'
 import { InlineLoader } from 'ui/common'
 
-//Relative imports
+//Relative imports x
 import( './button.scss')
 import { Group } from './common'
 
