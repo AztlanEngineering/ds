@@ -6,7 +6,7 @@ import C from 'ui/cssClasses'
 import { InlineLoader } from 'ui/common'
 
 //Relative imports
-//import( './button.scss')
+import( './button.scss')
 import { Group } from './common'
 
 const baseClassName = 'button'
