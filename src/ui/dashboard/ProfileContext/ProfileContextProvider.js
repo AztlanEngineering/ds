@@ -1,6 +1,6 @@
 /* @fwrlines/generator-react-component 1.2.2 */
 import * as React from 'react'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import PropTypes from 'prop-types'
 
 
@@ -46,7 +46,10 @@ const ProfileContextProvider = ({
   const [cookies, setCookie, removeCookie] = useCookies()
 
   const setSessionCookie = (value, options) => setCookie(cookieName, value, options)
-  const removeSessionCookie = (options) => removeCookie(cookieName, options)
+  const removeSessionCookie = useCallback(
+    (options) => removeCookie(cookieName, options),
+    [sessionCookie]
+  )
   const sessionCookie = cookies[cookieName]
 
   const client = useApolloClient()
@@ -54,6 +57,7 @@ const ProfileContextProvider = ({
   const history = useHistory()
 
   const logout = () => {
+    console.log('Clicked on logout, current cookie is ', sessionCookie, cookies)
     removeSessionCookie()
     client.clearStore()
     history.push(loginPath)
