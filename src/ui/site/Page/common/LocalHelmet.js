@@ -1,8 +1,10 @@
 /* @fwrlines/generator-react-component 1.1.2 */
 import * as React from 'react'
-//import { memo, useMemo } from 'react'
+import { useContext } from 'react'
 import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
+
+import { SiteContext } from 'ui/common'
 
 /* Config
    import C from 'ui/cssClasses' */
@@ -30,7 +32,9 @@ const helmet_map = [
 
   {
     variables:['canonical'],
-    render   :(v) =>
+    render   :(v, c) =>
+      c.SITE_CANONICAL ?
+      `<link rel='canonical' href=${c.SITE_CANONICAL}/${v} />` :
       `<link rel='canonical' href=${v} />`
   },
 
@@ -90,7 +94,7 @@ const helmet_map = [
 
 
 
-const conditionMatchAndGetProps = (props) =>
+const conditionMatchAndGetProps = (props, context) =>
   helmet_map.reduce((a,
     { variables, render, test }
   ) =>{
@@ -102,7 +106,7 @@ const conditionMatchAndGetProps = (props) =>
       }
     }
     if (typeof test === 'undefined' || (test && content.length)) {
-      current = render(content)
+      current = render(content, context)
     }
     return a + current
   }
@@ -112,7 +116,10 @@ const conditionMatchAndGetProps = (props) =>
 const LocalHelmet = ({
   ...props
 }) => {
-  const HelmetProps = conditionMatchAndGetProps(props)
+
+  const context = useContext(SiteContext)
+
+  const HelmetProps = conditionMatchAndGetProps(props, context)
   return (
     <Helmet>
       { HelmetProps }
