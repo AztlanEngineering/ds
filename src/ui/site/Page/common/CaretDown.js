@@ -87,7 +87,7 @@ CaretDown.propTypes = {
 CaretDown.defaultProps = {
   duration:900,
   animated:false,
-  icon    :'i'
+  icon    :'j'
 }
 
 export default CaretDown

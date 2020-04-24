@@ -19,14 +19,16 @@ const Heading = ({
   heading,
   headingClassName,
   headingAs:HeadingElement,
+  headingProps,
 
-  labelClassName,
   label,
+  labelClassName,
   labelAs:LabelElement,
+  labelProps,
 
   subtitle,
   subtitleClassName,
-  subtitleUpper,
+  subtitleProps,
 }) => {
 
   return (
@@ -46,6 +48,7 @@ const Heading = ({
             (labelClassName ? ' ' + labelClassName : '')
 
           }
+          { ...labelProps }
         >
           { label }
         </LabelElement>
@@ -56,6 +59,7 @@ const Heading = ({
           C.content
       + (headingClassName ? ' ' + headingClassName : '')
         }
+          { ...headingProps }
       >
         { heading }
       </HeadingElement>
@@ -65,7 +69,7 @@ const Heading = ({
           className={
             (subtitleClassName ? ' ' + subtitleClassName : '')
           }
-          upper={ subtitleUpper }
+          { ...subtitleProps }
         >
           { subtitle }
         </Subtitle>
@@ -113,6 +117,10 @@ Heading.propTypes = {
    */
   headingClassName:PropTypes.string,
 
+  /**
+   * Extra props to pass to the heading
+   */
+  headingProps:PropTypes.object,
 
   /**
    * the Label
@@ -133,6 +141,11 @@ Heading.propTypes = {
   ]),
 
   /**
+   * Extra props to pass to the label
+   */
+  labelProps:PropTypes.object,
+
+  /**
    * The subtitle
    */
   subtitle:PropTypes.string,
@@ -143,18 +156,20 @@ Heading.propTypes = {
   subtitleClassName:PropTypes.string,
 
   /**
-   * A toggle for the subtitle uppercase
+   * Extra props to pass to the subtitle
    */
-  subtitleUpper:PropTypes.bool,
+  subtitleProps:PropTypes.object,
 
 }
 
 Heading.defaultProps = {
   headingAs        :'p',
+  headingProps     :{},
   subtitleClassName:'r-sm',
-  subtitleUpper    :false,
+  subtitleProps    :{},
   labelAs          :Label,
-  labelClassName   :'ls s-1'
+  labelClassName   :'ls s-1',
+  labelProps       :{},
 }
 
 export default Heading

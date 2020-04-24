@@ -25,20 +25,18 @@ const id = 'homepage'
 const titles = [
 
   {
+    classname:'uc',
     heading         :'Spartacus',
     subtitle        :'Stanley Kubrick, 1960',
     headingAs       :'h1',
-    align           :'uc',
     label           :'Film',
-    labelBasic      :true,
-    labelClassName  :'x-red',
+    labelClassName  :'x-red basic',
     headingClassName:'ts-green'
   },
   {
     heading       :'Lolita',
     subtitle      :'Stanley Kubrick, 1962',
     headingAs     :'h2',
-    align         :'uc',
     label         :'Today\'s cinema',
     labelClassName:'x-orange'
   },
@@ -46,7 +44,6 @@ const titles = [
     heading       :'Dr. Strangelove',
     subtitle      :'Stanley Kubrick, 1964',
     headingAs     :'h3',
-    align         :'ur',
     label         :'Movie time',
     labelClassName:'x-red'
   },
@@ -95,7 +92,6 @@ export const Head = () => (
 
       <Heading
         { ...titles[0] }
-        className={ titles[0].align }
       />
       <p>See source code to check for meta</p>
     </Page.Section>
@@ -115,7 +111,6 @@ export const HeadWithSchema = () => (
 
       <Heading
         { ...titles[0] }
-        className={ titles[0].align }
       />
       <p>See source code to check for meta</p>
     </Page.Section>
@@ -132,7 +127,6 @@ export const Plural = () => (
 
       <Heading
         { ...titles[0] }
-        className={ titles[0].align }
       />
     </Page.Section>
     <Page.Section
@@ -164,7 +158,6 @@ export const PluralCaretDown = () => (
 
       <Heading
         { ...titles[0] }
-        className={ titles[0].align }
       />
     </Page.Section>
     <Page.Section
@@ -198,7 +191,6 @@ export const Content = () => (
 
       <Heading
         { ...titles[0] }
-        className={ titles[0].align }
       />
     </Page.Section>
     <Page.Section
