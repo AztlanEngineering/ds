@@ -16,3 +16,4 @@ export {
 export { Subtitle } from './Subtitle'
 export { SVG } from './SVG'
 export { Wireframe } from './Wireframe'
+export { Figure } from './Figure'
