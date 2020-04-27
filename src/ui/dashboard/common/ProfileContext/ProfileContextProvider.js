@@ -49,8 +49,12 @@ const ProfileContextProvider = ({
   const [loadCurrentUser, {
     error:currentUserError,
     loading:currentUserLoading,
-    data:{ me:currentUserData }={}
+    data={}
   }] = useLazyQuery(gql(GQL_QUERY_ME))
+
+  console.log('got the result of data', data)
+
+  const { me:currentUserData } = data
 
   const history = useHistory()
 

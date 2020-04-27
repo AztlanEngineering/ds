@@ -64,7 +64,7 @@ export const Size = () => (
     src='https://images.pexels.com/photos/373912/pexels-photo-373912.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'
     alt='A city landscape'
     imgStyle={{height:'200px'}}
-    className='s-1'
+    className='s-2'
     >
     <Subtitle upper>The image caption</Subtitle>
   </Figure> 
