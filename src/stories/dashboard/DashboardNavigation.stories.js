@@ -4,7 +4,11 @@ import * as React from 'react'
 
 //import { action } from '@storybook/addon-actions'
 
-import { DashboardNavigation, DashboardContextProvider } from 'ui'
+import { 
+  DashboardNavigation, 
+  DashboardContextProvider,
+  DashboardMain,
+} from 'ui'
 /* import QUERY from './graphql/query.graphql'
    import { AplProvider } from 'stories/utils' */
 import { Router } from 'stories/utils'
@@ -52,8 +56,8 @@ export const Default = () => {
       {
         section  :'Account',
         title    :'My account',
-        location :'/account/details',
-        baseMatch:['/account/', '/account/details'],
+        location :'/account/profile/',
+        baseMatch:['/account/', '/account/profile/'],
         children:[
           {
             //section:''
@@ -90,10 +94,18 @@ export const Default = () => {
   }
 
   return (
+    <> 
     <DashboardNavigation
       tree={ tree }
-    >
-    </DashboardNavigation>
+    />
+      <DashboardMain
+      >
+        Ohayo
+        <div
+        style={{height:'120vh'}}
+        >Content</div>
+      </DashboardMain>
+    </>
   )
 
 }
