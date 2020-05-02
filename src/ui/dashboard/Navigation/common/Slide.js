@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 
 import { DashboardContext } from '../../common'
 
-import { Subtitle } from 'ui/common'
+import { Subtitle, IconList } from 'ui/common'
 import { Heading, Button } from 'ui/elements'
 import { HorizontalBar } from 'ui/site'
 
@@ -39,23 +39,29 @@ const Slide = ({
 
   parentName,
   parentLocation,
+
+  isPreviousSlide,
+  isNextSlide,
 }) => {
 
   const { navigate } = useContext(DashboardContext)
 
   return (
-      <div
-        className={
-          [
-            //styles[baseClassName],
-            baseClassName,
-            match && C.active,
-            className
-          ].filter(e => e).join(' ')
-        }
-        id={ id }
-        style={ style }
-      >
+    <div
+      className={
+        [
+          //styles[baseClassName],
+          baseClassName,
+          match && C.active,
+          isPreviousSlide && C.previous,
+          isNextSlide && C.next,
+          'u2',
+          className
+        ].filter(e => e).join(' ')
+      }
+      id={ id }
+      style={ style }
+    >
       {
         parentLocation &&
           <HorizontalBar
@@ -68,20 +74,18 @@ const Slide = ({
                 icon='h'
                 iconSide='l'
                 onClick={() => navigate(parentLocation, 'sidebar')}
-              > 
-                { 
+              >
+                {
                   treeDepth == 1 ?
-                  "Home" :
-                  (parentName || 'Back') 
+                    'Home' :
+                    (parentName || 'Back')
                 }
               </Button>
             </div>
           </HorizontalBar>
       }
-      <ul
-      >
-        <li>
-          <Heading className='h3'>{ title }</Heading>
+      <Heading className='h3 v1 mv-v mh-u'>{ title }</Heading>
+      <IconList className={'u2 p-u ' + C.compact}>
         { content && content.map((e, i, a) =>
           <>
             {(
@@ -89,34 +93,48 @@ const Slide = ({
             (e.section && (e.section != a[i-1].section ) )
             ) &&
               <Subtitle
-                className='s-1 ks'
+                className='s-1 ks u1 mv-u v2 ml-v'
                 upper
               >
                 { e.section }
               </Subtitle>
             }
-            <NavItem
-              onClick={ () => navigate(
-                e.location, 
-                e.children ? 'sidebar ': 'main'
-              ) }
-            >{ e.title }</NavItem>
-            { e.children &&
-              <Slide
-                title={ e.title }
-                match={ e.match }
-                location={ e.location }
-                content={ e.children }
-                parentName={ title }
-                parentLocation={ location }
-                treeDepth={ treeDepth + 1 }
-              />
-            }
+            { console.log(888, e, e.match ? true: false) }
+            <IconList.Item
+              icon={ e.match ? "    " : undefined } //TODO provide better default
+              iconHover='L'
+            >
+              <NavItem
+                onClick={ () => navigate(
+                  e.location,
+                  e.children ? 'sidebar ': 'main'
+                ) }
+              >
+                { e.title }
+              </NavItem>
+              { e.children &&
+                <Slide
+                  title={ e.title }
+                  match={ e.match }
+                  location={ e.location }
+                  content={ e.children }
+                  parentName={ title }
+                  parentLocation={ location }
+                  treeDepth={ treeDepth + 1 }
+                  isNextSlide={
+                    (match && true) ||
+                    isNextSlide
+                  }
+                  isPreviousSlide={
+                    (isPreviousSlide && !e.match)
+                  }
+                />
+              }
+            </IconList.Item>
           </>
         ) }
-        </li>
         { children }
-      </ul>
+      </IconList>
     </div>
   )}
 
@@ -142,13 +160,9 @@ Slide.propTypes = {
   children:PropTypes.node,
 
   /**
-   * Which html tag to use
+   * treeDepth
    */
-  as:PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.object
-  ]),
-  //as: PropTypes.string,
+  treeDepth:PropTypes.number,
 
   /**
    * The title of the navigation slide
@@ -158,14 +172,37 @@ Slide.propTypes = {
   /**
    * On which location should the slide be displayed
    */
+  match:PropTypes.object,
+
+  /**
+   * On which location should the slide be displayed
+   */
+  content:PropTypes.object,
+
+  /**
+   * On which location should the slide be displayed
+   */
   location:PropTypes.string,
 
   /**
-   * treeHeight
+   * The name of the parent to display in the return button
    */
-  treeHeight:PropTypes.number,
+  parentName:PropTypes.string,
 
+  /**
+   * The location of the parent slide, for the return button
+   */
+  parentLocation:PropTypes.string,
 
+  /**
+   * Is this slide is after the active slide
+   */
+  isNextSlide:PropTypes.bool,
+
+  /**
+   * Whether this slide is before the active slide
+   */
+  isPreviousSlide:PropTypes.bool,
 
   /*
   : PropTypes.shape({
@@ -179,11 +216,9 @@ Slide.propTypes = {
   */
 }
 
-/*
 Slide.defaultProps = {
-  status: 'neutral',
-  //height:'2.2em',
-  //as:'p',
+  isNextSlide    :false,
+  isPreviousSlide:false,
 }
-*/
+
 export default Slide

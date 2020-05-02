@@ -73,7 +73,7 @@ export default {
   // SideBar (ContentSlides)
   'next'             :'next',
   'part'             :'part',
-  // SideBar (ContentSlides)
+  // SideBar (ContentSlides), Slides (Dashboard Navigation)
   'pointer'          :'pointer',
   // Slide (Dashboard Navigation)
   'previous'         :'prev',

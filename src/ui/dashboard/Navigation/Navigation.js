@@ -149,6 +149,7 @@ const Navigation = ({
         location={ rootLocation }
         content={ rootChildren }
         treeDepth={ 0 }
+        isPreviousSlide={ !rootMatch && true }
       >
       </Slide>
     </Wrapper>

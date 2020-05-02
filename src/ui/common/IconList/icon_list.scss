@@ -12,7 +12,7 @@ $iconFontName:"if";
 $paddingRight:0.5em;
 
 .icon_list {
-  padding-left: 0;
+  padding-left: calc(var(--u, 0) * 1em);
   list-style: none;
 
   li {

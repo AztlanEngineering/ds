@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
 import { Heading } from 'ui/elements'
 
 //Config
-//import C from 'ui/cssClasses'
+import C from 'ui/cssClasses'
 
 //Relative imports
 //import styles from './item.scss'
@@ -37,6 +37,8 @@ const Item = ({
       [
         //styles[baseClassName],
         baseClassName,
+        C.pointer,
+        'yib',
         className
       ].filter(e => e).join(' ')
   }
