@@ -1,86 +1,86 @@
-/* @fwrlines/generator-react-component 1.2.2 */
+/* @fwrlines/generator-react-component 2.1.1 */
 import * as React from 'react'
+//import {} from 'react'
 import PropTypes from 'prop-types'
 
 
 
-/* Config
-   import C from 'ui/cssClasses' */
+//Config
+//import C from 'ui/cssClasses'
 
-/* Relative imports */
-import('./menu.scss')
-import { Item } from './common'
+//Relative imports
+//import styles from './link.scss'
+import('./link.scss')
 
-const baseClassName = 'dash-menu'
+const baseClassName = 'link'
 
 
 /**
- * Use `Menu` to
- * Has color `x`
+ * Use `Link` to
+ * Has color `x` 
  */
-const Menu = ({
+const Link = ({
   id,
   className,
-  style,
-  children
+  style
 }) => {
-
-
+  
+  
   return (
-    <div
-      className={
-        [
+  <div 
+    className={
+      [
         //styles[baseClassName],
-          baseClassName,
-          className
-        ].filter(e => e).join(' ')
-      }
-      id={ id }
-      style={ style }
-    >
-      { children }
-    </div>
-  )}
+        baseClassName,
+        className
+      ].filter(e => e).join(' ')
+  }
+    id={ id }
+    style={ style }
+  >
+    <h2>Welcome to the Link component</h2>
+  </div>
+)}
 
-Menu.propTypes = {
+Link.propTypes = {
   /**
    * Provide an HTML id to this element
    */
-  id:PropTypes.string,
+  id: PropTypes.string,
 
   /**
    * The html class names to be provided to this element
    */
-  className:PropTypes.string,
+  className: PropTypes.string,
 
   /**
    * The JSX-Written, css styles to apply to the element.
    */
-  style:PropTypes.object,
+  style: PropTypes.object,
 
   /**
    *  The children JSX
    */
-  children:PropTypes.node,
+  children: PropTypes.node,
 
   /**
    * Which html tag to use
    */
-  as:PropTypes.oneOfType([
+  as: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object
-  ]),
+  ]), 
   //as: PropTypes.string,
 
   /**
    * The height of the element
    */
-  height:PropTypes.string,
+  height: PropTypes.string,
 
   /**
    * The width of the element
    */
-  width:PropTypes.string,
+  width: PropTypes.string,
   /*
   : PropTypes.shape({
     id: PropTypes.string.isRequired,
@@ -94,13 +94,10 @@ Menu.propTypes = {
 }
 
 /*
-Menu.defaultProps = {
+Link.defaultProps = {
   status: 'neutral',
   //height:'2.2em',
   //as:'p',
 }
 */
-
-Menu.Item = Item
-
-export default Menu
+export default Link

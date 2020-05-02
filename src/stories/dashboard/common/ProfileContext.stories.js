@@ -3,7 +3,7 @@ import * as React from 'react'
 
 //import { action } from '@storybook/addon-actions'
 
-import { ProfileContextProvider, Logout } from 'ui'
+import { ProfileContextProvider } from 'ui'
 /* import QUERY from './graphql/query.graphql' */
 import { Router, AplProvider } from 'stories/utils'
 
@@ -14,12 +14,12 @@ export default {
   component    :ProfileContextProvider,
   //componentSubtitle:'Component subtitle',
   subcomponents:{
-    Logout:Logout
+    //Logout:Logout
   },
   parameters:{
     decorators:[
       storyfn => <AplProvider>{ storyfn() }</AplProvider>,
-         storyfn => <Router>{ storyfn() }</Router>
+      storyfn => <Router>{ storyfn() }</Router>
     ]
   }
 }

@@ -66,7 +66,7 @@ const ContentSlides = ({
   })
 
   const {
-    currentSlide,
+    //currentSlide,
     currentIndex,
     isFirst,
     isLast

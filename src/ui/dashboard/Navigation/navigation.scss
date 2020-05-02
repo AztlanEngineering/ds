@@ -1,0 +1,37 @@
+/* @fwrlines/generator-react-component 2.1.0 */
+
+/*
+
+Classes :
+.navigation : default
+
+*/
+
+.navigation {
+  background: var(--light-secondary);
+
+  width: 300px;
+
+  .slide {
+    position: absolute;
+    top: 0;
+    width: 100%;
+
+    &:not(.active) {
+      background: var(--light-grey);
+      //opacity: 0;
+    }
+
+    &.previous {
+      left: -100%;
+    }
+
+    &.next {
+      right: -100%;
+    }
+
+    &.active {
+      background: red;
+    }
+  }
+}

@@ -1,7 +1,8 @@
-export { Menu as DashboardMenu } from './Menu'
 export { PageInput as DashboardPageInput} from './PageInput'
 export { AdminPage as DashboardAdminPage } from './AdminPage'
 export {
+  DashboardContext,
+  DashboardContextProvider,
   ProfileContext,
   ProfileContextProvider,
 } from './common'
@@ -11,3 +12,4 @@ export {
 export {
   PrivateRoute
 } from './PrivateRoute'
+export { Navigation as DashboardNavigation } from './Navigation'

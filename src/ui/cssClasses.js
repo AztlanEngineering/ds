@@ -4,7 +4,7 @@ const themes = {
 }
 
 export default {
-  // AnimatedVCaret, Slide (ContentSlide)
+  // AnimatedVCaret, Slide (ContentSlide), Slide (Dashboard Nav)
   'active'           :'active',
   'alt'              :'alt-',
   // SVG
@@ -70,9 +70,13 @@ export default {
   'meta'             :'meta',
   'min'              :'min',
   'name'             :'name',
+  // SideBar (ContentSlides)
+  'next'             :'next',
   'part'             :'part',
   // SideBar (ContentSlides)
   'pointer'          :'pointer',
+  // Slide (Dashboard Navigation)
+  'previous'         :'prev',
   'question'         :'ref',
   'relativeSize'     :'r-',
   //SnapSlider, Popup

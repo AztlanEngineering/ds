@@ -16,7 +16,8 @@ import { ProfileContext } from '../common/ProfileContext'
 
 
 /**
- * Use `Logout` to logout the user
+ * Use `Logout` to logout the user. Consumes `dashboard/common/ProfileCntext`
+ *
  */
 const Logout = ({
 }) => {

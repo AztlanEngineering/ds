@@ -29,6 +29,8 @@ const Heading = ({
   subtitle,
   subtitleClassName,
   subtitleProps,
+
+  ...otherProps
 }) => {
 
   return (
@@ -41,6 +43,7 @@ const Heading = ({
       }
       id={ id }
       style={ style }
+      { ...otherProps }
     >
       { label &&
         <LabelElement
