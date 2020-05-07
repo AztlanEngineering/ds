@@ -1,98 +1,29 @@
-/* @fwrlines/generator-react-component 2.1.0 */
+/* @fwrlines/generator-react-component 2.1.1 */
 import * as React from 'react'
-import { useContext, useState, useEffect } from 'react'
+//import {} from 'react'
 import PropTypes from 'prop-types'
 
-import { DashboardContext } from '../common'
+import { useLocation } from 'react-router-dom'
 
-import { Slide } from './common'
-
-import { matchPath } from 'react-router'
-import { useLocation, useHistory, useRouteMatch } from 'react-router-dom'
+import {
+  Slide,
+  Item,
+  HorizontalNavBar as HorizontalBar
+} from './common'
 
 /* Config
    import C from 'ui/cssClasses' */
 
 /* Relative imports
    import styles from './navigation.scss' */
+
 import('./navigation.scss')
 
 const baseClassName = 'navigation'
 
-const useNavTree = ({
-  children:rootChildren,
-  ...rootNode
-}) => {
-
-  const { pathname } = useLocation()
-
-  const [newTree, setNewTree] = useState({})
-
-  const matchElementPath = (path) => matchPath(
-    pathname,
-    {
-      path,
-      exact:true,
-      /* exact:false,
-         strict:false, */
-    }
-  )
-
-  const matchElement = (
-    {
-      location,
-      baseMatch,
-      ...rest
-    }
-  ) => { return {
-    location,
-    baseMatch,
-    ...rest,
-    match:baseMatch ?
-      matchElementPath(baseMatch) :
-      matchElementPath(location)
-  }}
-
-  const mapTree = (t) => t.map((
-    {
-      children,
-      ...element
-    }
-  ) => {
-    return {
-      children:children && mapTree(children),
-      ...matchElement(element),
-    }
-  }
-  )
-
-  useEffect(() => setNewTree({
-    ...matchElement(rootNode),
-    children:mapTree(rootChildren)
-  }),
-  [pathname]
-  )
-
-  return newTree
-
-}
-
-/*
-const reducer = (state, action) => {
-  switch (action.type) {
-  case 'UPDATE_NAV_TREE':
-    return {
-      navTree:action.payload
-    }
-  default:
-    return state
-  }
-}
-*/
-
 /**
- * Use `Navigation` to display a Dashboard Navigation for both desktop and mobile.
- * Consumes `dashboard/common/DashboardContext`
+ * Use `Navigation` to
+ * Has color `x`
  */
 const Navigation = ({
   id,
@@ -100,42 +31,26 @@ const Navigation = ({
   style,
   as:Wrapper,
 
-  tree
+  tree,
+
+  compact,
+  iconHover,
+  iconSelected,
 }) => {
 
-  /*
-  const [
-    {
-      navTree
-    },
-    dispatch
-  ] = useReducer(
-    reducer,
-    {
-      navTree:{}
-    }
-  )
-  */
-  
   const {
     title:rootTitle,
-    match:rootMatch,
-    children:rootChildren,
-    location:rootLocation,
-  } = useNavTree(tree)
+    subItems:rootSubItems,
+    pathname:rootPathname,
+  } = tree
 
-  console.log(true, true, rootMatch, rootChildren)
-
-  const {
-    focus,
-    setFocus
-  } = useContext(DashboardContext)
+  const currentLocation = useLocation()
 
   return (
     <Wrapper
       className={
         [
-        //styles[baseClassName],
+          //styles[baseClassName],
           baseClassName,
           className
         ].filter(e => e).join(' ')
@@ -143,15 +58,18 @@ const Navigation = ({
       id={ id }
       style={ style }
     >
-      <Slide
+      <Item
+        slideClassName='y-background b-y'
         title={ rootTitle }
-        match={ rootMatch }
-        location={ rootLocation }
-        content={ rootChildren }
-        treeDepth={ 0 }
-        isPreviousSlide={ !rootMatch && true }
-      >
-      </Slide>
+        subItems={ rootSubItems }
+        pathname={ rootPathname }
+        compact={ compact }
+        iconHover={ iconHover }
+        iconSelected={ iconSelected }
+        parentLocation={ rootPathname }
+        currentLocation={ currentLocation }
+      />
+
     </Wrapper>
   )}
 
@@ -191,35 +109,40 @@ Navigation.propTypes = {
   tree:PropTypes.shape({
     section  :PropTypes.string,
     title    :PropTypes.string.isRequired,
-    location :PropTypes.string.isRequired,
+    pathname :PropTypes.string.isRequired,
     baseMatch:PropTypes.string.isRequired,
     children :PropTypes.array
 
   }),
 
+  /**
+   * Whether the list should appear in a compact way
+   */
+  compact:PropTypes.bool,
 
   /**
-   * The width of the element
+   * The icon to display on mouse hover
    */
-  width:PropTypes.string,
-  /*
-  : PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    state: PropTypes.string.isRequired,
-  }),
-  : PropTypes.func,
-  : PropTypes.func,
-  : PropTypes.oneOf(['', ''])
-  */
+  iconHover:PropTypes.string,
+
+  /**
+   * The icon for selected menu item
+   */
+  iconSelected:PropTypes.string,
+
 }
 
 Navigation.defaultProps = {
-  as:'nav',
+  as          :'nav',
+  compact     :false,
+  iconHover   :'L',
+  iconSelected:'    ',
   /* height:'2.2em',
      as:'p', */
 }
 
-Navigation.Slide = Slide //TODO Remove, not to be exposed
+Navigation.Item = Item
+Navigation.Slide = Slide
+Navigation.HorizontalBar = HorizontalBar
 
 export default Navigation

@@ -30,8 +30,8 @@ const reducer = (state, action) =>{
   switch (action.type) {
   case 'SET_FOCUS':
     return {
-      focus:action.payload,
-      ...state
+      ...state,
+      focus:action.payload
     }
   default:
     return state

@@ -63,7 +63,7 @@ const HorizontalBar = ({
       <div className='yf inside u50 p-u'>
         <Button
           simple
-          className='it x-white xh-white'
+          className='it x-subtitles xh-paragraph'
           icon='h'
           iconSide='l'
           onClick={() => setPrevSlide()}
@@ -130,7 +130,7 @@ HorizontalBar.propTypes = {
 
 HorizontalBar.defaultProps = {
   progressBarClassName:'x-green xa xst',
-  className           :'x-grey u50'
+  className           :'x-background b-dark-x u50'
   /* height:'2.2em',
      as:'p', */
 }

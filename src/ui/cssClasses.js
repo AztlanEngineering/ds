@@ -4,7 +4,7 @@ const themes = {
 }
 
 export default {
-  // AnimatedVCaret, Slide (ContentSlide), Slide (Dashboard Nav)
+  // AnimatedVCaret, Slide (ContentSlide), Slide (Dashboard Nav), Main (Dashboard Main)
   'active'           :'active',
   'alt'              :'alt-',
   // SVG

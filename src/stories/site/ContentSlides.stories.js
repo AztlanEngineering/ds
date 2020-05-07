@@ -94,7 +94,7 @@ export const Default = () => {
 
     >
 
-      <ContentSlides.HorizontalBar />
+      <ContentSlides.HorizontalBar/>
       <div className='g12 b-z z-primary'>
         <ContentSlides.Slide
           className='b-light-z z-primary c-on-z'
@@ -210,7 +210,7 @@ export const SideBar = () => {
 
       <ContentSlides.SideBar
         className='u2 p-u'
-        header={<span className='fh tb s4 ls mb-v ml-u u2 v4 yb'>meccamico</span>}
+        header={<span className='fh tb s4 k-s mb-v ml-u u2 v4 yb'>meccamico</span>}
         //progressBarClassName=''
       />
       <div className='g12 b-z z-primary'>
@@ -322,7 +322,7 @@ export const Responsive = () => {
 
       <ContentSlides.SideBar
         className='xs-h sm-h u2 ph-u'
-        header={<span className='fh tb s4 ls mb-v ml-u u2 v4 yb'>meccamico</span>}
+        header={<span className='fh tb s4 k-s mb-v ml-u u2 v4 yb'>meccamico</span>}
         //progressBarClassName=''
       />
       <ContentSlides.HorizontalBar className='md-h lg-h x-grey'/>

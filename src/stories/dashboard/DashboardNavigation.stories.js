@@ -4,8 +4,8 @@ import * as React from 'react'
 
 //import { action } from '@storybook/addon-actions'
 
-import { 
-  DashboardNavigation, 
+import {
+  DashboardNavigation,
   DashboardContextProvider,
   DashboardMain,
 } from 'ui'
@@ -22,7 +22,9 @@ export default {
   component    :DashboardNavigation,
   //componentSubtitle:'Component subtitle',
   subcomponents:{
-    Slide:DashboardNavigation.Slide
+    Slide           :DashboardNavigation.Slide,
+    Item            :DashboardNavigation.Item,
+    HorizontalBar:DashboardNavigation.HorizontalBar
   },
   parameters:{
     decorators:[
@@ -37,55 +39,55 @@ export default {
 export const Default = () => {
 
   const tree = {
-    title    :'WebOffice',
-    location :'/',
-    baseMatch:'/',
-    children :[
+    title   :'WebOffice',
+    pathname:'/',
+    //redirectFromPathname:'/',
+    subItems:[
       {
-        section  :'General',
-        title    :'My website',
-        location :'/website/',
-        baseMatch:'/website/',
+        section :'General',
+        title   :'My website',
+        pathname:'/website/',
+        //redirectFromPathname:'/website/',
       },
       {
-        section  :'General',
-        title    :'My images',
-        location :'/media/',
-        baseMatch:'/media/',
+        section :'General',
+        title   :'My images',
+        pathname:'/media/',
+        //redirectFromPathname:'/media/',
       },
       {
-        section  :'Account',
-        title    :'My account',
-        location :'/account/profile/',
-        baseMatch:['/account/', '/account/profile/'],
-        children:[
+        section :'Account',
+        title   :'My account',
+        pathname:'/account/',
+        //redirectFromPathname:['/account/', '/account/profile/'],
+        subItems:[
           {
             //section:''
-            title:'My profile',
-            location:'/account/profile/', 
+            title   :'My profile',
+            pathname:'/account/profile/',
           },
           {
             //section:''
-            title:'Google Integration',
-            location:'/account/integration/', 
+            title   :'Google Integration',
+            pathname:'/account/integration/',
           }
         ]
       },
       {
-        section  :'Account',
-        title    :'Plan and payment',
-        location :'/plan/',
-        baseMatch:['/plan/', '/plan/profile'],
-        children:[
+        section :'Account',
+        title   :'Plan and payment',
+        pathname:'/plan/',
+        //redirectFromPathnames:['/plan/', '/plan/profile'],
+        subItems:[
           {
             //section:''
-            title:'My plan',
-            location:'/plan/profile/', 
+            title   :'My plan',
+            pathname:'/plan/profile/',
           },
           {
             //section:''
-            title:'Billing',
-            location:'/plan/billing/', 
+            title   :'Billing',
+            pathname:'/plan/billing/',
           }
         ]
       }
@@ -94,16 +96,20 @@ export const Default = () => {
   }
 
   return (
-    <> 
-    <DashboardNavigation
-      tree={ tree }
-    />
-      <DashboardMain
-      >
-        Ohayo
+    <>
+      <DashboardNavigation
+        tree={ tree }
+      />
+      <DashboardMain >
+      <DashboardNavigation.HorizontalBar
+        className='md-h lg-h u50'
+        label={'blah'}
+      />
         <div
-        style={{height:'120vh'}}
-        >Content</div>
+          style={{height: '120vh'}}
+        >
+          Content Goes here
+        </div>
       </DashboardMain>
     </>
   )

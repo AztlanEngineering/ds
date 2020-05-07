@@ -41,7 +41,7 @@ export const Default = () => (
 
 export const Background = () => (
   <HorizontalBar
-    className='x-secondary'
+    className='x-secondary b-x'
   >
     yoho
   </HorizontalBar>
@@ -49,7 +49,7 @@ export const Background = () => (
 
 export const Padded = () => (
   <HorizontalBar
-    className='x-paragraph u1'
+    className='x-paragraph b-x u1'
   >
     <div className='yf inside'>
       yoho
@@ -61,7 +61,7 @@ export const Composed = () =>{
   const [progress, setProgress] = useState(70)
   return(
     <HorizontalBar
-      className='x-secondary u50'
+      className='x-secondary b-x u50'
     >
       <div className='yf inside'>
         <Button
@@ -96,7 +96,7 @@ export const Composed = () =>{
 export const Composed2 = () =>{
   return(
     <HorizontalBar
-      className='x-blue u50'
+      className='x-blue b-x u50'
     >
       <div className='yf inside'>
         <Button
@@ -116,7 +116,7 @@ export const Composed2 = () =>{
 export const OverflowTest  = () =>{
   return(
     <HorizontalBar
-      className='x-blue u50'
+      className='x-blue b-x u50'
     >
       <div className='yf inside'>
         <Button

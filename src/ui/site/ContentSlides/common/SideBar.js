@@ -69,7 +69,7 @@ const SideBar = ({
     >
       <header>{ header }</header>
       <main>
-        <IconList>
+        <IconList className='u1'>
           { slides.map((e, i) =>
             <IconList.Item
               key={i}
