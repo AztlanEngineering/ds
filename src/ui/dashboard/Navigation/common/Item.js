@@ -3,79 +3,192 @@ import * as React from 'react'
 //import {} from 'react'
 import PropTypes from 'prop-types'
 
-import { Heading } from 'ui/elements'
+import { DashboardContext } from '../../common'
+import { Subtitle, IconList } from 'ui/common'
+import Slide from './Slide.js' //Circular recursion by design
+import NavLink from './Link.js'
 
-//Config
-import C from 'ui/cssClasses'
+/* Config
+   import C from 'ui/cssClasses' */
 
-//Relative imports
-//import styles from './item.scss'
+/* Relative imports
+   import styles from './item.scss' */
 import('./item.scss')
 
 const baseClassName = 'item'
 
-
 /**
- * Use `Item` to. Props are passed to the heading component
- * Has color `x` 
+ * Use `Item` to
+ * Has color `x`
  */
-const Item = ({
-  id,
-  className,
-  style,
-  children,
-  
-  as:Wrapper,
-  ...otherProps
-}) => {
+class Item extends React.PureComponent {
 
-  
-  
-  return (
-    <Heading
-    className={
-      [
-        //styles[baseClassName],
-        baseClassName,
-        C.pointer,
-        'yib',
-        className
-      ].filter(e => e).join(' ')
+  static contextType = DashboardContext
+
+  constructor(props) {
+    super(props)
   }
-    id={ id }
-    style={ style }
-    heading={ children }
-    { ...otherProps }
-  />
-)}
+
+  get isLast() {
+    return (
+      this.props.subItems || this.props.content
+    ) ? false : true
+  }
+
+  get isNormalSlide() {
+    return this.props.subItems ? true : false
+  }
+
+  get isCustomSlide() {
+    return this.props.content ? true : false
+  }
+
+  get isActive() {
+    return this.props.currentLocation.pathname == this.props.pathname //TODO change this by a match
+  }
+
+  componentDidUpdate(p) {
+    //console.log('was active', this.wasActive(p))
+    if (this.isActive && (p.currentLocation.pathname != this.props.currentLocation.pathname)) {
+      this.context.setFocus(this.isLast ? 'main':'sidebar')
+    }
+  }
+
+  render () {
+
+    const {
+      /*
+      id,
+      className,
+      style,
+      as:Wrapper,
+      */
+      //tree,
+
+      slideClassName,
+      slideStyle,
+
+      iconHover,
+      iconSelected,
+
+      treeDepth,
+      //currentLocation,
+
+      title,
+      pathname,
+      rootNode,
+      //subItems,
+    } = this.props
+
+    const { navigate } = this.context
+
+    const onClick = () => navigate(
+      pathname,
+      this.isLast ? 'main': 'sidebar'
+    )
+
+    if (rootNode) return (
+      <Slide
+        { ...this.props }
+        className={ slideClassName }
+        style={ slideStyle }
+        treeDepth={ treeDepth + 1 }
+      />
+    )
+
+    else if (this.isCustomSlide) return (
+      <IconList.Item
+        icon={ this.isActive ? iconSelected : undefined } //TODO provide better default
+        iconHover={ iconHover }
+      >
+        { title }
+        {' '}
+        ( Custom Slide )
+      </IconList.Item>
+    )
+
+    else if (this.isNormalSlide) return (
+      <IconList.Item
+        icon={ this.isActive ? iconSelected : undefined } //TODO provide better default
+        iconHover={ iconHover }
+      >
+        <NavLink onClick={ onClick }>
+          { title }
+        </NavLink>
+        <Slide
+          { ...this.props }
+          className={ slideClassName }
+          style={ slideStyle }
+          treeDepth={ treeDepth + 1 }
+        />
+      </IconList.Item>
+    )
+
+    else return ( // is this.isLast
+      <IconList.Item
+        icon={ this.isActive ? iconSelected : undefined } //TODO provide better default
+        iconHover={ iconHover }
+      >
+        <NavLink onClick={ onClick }>
+          { title }
+        </NavLink>
+      </IconList.Item>
+
+    )
+
+  }
+}
 
 Item.propTypes = {
   /**
    * Provide an HTML id to this element
    */
-  id: PropTypes.string,
+  id:PropTypes.string,
 
   /**
    * The html class names to be provided to this element
    */
-  className: PropTypes.string,
+  className:PropTypes.string,
 
   /**
    * The JSX-Written, css styles to apply to the element.
    */
-  style: PropTypes.object,
+  style:PropTypes.object,
 
   /**
    *  The children JSX
    */
-  children: PropTypes.node,
+  children:PropTypes.node,
+
+  /**
+   *  The title of the navigation element. This will be displayed both as the default value in the list, and, if the element is the parent of another slide, as the title of that children slide.
+   */
+  title:PropTypes.string.isReauired,
+
+  /**
+   * The location to push to when the user clicks the element.
+   */
+  pathname:PropTypes.string.isRequired,
+
+  /**
+   * The child elements. If this is set, the element when appear as a slide when clicked.
+   */
+  subItems:PropTypes.arrayOf(PropTypes.object),
+
+  /**
+   * Whether when clicking this element, we should display special content in the slide instead of the regular one. Just provide a react node that will supersede any other conf.
+   */
+  content:PropTypes.node,
+
+  /**
+   * Which html tag to use
+   */
+  as:PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object
+  ]),
+  //as: PropTypes.string,
+
 }
 
-/*
-Item.defaultProps = {
-  status: 'neutral',
-  //height:'2.2em',
-  //as:'p',
-}
-*/
 export default Item

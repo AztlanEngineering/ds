@@ -1,17 +1,20 @@
-/* @fwrlines/generator-react-component 2.1.0 */
+/* @fwrlines/generator-react-component 2.1.1 */
 import * as React from 'react'
-import { useContext } from 'react'
+import { useEffect, useMemo, useContext } from 'react'
 import PropTypes from 'prop-types'
-
-import { DashboardContext } from '../../common'
 
 import { Subtitle, IconList } from 'ui/common'
 import { Heading, Button } from 'ui/elements'
 import { HorizontalBar } from 'ui/site'
 
-import NavItem from './Item'
+import { DashboardContext } from '../../common'
 
-// Config
+import NavItem from './Item' //Circular reference by design
+import HorizontalNavBar from './HorizontalNavBar'
+
+import { useRouteMatch, useLocation, useHistory} from 'react-router-dom'
+
+/* Config */
 import C from 'ui/cssClasses'
 
 /* Relative imports
@@ -19,6 +22,12 @@ import C from 'ui/cssClasses'
 import('./slide.scss')
 
 const baseClassName = 'slide'
+
+const TEXT = {
+  //BACK_LABEL     :'Back',
+  BACK_HOME_LABEL:'Home',
+}
+
 
 /**
  * Use `Slide` to
@@ -28,34 +37,78 @@ const Slide = ({
   id,
   className,
   style,
-  children,
-
-  treeDepth,
 
   title,
-  match,
-  content,
-  location,
+  subItems,
+  pathname,
+  redirectFromPathname,
+
+  treeDepth,
+  currentLocation,
 
   parentName,
   parentLocation,
 
-  isPreviousSlide,
-  isNextSlide,
+  compact,
+  iconHover,
+  iconSelected,
 }) => {
 
-  const { navigate } = useContext(DashboardContext)
+  //const { navigate, setFocus } = useContext(DashboardContext)
+
+  //const history = useHistory()
+
+
+  /*
+  const shouldRedirectMatch = useRouteMatch(redirectFromPathname)
+
+  useEffect(() =>
+  {
+    if (shouldRedirectMatch) history.push(pathname)
+  }
+  ,[shouldRedirectMatch, history])
+    */
+
+
+  const displayUrls = useMemo(() => {
+    const list = subItems ?
+      subItems.filter(e => !e.subItems).reduce((a,e) => {
+        a.push(e.pathname)
+        return a
+      },
+      []
+      ) : []
+    //console.log('in memo', pathname, list)
+    list.push(pathname)
+    return list
+
+  },
+  [subItems, pathname, redirectFromPathname]
+  )
+
+  const match = useRouteMatch(displayUrls)
+
+  const isActive = (match && match.isExact) ?
+    displayUrls.includes(match.path) : false
+
+  const isPrev = (match && !match.isExact)
+
+  const isNext = (!isActive && !isPrev)
+
+  //console.log('display this slide when the location matches one of those ', displayUrls, match, currentLocation.pathname)
+
+  //console.log(title, ' is active ? ', isActive)
 
   return (
     <div
       className={
         [
-          //styles[baseClassName],
+        //styles[baseClassName],
           baseClassName,
-          match && C.active,
-          isPreviousSlide && C.previous,
-          isNextSlide && C.next,
-          'u2',
+          isActive && C.active,
+          isPrev && C.previous,
+          isNext && C.next,
+          's0 l-s',
           className
         ].filter(e => e).join(' ')
       }
@@ -64,77 +117,61 @@ const Slide = ({
     >
       {
         parentLocation &&
-          <HorizontalBar
-            className='x-blue u50'
-          >
-            <div className='yf inside'>
-              <Button
-                simple
-                className='it x-white xh-white'
-                icon='h'
-                iconSide='l'
-                onClick={() => navigate(parentLocation, 'sidebar')}
-              >
-                {
-                  treeDepth == 1 ?
-                    'Home' :
-                    (parentName || 'Back')
-                }
-              </Button>
-            </div>
-          </HorizontalBar>
-      }
-      <Heading className='h3 v1 mv-v mh-u'>{ title }</Heading>
-      <IconList className={'u2 p-u ' + C.compact}>
-        { content && content.map((e, i, a) =>
-          <>
-            {(
-              ((i == 0) && e.section ) ||
-            (e.section && (e.section != a[i-1].section ) )
-            ) &&
-              <Subtitle
-                className='s-1 ks u1 mv-u v2 ml-v'
-                upper
-              >
-                { e.section }
-              </Subtitle>
+          <HorizontalNavBar
+            backLabel={
+              treeDepth == 1 ?
+                TEXT.BACK_HOME_LABEL :
+                parentName
             }
-            { console.log(888, e, e.match ? true: false) }
-            <IconList.Item
-              icon={ e.match ? "    " : undefined } //TODO provide better default
-              iconHover='L'
-            >
-              <NavItem
-                onClick={ () => navigate(
-                  e.location,
-                  e.children ? 'sidebar ': 'main'
-                ) }
-              >
-                { e.title }
-              </NavItem>
-              { e.children &&
-                <Slide
-                  title={ e.title }
-                  match={ e.match }
-                  location={ e.location }
-                  content={ e.children }
-                  parentName={ title }
-                  parentLocation={ location }
-                  treeDepth={ treeDepth + 1 }
-                  isNextSlide={
-                    (match && true) ||
-                    isNextSlide
-                  }
-                  isPreviousSlide={
-                    (isPreviousSlide && !e.match)
-                  }
-                />
+            backTo={parentLocation}
+          />
+      }
+      <Heading
+        className='h3 v1 mv-v mh-u pl-v'
+        heading={ title }
+      />
+
+      { subItems &&
+        <IconList
+          className={
+            [
+              compact && C.compact,
+              'u2 ph-u v1 pv-v',
+            ].filter(e => e).join(' ')
+          }
+        >
+          { subItems.map((e, i, a) =>
+            <>
+              {(
+                ((i == 0) && e.section ) ||
+            (e.section && (e.section != a[i-1].section ) )
+              ) &&
+                <IconList.Item >
+                  <Subtitle
+                    className='s-1 k-s u1 mt-u v2 ml-v w50 mb-w'
+                    upper
+                  >
+                    { e.section }
+                  </Subtitle>
+                </IconList.Item >
               }
-            </IconList.Item>
-          </>
-        ) }
-        { children }
-      </IconList>
+              <NavItem
+                key={ i }
+                treeDepth={ treeDepth }
+                iconHover={ iconHover }
+                iconSelected={ iconSelected }
+                parentName={ title }
+                parentLocation={ pathname } //TODO change by match render
+                currentLocation={ currentLocation }
+                slideClassName={ className }
+                slideStyle={ style }
+                { ...e }
+              />
+            </>
+          )}
+
+        </IconList>
+      }
     </div>
   )}
 
@@ -160,29 +197,32 @@ Slide.propTypes = {
   children:PropTypes.node,
 
   /**
+   *  The title of the navigation element. This will be displayed both as the default value in the list, and, if the element is the parent of another slide, as the title of that children slide.
+   */
+  title:PropTypes.string.isReauired,
+
+  /**
+   * The pathname of the current slide.
+   */
+  pathname:PropTypes.string.isRequired,
+
+  /**
+   * The child elements. If this is set, the element when appear as a slide when clicked.
+   */
+  subItems:PropTypes.arrayOf(PropTypes.object),
+
+  /**
    * treeDepth
    */
-  treeDepth:PropTypes.number,
+  treeDepth:PropTypes.number.isRequired,
 
   /**
-   * The title of the navigation slide
+   * Which html tag to use
    */
-  title:PropTypes.string,
-
-  /**
-   * On which location should the slide be displayed
-   */
-  match:PropTypes.object,
-
-  /**
-   * On which location should the slide be displayed
-   */
-  content:PropTypes.object,
-
-  /**
-   * On which location should the slide be displayed
-   */
-  location:PropTypes.string,
+  as:PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object
+  ]),
 
   /**
    * The name of the parent to display in the return button
@@ -193,32 +233,10 @@ Slide.propTypes = {
    * The location of the parent slide, for the return button
    */
   parentLocation:PropTypes.string,
-
-  /**
-   * Is this slide is after the active slide
-   */
-  isNextSlide:PropTypes.bool,
-
-  /**
-   * Whether this slide is before the active slide
-   */
-  isPreviousSlide:PropTypes.bool,
-
-  /*
-  : PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    state: PropTypes.string.isRequired,
-  }),
-  : PropTypes.func,
-  : PropTypes.func,
-  : PropTypes.oneOf(['', ''])
-  */
 }
 
 Slide.defaultProps = {
-  isNextSlide    :false,
-  isPreviousSlide:false,
+  treeDepth:0,
 }
 
 export default Slide
