@@ -37,6 +37,7 @@ export const Default = () => {
     SITE_CANONICAL:'https://internet1999.org',
     FACEBOOK      :'facebook_id',
     INSTAGRAM     :'@superaccount',
+    SUPPORT_EMAIL:'support@support.com'
   }
   return (
     <SiteContextProvider config={ config }>
@@ -52,6 +53,7 @@ export const Theme = () => {
     SITE_CANONICAL:'https://internet1999.org',
     FACEBOOK      :'facebook_id',
     INSTAGRAM     :'@superaccount',
+    SUPPORT_EMAIL:'support@support.com'
   }
 
   const ChildCo = () => {

@@ -75,6 +75,7 @@ export const Default = () => (
   <>
     <Button>Click me</Button>
     <Button disabled>You can't, I'm disabled</Button>
+    <Button className='x-blue'>I'm blue</Button>
   </>
 )
 

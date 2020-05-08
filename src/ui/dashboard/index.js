@@ -1,17 +1,13 @@
-export { PageInput as DashboardPageInput} from './PageInput'
-export { AdminPage as DashboardAdminPage } from './AdminPage'
 export {
   DashboardContext,
   DashboardContextProvider,
   ProfileContext,
   ProfileContextProvider,
 } from './common'
-export {
-  Logout
-} from './Logout'
-export {
-  PrivateRoute
-} from './PrivateRoute'
-export { Navigation as DashboardNavigation } from './Navigation'
+export { AdminPage as DashboardAdminPage } from './AdminPage'
+export { Logout } from './Logout'
 export { Main as DashboardMain } from './Main'
+export { Navigation as DashboardNavigation } from './Navigation'
 export { Navigation } from './Navigation'
+export { PrivateRoute, SwitchRouteMap } from './Routes'
+export { PageInput as DashboardPageInput} from './PageInput'

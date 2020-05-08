@@ -9,13 +9,10 @@ import {
   useLocation,
 } from 'react-router-dom'
 
-import { ProfileContext } from '../common'
+import { ProfileContext } from '../../common'
 
 /* Config
    import C from 'ui/cssClasses' */
-
-/* Relative imports
-   import styles from './private_route.scss' */
 
 /**
  * Use `PrivateRoute` to
