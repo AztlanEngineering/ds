@@ -4,7 +4,7 @@ import * as React from 'react'
 
 //import { action } from '@storybook/addon-actions'
 
-import { PrivateRoute } from 'ui'
+import { SwitchRouteMap } from 'ui'
 //import QUERY from './graphql/query.graphql'
 //import { AplProvider } from 'stories/utils'
 //import { Router } from 'stories/utils'
@@ -14,11 +14,11 @@ import { PrivateRoute } from 'ui'
 //const endpoint = 'https://api.fwrlines.com/graphql'
 
 export default {
-  title: 'dashboard/Routes/PrivateRoute',
-  component:PrivateRoute,
+  title: 'Dashboard/Routes/SwitchRouteMap',
+  component:SwitchRouteMap,
   //componentSubtitle:'Component subtitle',
   subcomponents: {
-    //Item:PrivateRoute.Item
+    //Item:SwitchRouteMap.Item
   },
   parameters: {
     decorators: [ 
