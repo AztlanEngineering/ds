@@ -36,6 +36,7 @@ const ProfileContextProvider = ({
 
   loginPath,
   logoutPath,
+  dashboardHomePath,
 
   cookieName,
   cookiePath,
@@ -92,10 +93,13 @@ const ProfileContextProvider = ({
   [sessionCookie]
   )
 
+  const isConnected = currentUserData ? true : false
+
   return (
     <ProfileContext.Provider value={{
       logoutPath,
       loginPath,
+      dashboardHomePath,
 
       setSessionCookie,
       removeSessionCookie,
@@ -104,7 +108,9 @@ const ProfileContextProvider = ({
 
       currentUserError,
       currentUserLoading,
-      currentUserData
+      currentUserData,
+
+      isConnected
     }}
     >
       { children }
@@ -126,6 +132,11 @@ ProfileContextProvider.propTypes = {
    * The absolute path to logout
    */
   logoutPath:PropTypes.string,
+
+  /**
+   * The absolute path to the dashboard home
+   */
+  dashboardHomePath:PropTypes.string,
 
   /**
    * The graphql query to get the user profile
