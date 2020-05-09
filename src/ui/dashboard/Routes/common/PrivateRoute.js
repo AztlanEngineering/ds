@@ -9,7 +9,7 @@ import {
   useLocation,
 } from 'react-router-dom'
 
-import { ProfileContext } from '../../common'
+import { SessionContext } from '../../common'
 
 /* Config
    import C from 'ui/cssClasses' */
@@ -26,7 +26,7 @@ const PrivateRoute = ({
   const {
     currentUserData:currentUser,
     loginPath,
-  } = useContext(ProfileContext)
+  } = useContext(SessionContext)
 
   const location = useLocation()
   //console.log(me)

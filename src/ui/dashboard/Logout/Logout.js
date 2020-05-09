@@ -3,7 +3,7 @@ import * as React from 'react'
 import { useEffect, useContext } from 'react'
 import PropTypes from 'prop-types'
 
-import { ProfileContext } from '../common/ProfileContext'
+import { SessionContext } from '../common/SessionContext'
 
 /* Config
    import C from 'ui/cssClasses' */
@@ -16,7 +16,7 @@ import { ProfileContext } from '../common/ProfileContext'
 
 
 /**
- * Use `Logout` to logout the user. Consumes `dashboard/common/ProfileCntext`
+ * Use `Logout` to logout the user. Consumes `dashboard/common/SessionCntext`
  *
  */
 const Logout = ({
@@ -24,7 +24,7 @@ const Logout = ({
 
   const {
     logout
-  } = useContext(ProfileContext)
+  } = useContext(SessionContext)
 
   useEffect(() => {
     if(logout) {

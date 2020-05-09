@@ -1,8 +1,8 @@
 export {
   DashboardContext,
   DashboardContextProvider,
-  ProfileContext,
-  ProfileContextProvider,
+  SessionContext,
+  SessionContextProvider,
 } from './common'
 export { AdminPage as DashboardAdminPage } from './AdminPage'
 export { Logout } from './Logout'

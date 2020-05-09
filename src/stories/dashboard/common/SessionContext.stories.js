@@ -3,15 +3,15 @@ import * as React from 'react'
 
 //import { action } from '@storybook/addon-actions'
 
-import { ProfileContextProvider } from 'ui'
+import { SessionContextProvider } from 'ui'
 /* import QUERY from './graphql/query.graphql' */
 import { Router, AplProvider } from 'stories/utils'
 
 //const endpoint = 'https://api.fwrlines.com/graphql'
 
 export default {
-  title        :'dashboard/common/ProfileContextProvider',
-  component    :ProfileContextProvider,
+  title        :'dashboard/common/SessionContextProvider',
+  component    :SessionContextProvider,
   //componentSubtitle:'Component subtitle',
   subcomponents:{
     //Logout:Logout

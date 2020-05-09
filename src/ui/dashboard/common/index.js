@@ -3,6 +3,6 @@ export {
   DashboardContextProvider,
 } from './DashboardContext'
 export {
-  ProfileContext,
-  ProfileContextProvider,
-} from './ProfileContext'
+  SessionContext,
+  SessionContextProvider,
+} from './SessionContext'

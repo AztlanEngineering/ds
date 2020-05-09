@@ -87,14 +87,14 @@ const CircleInfo = ({
         <div className='inside p05'>
           <Wrapper {...wrapperArgs}>
             <span
-              className='s1 ls fh'
+              className='s2 k-s fh'
             >
               { title }
             </span>
             { subtitle &&
               <Subtitle
               //upper
-                className='s0 ls'
+                className='s0 k-s'
               >
                 { subtitle }
               </Subtitle>

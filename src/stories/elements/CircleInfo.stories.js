@@ -20,19 +20,19 @@ const map = [
   {
     circle   :'b-orange',
     title    :'Friedrich Nietzsche',
-    className:'s3 ks',
+    className:'s3 k-s',
     subtitle :'A philosopher from the XIXth'
   },
   {
     circle   :'b-violet',
     title    :'J.S. Bach',
-    className:'s1 ks',
+    className:'s1 k-s',
     subtitle :'A composer from the 18th'
   },
   {
     circle   :'b-teal',
     title    :'Carlos Pellicer',
-    className:'s0 ks',
+    className:'s0 k-s',
     subtitle :'The poet from Tabasco'
   },
 ]
@@ -45,7 +45,7 @@ const mapVariant = [
     link     :'https://twitter.com/fnietzsche',
     image    :'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Nietzsche187a.jpg/440px-Nietzsche187a.jpg',
     imageAlt :'Friedrich Nietzsche',
-    className:'s3 ks mu u2',
+    className:'s3 k-s m-u u2',
   },
   {
     circle   :'b-red',
@@ -54,7 +54,7 @@ const mapVariant = [
     link     :'https://twitter.com/fnietzsche',
     image    :'https://upload.wikimedia.org/wikipedia/commons/6/6a/Johann_Sebastian_Bach.jpg',
     imageAlt :'J.S. Bach',
-    className:'s1 ks mu u2',
+    className:'s1 k-s m-u u2',
   },
   {
     circle   :'b-teal',
@@ -63,7 +63,7 @@ const mapVariant = [
     link     :'/pellicer',
     image    :'https://www.mexicodesconocido.com.mx/wp-content/uploads/2019/02/WhatsApp-Image-2019-02-15-at-7.33.12-PM.jpeg',
     imageAlt :'Carlos Pellicer',
-    className:'s0 ks mu u2',
+    className:'s0 k-s m-u u2',
   },
 ]
 

@@ -80,12 +80,14 @@ class Item extends React.PureComponent {
       //subItems,
     } = this.props
 
-    const { navigate } = this.context
+    const { setFocus } = this.context
 
-    const onClick = () => navigate(
-      pathname,
-      this.isLast ? 'main': 'sidebar'
-    )
+    const onClick = (e) => {
+      e.persist()
+      setFocus(
+        this.isLast ? 'main': 'sidebar'
+      )
+    }
 
     if (rootNode) return (
       <Slide
@@ -112,7 +114,10 @@ class Item extends React.PureComponent {
         icon={ this.isActive ? iconSelected : undefined } //TODO provide better default
         iconHover={ iconHover }
       >
-        <NavLink onClick={ onClick }>
+        <NavLink
+          onClick={ onClick } 
+          to={ pathname }
+        >
           { title }
         </NavLink>
         <Slide
@@ -129,7 +134,10 @@ class Item extends React.PureComponent {
         icon={ this.isActive ? iconSelected : undefined } //TODO provide better default
         iconHover={ iconHover }
       >
-        <NavLink onClick={ onClick }>
+        <NavLink
+          onClick={ onClick } 
+          to={ pathname }
+        >
           { title }
         </NavLink>
       </IconList.Item>

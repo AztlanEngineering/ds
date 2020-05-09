@@ -8,7 +8,7 @@ import Cookies from 'universal-cookie'
 /* Config
    import C from 'ui/cssClasses' */
 
-import { ProfileContext } from './common'
+import { SessionContext } from './common'
 
 import gql from 'graphql-tag'
 import { useLazyQuery, useApolloClient } from '@apollo/client'
@@ -24,11 +24,11 @@ const DataProcessor = (data) => {
 
 
 /**
- * Use `ProfileContextProvider` to
+ * Use `SessionContextProvider` to
  * Has color `x`
  */
 
-const ProfileContextProvider = ({
+const SessionContextProvider = ({
   children,
   GQL_QUERY_ME,
 
@@ -96,7 +96,7 @@ const ProfileContextProvider = ({
   const isConnected = currentUserData ? true : false
 
   return (
-    <ProfileContext.Provider value={{
+    <SessionContext.Provider value={{
       logoutPath,
       loginPath,
       dashboardHomePath,
@@ -114,10 +114,10 @@ const ProfileContextProvider = ({
     }}
     >
       { children }
-    </ProfileContext.Provider>
+    </SessionContext.Provider>
   )}
 
-ProfileContextProvider.propTypes = {
+SessionContextProvider.propTypes = {
   /**
    *  The children JSX
    */
@@ -154,7 +154,7 @@ ProfileContextProvider.propTypes = {
   cookiePath:PropTypes.string,
 }
 
-ProfileContextProvider.defaultProps = {
+SessionContextProvider.defaultProps = {
   logoutPath:'/logout',
   loginPath :'/login',
   cookieName:'session',
@@ -162,4 +162,4 @@ ProfileContextProvider.defaultProps = {
   //processor:DataProcessor
 }
 
-export default ProfileContextProvider
+export default SessionContextProvider
