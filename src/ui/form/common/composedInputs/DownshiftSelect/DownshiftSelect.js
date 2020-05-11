@@ -131,7 +131,7 @@ const DownshiftSelect = ({
 
   const onSelectedItemChange = userOnSelectedItemChange ? userOnSelectedItemChange : (c) => {
     //console.warn('change', c)
-    !touched && setInputTouched()
+    !touched && setInputTouched && setInputTouched()
     setInputValue(itemToString(c.selectedItem))
   }
 
