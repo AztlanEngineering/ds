@@ -13,6 +13,7 @@ import {
   Select,
   SVGChoice,
   CardChoice,
+  DownshiftSelect,
 } from '../common'
 
 import { FormContext } from '../FormContext'
@@ -52,6 +53,8 @@ const FormInput = ({
 }) => {
 
   const inputProps = useFormInput(name, context)
+
+  //console.warn('IP', inputProps)
 
   const passedProps = {
     ...allProps,
@@ -108,7 +111,9 @@ const FormInput = ({
   )
 
   else if ( type == 'downshift-select' ) return(
-    <>h</>
+    <DownshiftSelect
+      { ...passedProps }
+    />
   )
 
   else if ( type == 'downshift-combobox' ) return(
@@ -131,6 +136,7 @@ FormInput.propTypes = {
     'textarea',
     'checkboxes',
     'radios',
+    'select',
     'card-checkboxes',
     'card-radios',
     'svg-checkboxes',

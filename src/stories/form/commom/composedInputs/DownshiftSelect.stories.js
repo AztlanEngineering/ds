@@ -33,14 +33,16 @@ export default {
 export const Default = () => (
   <DownshiftSelect
     label='Please select your favourite fruit'
-    items={ LIST }
+    options={ LIST }
     description='Here is a list of very tasty fruits you can choose your favourite from'
     aesthetic='mars'
   >
   </DownshiftSelect>
 )
 
+  /*
 export const Variant = () => (
   <DownshiftSelect></DownshiftSelect>
 )
+*/
 

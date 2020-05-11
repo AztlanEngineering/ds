@@ -40,7 +40,8 @@ export const Default = () => (
     initialValues={{
       'planet_name':'jupyter',
       'story'      :'april is the cruellest month, breeding, lilacs out of the dead land, mixing, memory and desire',
-      'fellini'    :new Set(['saty', 'otto'])
+      'fellini'    :new Set(['saty', 'otto']),
+      'dscs':'id0blu'
     }}
   >
     <FormInput
@@ -177,6 +178,38 @@ export const Default = () => (
       ]}
       label='Favourite color?'
       inputId='compo2'
+    />
+    <FormInput
+      context={ context }
+      type='downshift-select' //checkboxes
+      name='dscs'
+      inputClassName='y-indigo'
+      buttonProps={{
+        className:'j x-metadata',
+        simple:true,
+          icon:'j',
+          iconSide:'r'
+      }}
+      options={[
+        {
+          value:'magenta',
+          label:'magenta',
+          id   :'id0mag',
+        },
+        {
+          value:'red',
+          label:'red',
+          id   :'id0red',
+        },
+        {
+          value:'blue',
+          label:'Blue',
+          id:'id0blu'
+        }
+      ]}
+      label='Favourite color?'
+      inputId='compo2'
+      buttonChildren={ 'Select your favourite color' }
     />
     <FormContextDebugger context={ context }/>
   </ContextProvider>

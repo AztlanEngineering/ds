@@ -1,5 +1,7 @@
 /* @fwrlines/generator-react-component 1.4.0 */
-import React, { useMemo } from 'react'
+import * as React from 'react' 
+import { useMemo, useCallback } from 'react'
+
 import PropTypes from 'prop-types'
 
 import { useSelect } from 'downshift'
@@ -59,11 +61,11 @@ const DownshiftSelect = ({
   descriptionStyle,
 
   // Start of downshift props
-  items,
-  itemToString,
-  onSelectedItemChange,
+  options:items, //originally called items in downshift
+  itemToString:userItemToString,
+  onSelectedItemChange:userOnSelectedItemChange,
   stateReducer,
-  initialSelectedItem,
+  //initialSelectedItem, //Harmo
   initialHighlightedIndex,
   defaultSelectedItem,
   defaultIsOpen,
@@ -89,15 +91,58 @@ const DownshiftSelect = ({
   popupStyle,
 
   highlightedClassName,
-  displayItem,
+  displayItem:userDisplayItem,
+  displaySelectedItem:userDisplaySelectedItem,
+
+  //Control Props, automatically passed from context
+  setInputValue,
+  setInputTouched,
+  touched,
+  value,
+  //...otherProps
 }) => {
+
+  const areItemsObjects = useMemo(() => 
+    items.length ? 
+      (typeof items[0] === 'object') ? true : false 
+      : false,
+    [items]
+  )
+
+  const itemToString = userItemToString ?
+    userItemToString : (areItemsObjects ? 
+      (item) => (item ? item.id : '') :
+      undefined
+    )
+
+  const displayItem = userDisplayItem ?
+    userDisplayItem : (areItemsObjects ? 
+      (item => (item ? item.value : '')) :
+      (item => (item ? item : ''))
+    )
+
+  const displaySelectedItem = userDisplaySelectedItem ?
+    userDisplayItem : (areItemsObjects ? 
+      (item => (item ? item.value : '')) :
+      (item => (item ? item : ''))
+    )
+
+  //console.log(otherProps)
+
+  const onSelectedItemChange = userOnSelectedItemChange ? userOnSelectedItemChange : (c) => {
+    //console.warn('change', c)
+    !touched && setInputTouched()
+    setInputValue(itemToString(c.selectedItem))
+  }
+
+  const selectedItem = items.find((e) => itemToString(e) == value)
 
   const allUseSelectProps = {
     items,
     itemToString,
     onSelectedItemChange,
     stateReducer,
-    initialSelectedItem,
+    //initialSelectedItem,
     initialHighlightedIndex,
     defaultSelectedItem,
     defaultIsOpen,
@@ -110,6 +155,9 @@ const DownshiftSelect = ({
     menuId,
     toggleButtonId,
     getItemId,
+
+    //inputValue:value,
+    selectedItem,
   }
 
   const finalUseSelectProps = useMemo(
@@ -126,7 +174,7 @@ const DownshiftSelect = ({
 
   const {
     isOpen,
-    selectedItem,
+    //selectedItem, //Unused because we control the input
     getLabelProps,
     getToggleButtonProps,
     getMenuProps,
@@ -185,7 +233,7 @@ const DownshiftSelect = ({
             { ...buttonProps }
 
           >
-            { selectedItem || buttonChildren }
+            { displaySelectedItem(selectedItem) || buttonChildren }
           </Button>
           <Popup
             className={ popupClassName }
@@ -361,9 +409,14 @@ DownshiftSelect.propTypes = {
   highlightedClassName:PropTypes.string,
 
   /**
-   * This function takes an item and outputs the component displayed as the children of each list item
+   * This function takes an item and outputs the component displayed as the children of each list item. Defaults to the current string for an array of strings, and for item.value for an array of objects
    */
   displayItem:PropTypes.func,
+
+  /**
+   * This function takes an item and outputs the component displayed in the button. Defaults to the current string for an array of strings, and for item.value for array of objects
+   */
+  displaySelectedItem:PropTypes.func,
 
   /**
    * The html id for the popup.
@@ -393,9 +446,9 @@ DownshiftSelect.propTypes = {
   ),
 
   /**
-   * The items to display in the dropdown. https://github.com/downshift-js/downshift/tree/master/src/hooks/useSelect#items
+   * The items to display in the dropdown. https://github.com/downshift-js/downshift/tree/master/src/hooks/useSelect#items. This is the renamed prop "items" from downshift, renamed here for api coherence
    */
-  items:PropTypes.oneOfType([
+  options:PropTypes.oneOfType([
     PropTypes.arrayOf(
       PropTypes.string
     ),
@@ -501,7 +554,7 @@ DownshiftSelect.defaultProps = {
   buttonChildren      :'Select',
   buttonProps         :{},
   highlightedClassName:'x-red b-x c-on-x',
-  displayItem         :(i) => i,
+  //displayItem         :(i) => i,
   circularNavigation  :true,
   popupPreferredOrder :['bottom', 'right', 'top', 'left'],
   /* height:'2.2em',
