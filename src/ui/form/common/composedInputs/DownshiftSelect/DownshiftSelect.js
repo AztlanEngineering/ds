@@ -1,5 +1,5 @@
 /* @fwrlines/generator-react-component 1.4.0 */
-import * as React from 'react' 
+import * as React from 'react'
 import { useMemo, useCallback } from 'react'
 
 import PropTypes from 'prop-types'
@@ -47,7 +47,7 @@ const DownshiftSelect = ({
   aesthetic,
   compact,
 
-  inputId,
+  inputId:userInputId,
 
   label,
   labelAs, //This is the only new prop compared to Input
@@ -73,7 +73,7 @@ const DownshiftSelect = ({
   onIsOpenChange,
   onStateChange,
   circularNavigation,
-  mainId,
+  //id //this is given by inputId to harmonize the api
   menuId,
   toggleButtonId,
   getItemId,
@@ -102,47 +102,50 @@ const DownshiftSelect = ({
   //...otherProps
 }) => {
 
-  const areItemsObjects = useMemo(() => 
-    items.length ? 
-      (typeof items[0] === 'object') ? true : false 
+  const areItemsObjects = useMemo(() =>
+    items.length ?
+      (typeof items[0] === 'object') ? true : false
       : false,
-    [items]
+  [items]
   )
 
   const itemToString = userItemToString ?
-    userItemToString : (areItemsObjects ? 
-      (item) => (item ? item.id : '') :
-      undefined
+    userItemToString : (areItemsObjects ?
+      (item => (item ? item.value : '')) :
+      (item => (item ? String(item) : ''))
     )
 
   const displayItem = userDisplayItem ?
-    userDisplayItem : (areItemsObjects ? 
-      (item => (item ? item.value : '')) :
-      (item => (item ? item : ''))
+    userDisplayItem : (areItemsObjects ?
+      (item => (item ? item.label : '')) :
+      (item => (item ? String(item) : ''))
     )
 
   const displaySelectedItem = userDisplaySelectedItem ?
-    userDisplayItem : (areItemsObjects ? 
-      (item => (item ? item.value : '')) :
-      (item => (item ? item : ''))
+    userDisplayItem : (areItemsObjects ?
+      (item => (item ? item.label : '')) :
+      (item => (item ? String(item) : ''))
     )
 
   //console.log(otherProps)
 
-  const onSelectedItemChange = userOnSelectedItemChange ? userOnSelectedItemChange : (c) => {
-    //console.warn('change', c)
-    !touched && setInputTouched && setInputTouched()
-    setInputValue(itemToString(c.selectedItem))
-  }
+  const onSelectedItemChange = (setInputValue || userOnSelectedItemChange) ?
+    userOnSelectedItemChange ? userOnSelectedItemChange : (c) => {
+      console.log('DS change', c)
+      !touched && setInputTouched && setInputTouched()
+      setInputValue(itemToString(c.selectedItem))
+    } : undefined
 
-  const selectedItem = items.find((e) => itemToString(e) == value)
+  const selectedItem = value ? items.find((e) => itemToString(e) == value) : undefined
+
+  //console.warn('selected item is', selectedItem)
 
   const allUseSelectProps = {
     items,
     itemToString,
     onSelectedItemChange,
     stateReducer,
-    //initialSelectedItem,
+    initialSelectedItem:selectedItem,
     initialHighlightedIndex,
     defaultSelectedItem,
     defaultIsOpen,
@@ -150,14 +153,14 @@ const DownshiftSelect = ({
     onIsOpenChange,
     onStateChange,
     circularNavigation,
-    id:mainId,
+    id:userInputId,
     labelId, //This one prop comes from outside !
     menuId,
     toggleButtonId,
     getItemId,
 
     //inputValue:value,
-    selectedItem,
+    //selectedItem,
   }
 
   const finalUseSelectProps = useMemo(
@@ -174,7 +177,7 @@ const DownshiftSelect = ({
 
   const {
     isOpen,
-    //selectedItem, //Unused because we control the input
+    selectedItem:uncontrolledSelectedItem, //Unused because we control the input
     getLabelProps,
     getToggleButtonProps,
     getMenuProps,
@@ -183,6 +186,11 @@ const DownshiftSelect = ({
   } = useSelect(
     finalUseSelectProps
   )
+
+  const {
+    id:inputId,
+    ...otherToggleButtonProps
+  } = getToggleButtonProps()
 
   const holder_props = {
     id,
@@ -229,11 +237,14 @@ const DownshiftSelect = ({
       <div className='yb'>
         <div className='yib xv'>
           <Button
-            { ...getToggleButtonProps() }
+            id={ inputId }
+            { ...otherToggleButtonProps }
             { ...buttonProps }
 
           >
-            { displaySelectedItem(selectedItem) || buttonChildren }
+            { (selectedItem && displaySelectedItem(selectedItem)) 
+            || ( uncontrolledSelectedItem && displaySelectedItem(uncontrolledSelectedItem )) 
+            || buttonChildren }
           </Button>
           <Popup
             className={ popupClassName }
@@ -326,7 +337,7 @@ DownshiftSelect.propTypes = {
   /**
    * Provide an HTML id to the input
    */
-  inputId  :PropTypes.string.isRequired,
+  inputId:PropTypes.string.isRequired,
 
   /**
    * The content of the label

@@ -1,13 +1,13 @@
 /* @fwrlines/generator-react-component 1.2.2 */
 import * as React from 'react'
-import { useEffect, useState, useCallback, useMemo, useReducer } from 'react'
+import {useReducer, useContext } from 'react'
 import PropTypes from 'prop-types'
 
 import Cookies from 'universal-cookie'
 
 /* Config
    import C from 'ui/cssClasses' */
-
+import { SiteContext } from 'ui/common'
 import { DashboardContext } from './common'
 
 import gql from 'graphql-tag'
@@ -54,7 +54,7 @@ const DashboardContextProvider = ({
     focus:'sidebar'
   })
 
-  const location = useLocation()
+  //const location = useLocation()
 
   const history = useHistory()
 
@@ -72,6 +72,8 @@ const DashboardContextProvider = ({
       (whereToFocus != state.focus)
     ) setFocus(whereToFocus)
   }
+
+  const { userTheme } = useContext(SiteContext)
 
   /*
   const isLocalUrl = (url) => url
@@ -94,6 +96,7 @@ const DashboardContextProvider = ({
           [
             //styles[baseClassName],
             baseClassName,
+            userTheme && 'ui-'+ userTheme,
             className
           ].filter(e => e).join(' ')
         }

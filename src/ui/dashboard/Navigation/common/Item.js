@@ -174,6 +174,11 @@ Item.propTypes = {
   title:PropTypes.string.isReauired,
 
   /**
+   * The footer of the slide
+   */
+  footer:PropTypes.node,
+
+  /**
    * The location to push to when the user clicks the element.
    */
   pathname:PropTypes.string.isRequired,

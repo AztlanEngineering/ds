@@ -99,6 +99,7 @@ export const Default = () => {
     <>
       <DashboardNavigation
         tree={ tree }
+        footer={ 'copyright mycorp' }
       />
       <DashboardMain >
       <DashboardNavigation.HorizontalBar

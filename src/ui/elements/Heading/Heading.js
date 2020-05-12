@@ -105,7 +105,10 @@ Heading.propTypes = {
   /**
    * The heading text
    */
-  heading:PropTypes.string.isRequired,
+  heading:PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.node,
+  ]).isRequired,
 
   /**
    * The node to display the heading with

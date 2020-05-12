@@ -133,7 +133,7 @@ LocalHelmet.propTypes = {
   robots             :PropTypes.string,
   title              :PropTypes.string.isRequired,
   title_tag          :PropTypes.string,
-  canonical          :PropTypes.string.isRequired,
+  canonical          :PropTypes.string,
   meta_description   :PropTypes.string,
   twitter_title      :PropTypes.string,
   twitter_description:PropTypes.string,

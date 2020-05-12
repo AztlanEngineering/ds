@@ -41,7 +41,7 @@ export const Default = () => (
       'planet_name':'jupyter',
       'story'      :'april is the cruellest month, breeding, lilacs out of the dead land, mixing, memory and desire',
       'fellini'    :new Set(['saty', 'otto']),
-      'dscs':'id0blu'
+      'dscs':'magenta'
     }}
   >
     <FormInput
@@ -193,22 +193,22 @@ export const Default = () => (
       options={[
         {
           value:'magenta',
-          label:'magenta',
+          label:'Magenta is my fav',
           id   :'id0mag',
         },
         {
           value:'red',
-          label:'red',
+          label:'I like Red',
           id   :'id0red',
         },
         {
           value:'blue',
-          label:'Blue',
+          label:'Blue s the best',
           id:'id0blu'
         }
       ]}
       label='Favourite color?'
-      inputId='compo2'
+      inputId='colorchoicer2'
       buttonChildren={ 'Select your favourite color' }
     />
     <FormContextDebugger context={ context }/>
