@@ -9,6 +9,9 @@ import gql from 'graphql-tag'
 import { useQuery } from '@apollo/client'
 import QUERY_GOOGLE from './graphql/oAuth2Google.gql'
 
+import {FormattedMessage} from 'react-intl'
+import messages from './messages'
+
 /* Relative imports
    import styles from './o_login_button.scss' */
 import('./o_login_button.scss')
@@ -20,11 +23,12 @@ const OLoginButton = ({
   className,
   style,
 
-  label,
   query,
   dataKey,
   simple,
   buttonClassName,
+
+  providerName,
 }) => {
 
   const {
@@ -55,7 +59,10 @@ const OLoginButton = ({
             ].filter(e => e).join(' ')
           }
         >
-          { label }
+          <FormattedMessage
+            {...messages.label}
+            values={{providerName}}
+          />
         </Button>
       </a>
     </>
@@ -106,7 +113,7 @@ OLoginButton.propTypes = {
   /**
    * The button label
    */
-  label:PropTypes.string.isRequired,
+  providerName:PropTypes.string.isRequired,
   /*
   : PropTypes.shape({
     id: PropTypes.string.isRequired,
@@ -120,11 +127,11 @@ OLoginButton.propTypes = {
 }
 
 OLoginButton.defaultProps = {
-  query    :QUERY_GOOGLE,
-  dataKey  :'oAuth2Google',
-  label    :'login',
-  className:'x-orange',
-  simple   :true,
+  query       :QUERY_GOOGLE,
+  dataKey     :'oAuth2Google',
+  className   :'x-orange',
+  simple      :true,
+  providerName:'Google'
   //buttonClassName:'x-green',
 }
 

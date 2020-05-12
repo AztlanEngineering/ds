@@ -8,6 +8,9 @@ import { useHistory } from 'react-router-dom'
 import { Heading, Button } from 'ui/elements'
 import { HorizontalBar } from 'ui/site'
 
+import {FormattedMessage} from 'react-intl'
+import messages from './messages'
+
 /* Config
    import C from 'ui/cssClasses' */
 
@@ -26,7 +29,7 @@ const HorizontalNavBar = ({
   id,
   className,
   style,
-  backLabel,
+  backMessage,
   backIcon,
   backTo
 }) => {
@@ -53,7 +56,7 @@ const HorizontalNavBar = ({
           iconSide='l'
           onClick={ backTo ? () => history.push(backTo) : history.goBack }
         >
-          { backLabel }
+          <FormattedMessage {...backMessage}/>
         </Button>
       </div>
     </HorizontalBar>
@@ -83,7 +86,7 @@ HorizontalNavBar.propTypes = {
   /**
    * The back button label
    */
-  backLabel:PropTypes.string,
+  backMessage:PropTypes.object,
 
   /**
    * The back button icon
@@ -92,9 +95,9 @@ HorizontalNavBar.propTypes = {
 }
 
 HorizontalNavBar.defaultProps = {
-  className:'u50',
-  backLabel:'Back',
-  backIcon:'h',
+  className  :'u50',
+  backIcon   :'h',
+  backMessage:messages.back
   //as:'p',
 }
 
