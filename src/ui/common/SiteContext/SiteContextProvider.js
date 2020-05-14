@@ -54,7 +54,7 @@ SiteContextProvider.propTypes = {
   /**
    * The initial theme for the website. If undefined, fallbacks on the system
    */
-  initialTheme:PropTypes.oneOf(['dark', 'light', undefined, ''])
+  initialTheme:PropTypes.string,
 }
 
 /*

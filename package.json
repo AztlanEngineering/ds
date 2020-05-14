@@ -32,10 +32,25 @@
   "keywords": [],
   "license": "ISC",
   "dependencies": {
+    "@apollo/client": "^3.0.0-beta.44",
+    "@apollo/link-retry": "^2.0.0-beta.3",
     "downshift": "^5.2.7",
+    "@fwrlines/alphabet-scss": "latest",
+    "@fwrlines/utils": "latest",
+    "graphql": "^15.0.0",
+    "graphql-tag": "^2.10.3",
+    "history": "^4.10.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-helmet": "^6.0.0",
+    "react-intl": "^4.5.3",
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0",
+    "react-scroll": "^1.7.16",
     "stylelint": "^13.3.3",
     "stylelint-config-palantir": "^5.0.0",
     "stylelint-scss": "^3.17.2"
+    "universal-cookie": "^4.0.3"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
@@ -63,21 +78,4 @@
     "sass": "^1.26.5",
     "sass-loader": "^8.0.2"
   },
-  "peerDependencies": {
-    "@apollo/client": "^3.0.0-beta.44",
-    "@apollo/link-retry": "^2.0.0-beta.3",
-    "@fwrlines/alphabet-scss": "latest",
-    "@fwrlines/utils": "latest",
-    "graphql": "^15.0.0",
-    "graphql-tag": "^2.10.3",
-    "history": "^4.10.1",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-helmet": "^6.0.0",
-    "react-intl": "^4.5.3",
-    "react-router": "^5.2.0",
-    "react-router-dom": "^5.2.0",
-    "react-scroll": "^1.7.16",
-    "universal-cookie": "^4.0.3"
-  }
 }
