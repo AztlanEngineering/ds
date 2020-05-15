@@ -26,7 +26,7 @@ const LocalIndex = ({
       className={
         [
           baseClassName,
-          'lsn x-headings cx',
+          'lsn x-heading cx',
           C.compact,
           C.list,
           className

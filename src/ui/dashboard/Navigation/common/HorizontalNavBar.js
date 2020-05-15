@@ -31,7 +31,8 @@ const HorizontalNavBar = ({
   style,
   backMessage,
   backIcon,
-  backTo
+  backTo,
+  dummy
 }) => {
 
   const history = useHistory()
@@ -42,22 +43,35 @@ const HorizontalNavBar = ({
         [
         //styles[baseClassName],
           baseClassName,
+          's-1 k-s',
           className
         ].filter(e => e).join(' ')
       }
       id={ id }
-      style={ style }
+      //style={ style }
+      style={{ background:'red' }}
     >
       <div className='yf inside'>
+        { !dummy ? 
         <Button
           simple
-          className='it x-subtitles xh-paragraph k-s s1'
+          className='it x-subtitle xh-paragraph k-s s1'
           icon={ backIcon }
           iconSide='l'
           onClick={ backTo ? () => history.push(backTo) : history.goBack }
         >
-          <FormattedMessage {...backMessage}/>
+          { <FormattedMessage {...backMessage}/>}
         </Button>
+        :
+        <Button
+          simple
+          className='it k-s s1'
+          disabled
+        >
+          { ' ' }
+        </Button>
+        }
+        {/*<p>Its me</p>*/}
       </div>
     </HorizontalBar>
   )}
@@ -92,6 +106,11 @@ HorizontalNavBar.propTypes = {
    * The back button icon
    */
   backIcon:PropTypes.string,
+
+  /**
+   * Whether the button is a dummy
+   */
+  dummy:PropTypes.bool
 }
 
 HorizontalNavBar.defaultProps = {

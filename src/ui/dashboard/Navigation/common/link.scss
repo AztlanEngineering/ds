@@ -6,6 +6,19 @@ Classes :
 
 */
 
-.link{
+.dashboard .navlink a{
+  &:after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #000;
+    transition: width .3s;
+  }
 
+  &:hover:after,
+  &.active:after {
+    width: 100%;
+    //transition: width .3s;
+  }
 }

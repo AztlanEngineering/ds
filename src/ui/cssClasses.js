@@ -22,7 +22,7 @@ export default {
   'circle'           :'circle',
   //LocalIndex, CardChoice (Input), Input
   'compact'          :'compact',
-  //CardChoice (Input)
+  //CardChoice (Input), Slide ( Dashboard Navigation )
   'content'          :'content',
   'contour'          :'contour',
   'disabled'         :'disabled',
@@ -83,7 +83,7 @@ export default {
   'right'            :'right',
   //CircleInfo
   'row'              :'row',
-  // Section (Card)
+  // Section (Card), Slide (Dashboard Navigation)
   'section'          :'section',
   'selectable'       :'select',
   // File (FileExplorer)

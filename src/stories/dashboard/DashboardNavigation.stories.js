@@ -90,7 +90,31 @@ export const Default = () => {
             pathname:'/plan/billing/',
           }
         ]
-      }
+      },
+      {
+        section :'Extras',
+        title   :'Link1',
+        pathname:'/website/',
+        //redirectFromPathname:'/website/',
+      },
+      {
+        section :'Extras',
+        title   :'Link2',
+        pathname:'/media/',
+        //redirectFromPathname:'/media/',
+      },
+      {
+        section :'Extras',
+        title   :'Link3',
+        pathname:'/website/',
+        //redirectFromPathname:'/website/',
+      },
+      {
+        section :'Extras',
+        title   :'Link4',
+        pathname:'/media/',
+        //redirectFromPathname:'/media/',
+      },
     ]
 
   }

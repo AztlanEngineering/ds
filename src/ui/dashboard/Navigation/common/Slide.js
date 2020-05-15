@@ -126,15 +126,17 @@ const Slide = ({
                 parentName
             }
             backTo={parentLocation}
+            dummy={ treeDepth == 0 }
           />
       }
+      <div className={ C.content }>
       <Heading
-        className='h3 v1 mv-v mh-u pl-v'
+        className='h3 v1 mv-v pl-v'
         heading={ title }
       />
 
       { subItems &&
-        <IconList
+        <ul
           className={
             [
               compact && C.compact,
@@ -148,14 +150,14 @@ const Slide = ({
                 ((i == 0) && e.section ) ||
             (e.section && (e.section != a[i-1].section ) )
               ) &&
-                <IconList.Item key={ `${i}-t` }>
+                <li key={ `${i}-t` } className={ C.section }>
                   <Subtitle
-                    className='s-1 k-s u1 mt-u v2 ml-v w50 mb-w'
+                    className='s-1 k-s'
                     upper
                   >
                     { e.section }
                   </Subtitle>
-                </IconList.Item >
+                </li >
               }
               <NavItem
                 key={ i }
@@ -173,10 +175,13 @@ const Slide = ({
             </>
           )}
 
-        </IconList>
+        </ul>
       }
+      </div>
       { footer && 
-        <footer>{ footer }</footer>
+        <footer className='s-1 k-s uc u2 ph-u v1 pv-v'>
+          { footer } <span className='x-metadata c-x'>Copyright mycompany 2020 - privacy policy - the best software in town</span>
+          </footer>
       }
     </div>
   )}
@@ -247,7 +252,7 @@ Slide.propTypes = {
 }
 
 Slide.defaultProps = {
-  treeDepth:0,
+  //treeDepth:0,
 }
 
 export default Slide

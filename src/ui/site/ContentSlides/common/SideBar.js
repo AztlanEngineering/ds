@@ -83,7 +83,7 @@ const SideBar = ({
               className={
                 [
                   (currentIndex == i) ? 'x-primary' :
-                    (i < currentIndex) ? 'x-subtitles xh-paragraph' :
+                    (i < currentIndex) ? 'x-subtitle xh-paragraph' :
                     'x-paragraph',
                   (i < currentIndex) && C.pointer,
                   'c-x'

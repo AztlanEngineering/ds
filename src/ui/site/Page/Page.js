@@ -1,6 +1,6 @@
 /* @fwrlines/generator-react-component 1.1.2 */
 import * as React from 'react'
-import { memo }from 'react'
+import { useEffect, memo }from 'react'
 import PropTypes from 'prop-types'
 
 
@@ -30,6 +30,14 @@ const Page = ({
   itemType,
   HELMET
 }) => {
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') { //If we're on the client, not doing SSR
+      window.scrollTo(0,0)
+    }
+  } 
+    ,[]
+)
 
 
   return (

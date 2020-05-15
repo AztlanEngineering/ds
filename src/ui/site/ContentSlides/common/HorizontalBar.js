@@ -63,7 +63,7 @@ const HorizontalBar = ({
       <div className='yf inside u50 p-u'>
         <Button
           simple
-          className='it x-subtitles xh-paragraph'
+          className='it x-subtitle xh-paragraph'
           icon='h'
           iconSide='l'
           onClick={() => setPrevSlide()}
