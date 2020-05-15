@@ -152,7 +152,7 @@ const Slide = ({
               ) &&
                 <li key={ `${i}-t` } className={ C.section }>
                   <Subtitle
-                    className='s-1 k-s'
+                    className='s-2 k-s'
                     upper
                   >
                     { e.section }

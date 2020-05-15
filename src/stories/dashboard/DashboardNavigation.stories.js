@@ -44,6 +44,11 @@ export const Default = () => {
     //redirectFromPathname:'/',
     subItems:[
       {
+        title   :'Home',
+        pathname:'/dhome/',
+        //redirectFromPathname:'/website/',
+      },
+      {
         section :'General',
         title   :'My website',
         pathname:'/website/',

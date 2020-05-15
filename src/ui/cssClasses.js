@@ -4,7 +4,7 @@ const themes = {
 }
 
 export default {
-  // AnimatedVCaret, Slide (ContentSlide), Slide (Dashboard Nav), Main (Dashboard Main)
+  // AnimatedVCaret, Slide (ContentSlide), Slide (Dashboard Nav), Main (Dashboard Main), Link (Dashboard Nav)
   'active'           :'active',
   'alt'              :'alt-',
   // SVG
@@ -73,7 +73,7 @@ export default {
   // SideBar (ContentSlides)
   'next'             :'next',
   'part'             :'part',
-  // SideBar (ContentSlides), Slides (Dashboard Navigation)
+  // SideBar (ContentSlides)
   'pointer'          :'pointer',
   // Slide (Dashboard Navigation)
   'previous'         :'prev',

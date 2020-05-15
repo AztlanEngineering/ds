@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 
 import { Heading } from 'ui/elements'
 
-import { Link as RouterLink } from 'react-router-dom'
+import { useRouteMatch, Link as RouterLink } from 'react-router-dom'
 
 //Config
 import C from 'ui/cssClasses'
@@ -35,13 +35,16 @@ const Link = ({
   ...otherProps
 }) => {
 
+  const match = useRouteMatch(to)
+
   return (
     <Wrapper
       className={
         [
           /* styles[baseClassName],*/
            baseClassName,
-          C.pointer,
+          //C.pointer,
+          match && C.active,
           'yib',
           className
         ].filter(e => e).join(' ')

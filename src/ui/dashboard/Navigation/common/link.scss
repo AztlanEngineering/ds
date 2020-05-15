@@ -1,23 +1,52 @@
 /* @fwrlines/generator-react-component 2.1.1 */
+
 /*
 
 Classes :
 .link : default
 
 */
+$decoration-color:var(--navlink, inherit);
+$decoration-width:2px;
+$transition:all 0.3s;
+$color:var(--navlink);
+$color-hover:var(--dark-navlink);
+$color-active:var(--light-primary);
 
-.dashboard .navlink a{
-  &:after {
-    content: '';
-    display: block;
-    width: 0;
-    height: 2px;
-    background: #000;
-    transition: width .3s;
+.dashboard .navlink {
+  a {
+    color: $color;
+    cursor: pointer;
+    transition: $transition;
+
+    &::after {
+      background: $color;
+      content: "";
+      display: block;
+      height: $decoration-width;
+      transition: $transition;
+      width: 0;
+    }
+
+    &:hover {
+      color: $color-hover;
+
+      &::after {
+        background: $color-hover;
+      }
+    }
   }
 
-  &:hover:after,
-  &.active:after {
+  &.active a {
+    color: $color-active;
+
+    &::after {
+      background: $color-active;
+    }
+  }
+
+  a:hover::after,
+  &.active a::after {
     width: 100%;
     //transition: width .3s;
   }
