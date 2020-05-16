@@ -5,7 +5,6 @@ import PropTypes from 'prop-types'
 /* Config
    import C from 'ui/cssClasses' */
 
-const default_sprite = '/s2.svg'
 
 const UseSVG = ({
   id,
@@ -24,7 +23,7 @@ const UseSVG = ({
           className,
         ].filter(e => e).join(' ')
       }
-      href={(sprite || default_sprite ) + (target ? '#' + target : '')}
+      href={(sprite) + (target ? '#' + target : '')}
       style={ strokeWidth ?
         {
           ...style,
@@ -71,10 +70,8 @@ UseSVG.propTypes = {
   strokeWidth:PropTypes.number,
 }
 
-/*
 UseSVG.defaultProps = {
-  status: 'neutral',
+  sprite: '/s2.svg'
 }
-*/
 
 export default UseSVG

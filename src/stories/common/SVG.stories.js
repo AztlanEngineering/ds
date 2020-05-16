@@ -108,3 +108,13 @@ export const StrokeColors = () => (
     </>
   )
 )
+
+export const IsoTest = () => (
+  <SVG
+    height='512'
+    width='512'
+    sprite='/sprite-iso.svg'
+    target='iso-car'
+    //className='x-black'
+  />
+)
