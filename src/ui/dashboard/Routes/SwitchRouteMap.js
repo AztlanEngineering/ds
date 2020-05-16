@@ -39,7 +39,7 @@ const SwitchRouteMap = ({
           ),
           ...(NotFound ?
             [
-              <Route>
+              <Route status={404}>
                 { NotFound }
               </Route>
             ]

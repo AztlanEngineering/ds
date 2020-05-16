@@ -33,7 +33,6 @@ const SVG = ({
   animated,
 }) => {
 
-
   return (
     <svg
       className={

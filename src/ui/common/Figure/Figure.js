@@ -3,7 +3,7 @@ import * as React from 'react'
 //import {} from 'react'
 import PropTypes from 'prop-types'
 
-
+import { Image } from './common'
 
 /* Config
    import C from 'ui/cssClasses' */
@@ -32,7 +32,6 @@ const Figure = ({
   objectFit,
 }) => {
 
-
   return (
     <figure
       className={
@@ -45,13 +44,11 @@ const Figure = ({
       id={ id }
       style={ style }
     >
-      <img
+      <Image
         src={src}
         alt={alt}
-        style={{
-          ...imgStyle,
-          objectFit
-        }}
+        objectFit={ objectFit }
+        style={ imgStyle }
       />
       { children &&
         <figcaption>

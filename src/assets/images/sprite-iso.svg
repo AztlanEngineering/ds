@@ -3,7 +3,7 @@
 <style>
       g { display: none }
       g:target { display: inline } 
-      g:target * { display: inline } 
+      g:target g { display: inline } 
 
     </style>
         <g id="iso-car">

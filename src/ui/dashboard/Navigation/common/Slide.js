@@ -3,7 +3,7 @@ import * as React from 'react'
 import { useEffect, useMemo, useContext } from 'react'
 import PropTypes from 'prop-types'
 
-import { Subtitle, IconList } from 'ui/common'
+import { Subtitle, IconList, Image } from 'ui/common'
 import { Heading, Button } from 'ui/elements'
 import { HorizontalBar } from 'ui/site'
 
@@ -38,6 +38,7 @@ const Slide = ({
   className,
   style,
 
+  logo,
   title,
   subItems,
   pathname,
@@ -129,59 +130,73 @@ const Slide = ({
             dummy={ treeDepth == 0 }
           />
       }
-      <div className={ C.content }>
-      <Heading
-        className='h3 v1 mv-v pl-v'
-        heading={ title }
-      />
+      <div className={ C.content + ' u2 ph-u v1 pv-v' }>
 
-      { subItems &&
-        <ul
-          className={
-            [
-              compact && C.compact,
-              'u2 ph-u v1 pv-v',
-            ].filter(e => e).join(' ')
-          }
-        >
-          { subItems.map((e, i, a) =>
-            <>
-              {(
-                ((i == 0) && e.section ) ||
-            (e.section && (e.section != a[i-1].section ) )
-              ) &&
-                <li key={ `${i}-t` } className={ C.section }>
-                  <Subtitle
-                    className='s-2 k-s'
-                    upper
+        { logo && 
+        <Image
+          src={ logo }
+          alt={ title }
+          objectFit='contain'
+          style={{ height:'100px' }}
+        />
+        }
+        <Heading
+          className='h3 v1 mv-v'
+          heading={ title }
+        />
+
+        { subItems &&
+          <ul
+            className={
+              [
+                compact && C.compact,
+                'v1 pv-v',
+              ].filter(e => e).join(' ')
+            }
+          >
+            { subItems.map((e, i, a) =>
+              <>
+                {(
+                  ((i == 0) && e.section ) ||
+            (e.section && (String(e.section) != String(a[i-1].section) ) )
+                ) &&
+                  <li
+                    key={ `${i}-t` }
+                    className={ C.section }
                   >
-                    { e.section }
-                  </Subtitle>
-                </li >
-              }
-              <NavItem
-                key={ i }
-                treeDepth={ treeDepth }
-                iconHover={ iconHover }
-                iconSelected={ iconSelected }
-                parentName={ title }
-                parentLocation={ pathname } //TODO change by match render
-                currentLocation={ currentLocation }
-                slideClassName={ className }
-                slideStyle={ style }
-                { ...e }
-                footer={ e.footer || footer }
-              />
-            </>
-          )}
+                    <Subtitle
+                      className='s-2 k-s'
+                      upper
+                    >
+                      { e.section }
+                    </Subtitle>
+                  </li >
+                }
+                <NavItem
+                  key={ i }
+                  treeDepth={ treeDepth }
+                  iconHover={ iconHover }
+                  iconSelected={ iconSelected }
+                  parentName={ title }
+                  parentLocation={ pathname } //TODO change by match render
+                  currentLocation={ currentLocation }
+                  slideClassName={ className }
+                  slideStyle={ style }
+                  { ...e }
+                  footer={ e.footer || footer }
+                />
+              </>
+            )}
 
-        </ul>
-      }
+          </ul>
+        }
       </div>
-      { footer && 
+      { footer &&
         <footer className='s-1 k-s uc u2 ph-u v1 pv-v'>
-          { footer } <span className='x-metadata c-x'>Copyright mycompany 2020 - privacy policy - the best software in town</span>
-          </footer>
+          { footer }
+          {' '}
+          <span className='x-metadata c-x'>Copyright mycompany 2020 - privacy policy - the best software in town</span>
+        </footer>
       }
     </div>
   )}

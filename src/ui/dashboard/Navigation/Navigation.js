@@ -45,6 +45,7 @@ const Navigation = ({
     subItems:rootSubItems,
     pathname:rootPathname,
     footer:rootFooter,
+    logo:rootLogo,
   } = tree
 
   const currentLocation = useLocation()
@@ -62,6 +63,7 @@ const Navigation = ({
       style={ style }
     >
       <Item
+        logo={ rootLogo }
         slideClassName='y-background b-y'
         title={ rootTitle }
         subItems={ rootSubItems }

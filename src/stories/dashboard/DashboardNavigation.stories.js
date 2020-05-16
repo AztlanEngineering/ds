@@ -40,6 +40,7 @@ export const Default = () => {
 
   const tree = {
     title   :'WebOffice',
+    logo:'/illustrations/iso-car.png',
     pathname:'/',
     //redirectFromPathname:'/',
     subItems:[
@@ -64,6 +65,7 @@ export const Default = () => {
         section :'Account',
         title   :'My account',
         pathname:'/account/',
+        logo:'/illustrations/iso-computer.png',
         //redirectFromPathname:['/account/', '/account/profile/'],
         subItems:[
           {
@@ -82,6 +84,7 @@ export const Default = () => {
         section :'Account',
         title   :'Plan and payment',
         pathname:'/plan/',
+        logo:'/illustrations/iso-shop.png',
         //redirectFromPathnames:['/plan/', '/plan/profile'],
         subItems:[
           {

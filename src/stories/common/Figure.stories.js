@@ -4,7 +4,7 @@ import * as React from 'react'
 
 //import { action } from '@storybook/addon-actions'
 
-import { Subtitle, Figure } from 'ui'
+import { Subtitle, Figure, Image } from 'ui'
 //import QUERY from './graphql/query.graphql'
 //import { AplProvider } from 'stories/utils'
 //import { Router } from 'stories/utils'
@@ -18,7 +18,7 @@ export default {
   component:Figure,
   //componentSubtitle:'Component subtitle',
   subcomponents: {
-    //Item:Figure.Item
+    Image:Image
   },
   parameters: {
     decorators: [ 
@@ -68,5 +68,14 @@ export const Size = () => (
     >
     <Subtitle upper>The image caption</Subtitle>
   </Figure> 
+)
+
+export const SimpleImage = () => (
+  <Image
+    src='https://images.pexels.com/photos/373912/pexels-photo-373912.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'
+    alt='A city landscape'
+    style={{height:'200px'}}
+    className='s-2'
+    />
 )
 

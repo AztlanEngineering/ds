@@ -4,7 +4,7 @@ import { defineMessages } from 'react-intl'
 const messages = defineMessages({
   previous:{
     id            :'ds.site.paginator.previous',
-    defaultMessage:'Newerl',
+    defaultMessage:'Newer',
     description   :'Previous button on the paginator',
   },
   next:{
