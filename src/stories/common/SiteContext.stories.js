@@ -62,6 +62,7 @@ export const Theme = () => {
       userTheme,
       setPreferredTheme
     } = useContext(SiteContext)
+      
     return (
       <div 
       className={

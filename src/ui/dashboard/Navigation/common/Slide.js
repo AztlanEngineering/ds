@@ -52,6 +52,8 @@ const Slide = ({
   compact,
   iconHover,
   iconSelected,
+
+  footer,
 }) => {
 
   //const { navigate, setFocus } = useContext(DashboardContext)
@@ -124,15 +126,17 @@ const Slide = ({
                 parentName
             }
             backTo={parentLocation}
+            dummy={ treeDepth == 0 }
           />
       }
+      <div className={ C.content }>
       <Heading
-        className='h3 v1 mv-v mh-u pl-v'
+        className='h3 v1 mv-v pl-v'
         heading={ title }
       />
 
       { subItems &&
-        <IconList
+        <ul
           className={
             [
               compact && C.compact,
@@ -146,14 +150,14 @@ const Slide = ({
                 ((i == 0) && e.section ) ||
             (e.section && (e.section != a[i-1].section ) )
               ) &&
-                <IconList.Item >
+                <li key={ `${i}-t` } className={ C.section }>
                   <Subtitle
-                    className='s-1 k-s u1 mt-u v2 ml-v w50 mb-w'
+                    className='s-2 k-s'
                     upper
                   >
                     { e.section }
                   </Subtitle>
-                </IconList.Item >
+                </li >
               }
               <NavItem
                 key={ i }
@@ -166,11 +170,18 @@ const Slide = ({
                 slideClassName={ className }
                 slideStyle={ style }
                 { ...e }
+                footer={ e.footer || footer }
               />
             </>
           )}
 
-        </IconList>
+        </ul>
+      }
+      </div>
+      { footer && 
+        <footer className='s-1 k-s uc u2 ph-u v1 pv-v'>
+          { footer } <span className='x-metadata c-x'>Copyright mycompany 2020 - privacy policy - the best software in town</span>
+          </footer>
       }
     </div>
   )}
@@ -199,7 +210,7 @@ Slide.propTypes = {
   /**
    *  The title of the navigation element. This will be displayed both as the default value in the list, and, if the element is the parent of another slide, as the title of that children slide.
    */
-  title:PropTypes.string.isReauired,
+  title:PropTypes.string.isRequired,
 
   /**
    * The pathname of the current slide.
@@ -225,6 +236,11 @@ Slide.propTypes = {
   ]),
 
   /**
+   * The footer of the slide
+   */
+  footer:PropTypes.node,
+
+  /**
    * The name of the parent to display in the return button
    */
   parentName:PropTypes.string,
@@ -236,7 +252,7 @@ Slide.propTypes = {
 }
 
 Slide.defaultProps = {
-  treeDepth:0,
+  //treeDepth:0,
 }
 
 export default Slide

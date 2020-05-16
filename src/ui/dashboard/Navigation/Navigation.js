@@ -36,12 +36,15 @@ const Navigation = ({
   compact,
   iconHover,
   iconSelected,
+
+  footer,
 }) => {
 
   const {
     title:rootTitle,
     subItems:rootSubItems,
     pathname:rootPathname,
+    footer:rootFooter,
   } = tree
 
   const currentLocation = useLocation()
@@ -68,6 +71,7 @@ const Navigation = ({
         iconSelected={ iconSelected }
         parentLocation={ rootPathname }
         currentLocation={ currentLocation }
+        footer={ rootFooter || footer }
       />
 
     </Wrapper>
@@ -110,7 +114,7 @@ Navigation.propTypes = {
     section  :PropTypes.string,
     title    :PropTypes.string.isRequired,
     pathname :PropTypes.string.isRequired,
-    baseMatch:PropTypes.string.isRequired,
+    //baseMatch:PropTypes.string.isRequired,
     children :PropTypes.array
 
   }),
@@ -129,6 +133,11 @@ Navigation.propTypes = {
    * The icon for selected menu item
    */
   iconSelected:PropTypes.string,
+
+  /**
+   * The default footer of the navigation element
+   */
+  footer:PropTypes.node,
 
 }
 

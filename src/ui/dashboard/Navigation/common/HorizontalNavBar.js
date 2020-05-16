@@ -8,6 +8,9 @@ import { useHistory } from 'react-router-dom'
 import { Heading, Button } from 'ui/elements'
 import { HorizontalBar } from 'ui/site'
 
+import {FormattedMessage} from 'react-intl'
+import messages from './messages'
+
 /* Config
    import C from 'ui/cssClasses' */
 
@@ -26,9 +29,10 @@ const HorizontalNavBar = ({
   id,
   className,
   style,
-  backLabel,
+  backMessage,
   backIcon,
-  backTo
+  backTo,
+  dummy
 }) => {
 
   const history = useHistory()
@@ -39,22 +43,35 @@ const HorizontalNavBar = ({
         [
         //styles[baseClassName],
           baseClassName,
+          's-1 k-s',
           className
         ].filter(e => e).join(' ')
       }
       id={ id }
-      style={ style }
+      //style={ style }
+      style={{ background:'red' }}
     >
       <div className='yf inside'>
+        { !dummy ? 
         <Button
           simple
-          className='it x-subtitles xh-paragraph k-s s1'
+          className='it x-subtitle xh-paragraph k-s s1'
           icon={ backIcon }
           iconSide='l'
           onClick={ backTo ? () => history.push(backTo) : history.goBack }
         >
-          { backLabel }
+          { <FormattedMessage {...backMessage}/>}
         </Button>
+        :
+        <Button
+          simple
+          className='it k-s s1'
+          disabled
+        >
+          { ' ' }
+        </Button>
+        }
+        {/*<p>Its me</p>*/}
       </div>
     </HorizontalBar>
   )}
@@ -83,18 +100,23 @@ HorizontalNavBar.propTypes = {
   /**
    * The back button label
    */
-  backLabel:PropTypes.string,
+  backMessage:PropTypes.object,
 
   /**
    * The back button icon
    */
   backIcon:PropTypes.string,
+
+  /**
+   * Whether the button is a dummy
+   */
+  dummy:PropTypes.bool
 }
 
 HorizontalNavBar.defaultProps = {
-  className:'u50',
-  backLabel:'Back',
-  backIcon:'h',
+  className  :'u50',
+  backIcon   :'h',
+  backMessage:messages.back
   //as:'p',
 }
 

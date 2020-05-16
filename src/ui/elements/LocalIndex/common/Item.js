@@ -32,7 +32,7 @@ const Item = ({
     >
       <span>{ title }</span>
       { children &&
-        <ul className='x-subtitles c-x'>
+        <ul className='x-subtitle c-x'>
           { children }
         </ul>
       }

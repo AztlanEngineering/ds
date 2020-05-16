@@ -27,6 +27,7 @@ module.exports = {
   'plugins': [
 		'react',
 		'react-hooks',
+    'formatjs'
   ],
   'rules': {
     'indent': [

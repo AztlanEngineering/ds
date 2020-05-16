@@ -24,7 +24,7 @@ $maxWidth:22em;
     width: calc(#{$maxWidth} - #{$circleSize});
     height: $circleSize;
 
-    p {
+    p, span {
       min-width: max-content;
       line-height: 1em;
       //font-size: calc(var(--s) * 1em);

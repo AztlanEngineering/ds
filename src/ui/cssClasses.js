@@ -4,7 +4,7 @@ const themes = {
 }
 
 export default {
-  // AnimatedVCaret, Slide (ContentSlide), Slide (Dashboard Nav), Main (Dashboard Main)
+  // AnimatedVCaret, Slide (ContentSlide), Slide (Dashboard Nav), Main (Dashboard Main), Link (Dashboard Nav)
   'active'           :'active',
   'alt'              :'alt-',
   // SVG
@@ -22,7 +22,7 @@ export default {
   'circle'           :'circle',
   //LocalIndex, CardChoice (Input), Input
   'compact'          :'compact',
-  //CardChoice (Input)
+  //CardChoice (Input), Slide ( Dashboard Navigation )
   'content'          :'content',
   'contour'          :'contour',
   'disabled'         :'disabled',
@@ -73,7 +73,7 @@ export default {
   // SideBar (ContentSlides)
   'next'             :'next',
   'part'             :'part',
-  // SideBar (ContentSlides), Slides (Dashboard Navigation)
+  // SideBar (ContentSlides)
   'pointer'          :'pointer',
   // Slide (Dashboard Navigation)
   'previous'         :'prev',
@@ -83,7 +83,7 @@ export default {
   'right'            :'right',
   //CircleInfo
   'row'              :'row',
-  // Section (Card)
+  // Section (Card), Slide (Dashboard Navigation)
   'section'          :'section',
   'selectable'       :'select',
   // File (FileExplorer)

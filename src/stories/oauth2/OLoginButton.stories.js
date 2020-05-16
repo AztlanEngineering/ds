@@ -19,14 +19,14 @@ export default {
 export const Default = () => (
   <OLoginButton
     //className='
-    label='Login with Google'
+    providerName='Facebook'
   />
 )
 
 export const NotSimple = () => (
   <OLoginButton
     className='x-secondary cx tb'
-    label='Login with Google'
+    providerName='Insta'
     simple={false}
   />
 )

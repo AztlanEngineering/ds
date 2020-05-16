@@ -55,11 +55,11 @@ SwitchRouteMap.propTypes = {
    */
   routes:PropTypes.arrayOf(
     PropTypes.shape({
-      id   :PropTypes.string.isRequired,
-      title:PropTypes.string.isRequired,
-      state:PropTypes.string.isRequired,
+      path   :PropTypes.string.isRequired,
+      //title:PropTypes.string.isRequired,
+      //state:PropTypes.string.isRequired,
     }),
-  ).isReauired,
+  ).isRequired,
 
   /**
    * NotFound

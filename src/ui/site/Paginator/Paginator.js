@@ -8,6 +8,10 @@ import { Button } from 'ui/elements'
 /* Config
    import C from 'ui/cssClasses' */
 
+import {FormattedMessage} from 'react-intl'
+import messages from './messages'
+
+
 //Relative imports
 import './paginator.scss'
 import {
@@ -47,7 +51,8 @@ const Paginator = ({
   leftIcon,
   rightIcon,
 
-  TEXT:T
+  previousMessage,
+  nextMessage
 }) => {
 
   return (
@@ -79,7 +84,7 @@ const Paginator = ({
                 basic={ basic }
                 pageNumber={ 1 }
               >
-                { T.PREV }
+                <FormattedMessage {...previousMessage}/>
               </ArrowButton>
 
               <PageNumberButton
@@ -121,7 +126,7 @@ const Paginator = ({
                 basic={ basic }
                 pageNumber={ totalPages }
               >
-                { T.NEXT }
+                <FormattedMessage {...nextMessage}/>
               </ArrowButton>
             </>
           }
@@ -200,6 +205,16 @@ Paginator.propTypes = {
    * The icon for the right arrow
    */
   rightIcon:PropTypes.string,
+
+  /**
+   * The icon for the right arrow
+   */
+  previousMessage:PropTypes.object,
+
+  /**
+   * The icon for the right arrow
+   */
+  nextMessage:PropTypes.object,
 }
 
 Paginator.defaultProps = {
@@ -208,12 +223,10 @@ Paginator.defaultProps = {
   paginator          :{},
   stretch            :false,
   getLink            :(n) => n,
-  TEXT               :{
-    PREV:'Recent',
-    NEXT:'Older'
-  },
-  leftIcon :'h',
-  rightIcon:'l',
+  previousMessage    :messages.previous,
+  nextMessage        :messages.next,
+  leftIcon           :'h',
+  rightIcon          :'l',
 }
 
 export default Paginator

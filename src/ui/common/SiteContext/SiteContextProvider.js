@@ -20,6 +20,7 @@ const SiteContextProvider = ({
   initialTheme,
   config
 }) => {
+  //console.warn(9999, 'site', initialTheme)
 
   const theme = useTheme(initialTheme)
 
@@ -53,7 +54,7 @@ SiteContextProvider.propTypes = {
   /**
    * The initial theme for the website. If undefined, fallbacks on the system
    */
-  initialTheme:PropTypes.oneOf(['dark', 'light', undefined])
+  initialTheme:PropTypes.string,
 }
 
 /*

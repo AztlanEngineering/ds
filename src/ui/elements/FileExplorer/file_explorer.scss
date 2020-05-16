@@ -32,11 +32,11 @@ Classes :
 
   .folder {
     span {
-      color: var(--folder, var(--subtitles));
+      color: var(--folder, var(--subtitle));
 
       &:hover,
       &:focus {
-        color: var(--x, var(--headings));
+        color: var(--x, var(--heading));
       }
     }
   }
@@ -47,7 +47,7 @@ Classes :
 
       &:hover,
       &:focus {
-        color: var(--y, var(--subtitles));
+        color: var(--y, var(--subtitle));
       }
     }
 

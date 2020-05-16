@@ -25,6 +25,10 @@ class Item extends React.PureComponent {
 
   static contextType = DashboardContext
 
+  static defaultProps = {
+    treeDepth:-1,
+  }
+
   constructor(props) {
     super(props)
   }
@@ -82,6 +86,8 @@ class Item extends React.PureComponent {
 
     const { setFocus } = this.context
 
+    const ListItem = 'li'
+
     const onClick = (e) => {
       e.persist()
       setFocus(
@@ -99,20 +105,20 @@ class Item extends React.PureComponent {
     )
 
     else if (this.isCustomSlide) return (
-      <IconList.Item
-        icon={ this.isActive ? iconSelected : undefined } //TODO provide better default
-        iconHover={ iconHover }
+      <ListItem
+        //icon={ this.isActive ? iconSelected : undefined } //TODO provide better default
+        //iconHover={ iconHover }
       >
         { title }
         {' '}
         ( Custom Slide )
-      </IconList.Item>
+      </ListItem>
     )
 
     else if (this.isNormalSlide) return (
-      <IconList.Item
-        icon={ this.isActive ? iconSelected : undefined } //TODO provide better default
-        iconHover={ iconHover }
+      <ListItem
+        //icon={ this.isActive ? iconSelected : undefined } //TODO provide better default
+        //iconHover={ iconHover }
       >
         <NavLink
           onClick={ onClick } 
@@ -126,13 +132,13 @@ class Item extends React.PureComponent {
           style={ slideStyle }
           treeDepth={ treeDepth + 1 }
         />
-      </IconList.Item>
+      </ListItem>
     )
 
     else return ( // is this.isLast
-      <IconList.Item
-        icon={ this.isActive ? iconSelected : undefined } //TODO provide better default
-        iconHover={ iconHover }
+      <ListItem
+        //icon={ this.isActive ? iconSelected : undefined } //TODO provide better default
+        //iconHover={ iconHover }
       >
         <NavLink
           onClick={ onClick } 
@@ -140,7 +146,7 @@ class Item extends React.PureComponent {
         >
           { title }
         </NavLink>
-      </IconList.Item>
+      </ListItem>
 
     )
 
@@ -172,6 +178,11 @@ Item.propTypes = {
    *  The title of the navigation element. This will be displayed both as the default value in the list, and, if the element is the parent of another slide, as the title of that children slide.
    */
   title:PropTypes.string.isReauired,
+
+  /**
+   * The footer of the slide
+   */
+  footer:PropTypes.node,
 
   /**
    * The location to push to when the user clicks the element.

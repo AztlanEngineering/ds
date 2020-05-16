@@ -44,6 +44,11 @@ export const Default = () => {
     //redirectFromPathname:'/',
     subItems:[
       {
+        title   :'Home',
+        pathname:'/dhome/',
+        //redirectFromPathname:'/website/',
+      },
+      {
         section :'General',
         title   :'My website',
         pathname:'/website/',
@@ -90,7 +95,31 @@ export const Default = () => {
             pathname:'/plan/billing/',
           }
         ]
-      }
+      },
+      {
+        section :'Extras',
+        title   :'Link1',
+        pathname:'/website/',
+        //redirectFromPathname:'/website/',
+      },
+      {
+        section :'Extras',
+        title   :'Link2',
+        pathname:'/media/',
+        //redirectFromPathname:'/media/',
+      },
+      {
+        section :'Extras',
+        title   :'Link3',
+        pathname:'/website/',
+        //redirectFromPathname:'/website/',
+      },
+      {
+        section :'Extras',
+        title   :'Link4',
+        pathname:'/media/',
+        //redirectFromPathname:'/media/',
+      },
     ]
 
   }
@@ -99,6 +128,7 @@ export const Default = () => {
     <>
       <DashboardNavigation
         tree={ tree }
+        footer={ 'copyright mycorp' }
       />
       <DashboardMain >
       <DashboardNavigation.HorizontalBar

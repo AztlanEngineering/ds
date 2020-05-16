@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 
 import { Heading } from 'ui/elements'
 
-import { Link as RouterLink } from 'react-router-dom'
+import { useRouteMatch, Link as RouterLink } from 'react-router-dom'
 
 //Config
 import C from 'ui/cssClasses'
@@ -13,10 +13,11 @@ import C from 'ui/cssClasses'
 
 
 /* Relative imports
-   import styles from './item.scss'
-   import('./link.scss') */
+   import styles from './item.scss'*/
 
-//const baseClassName = 'link'
+import('./link.scss')
+
+const baseClassName = 'navlink'
 
 
 /**
@@ -34,28 +35,28 @@ const Link = ({
   ...otherProps
 }) => {
 
-
+  const match = useRouteMatch(to)
 
   return (
-    <Heading
+    <Wrapper
       className={
         [
-        /* styles[baseClassName],
-           baseClassName, */
-          C.pointer,
+          /* styles[baseClassName],*/
+           baseClassName,
+          //C.pointer,
+          match && C.active,
           'yib',
           className
         ].filter(e => e).join(' ')
       }
       id={ id }
       style={ style }
-      heading={
+      { ...otherProps }
+    >
         <RouterLink to={ to }>
           { children }
         </RouterLink>
-      }
-      { ...otherProps }
-    />
+      </Wrapper>
   )}
 
 Link.propTypes = {
@@ -93,11 +94,10 @@ Link.propTypes = {
   ]),
 }
 
-/*
 Link.defaultProps = {
-  status: 'neutral',
+  //status: 'neutral',
   //height:'2.2em',
-  //as:'p',
+  as:'span',
 }
-*/
+
 export default Link
