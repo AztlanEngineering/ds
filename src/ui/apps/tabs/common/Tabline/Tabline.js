@@ -67,6 +67,7 @@ const Tabline = ({
     >
       { tabs.map((e, i) =>
         <Tab
+          key={ i }
           tabId={e.id}
           closable={ e.closable }
         >

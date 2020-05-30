@@ -1,6 +1,6 @@
 /* @fwrlines/generator-react-component 2.2.5 */
 import * as React from 'react'
-import { useMemo, useReducer } from 'react'
+import { useEffect, useMemo, useReducer } from 'react'
 import PropTypes from 'prop-types'
 
 import {
@@ -23,12 +23,19 @@ import {
    import styles from './main.scss' */
 import('./main.scss')
 
+const isClient = !(typeof(window) === 'undefined')
+const LOCAL_STORAGE_KEY = 'tabs'
+
 const generateRandomString = () => Math.random().toString(36).substring(7)
 
 const baseClassName = 'main'
 
 const reducer = (state, action) =>{
   switch (action.type) {
+  case 'INITIALIZE':
+    return {
+      ...action.payload
+    }
   case 'OPEN_NEW_TAB':
     return {
       ...state,
@@ -136,6 +143,32 @@ const Main = ({
     [state.focus]
   )
 
+  //Loading the state if it exists
+  useEffect(() => {
+    if(isClient) {
+      const storedState = localStorage.getItem(LOCAL_STORAGE_KEY)
+      if (storedState) {
+        dispatch({
+          type   :'INITIALIZE',
+          payload:JSON.parse(storedState),
+        })
+      }
+
+    }
+  }
+  ,[])
+
+  useEffect(() => {
+    console.log('hhhhhhhhhh')
+    if(isClient) {
+      console.log('storing state')
+      localStorage.setItem(
+        LOCAL_STORAGE_KEY,
+        JSON.stringify(state)
+      )
+    }
+  }
+  ,[state])
 
   return (
     <TabContext.Provider value={{
