@@ -4,6 +4,7 @@
     "stylelint-config-palantir/sass.js",
   ],
 	"rules": {
-    "indentation": 2
+    "indentation": 2,
+    "number-leading-zero":"never"
   }
 }
