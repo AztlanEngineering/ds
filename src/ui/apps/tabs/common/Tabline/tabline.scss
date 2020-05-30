@@ -1,0 +1,56 @@
+/* @fwrlines/generator-react-component 2.2.5 */
+
+/*
+
+Classes :
+.tabline : default
+
+*/
+
+$tabline-background:var(--light-black);
+$tabline-padding:.5em .5em 0;
+$tab-background-inactive:var(--dark-background);
+$tab-background-active:var(--background);
+$tab-padding-normal:0 .5em;
+$tab-padding-closable:0 .1em 0 .5em;
+$tab-border-radius:var(--r);
+$tab-between-margin:.2em;
+
+
+.tabline {
+  background: $tabline-background;
+  display: flex;
+  padding: $tabline-padding;
+
+  > li {
+    margin-bottom: 0;
+  }
+
+  > li.tab {
+    align-items: center;
+    border-top-left-radius: $tab-border-radius;
+    border-top-right-radius: $tab-border-radius;
+    display: flex;
+
+    &.active {
+      background: $tab-background-active;
+    }
+
+    &:not(.active) {
+      background: $tab-background-inactive;
+      cursor: pointer;
+    }
+
+    &.closable {
+      padding: $tab-padding-closable;
+    }
+
+    &:not(.closable) {
+      padding: $tab-padding-normal;
+    }
+  }
+
+  > li + li {
+    margin-left: $tab-between-margin;
+  }
+}

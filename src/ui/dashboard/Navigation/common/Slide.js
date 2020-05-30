@@ -121,7 +121,7 @@ const Slide = ({
       {
         parentLocation &&
           <HorizontalNavBar
-            backLabel={
+            backMessage={
               treeDepth == 1 ?
                 TEXT.BACK_HOME_LABEL :
                 parentName

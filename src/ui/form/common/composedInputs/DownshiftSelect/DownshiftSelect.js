@@ -122,7 +122,7 @@ const DownshiftSelect = ({
     )
 
   const displaySelectedItem = userDisplaySelectedItem ?
-    userDisplayItem : (areItemsObjects ?
+    userDisplaySelectedItem : (areItemsObjects ?
       (item => (item ? item.label : '')) :
       (item => (item ? String(item) : ''))
     )

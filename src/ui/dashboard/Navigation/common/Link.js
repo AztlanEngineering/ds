@@ -44,7 +44,7 @@ const Link = ({
           /* styles[baseClassName],*/
            baseClassName,
           //C.pointer,
-          match && C.active,
+          match && match.isExact && C.active,
           'yib',
           className
         ].filter(e => e).join(' ')

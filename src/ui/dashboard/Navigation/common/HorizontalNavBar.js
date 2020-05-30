@@ -1,6 +1,6 @@
 /* @fwrlines/generator-react-component 2.1.1 */
 import * as React from 'react'
-//import {} from 'react'
+import { useContext } from 'react'
 import PropTypes from 'prop-types'
 
 import { useHistory } from 'react-router-dom'
@@ -10,6 +10,8 @@ import { HorizontalBar } from 'ui/site'
 
 import {FormattedMessage} from 'react-intl'
 import messages from './messages'
+
+import { DashboardContext } from '../../common'
 
 /* Config
    import C from 'ui/cssClasses' */
@@ -37,6 +39,19 @@ const HorizontalNavBar = ({
 
   const history = useHistory()
 
+  const { setFocus } = useContext(DashboardContext)
+
+  const navigateBack = backTo ?
+    (e) => {
+      e.persist()
+      history.push(backTo)
+    } :
+    (e) => {
+      e.persist()
+      setFocus('sidebar')
+      history.goBack()
+    }
+
   return (
     <HorizontalBar
       className={
@@ -49,27 +64,27 @@ const HorizontalNavBar = ({
       }
       id={ id }
       //style={ style }
-      style={{ background:'red' }}
+      style={ style }
     >
       <div className='yf inside'>
-        { !dummy ? 
-        <Button
-          simple
-          className='it x-subtitle xh-paragraph k-s s1'
-          icon={ backIcon }
-          iconSide='l'
-          onClick={ backTo ? () => history.push(backTo) : history.goBack }
-        >
-          { <FormattedMessage {...backMessage}/>}
-        </Button>
-        :
-        <Button
-          simple
-          className='it k-s s1'
-          disabled
-        >
-          { ' ' }
-        </Button>
+        { !dummy ?
+          <Button
+            simple
+            className='it x-subtitle xh-paragraph k-s s1'
+            icon={ backIcon }
+            iconSide='l'
+            onClick={ navigateBack }
+          >
+            { backMessage }
+          </Button>
+          :
+          <Button
+            simple
+            className='it k-s s1'
+            disabled
+          >
+            { ' ' }
+          </Button>
         }
         {/*<p>Its me</p>*/}
       </div>
@@ -116,7 +131,7 @@ HorizontalNavBar.propTypes = {
 HorizontalNavBar.defaultProps = {
   className  :'u50',
   backIcon   :'h',
-  backMessage:messages.back
+  backMessage:<FormattedMessage { ...messages.back }/>
   //as:'p',
 }
 

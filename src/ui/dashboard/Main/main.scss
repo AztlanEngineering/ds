@@ -11,12 +11,13 @@ Classes :
   background: var(--y, var(--light-background));
   box-shadow: -0.25em 0 2em 0 rgba(0, 0, 0, 0.15);
   transition: all 0.3s;
+  height:100vh;
 
   z-index: 2;
 
   @media (max-width: 899px) {
     left: 110%;
-    position: absolute;
+    position: fixed;
     top: 0;
     width: 100%;
 
