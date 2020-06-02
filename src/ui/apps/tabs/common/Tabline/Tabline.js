@@ -74,7 +74,7 @@ const Tabline = ({
           { e.title }
         </Tab>
       ) }
-      <li>
+      <li className='add-tab'>
         <DownshiftSelect
           inputId='tabs-open-menu'
           //label="Please select your favourite fruit"
@@ -92,8 +92,8 @@ const Tabline = ({
             width  :'auto'
           }}
           buttonProps={{
-            className:'x-subtitle',
-            simple   :true,
+            className:'x-secondary',
+            //simple   :true,
             icon     :'+',
           //iconSide :'r'
           }}

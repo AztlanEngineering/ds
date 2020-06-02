@@ -2,6 +2,7 @@
 import * as React from 'react'
 import { useEffect, useMemo, useReducer } from 'react'
 import PropTypes from 'prop-types'
+import { useHistory } from 'react-router-dom'
 
 import {
   Context as TabContext,
@@ -114,6 +115,8 @@ const Main = ({
     focus:'__home',
   })
 
+  const history = useHistory()
+
   const openNewTab = (payload) => {
     console.log('opening new tab', payload)
     dispatch({
@@ -143,7 +146,7 @@ const Main = ({
     [state.focus]
   )
 
-  //Loading the state if it exists
+  // Loading the state if it exists
   useEffect(() => {
     if(isClient) {
       const storedState = localStorage.getItem(LOCAL_STORAGE_KEY)
@@ -158,10 +161,9 @@ const Main = ({
   }
   ,[])
 
+  // Updating the store on each state change
   useEffect(() => {
-    console.log('hhhhhhhhhh')
     if(isClient) {
-      console.log('storing state')
       localStorage.setItem(
         LOCAL_STORAGE_KEY,
         JSON.stringify(state)
@@ -169,6 +171,11 @@ const Main = ({
     }
   }
   ,[state])
+
+  // Pushing to the url on each focus change
+  useEffect(() => {
+    history.push(focusedTab.path)
+  }, [focusedTab])
 
   return (
     <TabContext.Provider value={{
