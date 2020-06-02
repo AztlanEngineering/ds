@@ -1,7 +1,7 @@
 {
   "name": "@fwrlines/ds",
   "author": "",
-  "version": "2.7.0",
+  "version": "2.7.1",
   "description": "",
   "main": "dist/cjs/index.js",
   "module": "dist/es/index.js",
@@ -28,7 +28,7 @@
     "commit": "git add . && git commit -m 'Version bump' && git push",
     "bd": "npm run build&&npm run commit ",
     "npre": "nodemon --watch src --exec 'npm run build:es && echo done'",
-    "postinstall":"node ./scripts/postinstall.js"
+    "postinstall": "node ./scripts/postinstall.js"
   },
   "keywords": [],
   "license": "ISC",
