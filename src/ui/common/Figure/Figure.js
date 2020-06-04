@@ -10,7 +10,7 @@ import { Image } from './common'
 
 /* Relative imports
    import styles from './figure.scss' */
-import './figure.scss'
+import(, './figure.scss')
 
 const baseClassName = 'figure'
 

@@ -13,7 +13,7 @@ import messages from './messages'
 
 
 //Relative imports
-import './paginator.scss'
+import('./paginator.scss')
 import {
   Context as PaginatorContext,
   ArrowButton,

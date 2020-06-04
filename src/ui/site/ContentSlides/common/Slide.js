@@ -10,7 +10,7 @@ import Context from './Context.js'
 
 /* Relative imports
    import styles from './slide.scss' */
-import './slide.scss'
+import('./slide.scss')
 
 const baseClassName = 'slide'
 
