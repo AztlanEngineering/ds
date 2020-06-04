@@ -10,7 +10,7 @@ import { Image } from './common'
 
 /* Relative imports
    import styles from './figure.scss' */
-import(, './figure.scss')
+import('./figure.scss')
 
 const baseClassName = 'figure'
 
@@ -95,7 +95,7 @@ Figure.propTypes = {
   imgStyle:PropTypes.object,
 
   /**
-   * 
+   *
    */
   objectFit:PropTypes.oneOf([
     'fill',
@@ -107,7 +107,7 @@ Figure.propTypes = {
 }
 
 Figure.defaultProps = {
-  objectFit: 'cover',
+  objectFit:'cover',
 }
 
 export default Figure
