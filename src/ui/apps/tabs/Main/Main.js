@@ -22,7 +22,11 @@ import {
 
 /* Relative imports
    import styles from './main.scss' */
-import('./main.scss')
+import { isBackend } from 'ui/isBackend'
+
+if(!isBackend) {
+ import('./main.scss')
+}
 
 const isClient = !(typeof(window) === 'undefined')
 const LOCAL_STORAGE_KEY = 'tabs'

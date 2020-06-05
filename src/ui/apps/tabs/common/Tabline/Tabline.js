@@ -20,7 +20,11 @@ import { Tab } from './common'
 
 /* Relative imports
    import styles from './tabline.scss' */
-import('./tabline.scss')
+import { isBackend } from 'ui/isBackend'
+
+if(!isBackend) {
+  import('./tabline.scss')
+}
 
 const baseClassName = 'tabline'
 
