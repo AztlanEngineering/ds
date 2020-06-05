@@ -8,7 +8,11 @@ import PropTypes from 'prop-types'
 import C from 'ui/cssClasses'
 
 /* Relative imports */
-import('./base_card_choice.scss')
+import { isBackend } from 'ui/isBackend'
+
+if(!isBackend) {
+  import('./base_card_choice.scss')
+}
 
 const baseClassName = 'base_card_choice'
 
@@ -41,7 +45,7 @@ const BaseCardChoice = ({
 
   return (
     <ul
-          id={ id }
+      id={ id }
     >
       { options.map((e,i) =>
         <li
@@ -62,9 +66,9 @@ const BaseCardChoice = ({
             id={ e.id }
             value={ e.value }
             disabled={ disabled || e.disabled }
-            checked={ (multiple && value) ? 
-                value.has(e.value) :
-              value === e.value 
+            checked={ (multiple && value) ?
+              value.has(e.value) :
+              value === e.value
             }
             { ...otherProps }
           />

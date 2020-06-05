@@ -11,7 +11,11 @@ import {
 import C from 'ui/cssClasses'
 
 /* Relative imports*/
-import('./icon_list.scss')
+import { isBackend } from 'ui/isBackend'
+
+if(!isBackend) {
+  import('./icon_list.scss')
+}
 
 const baseClassName = 'icon_list'
 

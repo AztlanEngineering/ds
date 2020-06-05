@@ -13,7 +13,11 @@ import { Button } from 'ui/elements'
    import C from 'ui/cssClasses' */
 
 //Relative imports
-import('./back_to_button.scss')
+import { isBackend } from 'ui/isBackend'
+
+if(!isBackend) {
+  import('./back_to_button.scss')
+}
 
 const baseClassName = 'back_to_button'
 

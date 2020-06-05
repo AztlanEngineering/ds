@@ -11,7 +11,6 @@ import { isBackend } from 'ui/isBackend'
 
 //Relative imports
 if(!isBackend) {
-  console.log('Will now import css', isBackend, process.env.BACKEND)
   import('./animated_v_caret.scss')
 }
 

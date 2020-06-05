@@ -15,7 +15,11 @@ import {
    import C from 'ui/cssClasses' */
 
 /* Relative imports */
-import('./base_svg_choice.scss')
+import { isBackend } from 'ui/isBackend'
+
+if(!isBackend) {
+  import('./base_svg_choice.scss')
+}
 
 const baseClassName = 'base_svg_choice'
 
@@ -87,9 +91,9 @@ const BaseSVGChoice = ({
             id={ e.id }
             value={ e.value }
             disabled={ disabled || e.disabled }
-            checked={ (multiple && value) ? 
-                value.has(e.value) :
-              value === e.value 
+            checked={ (multiple && value) ?
+              value.has(e.value) :
+              value === e.value
             }
             { ...otherProps }
           />
@@ -144,8 +148,8 @@ const BaseSVGChoice = ({
                   'setter'
                 ].filter(e => e).join('_')
               }
-            checked={ value === otherValue }
-            { ...otherProps }
+              checked={ value === otherValue }
+              { ...otherProps }
               onChange={ e => {
                 setOtherValue(e.target.value)
                 onChange(e)

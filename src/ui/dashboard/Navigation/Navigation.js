@@ -17,7 +17,11 @@ import {
 /* Relative imports
    import styles from './navigation.scss' */
 
-import('./navigation.scss')
+import { isBackend } from 'ui/isBackend'
+
+if(!isBackend) {
+  import('./navigation.scss')
+}
 
 const baseClassName = 'navigation'
 
@@ -113,11 +117,11 @@ Navigation.propTypes = {
    * The navigation tree
    */
   tree:PropTypes.shape({
-    section  :PropTypes.string,
-    title    :PropTypes.string.isRequired,
-    pathname :PropTypes.string.isRequired,
+    section :PropTypes.string,
+    title   :PropTypes.string.isRequired,
+    pathname:PropTypes.string.isRequired,
     //baseMatch:PropTypes.string.isRequired,
-    children :PropTypes.array
+    children:PropTypes.array
 
   }),
 

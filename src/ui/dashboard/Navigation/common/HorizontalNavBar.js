@@ -18,7 +18,11 @@ import { DashboardContext } from '../../common'
 
 /* Relative imports
    import styles from './horizontal_nav_bar.scss' */
-import('./horizontal_nav_bar.scss')
+import { isBackend } from 'ui/isBackend'
+
+if(!isBackend) {
+  import('./horizontal_nav_bar.scss')
+}
 
 const baseClassName = 'horizontal_nav_bar'
 

@@ -15,7 +15,11 @@ import { useLocation, useHistory, useRouteMatch } from 'react-router-dom'
 
 /* Relative imports
    import styles from './navigation.scss' */
-import('./navigation.scss')
+import { isBackend } from 'ui/isBackend'
+
+if(!isBackend) {
+  import('./navigation.scss')
+}
 
 const baseClassName = 'navigation'
 

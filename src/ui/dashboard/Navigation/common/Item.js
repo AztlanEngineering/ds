@@ -13,7 +13,11 @@ import NavLink from './Link.js'
 
 /* Relative imports
    import styles from './item.scss' */
-import('./item.scss')
+import { isBackend } from 'ui/isBackend'
+
+if(!isBackend) {
+  import('./item.scss')
+}
 
 const baseClassName = 'item'
 
@@ -105,10 +109,7 @@ class Item extends React.PureComponent {
     )
 
     else if (this.isCustomSlide) return (
-      <ListItem
-        //icon={ this.isActive ? iconSelected : undefined } //TODO provide better default
-        //iconHover={ iconHover }
-      >
+      <ListItem >
         { title }
         {' '}
         ( Custom Slide )
@@ -116,12 +117,9 @@ class Item extends React.PureComponent {
     )
 
     else if (this.isNormalSlide) return (
-      <ListItem
-        //icon={ this.isActive ? iconSelected : undefined } //TODO provide better default
-        //iconHover={ iconHover }
-      >
+      <ListItem >
         <NavLink
-          onClick={ onClick } 
+          onClick={ onClick }
           to={ pathname }
         >
           { title }
@@ -136,12 +134,9 @@ class Item extends React.PureComponent {
     )
 
     else return ( // is this.isLast
-      <ListItem
-        //icon={ this.isActive ? iconSelected : undefined } //TODO provide better default
-        //iconHover={ iconHover }
-      >
+      <ListItem >
         <NavLink
-          onClick={ onClick } 
+          onClick={ onClick }
           to={ pathname }
         >
           { title }

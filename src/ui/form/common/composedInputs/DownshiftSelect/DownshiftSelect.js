@@ -23,7 +23,11 @@ import {
 
 /* Relative imports
    import styles from './downshift_select.scss' */
-import('./downshift_select.scss')
+import { isBackend } from 'ui/isBackend'
+
+if(!isBackend) {
+  import('./downshift_select.scss')
+}
 
 const baseClassName = 'downshift_select'
 
@@ -153,14 +157,14 @@ const DownshiftSelect = ({
     onIsOpenChange,
     onStateChange,
     circularNavigation,
-    id:userInputId,
+    id                 :userInputId,
     labelId, //This one prop comes from outside !
     menuId,
     toggleButtonId,
     getItemId,
 
-    //inputValue:value,
-    //selectedItem,
+    /* inputValue:value,
+       selectedItem, */
   }
 
   const finalUseSelectProps = useMemo(
@@ -242,8 +246,8 @@ const DownshiftSelect = ({
             { ...buttonProps }
 
           >
-            { (selectedItem && displaySelectedItem(selectedItem)) 
-            || ( uncontrolledSelectedItem && displaySelectedItem(uncontrolledSelectedItem )) 
+            { (selectedItem && displaySelectedItem(selectedItem))
+            || ( uncontrolledSelectedItem && displaySelectedItem(uncontrolledSelectedItem ))
             || buttonChildren }
           </Button>
           <Popup

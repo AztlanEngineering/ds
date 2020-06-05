@@ -8,7 +8,11 @@ import { Subtitle } from 'ui/common'
 import C from 'ui/cssClasses'
 
 //Relative imports
-import('./circle_info.scss')
+import { isBackend } from 'ui/isBackend'
+
+if(!isBackend) {
+  import('./circle_info.scss')
+}
 
 const baseClassName = 'circle_info'
 

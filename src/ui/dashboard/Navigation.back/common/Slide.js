@@ -19,7 +19,11 @@ import { useHistory } from 'react-router-dom'
 
 /* Relative imports
    import styles from './slide.scss' */
-import('./slide.scss')
+import { isBackend } from 'ui/isBackend'
+
+if(!isBackend) {
+  import('./slide.scss')
+}
 
 const baseClassName = 'slide'
 

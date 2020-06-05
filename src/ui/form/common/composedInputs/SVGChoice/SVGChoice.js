@@ -14,7 +14,11 @@ import { InputHolder } from '../../elements'
 
 /* Relative imports
    import styles from './s_v_g_choice.scss' */
-import('./svg_choice.scss')
+import { isBackend } from 'ui/isBackend'
+
+if(!isBackend) {
+  import('./svg_choice.scss')
+}
 
 const baseClassName = 'svg_choice'
 

@@ -13,7 +13,11 @@ import messages from './messages'
 
 
 //Relative imports
-import('./paginator.scss')
+import { isBackend } from 'ui/isBackend'
+
+if(!isBackend) {
+  import('./paginator.scss')
+}
 import {
   Context as PaginatorContext,
   ArrowButton,

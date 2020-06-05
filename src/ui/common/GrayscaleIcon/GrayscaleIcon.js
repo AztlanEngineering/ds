@@ -6,7 +6,11 @@ import PropTypes from 'prop-types'
 import C from 'ui/cssClasses'
 
 //Relative imports
-import('./grayscale_icon.scss')
+import { isBackend } from 'ui/isBackend'
+
+if(!isBackend){
+  import('./grayscale_icon.scss')
+}
 
 const baseClassName='grayscale_icon'
 

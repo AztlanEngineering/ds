@@ -15,7 +15,11 @@ import C from 'ui/cssClasses'
 /* Relative imports
    import styles from './item.scss'*/
 
-import('./link.scss')
+import { isBackend } from 'ui/isBackend'
+
+if(!isBackend) {
+  import('./link.scss')
+}
 
 const baseClassName = 'navlink'
 
@@ -42,7 +46,7 @@ const Link = ({
       className={
         [
           /* styles[baseClassName],*/
-           baseClassName,
+          baseClassName,
           //C.pointer,
           match && match.isExact && C.active,
           'yib',
@@ -53,10 +57,10 @@ const Link = ({
       style={ style }
       { ...otherProps }
     >
-        <RouterLink to={ to }>
-          { children }
-        </RouterLink>
-      </Wrapper>
+      <RouterLink to={ to }>
+        { children }
+      </RouterLink>
+    </Wrapper>
   )}
 
 Link.propTypes = {
@@ -95,8 +99,8 @@ Link.propTypes = {
 }
 
 Link.defaultProps = {
-  //status: 'neutral',
-  //height:'2.2em',
+  /* status: 'neutral',
+     height:'2.2em', */
   as:'span',
 }
 

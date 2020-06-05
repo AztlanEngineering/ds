@@ -7,7 +7,11 @@ import PropTypes from 'prop-types'
    import C from 'ui/cssClasses' */
 
 //Relative imports
-import('./breadcrumb.scss')
+import { isBackend } from 'ui/isBackend'
+
+if(!isBackend) {
+  import('./breadcrumb.scss')
+}
 import { Item } from './common'
 
 const baseClassName = 'breadcrumb'

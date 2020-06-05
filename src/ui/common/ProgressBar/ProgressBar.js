@@ -9,7 +9,11 @@ import PropTypes from 'prop-types'
    import C from 'ui/cssClasses' */
 
 /* Relative imports */
-import('./progress_bar.scss')
+import { isBackend } from 'ui/isBackend'
+
+if(!isBackend) {
+  import('./progress_bar.scss')
+}
 
 const baseClassName = 'progress_bar'
 

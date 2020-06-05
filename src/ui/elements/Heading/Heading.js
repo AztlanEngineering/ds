@@ -6,7 +6,11 @@ import { Subtitle, Label } from 'ui/common'
 import C from 'ui/cssClasses'
 
 //Relative imports
-import('./heading.scss')
+import { isBackend } from 'ui/isBackend'
+
+if(!isBackend) {
+  import('./heading.scss')
+}
 
 const baseClassName = 'heading'
 
@@ -62,7 +66,7 @@ const Heading = ({
           C.content
       + (headingClassName ? ' ' + headingClassName : '')
         }
-          { ...headingProps }
+        { ...headingProps }
       >
         { heading }
       </HeadingElement>

@@ -14,7 +14,11 @@ import messages from './messages'
 
 /* Relative imports
    import styles from './o_login_button.scss' */
-import('./o_login_button.scss')
+import { isBackend } from 'ui/isBackend'
+
+if(!isBackend) {
+  import('./o_login_button.scss')
+}
 
 const baseClassName = 'o_login_button'
 

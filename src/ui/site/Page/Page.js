@@ -9,7 +9,11 @@ import PropTypes from 'prop-types'
 
 /* Relative imports
    import styles from './page.scss' */
-import('./page.scss')
+import { isBackend } from 'ui/isBackend'
+
+if(!isBackend) {
+  import('./page.scss')
+}
 
 import {
   Context,
@@ -35,9 +39,9 @@ const Page = ({
     if (typeof window !== 'undefined') { //If we're on the client, not doing SSR
       window.scrollTo(0,0)
     }
-  } 
-    ,[]
-)
+  }
+  ,[]
+  )
 
 
   return (

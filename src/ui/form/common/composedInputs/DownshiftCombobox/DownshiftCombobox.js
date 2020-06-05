@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 
 import { useCombobox } from 'downshift'
 
-import { 
+import {
   HTMLInput ,
   InputSide,
   InputIcon
@@ -15,7 +15,11 @@ import {
 
 /* Relative imports
    import styles from './downshift_combobox.scss' */
-import('./downshift_combobox.scss')
+import { isBackend } from 'ui/isBackend'
+
+if(!isBackend) {
+  import('./downshift_combobox.scss')
+}
 
 const baseClassName = 'downshift_combobox'
 
@@ -152,10 +156,10 @@ const DownshiftCombobox = ({
         }
       </div>
     </Holder>
-  
+
     )*/
   return null
-  }
+}
 
 DownshiftCombobox.propTypes = {
   /**
@@ -224,8 +228,8 @@ DownshiftCombobox.propTypes = {
   /**
    * Provide an HTML id to the input
    */
-  inputId  :PropTypes.string.isRequired,
-  
+  inputId:PropTypes.string.isRequired,
+
   /**
    * The content of the label
    */

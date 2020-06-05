@@ -19,7 +19,11 @@ import C from 'ui/cssClasses'
 
 /* Relative imports
    import styles from './slide.scss' */
-import('./slide.scss')
+import { isBackend } from 'ui/isBackend'
+
+if(!isBackend) {
+  import('./slide.scss')
+}
 
 const baseClassName = 'slide'
 
@@ -132,13 +136,13 @@ const Slide = ({
       }
       <div className={ C.content + ' u2 ph-u v1 pv-v' }>
 
-        { logo && 
-        <Image
-          src={ logo }
-          alt={ title }
-          objectFit='contain'
-          style={{ height:'100px' }}
-        />
+        { logo &&
+          <Image
+            src={ logo }
+            alt={ title }
+            objectFit='contain'
+            style={{ height: '100px' }}
+          />
         }
         <Heading
           className='h3 v1 mv-v'

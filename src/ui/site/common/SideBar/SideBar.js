@@ -10,7 +10,11 @@ import C from 'ui/cssClasses'
 
 /* Relative imports
    import styles from './menu_side_bar.scss' */
-import('./side_bar.scss')
+import { isBackend } from 'ui/isBackend'
+
+if(!isBackend) {
+  import('./side_bar.scss')
+}
 
 const baseClassName = 'side_bar'
 

@@ -13,7 +13,11 @@ import { InputHolder, InputInside } from '../../elements'
 
 /* Relative imports
    import styles from './input.scss' */
-import('./input.scss')
+import { isBackend } from 'ui/isBackend'
+
+if(!isBackend) {
+  import('./input.scss')
+}
 
 const baseClassName = 'input'
 

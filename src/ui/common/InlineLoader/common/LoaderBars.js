@@ -6,7 +6,11 @@ import PropTypes from 'prop-types'
    import C from 'ui/cssClasses' */
 
 //Relative imports
-import('./loader_bars.scss')
+import { isBackend } from 'ui/isBackend'
+
+if(!isBackend) {
+  import('./loader_bars.scss')
+}
 
 const baseClassName = 'loader_bars'
 

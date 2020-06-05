@@ -12,7 +12,11 @@ import C from 'ui/cssClasses'
 
 /* Relative imports
    import styles from './main.scss' */
-import('./main.scss')
+import { isBackend } from 'ui/isBackend'
+
+if(!isBackend) {
+  import('./main.scss')
+}
 
 const baseClassName = 'main'
 

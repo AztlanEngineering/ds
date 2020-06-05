@@ -6,11 +6,15 @@ import PropTypes from 'prop-types'
 import Context from './Context.js'
 
 /* Config */
-   import C from 'ui/cssClasses' 
+import C from 'ui/cssClasses'
 
 /* Relative imports
    import styles from './slide.scss' */
-import('./slide.scss')
+import { isBackend } from 'ui/isBackend'
+
+if(!isBackend) {
+  import('./slide.scss')
+}
 
 const baseClassName = 'slide'
 
@@ -95,9 +99,9 @@ Slide.propTypes = {
     PropTypes.object
   ]),
   //as: PropTypes.string,
-  
+
   /**
-   * The index of this slide 
+   * The index of this slide
    */
   index:PropTypes.number,
 

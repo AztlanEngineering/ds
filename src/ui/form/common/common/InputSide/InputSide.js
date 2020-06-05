@@ -9,7 +9,11 @@ import C from 'ui/cssClasses'
 
 /* Relative imports
    import styles from './input_side.scss' */
-import('./input_side.scss')
+import { isBackend } from 'ui/isBackend'
+
+if(!isBackend) {
+  import('./input_side.scss')
+}
 
 const baseClassName = 'side'
 

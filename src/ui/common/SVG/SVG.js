@@ -9,7 +9,11 @@ import C from 'ui/cssClasses'
 
 //Relative imports
 import { UseSVG } from './common'
-import('./svg.scss')
+import { isBackend } from 'ui/isBackend'
+
+if(!isBackend) {
+  import('./svg.scss')
+}
 
 const baseClassName = 'svg'
 

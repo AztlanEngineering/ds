@@ -6,7 +6,11 @@ import PropTypes from 'prop-types'
 import C from 'ui/cssClasses'
 
 //Relative imports
-import('./checklist.scss')
+import { isBackend } from 'ui/isBackend'
+if (!isBackend) {
+  import('./checklist.scss')
+}
+
 import { Item } from './common'
 
 const baseClassName = 'checklist'

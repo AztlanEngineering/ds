@@ -9,7 +9,11 @@ import { useDynamicPosition } from '@fwrlines/utils'
 import C from 'ui/cssClasses'
 
 /* Relative imports*/
-import('./popup.scss')
+import { isBackend } from 'ui/isBackend'
+
+if(!isBackend) {
+  import('./popup.scss')
+}
 
 const baseClassName = 'popup'
 

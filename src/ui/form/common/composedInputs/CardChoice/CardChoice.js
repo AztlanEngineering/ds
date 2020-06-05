@@ -13,7 +13,11 @@ import { InputHolder } from '../../elements'
 
 /* Relative imports
    import styles from './card_choice.scss' */
-import('./card_choice.scss')
+import { isBackend } from 'ui/isBackend'
+
+if(!isBackend) {
+  import('./card_choice.scss')
+}
 
 const baseClassName = 'card_choice'
 
@@ -287,10 +291,10 @@ CardChoice.propTypes = {
   /**
    * In case options are provided, whether we accept a custom user-defined value
    */
-  //other:PropTypes.oneOfType([
-   // PropTypes.bool,
-   // PropTypes.string,
-  //]),
+  /* other:PropTypes.oneOfType([
+      PropTypes.bool,
+      PropTypes.string,
+     ]), */
 
   /**
    * In case options are defined and we enable a user-defined value, let's give it an ID
@@ -334,7 +338,7 @@ CardChoice.propTypes = {
 }
 
 CardChoice.defaultProps = {
-  compact :true,
+  compact:true,
   /*
   multiple:false,
   other   :false,

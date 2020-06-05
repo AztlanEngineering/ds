@@ -9,7 +9,11 @@ import { gql } from 'graphql-tag'
 import C from 'ui/cssClasses'
 
 /* Relative imports */
-import('./snap_slider.scss')
+import { isBackend } from 'ui/isBackend'
+
+if(!isBackend) {
+  import('./snap_slider.scss')
+}
 
 const baseClassName = 'snap_slider'
 

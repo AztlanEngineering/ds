@@ -6,7 +6,11 @@ import PropTypes from 'prop-types'
 import C from 'ui/cssClasses'
 
 /* Relative imports*/
-import('./round_progress.scss')
+import { isBackend } from 'ui/isBackend'
+
+if(!isBackend) {
+  import('./round_progress.scss')
+}
 import { NumberIncrease } from 'ui/common'
 
 const baseClassName = 'round_progress'

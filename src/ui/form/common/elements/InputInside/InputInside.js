@@ -13,7 +13,11 @@ import C from 'ui/cssClasses'
 
 /* Relative imports
    import styles from './inside.scss'
-   import('./inside.scss' */
+   import { isBackend } from 'ui/isBackend'
+
+if(!isBackend) {
+    import('./inside.scss' */
+}
 
 import('./input_inside.scss')
 const baseClassName = C.inside

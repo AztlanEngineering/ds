@@ -8,7 +8,11 @@ import PropTypes from 'prop-types'
    import C from 'ui/cssClasses' */
 
 /* Relative imports*/
-import('./admin_page.scss')
+import { isBackend } from 'ui/isBackend'
+
+if(!isBackend) {
+  import('./admin_page.scss')
+}
 
 const baseClassName = 'admin_page'
 

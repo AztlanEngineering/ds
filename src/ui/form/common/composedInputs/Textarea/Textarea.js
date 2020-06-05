@@ -14,7 +14,11 @@ import { InputHolder, InputInside } from '../../elements'
 
 /* Relative imports
    import styles from './textarea.scss' */
-import('./textarea.scss')
+import { isBackend } from 'ui/isBackend'
+
+if(!isBackend) {
+  import('./textarea.scss')
+}
 
 const baseClassName = 'textarea'
 

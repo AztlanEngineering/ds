@@ -13,7 +13,11 @@ import { Context, Slide, HorizontalBar, SideBar } from './common'
 
 /* Relative imports
    import styles from './content_slides.scss' */
-import('./content_slides.scss')
+import { isBackend } from 'ui/isBackend'
+
+if(!isBackend) {
+  import('./content_slides.scss')
+}
 
 const baseClassName = 'content_slides'
 
@@ -175,8 +179,8 @@ ContentSlides.propTypes = {
    */
   slides:PropTypes.arrayOf(
     PropTypes.shape({
-      id   :PropTypes.string.isRequired,
-      title:PropTypes.string.isRequired,
+      id      :PropTypes.string.isRequired,
+      title   :PropTypes.string.isRequired,
       progress:PropTypes.string.isRequired,
       location:PropTypes.string.isRequired,
     })
@@ -191,9 +195,9 @@ ContentSlides.propTypes = {
 }
 
 ContentSlides.defaultProps = {
-  status: 'neutral',
+  status:'neutral',
   //height:'2.2em',
-  as:'div',
+  as    :'div',
 }
 
 ContentSlides.Slide = Slide

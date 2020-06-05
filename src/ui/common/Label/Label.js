@@ -8,7 +8,11 @@ import PropTypes from 'prop-types'
 import C from 'ui/cssClasses'
 
 //Relative imports
-import('./label.scss')
+import { isBackend } from 'ui/isBackend'
+
+if(!isBackend) {
+  import('./label.scss')
+}
 
 const baseClassName = 'label'
 

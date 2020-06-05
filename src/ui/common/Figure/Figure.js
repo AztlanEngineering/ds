@@ -10,7 +10,11 @@ import { Image } from './common'
 
 /* Relative imports
    import styles from './figure.scss' */
-import('./figure.scss')
+import { isBackend } from 'ui/isBackend'
+
+if(!isBackend){
+  import('./figure.scss')
+}
 
 const baseClassName = 'figure'
 

@@ -8,7 +8,11 @@ import PropTypes from 'prop-types'
    import C from 'ui/cssClasses' */
 
 /* Relative imports */
-import('./input_description.scss')
+import { isBackend } from 'ui/isBackend'
+
+if(!isBackend) {
+  import('./input_description.scss')
+}
 
 const baseClassName = 'description'
 

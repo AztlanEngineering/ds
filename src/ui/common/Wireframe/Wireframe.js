@@ -6,7 +6,11 @@ import PropTypes from 'prop-types'
    import C from 'ui/cssClasses' */
 
 //Relative imports
-import('./wireframe.scss')
+import { isBackend } from 'ui/isBackend'
+
+if(!isBackend) {
+  import('./wireframe.scss')
+}
 import { Text, Image } from './common'
 
 const Wireframe = {

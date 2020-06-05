@@ -6,7 +6,11 @@ import C from 'ui/cssClasses'
 import { InlineLoader } from 'ui/common'
 
 //Relative imports x
-import( './button.scss')
+import { isBackend } from 'ui/isBackend'
+
+if(!isBackend) {
+  import( './button.scss')
+}
 import { Group } from './common'
 
 const baseClassName = 'button'

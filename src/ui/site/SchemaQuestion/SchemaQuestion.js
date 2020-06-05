@@ -9,7 +9,11 @@ import PropTypes from 'prop-types'
 
 /* Relative imports
    import styles from './schema_question.scss' */
-import('./schema_question.scss')
+import { isBackend } from 'ui/isBackend'
+
+if(!isBackend) {
+  import('./schema_question.scss')
+}
 import { Question, Answer } from './common'
 
 const baseClassName = 'schema_question'

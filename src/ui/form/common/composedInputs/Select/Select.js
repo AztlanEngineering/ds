@@ -12,7 +12,11 @@ import { InputHolder, InputInside } from '../../elements'
 
 /* Relative imports
    import styles from './select.scss' */
-import('./select.scss')
+import { isBackend } from 'ui/isBackend'
+
+if(!isBackend) {
+  import('./select.scss')
+}
 
 const baseClassName = 'select'
 
@@ -51,19 +55,19 @@ const Select = ({
   descriptionClassName,
   descriptionStyle,
 
-    // From here these are different
-    leftSide,
-    rightSide,
-    sidesClassName,
-    sidesStyle,
+  // From here these are different
+  leftSide,
+  rightSide,
+  sidesClassName,
+  sidesStyle,
 
-    leftIcon,
-    rightIcon,
-    iconsClassName,
-    iconsStyle,
+  leftIcon,
+  rightIcon,
+  iconsClassName,
+  iconsStyle,
 
-    errorIcon,
-    validIcon,
+  errorIcon,
+  validIcon,
 
   name,
   multiple,
@@ -384,8 +388,8 @@ Select.propTypes = {
 Select.defaultProps = {
   /* multiple:false,
      other   :false, */
-  disabled:false,
-  compact :false,
+  disabled :false,
+  compact  :false,
   rightIcon:'j',
   /* height:'2.2em',
      as:'p', */

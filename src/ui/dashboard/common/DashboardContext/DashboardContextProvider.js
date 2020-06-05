@@ -17,7 +17,11 @@ import { useLazyQuery, useApolloClient } from '@apollo/client'
 
 import { useLocation, useHistory } from 'react-router-dom'
 
-import('./dashboard_context_provider.scss')
+import { isBackend } from 'ui/isBackend'
+
+if(!isBackend) {
+  import('./dashboard_context_provider.scss')
+}
 
 const baseClassName = 'dashboard'
 /*
