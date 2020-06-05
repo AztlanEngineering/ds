@@ -8,7 +8,11 @@ import PropTypes from 'prop-types'
 import { Subtitle } from 'ui/common'
 
 /* Relative imports*/
-import ('./quote.scss')
+import { isBackend } from 'ui/isBackend'
+
+if(!isBackend) {
+  import ('./quote.scss')
+}
 
 const baseClassName = 'quote'
 
