@@ -64,8 +64,6 @@ const AnimatedVCaret = ({
       style={ style }
       onClick={ () => setActive(!active) }
     >
-
-      HELLOHELLOHELLO
       <svg
         viewBox='0 0 100 100'
         xmlSpace='preserve'
