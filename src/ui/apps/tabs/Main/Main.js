@@ -25,7 +25,7 @@ import {
 import { isBackend } from 'ui/isBackend'
 
 if(!isBackend) {
- import('./main.scss')
+  import('./main.scss')
 }
 
 const isClient = !(typeof(window) === 'undefined')
