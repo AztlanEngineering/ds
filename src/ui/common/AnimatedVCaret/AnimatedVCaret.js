@@ -7,9 +7,13 @@ import PropTypes from 'prop-types'
 import { gql } from 'graphql-tag'
 /* Config */
 import C from 'ui/cssClasses'
+import { isBackend } from 'ui/isBackend'
 
 //Relative imports
-import('./animated_v_caret.scss')
+if(!isBackend) {
+  console.log('Will now import css', isBackend, process.env.BACKEND)
+  import('./animated_v_caret.scss')
+}
 
 const baseClassName = 'animated_v_caret'
 
@@ -62,6 +66,7 @@ const AnimatedVCaret = ({
       onClick={ () => setActive(!active) }
     >
 
+      HELLOHELLOHELLO
       <svg
         viewBox='0 0 100 100'
         xmlSpace='preserve'
