@@ -4,7 +4,7 @@ import * as React from 'react'
 
 //import { action } from '@storybook/addon-actions'
 
-import { Logout } from 'ui'
+import { PrivateRoute } from 'ui'
 /* import QUERY from './graphql/query.graphql'
    import { AplProvider } from 'stories/utils'
    import { Router } from 'stories/utils'
@@ -14,11 +14,11 @@ import { Logout } from 'ui'
 //const endpoint = 'https://api.fwrlines.com/graphql'
 
 export default {
-  title        :'dashboard/Logout',
-  component    :Logout,
+  title        :'collections/dashboard/Routes/PrivateRoute',
+  component    :PrivateRoute,
   //componentSubtitle:'Component subtitle',
   subcomponents:{
-    //Item:Logout.Item
+    //Item:PrivateRoute.Item
   },
   parameters:{
     decorators:[
@@ -30,5 +30,6 @@ export default {
 }
 
 export const Default = () => (
-  'This component needn\'t be visually tested. Don\'t forget to provide ProfileContext'
+  'This component needn\'t be visually tested'
 )
+

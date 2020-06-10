@@ -1,24 +1,24 @@
-/* @fwrlines/generator-storybook-story 1.2.0 */
+/* @fwrlines/generator-storybook-story 1.5.2 */
 import * as React from 'react'
+//import {} from 'react'
 
 //import { action } from '@storybook/addon-actions'
 
-import { DashboardAdminPage as AdminPage } from 'ui'
-
+import { ContentHeader } from 'ui'
 /* import QUERY from './graphql/query.graphql'
    import { AplProvider } from 'stories/utils'
    import { Router } from 'stories/utils'
-   import {ALL_COLORS, SIZES } from '../config.js'
-   import { TEXT_XXS_ESC, TEXT_XXS, TEXT_XS, TEXT } from '../utils/Dummy' */
+   import {ALL_COLORS, SIZES } from 'stories/config.js'
+   import { LIST, LIST_XS, TEXT_XXS_ESC, TEXT_XXS, TEXT_XS, TEXT } from 'stories/utils/Dummy' */
 
 //const endpoint = 'https://api.fwrlines.com/graphql'
 
 export default {
-  title        :'dashboard/zAdminPage',
-  component    :AdminPage,
+  title        :'collections/content/ContentHeader',
+  component    :ContentHeader,
   //componentSubtitle:'Component subtitle',
   subcomponents:{
-    //AdminPage.Item
+    //Item:ContentHeader.Item
   },
   parameters:{
     decorators:[
@@ -30,10 +30,10 @@ export default {
 }
 
 export const Default = () => (
-  <AdminPage></AdminPage>
+  <ContentHeader></ContentHeader>
 )
 
 export const Variant = () => (
-  <AdminPage></AdminPage>
+  <ContentHeader></ContentHeader>
 )
 

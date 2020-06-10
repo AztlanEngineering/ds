@@ -2,9 +2,6 @@
 export * from './common'
 export * from './elements'
 export * from './form'
-export * from './dashboard'
 export * from './site'
-export * from './oauth2'
-export * from './test'
 
-export * from './apps'
+export * from './collections'

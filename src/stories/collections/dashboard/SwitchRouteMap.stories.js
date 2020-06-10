@@ -4,38 +4,32 @@ import * as React from 'react'
 
 //import { action } from '@storybook/addon-actions'
 
-import { TabManager } from 'ui'
+import { SwitchRouteMap } from 'ui'
 /* import QUERY from './graphql/query.graphql'
-   import { AplProvider } from 'stories/utils' */
-import { Router } from 'stories/utils'
-/* import {ALL_COLORS, SIZES } from 'stories/config.js'
+   import { AplProvider } from 'stories/utils'
+   import { Router } from 'stories/utils'
+   import {ALL_COLORS, SIZES } from 'stories/config.js'
    import { LIST, LIST_XS, TEXT_XXS_ESC, TEXT_XXS, TEXT_XS, TEXT } from 'stories/utils/Dummy' */
 
 //const endpoint = 'https://api.fwrlines.com/graphql'
 
 export default {
-  title        :'apps/tabs/TabManager',
-  component    :TabManager,
+  title        :'collections/Dashboard/Routes/SwitchRouteMap',
+  component    :SwitchRouteMap,
   //componentSubtitle:'Component subtitle',
   subcomponents:{
-    Tabline      :TabManager.Tabline,
-    'Tabline.Tab':TabManager.Tabline.Tab
-    //Item:TabManager.Item
+    //Item:SwitchRouteMap.Item
   },
   parameters:{
     decorators:[
       /* storyfn => <div className="">{ storyfn() }</div>,
-         storyfn => <AplProvider endpoint={ endpoint }>{ storyfn() }</AplProvider>, */
-      storyfn => <Router>{ storyfn() }</Router>,
+         storyfn => <AplProvider endpoint={ endpoint }>{ storyfn() }</AplProvider>,
+         storyfn => <Router>{ storyfn() }</Router>, */
     ]
   }
 }
 
 export const Default = () => (
-  <TabManager></TabManager>
-)
-
-export const Variant = () => (
-  <TabManager></TabManager>
+  'This component needn\'t be visually tested'
 )
 

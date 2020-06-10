@@ -3,7 +3,8 @@ import * as React from 'react'
 
 //import { action } from '@storybook/addon-actions'
 
-import { DashboardPageInput as PageInput } from 'ui'
+import { DashboardAdminPage as AdminPage } from 'ui'
+
 /* import QUERY from './graphql/query.graphql'
    import { AplProvider } from 'stories/utils'
    import { Router } from 'stories/utils'
@@ -13,11 +14,11 @@ import { DashboardPageInput as PageInput } from 'ui'
 //const endpoint = 'https://api.fwrlines.com/graphql'
 
 export default {
-  title        :'dashboard/zPageInput',
-  component    :PageInput,
+  title        :'collections/dashboard/zAdminPage',
+  component    :AdminPage,
   //componentSubtitle:'Component subtitle',
   subcomponents:{
-    //PageInput.Item
+    //AdminPage.Item
   },
   parameters:{
     decorators:[
@@ -29,10 +30,10 @@ export default {
 }
 
 export const Default = () => (
-  <PageInput></PageInput>
+  <AdminPage></AdminPage>
 )
 
 export const Variant = () => (
-  <PageInput></PageInput>
+  <AdminPage></AdminPage>
 )
 

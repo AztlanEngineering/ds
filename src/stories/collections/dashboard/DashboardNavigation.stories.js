@@ -18,12 +18,12 @@ import { Router } from 'stories/utils'
 //const endpoint = 'https://api.fwrlines.com/graphql'
 
 export default {
-  title        :'dashboard/DashboardNavigation',
+  title        :'collections/dashboard/DashboardNavigation',
   component    :DashboardNavigation,
   //componentSubtitle:'Component subtitle',
   subcomponents:{
-    Slide           :DashboardNavigation.Slide,
-    Item            :DashboardNavigation.Item,
+    Slide        :DashboardNavigation.Slide,
+    Item         :DashboardNavigation.Item,
     HorizontalBar:DashboardNavigation.HorizontalBar
   },
   parameters:{
@@ -40,7 +40,7 @@ export const Default = () => {
 
   const tree = {
     title   :'WebOffice',
-    logo:'/illustrations/iso-car.png',
+    logo    :'/illustrations/iso-car.png',
     pathname:'/',
     //redirectFromPathname:'/',
     subItems:[
@@ -65,7 +65,7 @@ export const Default = () => {
         section :'Account',
         title   :'My account',
         pathname:'/account/',
-        logo:'/illustrations/iso-computer.png',
+        logo    :'/illustrations/iso-computer.png',
         //redirectFromPathname:['/account/', '/account/profile/'],
         subItems:[
           {
@@ -84,7 +84,7 @@ export const Default = () => {
         section :'Account',
         title   :'Plan and payment',
         pathname:'/plan/',
-        logo:'/illustrations/iso-shop.png',
+        logo    :'/illustrations/iso-shop.png',
         //redirectFromPathnames:['/plan/', '/plan/profile'],
         subItems:[
           {
@@ -134,10 +134,10 @@ export const Default = () => {
         footer={ 'copyright mycorp' }
       />
       <DashboardMain >
-      <DashboardNavigation.HorizontalBar
-        className='md-h lg-h u50'
-        label={'blah'}
-      />
+        <DashboardNavigation.HorizontalBar
+          className='md-h lg-h u50'
+          label={'blah'}
+        />
         <div
           style={{height: '120vh'}}
         >

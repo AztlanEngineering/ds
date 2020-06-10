@@ -10,7 +10,7 @@ import { Router, AplProvider } from 'stories/utils'
 //const endpoint = 'https://api.fwrlines.com/graphql'
 
 export default {
-  title        :'dashboard/common/SessionContextProvider',
+  title        :'collections/dashboard/common/SessionContextProvider',
   component    :SessionContextProvider,
   //componentSubtitle:'Component subtitle',
   subcomponents:{

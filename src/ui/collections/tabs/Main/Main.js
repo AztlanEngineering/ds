@@ -104,6 +104,9 @@ const Main = ({
   id,
   className,
   style,
+  children,
+
+  as:Wrapper,
 
   homeTab,
 }) => {
@@ -196,12 +199,11 @@ const Main = ({
       selectTab
     }}
     >
-      <div
+      <Wrapper
         className={
           [
             //styles[baseClassName],
             baseClassName,
-            'x-blue b-x',
             className
           ].filter(e => e).join(' ')
         }
@@ -213,7 +215,8 @@ const Main = ({
           Focus is :
           { state.focus }
         </h3>
-      </div>
+        { children }
+      </Wrapper>
     </TabContext.Provider>
   )}
 
@@ -271,6 +274,7 @@ Main.defaultProps = {
     path :'/',
     title:'Home',
   },
+  as:'div',
   /* height:'2.2em',
      as:'p', */
 }
