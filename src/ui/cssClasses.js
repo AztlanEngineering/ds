@@ -66,7 +66,7 @@ export default {
   'item'             :'item',
   // Inside (form input )
   'label'            :'label',
-  //SnapSlider, Popup
+  //SnapSlider, Popup, collections/Content/BlockIllustration
   'left'             :'left',
   'lib'              :'fw',
   'light'            :'light',
@@ -85,7 +85,7 @@ export default {
   'previous'         :'prev',
   'question'         :'ref',
   'relativeSize'     :'r-',
-  //SnapSlider, Popup
+  //SnapSlider, Popup, collections/Content/BlockIllustration
   'right'            :'right',
   //CircleInfo
   'row'              :'row',

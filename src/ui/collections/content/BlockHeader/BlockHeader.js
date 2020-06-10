@@ -63,26 +63,28 @@ const BlockHeader = ({
       id={ id }
       style={ style }
     >
-        <div
-      className={
-        [
-          C.content,
-          !center && figureProps.src && 'g12 g6-md',
-          'ph-u mb-u'
-        ].filter(e => e).join(' ')
-          }>
+      <div
+        className={
+          [
+            C.content,
+            !center && figureProps.src && 'g12 g7-md',
+            'ph-u mb-u'
+          ].filter(e => e).join(' ')
+        }
+      >
         <Heading { ...headingProps }/>
         { children }
       </div>
       { figureProps.src &&
         <div
-      className={
-        [
-          C.illustration,
-          !center && 'g12-sm g6-md',
-          'ph-u'
-        ].filter(e => e).join(' ')
-          }>
+          className={
+            [
+              C.illustration,
+              !center && 'g12-sm g5-md',
+              'ph-u'
+            ].filter(e => e).join(' ')
+          }
+        >
           <Figure
             { ...figureProps }
           />
@@ -112,14 +114,6 @@ BlockHeader.propTypes = {
    */
   children:PropTypes.node,
 
-  /**
-   * Which html tag to use
-   */
-  as:PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.object
-  ]),
-  
 
   /**
    * Props to pass to `common/Figure`
@@ -135,13 +129,16 @@ BlockHeader.propTypes = {
    * Props to pass to `site/Page.Section`
    */
   sectionProps:PropTypes.object,
+
+  /**
+   * Whether the block is a centered block. If not it will be aligned left
+   */
+  center:PropTypes.bool,
 }
 
 BlockHeader.defaultProps = {
   figureProps:{},
-  center:false,
-  //height:'2.2em',
-  //as:'p',
+  center     :false,
 }
 
 export default BlockHeader

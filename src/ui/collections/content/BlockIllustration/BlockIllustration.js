@@ -3,21 +3,22 @@ import * as React from 'react'
 //import {} from 'react'
 import PropTypes from 'prop-types'
 
-
-
+import { Figure } from 'ui/common'
+import { Heading } from 'ui/elements'
+import { Page } from 'ui/site'
 
 //Intl
 
-//import { FormattedMessage} from "react-intl";
-//import messages from "./messages";
-// <FormattedMessage {...messages.title} />
+/* import { FormattedMessage} from "react-intl";
+   import messages from "./messages";
+    <FormattedMessage {...messages.title} /> */
 
 //Config
 
-//import C from 'ui/cssClasses'
+import C from 'ui/cssClasses'
 
-//Relative imports
-//import styles from './block_illustration.scss'
+/* Relative imports
+   import styles from './block_illustration.scss' */
 import { isBackend } from 'ui/isBackend'
 
 if(!isBackend) {
@@ -29,87 +30,111 @@ const baseClassName = 'block_illustration'
 
 /**
  * Use `BlockIllustration` to
- * Has color `x` 
+ * Has color `x`
  */
 const BlockIllustration = ({
   id,
   className,
-  style
+  style,
+  children,
+
+  side,
+
+  figureProps,
+  headingProps,
+  sectionProps,
 }) => {
-  
-  
+
+  const isLeft = side === 'left'
+
   return (
-  <div 
-    className={
-      [
+    <Page.Section
+      { ...sectionProps }
+      className={
+        [
         //styles[baseClassName],
-        baseClassName,
-        className
-      ].filter(e => e).join(' ')
-  }
-    id={ id }
-    style={ style }
-  >
-    <h2>Welcome to the BlockIllustration component</h2>
-  </div>
-)}
+          baseClassName,
+          'g u2 pv-u',
+          C[side],
+          className
+        ].filter(e => e).join(' ')
+      }
+      id={ id }
+      style={ style }
+    >
+      <div
+        className={
+          [
+            C.illustration,
+            'g12-sm g6-md',
+            'ph-u'
+          ].filter(e => e).join(' ')
+        }
+      >
+        <Figure
+          { ...figureProps }
+        />
+      </div>
+      <div
+        className={
+          [
+            C.content,
+            'g12 g6-md',
+            'p-u mb-u'
+          ].filter(e => e).join(' ')
+        }
+      >
+        <Heading { ...headingProps }/>
+        { children }
+      </div>
+    </Page.Section>
+  )}
 
 BlockIllustration.propTypes = {
   /**
    * Provide an HTML id to this element
    */
-  id: PropTypes.string,
+  id:PropTypes.string,
 
   /**
    * The html class names to be provided to this element
    */
-  className: PropTypes.string,
+  className:PropTypes.string,
 
   /**
    * The JSX-Written, css styles to apply to the element.
    */
-  style: PropTypes.object,
+  style:PropTypes.object,
 
   /**
    *  The children JSX
    */
-  children: PropTypes.node,
+  children:PropTypes.node,
 
   /**
-   * Which html tag to use
+   * Props to pass to `common/Figure`
    */
-  as: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.object
-  ]), 
-  //as: PropTypes.string,
+  figureProps:PropTypes.object,
 
   /**
-   * The height of the element
+   * Props to pass to `elements/Heading`
    */
-  height: PropTypes.string,
+  headingProps:PropTypes.object,
 
   /**
-   * The width of the element
+   * Props to pass to `site/Page.Section`
    */
-  width: PropTypes.string,
-  /*
-  : PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    state: PropTypes.string.isRequired,
-  }),
-  : PropTypes.func,
-  : PropTypes.func,
-  : PropTypes.oneOf(['', ''])
-  */
+  sectionProps:PropTypes.object,
+
+  /**
+   * On which side of the block is the text. If not it will be aligned left
+   */
+  side:PropTypes.oneOf(['left', 'right']),
 }
 
-/*
 BlockIllustration.defaultProps = {
-  status: 'neutral',
-  //height:'2.2em',
-  //as:'p',
+  figureProps:{},
+  side       :'left',
 }
-*/
+
 export default BlockIllustration
