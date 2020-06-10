@@ -22,7 +22,7 @@ export default {
   'circle'           :'circle',
   //LocalIndex, CardChoice (Input), Input
   'compact'          :'compact',
-  //CardChoice (Input), Slide ( Dashboard Navigation )
+  //CardChoice (Input), Slide ( Dashboard Navigation ), BlockHeader (collections/content)
   'content'          :'content',
   'contour'          :'contour',
   'disabled'         :'disabled',

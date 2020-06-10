@@ -55,17 +55,34 @@ const BlockHeader = ({
         //styles[baseClassName],
           baseClassName,
           center && C.center,
+          !center && 'g',
+          'u2 pv-u',
           className
         ].filter(e => e).join(' ')
       }
       id={ id }
       style={ style }
     >
-      <Heading { ...headingProps }/>
-
-      { children }
+        <div
+      className={
+        [
+          C.content,
+          !center && figureProps.src && 'g12 g6-md',
+          'ph-u mb-u'
+        ].filter(e => e).join(' ')
+          }>
+        <Heading { ...headingProps }/>
+        { children }
+      </div>
       { figureProps.src &&
-        <div class={ C.illustration }>
+        <div
+      className={
+        [
+          C.illustration,
+          !center && 'g12-sm g6-md',
+          'ph-u'
+        ].filter(e => e).join(' ')
+          }>
           <Figure
             { ...figureProps }
           />

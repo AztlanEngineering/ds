@@ -8,6 +8,16 @@ Classes :
 */
 
 .block_header {
+  .illustration {
+    .figure {
+      display: inline-block;
+
+      figcaption {
+        font-size: calc(var(--s-2) * 1em);
+      }
+    }
+  }
+
   &.ctr {
     text-align: center;
 
@@ -16,23 +26,25 @@ Classes :
       width: 100%;
 
       .figure {
-        display: inline-block;
+        figcaption {
+        }
       }
     }
 
     @media (max-width: 899px) {
       .illustration {
-        padding-left:2rem;
-        padding-right:2rem;
+        padding-left: 2rem;
+        padding-right: 2rem;
       }
     }
 
     @media (min-width: 900px) {
       .illustration {
         .figure {
-          max-width:calc(0.8 * 100%);
+          max-width: calc(.8 * 100%);
+
           img {
-            max-height:20em;
+            max-height: 20em;
           }
         }
       }
