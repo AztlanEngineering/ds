@@ -26,6 +26,7 @@ const Label = ({
   basic,
   simple,
   circle,
+  dash,
 
   as:Wrapper,
 }) => {
@@ -41,6 +42,7 @@ const Label = ({
           basic && C.basic,
           simple && C.simple,
           circle && C.circle,
+          dash && C.dash,
           /*   icon && (C.fontIcon + ' ' + C.iconInside) */
         ].filter(e => e).join(' ')
       }
@@ -83,6 +85,11 @@ Label.propTypes = {
   circle:PropTypes.bool,
 
   /**
+   * Whether to apply the dash style
+   */
+  dash:PropTypes.bool,
+
+  /**
    * Icon only
    */
   icon:PropTypes.bool,
@@ -102,6 +109,7 @@ Label.defaultProps = {
   as    :'span',
   basic :false,
   simple:false,
+  dash:false
 }
 
 export default Label

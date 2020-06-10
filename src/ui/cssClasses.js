@@ -25,6 +25,10 @@ export default {
   //CardChoice (Input), Slide ( Dashboard Navigation ), BlockHeader (collections/content)
   'content'          :'content',
   'contour'          :'contour',
+  // Label
+  'dash'             :'dash',
+  // Unused, but pairs with the dash one
+  'dashHover'             :'hdash',
   'disabled'         :'disabled',
   // Input
   'error'            :'error',

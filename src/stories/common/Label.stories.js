@@ -88,6 +88,25 @@ export const Simple = () => (
   )
 
 )
+
+export const Dash = () => (
+
+  //Object.keys(ALL_COLORS).map((e,i) =>
+  ALL_COLORS.map((e,i) =>
+    <>
+      <Label
+        className={ 'x-'+e}
+        dash
+      >
+        { 'Our Story'}
+      </Label>
+      <br />
+
+    </>
+  )
+
+)
+
 export const Basic = () => (
 
   //Object.keys(ALL_COLORS).map((e,i) =>
