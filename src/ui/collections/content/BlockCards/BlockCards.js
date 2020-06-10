@@ -5,6 +5,9 @@ import PropTypes from 'prop-types'
 
 
 
+import { Figure } from 'ui/common'
+import { Heading } from 'ui/elements'
+import { Page, IconCard } from 'ui/site'
 
 //Intl
 
@@ -14,7 +17,7 @@ import PropTypes from 'prop-types'
 
 //Config
 
-//import C from 'ui/cssClasses'
+import C from 'ui/cssClasses'
 
 //Relative imports
 //import styles from './block_cards.scss'
@@ -34,24 +37,49 @@ const baseClassName = 'block_cards'
 const BlockCards = ({
   id,
   className,
-  style
+  style,
+  children,
+
+  headingProps,
+  sectionProps,
 }) => {
   
-  
   return (
-  <div 
-    className={
-      [
+    <Page.Section
+      { ...sectionProps }
+      className={
+        [
         //styles[baseClassName],
-        baseClassName,
-        className
-      ].filter(e => e).join(' ')
-  }
-    id={ id }
-    style={ style }
-  >
-    <h2>Welcome to the BlockCards component</h2>
-  </div>
+          baseClassName,
+          'g u2 pv-u',
+          className
+        ].filter(e => e).join(' ')
+      }
+      id={ id }
+      style={ style }
+    >
+      <div
+        className={
+          [
+            'g12 g6-md',
+            'p-u'
+          ].filter(e => e).join(' ')
+        }
+      >
+        <Heading { ...headingProps }/>
+      </div>
+      <div
+        className={
+          [
+            C.content,
+            'cards'
+          ].filter(e => e).join(' ')
+        }
+      >
+        { children }
+
+      </div>
+    </Page.Section>
 )}
 
 BlockCards.propTypes = {
@@ -85,31 +113,20 @@ BlockCards.propTypes = {
   //as: PropTypes.string,
 
   /**
-   * The height of the element
+   * Props to pass to `elements/Heading`
    */
-  height: PropTypes.string,
+  headingProps:PropTypes.object,
 
   /**
-   * The width of the element
+   * Props to pass to `site/Page.Section`
    */
-  width: PropTypes.string,
-  /*
-  : PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    state: PropTypes.string.isRequired,
-  }),
-  : PropTypes.func,
-  : PropTypes.func,
-  : PropTypes.oneOf(['', ''])
-  */
+  sectionProps:PropTypes.object,
 }
 
-/*
 BlockCards.defaultProps = {
-  status: 'neutral',
-  //height:'2.2em',
-  //as:'p',
+  figureProps:{}
 }
-*/
+
+BlockCards.Card = IconCard
+
 export default BlockCards

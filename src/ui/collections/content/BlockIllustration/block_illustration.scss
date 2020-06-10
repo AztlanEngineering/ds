@@ -18,25 +18,29 @@ Classes :
     }
   }
 
-    @media (max-width: 899px) {
-      figcaption {
-        display:none;
-      }
+  @media (max-width: 899px) {
+    figcaption {
+      display: none;
     }
+  }
 
   @media (min-width: 900px) {
-    grid-auto-flow:dense;
+    grid-auto-flow: dense;
+
     &.left {
-      grid-template-columns:[content-start] repeat(6, 1fr) [illustration-start] repeat(6, 1fr);
+      grid-template-columns: [content-start] repeat(6, 1fr) [illustration-start] repeat(6, 1fr);
     }
+
     &.right {
-      grid-template-columns:[illustration-start] repeat(6, 1fr) [content-start] repeat(6, 1fr);
+      grid-template-columns: [illustration-start] repeat(6, 1fr) [content-start] repeat(6, 1fr);
     }
+
     .content {
-      grid-column-start:content-start;
+      grid-column-start: content-start;
     }
+
     .illustration {
-      grid-column-start:illustration-start;
+      grid-column-start: illustration-start;
     }
   }
 }

@@ -41,6 +41,7 @@ const IconCard = ({
   id,
   className,
   style,
+  children,
 
   svgHeight,
   svgWidth,
@@ -77,6 +78,7 @@ const IconCard = ({
         <Heading
           { ...headingProps }
         >
+          { children }
         </Heading>
       </Card.Section>
     </Card>
