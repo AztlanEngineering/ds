@@ -1,0 +1,130 @@
+/* @fwrlines/generator-react-component 2.3.3 */
+import * as React from 'react'
+//import {} from 'react'
+import PropTypes from 'prop-types'
+
+import { Figure } from 'ui/common'
+import { Heading } from 'ui/elements'
+import { Page } from 'ui/site'
+
+//Intl
+
+/* import { FormattedMessage} from "react-intl";
+   import messages from "./messages";
+    <FormattedMessage {...messages.title} /> */
+
+//Config
+
+import C from 'ui/cssClasses'
+
+/* Relative imports
+   import styles from './block_header.scss' */
+import { isBackend } from 'ui/isBackend'
+
+if(!isBackend) {
+  import('./block_header.scss')
+}
+
+const baseClassName = 'block_header'
+
+
+/**
+ * Use `BlockHeader` to
+ * Has color `x`
+ */
+const BlockHeader = ({
+  id,
+  className,
+  style,
+  children,
+
+  center,
+
+  figureProps,
+  headingProps,
+  sectionProps,
+
+}) => {
+
+
+  return (
+    <Page.Section
+      { ...sectionProps }
+      className={
+        [
+        //styles[baseClassName],
+          baseClassName,
+          center && C.center,
+          className
+        ].filter(e => e).join(' ')
+      }
+      id={ id }
+      style={ style }
+    >
+      <Heading { ...headingProps }/>
+
+      { children }
+      { figureProps.src &&
+        <div class={ C.illustration }>
+          <Figure
+            { ...figureProps }
+          />
+        </div>
+      }
+    </Page.Section>
+  )}
+
+BlockHeader.propTypes = {
+  /**
+   * Provide an HTML id to this element. This is passed to `site/Page.Section`
+   */
+  id:PropTypes.string,
+
+  /**
+   * The html class names to be provided to this element. This is passed to `site/Page.Section`
+   */
+  className:PropTypes.string,
+
+  /**
+   * The JSX-Written, css styles to apply to the element. This is passed to `site/Page.Section`
+   */
+  style:PropTypes.object,
+
+  /**
+   *  The children JSX
+   */
+  children:PropTypes.node,
+
+  /**
+   * Which html tag to use
+   */
+  as:PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object
+  ]),
+  
+
+  /**
+   * Props to pass to `common/Figure`
+   */
+  figureProps:PropTypes.object,
+
+  /**
+   * Props to pass to `elements/Heading`
+   */
+  headingProps:PropTypes.object,
+
+  /**
+   * Props to pass to `site/Page.Section`
+   */
+  sectionProps:PropTypes.object,
+}
+
+BlockHeader.defaultProps = {
+  figureProps:{},
+  center:false,
+  //height:'2.2em',
+  //as:'p',
+}
+
+export default BlockHeader

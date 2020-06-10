@@ -17,21 +17,21 @@ import PropTypes from 'prop-types'
 //import C from 'ui/cssClasses'
 
 //Relative imports
-//import styles from './content_header.scss'
+//import styles from './block_cards.scss'
 import { isBackend } from 'ui/isBackend'
 
 if(!isBackend) {
-  import('./content_header.scss')
+  import('./block_cards.scss')
 }
 
-const baseClassName = 'content_header'
+const baseClassName = 'block_cards'
 
 
 /**
- * Use `ContentHeader` to
+ * Use `BlockCards` to
  * Has color `x` 
  */
-const ContentHeader = ({
+const BlockCards = ({
   id,
   className,
   style
@@ -50,11 +50,11 @@ const ContentHeader = ({
     id={ id }
     style={ style }
   >
-    <h2>Welcome to the ContentHeader component</h2>
+    <h2>Welcome to the BlockCards component</h2>
   </div>
 )}
 
-ContentHeader.propTypes = {
+BlockCards.propTypes = {
   /**
    * Provide an HTML id to this element
    */
@@ -106,10 +106,10 @@ ContentHeader.propTypes = {
 }
 
 /*
-ContentHeader.defaultProps = {
+BlockCards.defaultProps = {
   status: 'neutral',
   //height:'2.2em',
   //as:'p',
 }
 */
-export default ContentHeader
+export default BlockCards

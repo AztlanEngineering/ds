@@ -16,7 +16,7 @@ export default {
   'block'            :'block',
   // Popup
   'bottom'           :'bottom',
-  //SnapSlider
+  //SnapSlider, collections/Content/BlockHeader
   'center'           :'ctr',
   // CircleInfo, Label
   'circle'           :'circle',
@@ -48,6 +48,8 @@ export default {
   'in3d'             :'in3d',
   //Button
   'in3dHover'        :'hin3d',
+  //Collections/Content
+  'illustration'     :'illustration',
   // Group( Button )
   'independent'      :'indep',
   // Holder (Input)
