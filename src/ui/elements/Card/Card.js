@@ -1,7 +1,7 @@
 /* @fwrlines/generator-react-component 1.1.0 */
 import * as React from 'react'
+import { useState } from 'react'
 import PropTypes from 'prop-types'
-
 
 
 import C from 'ui/cssClasses'
@@ -30,24 +30,74 @@ const Card = ({
   selectable,
   active,
   onClick,
+
+  backFace,
+  backFaceClassName,
 }) => {
-  return (
-    <div
-      className={
-        [
-          baseClassName,
-          active && C.active,
-          selectable && C.selectable,
-          basic && C.basic,
-          simple && C.simple,
-          className
-        ].filter(e => e).join(' ')
-      }
-      id={id}
-      onClick={onClick}
-      style={style}
+
+  const [isFlipped, setFlip] = useState(false)
+  const flipCard = () => setFlip(!isFlipped)
+  const flipper = backFace &&
+    <span
+      className='flip fi'
+      simple
+      circle
+      onClick={ flipCard }
     >
-      { children }
+      i
+    </span>
+
+  return (
+    <div className='scene'>
+      <div
+        className={
+          [
+            C.ensemble,
+            isFlipped && 'flipped',
+          ].filter(e => e).join(' ')
+        }
+      >
+        <div
+          className={
+            [
+              baseClassName,
+              backFace && 'front-face',
+              active && C.active,
+              selectable && C.selectable,
+              basic && C.basic,
+              simple && C.simple,
+              className
+            ].filter(e => e).join(' ')
+          }
+          id={id}
+          onClick={onClick}
+          style={style}
+        >
+          { backFace && flipper}
+          { children }
+        </div>
+        { backFace &&
+          <div
+            className={
+              [
+                baseClassName,
+                'back-face',
+                active && C.active,
+                selectable && C.selectable,
+                basic && C.basic,
+                simple && C.simple,
+                backFaceClassName
+              ].filter(e => e).join(' ')
+            }
+            id={id}
+            onClick={onClick}
+            style={style}
+          >
+            { flipper }
+            { backFace }
+          </div>
+        }
+      </div>
     </div>
   )}
 
@@ -71,6 +121,16 @@ Card.propTypes = {
    *  The children JSX
    */
   children:PropTypes.node,
+
+  /**
+   *  The children JSX for the back face
+   */
+  backFace:PropTypes.node,
+
+  /**
+   * The html class names to be provided to this element
+   */
+  backFaceClassName:PropTypes.string,
 
   /**
    * Whether the element has a full size image inside

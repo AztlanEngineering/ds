@@ -11,16 +11,16 @@ import { Page, IconCard } from 'ui/site'
 
 //Intl
 
-//import { FormattedMessage} from "react-intl";
-//import messages from "./messages";
-// <FormattedMessage {...messages.title} />
+/* import { FormattedMessage} from "react-intl";
+   import messages from "./messages";
+    <FormattedMessage {...messages.title} /> */
 
 //Config
 
 import C from 'ui/cssClasses'
 
-//Relative imports
-//import styles from './block_cards.scss'
+/* Relative imports
+   import styles from './block_cards.scss' */
 import { isBackend } from 'ui/isBackend'
 
 if(!isBackend) {
@@ -32,7 +32,7 @@ const baseClassName = 'block_cards'
 
 /**
  * Use `BlockCards` to
- * Has color `x` 
+ * Has color `x`
  */
 const BlockCards = ({
   id,
@@ -42,8 +42,10 @@ const BlockCards = ({
 
   headingProps,
   sectionProps,
+
+  grid,
 }) => {
-  
+
   return (
     <Page.Section
       { ...sectionProps }
@@ -51,6 +53,7 @@ const BlockCards = ({
         [
         //styles[baseClassName],
           baseClassName,
+          grid && C.grid,
           'g u2 pv-u',
           className
         ].filter(e => e).join(' ')
@@ -62,7 +65,7 @@ const BlockCards = ({
         className={
           [
             'g12 g6-md',
-            'p-u'
+            'pt-u pl-u pr-u'
           ].filter(e => e).join(' ')
         }
       >
@@ -72,6 +75,7 @@ const BlockCards = ({
         className={
           [
             C.content,
+            'pt-u pb-u',
             'cards'
           ].filter(e => e).join(' ')
         }
@@ -80,36 +84,36 @@ const BlockCards = ({
 
       </div>
     </Page.Section>
-)}
+  )}
 
 BlockCards.propTypes = {
   /**
    * Provide an HTML id to this element
    */
-  id: PropTypes.string,
+  id:PropTypes.string,
 
   /**
    * The html class names to be provided to this element
    */
-  className: PropTypes.string,
+  className:PropTypes.string,
 
   /**
    * The JSX-Written, css styles to apply to the element.
    */
-  style: PropTypes.object,
+  style:PropTypes.object,
 
   /**
    *  The children JSX
    */
-  children: PropTypes.node,
+  children:PropTypes.node,
 
   /**
    * Which html tag to use
    */
-  as: PropTypes.oneOfType([
+  as:PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object
-  ]), 
+  ]),
   //as: PropTypes.string,
 
   /**
@@ -121,10 +125,16 @@ BlockCards.propTypes = {
    * Props to pass to `site/Page.Section`
    */
   sectionProps:PropTypes.object,
+
+  /**
+   * Whether the cards should be displayed in a grid, on both desktop and mobile
+   */
+  grid:PropTypes.bool,
 }
 
 BlockCards.defaultProps = {
-  figureProps:{}
+  figureProps:{},
+  grid       :false
 }
 
 BlockCards.Card = IconCard

@@ -30,10 +30,14 @@ export default {
   // Unused, but pairs with the dash one
   'dashHover'             :'hdash',
   'disabled'         :'disabled',
+  // Card (For the backface)
+  'ensemble':'ensemble',
   // Input
   'error'            :'error',
   // StatusBar
   'fixed'            :'fixed',
+  // collection/content/BlockCards
+  'grid':'grid',
   // Group (Button)
   'group'            :'group',
   'headSection'      :'head section',

@@ -7,5 +7,20 @@ Classes :
 
 */
 
+$heading-font-size:calc(var(--s2) * 1em);
+$text-font-size:calc(var(--s0) * 1em);
+
 .icon_card {
+  //background:var(--light-indigo);
+  
+  .heading {
+
+    .content {
+      font-size:$heading-font-size;
+    } 
+
+    & + *{
+      font-size:$text-font-size;
+    }
+  }
 }

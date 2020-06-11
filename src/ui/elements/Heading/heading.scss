@@ -4,7 +4,8 @@ Classes :
 .heading : default
 
 */
-$labelHeadingMargin:0.2rem;
+$labelHeadingMargin:0.5em;
+$heading-margin-bottom:0.5em;
 
 .heading {
   .label:first-child {
@@ -17,5 +18,9 @@ $labelHeadingMargin:0.2rem;
 
   .content {
     margin-bottom: 0.15em;
+  }
+
+  &:not(:last-child) {
+    margin-bottom:$heading-margin-bottom;
   }
 }

@@ -36,9 +36,40 @@ export const Default = () => (
 
       heading         :'Hello its me the title',
       headingAs       :'span',
-      headingClassName:'h4 s3 k-s',
-      children        :<p className='s0 k-s'>One of the features explained</p>
+      headingClassName:'h4',
     }}
+    children={<p className=''>One of the features explained</p>}
+  >
+  </IconCard>
+)
+
+export const Background = () => (
+  <IconCard
+    className='y-indigo'
+
+    headingProps={{
+
+      heading         :'Hello its me the title',
+      headingAs       :'span',
+      headingClassName:'h4',
+    }}
+    children={<p className=''>One of the features explained</p>}
+  >
+  </IconCard>
+)
+
+
+export const Size = () => (
+  <IconCard
+    className='y-grey s-2 k-s'
+
+    headingProps={{
+
+      heading         :'Hello its me the title',
+      headingAs       :'span',
+      headingClassName:'h4',
+    }}
+    children={<p className=''>One of the features explained</p>}
   >
   </IconCard>
 )

@@ -1,6 +1,6 @@
 /* @fwrlines/generator-react-component 2.3.3 */
 import * as React from 'react'
-//import {} from 'react'
+//import { useState } from 'react'
 import PropTypes from 'prop-types'
 
 import {
@@ -49,7 +49,8 @@ const IconCard = ({
   svgTarget,
   svgClassName,
 
-  headingProps
+  headingProps,
+  cardProps,
 }) => {
 
 
@@ -57,13 +58,18 @@ const IconCard = ({
     <Card
       className={
         [
-        //styles[baseClassName],
+          //styles[baseClassName],
           baseClassName,
           className
         ].filter(e => e).join(' ')
       }
       id={ id }
       style={ style }
+      backFace={
+       <Card.Section>Hello from the other side</Card.Section>
+      }
+      backFaceClassName='y-primary'
+      { ...cardProps }
     >
       <Card.Section>
         <SVG
@@ -78,8 +84,8 @@ const IconCard = ({
         <Heading
           { ...headingProps }
         >
-          { children }
         </Heading>
+        { children }
       </Card.Section>
     </Card>
   )}
@@ -140,14 +146,19 @@ IconCard.propTypes = {
   svgClassName:PropTypes.string,
 
   /**
+   * The props passed to `Card`
+   */
+  cardProps:PropTypes.object,
+
+  /**
    * The props passed to `Heading`
    */
   headingProps:PropTypes.object,
 }
 
 IconCard.defaultProps = {
-  svgHeight   :'6em',
-  svgWidth    :'6em',
+  svgHeight   :'4em',
+  svgWidth    :'4em',
   svgTarget   :'engine',
   svgClassName:'x-primary',
   /* height:'2.2em',

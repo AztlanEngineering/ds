@@ -30,38 +30,38 @@ export default {
 }
 
 export const Default = () => {
-  
+
   const cardMap = [
-    { 
-      className:'s-2 k-s y-background',
+    {
+      className   :'y-background',
       headingProps:{
-        
+
         heading         :'Cars and autos',
         headingAs       :'h2',
-        headingClassName:'s4 k-s c-on-y',
+        headingClassName:'c-on-y',
       },
       svgTarget:'car',
-      children        :<p className='s2 k-s c-on-y'>One of the features explained in just a few words.</p>,
+      children :<p className='c-on-y'>One of the features explained in just a few words.</p>,
     },
-    { 
-      className:'s-2 k-s y-background',
+    {
+      className   :'y-background',
       headingProps:{
         heading         :'Car engine',
         headingAs       :'h2',
-        headingClassName:'s4 k-s c-on-y'
+        headingClassName:'c-on-y'
       },
       svgTarget:'engine-1',
-      children        :<p className='s2 k-s c-on-y'>One of the features explained in a short sentence.</p>,
+      children :<p className='c-on-y'>One of the features explained in a short sentence.</p>,
     },
-    { 
-      className:'s-2 k-s y-grey',
+    {
+      className   :'y-grey',
       headingProps:{
         heading         :'Car lights',
         headingAs       :'h2',
-        headingClassName:'s4 k-s c-on-y'
+        headingClassName:'c-on-y'
       },
       svgTarget:'car-lights-1',
-      children        :<p className='s2 k-s c-on-y'>This car also has lights for safety. Very modern indeed</p>,
+      children :<p className='c-on-y'>This car also has lights for safety. Very modern indeed</p>,
     }
   ]
 
@@ -78,8 +78,8 @@ export const Default = () => {
         headingClassName:'s5 k-s'
       }}
     >
-      { cardMap.map((e, i) => 
-        <BlockCards.Card 
+      { cardMap.map((e, i) =>
+        <BlockCards.Card
           { ...e }
         />
 
@@ -88,7 +88,84 @@ export const Default = () => {
   )
 }
 
-export const Variant = () => (
-  <BlockCards></BlockCards>
-)
+export const Grid = () => {
+
+  const cardMap = [
+    {
+      className   :'y-background',
+      headingProps:{
+
+        heading         :'Cars and autos',
+        headingAs       :'h2',
+        headingClassName:'c-on-y',
+      },
+      svgTarget:'car',
+      children :<p className='c-on-y'>One of the features explained in just a few words.</p>,
+    },
+    {
+      className   :'y-background',
+      headingProps:{
+        heading         :'Car engine',
+        headingAs       :'h2',
+        headingClassName:'c-on-y'
+      },
+      svgTarget:'engine-1',
+      children :<p className='c-on-y'>One of the features explained in a short sentence.</p>,
+    },
+    {
+      className   :'y-grey',
+      headingProps:{
+        heading         :'Car lights',
+        headingAs       :'h2',
+        headingClassName:'c-on-y'
+      },
+      svgTarget:'car-lights-1',
+      children :<p className='c-on-y'>This car also has lights for safety. Very modern indeed</p>,
+    },
+    {
+      className   :'y-grey',
+      headingProps:{
+        heading         :'Car lights',
+        headingAs       :'h2',
+        headingClassName:'c-on-y'
+      },
+      svgTarget:'car-lights-1',
+      children :<p className='c-on-y'>This car also has lights for safety. Very modern indeed</p>,
+    },
+    {
+      className   :'y-indigo',
+      headingProps:{
+        heading         :'Car engine',
+        headingAs       :'h2',
+        headingClassName:'c-on-y'
+      },
+      svgTarget:'engine-1',
+      children :<p className='c-on-y'>One of the features explained in a short sentence.</p>,
+    },
+  ]
+
+  return(
+    <BlockCards
+      grid
+      className='s1 k-s'
+      headingProps={{
+        label         :'Our philosophy',
+        labelClassName:'x-green',
+        labelProps    :{dash: true},
+
+        heading         :'A software for every need',
+        headingAs       :'h2',
+        headingClassName:'s5 k-s'
+      }}
+    >
+      { cardMap.map((e, i) =>
+        <BlockCards.Card
+          { ...e }
+        />
+
+      ) }
+    </BlockCards>
+  )
+}
+
 

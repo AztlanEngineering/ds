@@ -29,6 +29,8 @@ const Label = ({
   dash,
 
   as:Wrapper,
+  
+  ...otherProps
 }) => {
 
 
@@ -48,6 +50,7 @@ const Label = ({
       }
       id={ id }
       style={ style }
+      { ...otherProps }
     >
       { children }
     </Wrapper>

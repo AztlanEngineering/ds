@@ -55,16 +55,19 @@ const Price = ({
       style={ style }
     >
       { price ? <>
-      <div className='currency'>{ currency }</div>
-      <div className='integer'>{ integer }</div>
-      <div className='decimal'>.{ decimal }</div>
-      <div className='periodicity'>
-        <FormattedMessage {...messages.monthly} />
-      </div>
+        <div className='currency'>{ currency }</div>
+        <div className='integer'>{ integer }</div>
+        <div className='decimal'>
+          .
+          { decimal }
+        </div>
+        <div className='periodicity'>
+          <FormattedMessage {...messages.monthly} />
+        </div>
       </>:
-          <div className='free'>
-            <FormattedMessage {...messages.free } />
-          </div>
+      <div className='free'>
+          <FormattedMessage {...messages.free } />
+        </div>
       }
 
     </div>
