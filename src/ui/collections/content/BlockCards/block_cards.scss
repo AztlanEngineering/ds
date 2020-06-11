@@ -6,7 +6,8 @@ Classes :
 .block_cards : default
 
 */
-$scrollPadding:1em;
+$scrollPadding:calc(var(--u, 2) * 1em);
+$column-gap:.5em;
 $card-width:300px;
 
 .block_cards {
@@ -19,19 +20,29 @@ $card-width:300px;
       overflow-x: scroll;
       overflow-y: hidden;
       scroll-snap-type: x mandatory;
+		  scroll-padding:0 0 0 $scrollPadding;
+      -ms-overflow-style:none;
+      scrollbar-width:none;
+
+      &::-webkit-scrollbar {
+        display:none;
+      }
 
       > :first-child {
         margin-left: $scrollPadding;
+      }
+
+      > :last-child {
+        margin-right: $scrollPadding;
       }
 
       .card {
         min-width: 300px;
         position: relative;
         scroll-snap-align:start;
-		    scroll-padding:0 0 0 $scrollPadding;
 
         & + .card {
-          margin-left: .5em;
+          margin-left: $column-gap;
         }
       }
     }
@@ -43,8 +54,9 @@ $card-width:300px;
 
   @media (min-width: 900px) {
     .cards {
+      margin:0 $scrollPadding;
       display: grid;
-      grid-column-gap: 1em;
+      grid-column-gap: $column-gap;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 
       .card {

@@ -18,6 +18,8 @@ export default {
   component    :Plan,
   //componentSubtitle:'Component subtitle',
   subcomponents:{
+    Feature:Plan.Feature,
+    Price:Plan.Price
     //Item:Plan.Item
   },
   parameters:{
@@ -30,10 +32,43 @@ export default {
 }
 
 export const Default = () => (
-  <Plan></Plan>
+  <Plan 
+    className='y-secondary'
+    name='Pro plano'
+    price={ 49.89 }
+  >
+    <Plan.Feature>Your domain name</Plan.Feature>
+    <Plan.Feature>SSL Certificate</Plan.Feature>
+    <Plan.Feature>1 user</Plan.Feature>
+    <Plan.Feature>Email support 5 days per week</Plan.Feature>
+  </Plan>
 )
 
 export const Variant = () => (
-  <Plan></Plan>
+  <Plan 
+    className='y-violet'
+    name='Entreprise'
+    price={ 109.89 }
+    //textClassName='c-on-y'
+  >
+    <Plan.Feature>Your domain name</Plan.Feature>
+    <Plan.Feature>SSL Certificate</Plan.Feature>
+    <Plan.Feature>10 users</Plan.Feature>
+    <Plan.Feature>Email and phone support 7 days per week</Plan.Feature>
+  </Plan>
+)
+
+export const Free = () => (
+  <Plan 
+    className='y-indigo'
+    name='Pro bono'
+    price={ 0 }
+    //textClassName='c-on-y'
+  >
+    <Plan.Feature>Your domain name</Plan.Feature>
+    <Plan.Feature>SSL Certificate</Plan.Feature>
+    <Plan.Feature>10 users</Plan.Feature>
+    <Plan.Feature>Email and phone support 7 days per week</Plan.Feature>
+  </Plan>
 )
 

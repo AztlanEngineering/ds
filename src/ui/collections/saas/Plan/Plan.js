@@ -4,20 +4,34 @@ import * as React from 'react'
 import PropTypes from 'prop-types'
 
 
+import {
+  IconList
+} from 'ui/common'
 
+import {
+  Card,
+  Heading
+} from 'ui/elements'
+
+import { 
+  Feature ,
+  Price,
+} from './common'
+
+import PlanContext from './Context'
 
 //Intl
 
-//import { FormattedMessage} from "react-intl";
-//import messages from "./messages";
-// <FormattedMessage {...messages.title} />
+/* import { FormattedMessage} from "react-intl";
+   import messages from "./messages";
+    <FormattedMessage {...messages.title} /> */
 
 //Config
 
 //import C from 'ui/cssClasses'
 
-//Relative imports
-//import styles from './plan.scss'
+/* Relative imports
+   import styles from './plan.scss' */
 import { isBackend } from 'ui/isBackend'
 
 if(!isBackend) {
@@ -29,70 +43,111 @@ const baseClassName = 'plan'
 
 /**
  * Use `Plan` to
- * Has color `x` 
+ * Has color `x`
  */
 const Plan = ({
   id,
   className,
-  style
+  style,
+  children,
+
+  textClassName,
+  name,
+
+  price,
+  currency,
 }) => {
-  
-  
+
   return (
-  <div 
-    className={
-      [
-        //styles[baseClassName],
-        baseClassName,
-        className
-      ].filter(e => e).join(' ')
-  }
-    id={ id }
-    style={ style }
-  >
-    <h2>Welcome to the Plan component</h2>
-  </div>
-)}
+    <PlanContext.Provider value={{
+      textClassName,
+      name,
+    }}
+    >
+      <Card
+        className={
+          [
+            //styles[baseClassName],
+            baseClassName,
+            className
+          ].filter(e => e).join(' ')
+        }
+        id={ id }
+        style={ style }
+      >
+        <Card.Section>
+          <Heading
+            heading={ name }
+            headingClassName={
+              [
+                'h3',
+                textClassName
+              ].filter(e => e).join(' ')
+            }
+          />
+          <Price
+            price={ price }
+            currency={ currency }
+          ></Price>
+        </Card.Section>
+        <Card.Section>
+          <Heading
+            heading='Features'
+            headingClassName={
+              [
+                'h4',
+                textClassName
+              ].filter(e => e).join(' ')
+            }
+          />
+          <IconList className={textClassName}>
+            { children }
+          </IconList>
+        </Card.Section>
+      </Card>
+    </PlanContext.Provider>
+  )}
 
 Plan.propTypes = {
   /**
    * Provide an HTML id to this element
    */
-  id: PropTypes.string,
+  id:PropTypes.string,
 
   /**
    * The html class names to be provided to this element
    */
-  className: PropTypes.string,
+  className:PropTypes.string,
 
   /**
    * The JSX-Written, css styles to apply to the element.
    */
-  style: PropTypes.object,
+  style:PropTypes.object,
 
   /**
    *  The children JSX
    */
-  children: PropTypes.node,
+  children:PropTypes.node,
 
   /**
-   * Which html tag to use
+   * The html class names to be provided to all the children and grandchildren text elements
    */
-  as: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.object
-  ]), 
-  //as: PropTypes.string,
+  textClassName:PropTypes.string,
 
   /**
-   * The height of the element
+   * The plan name
    */
-  height: PropTypes.string,
+  name:PropTypes.string.isRequired,
 
   /**
-   * The width of the element
+   * The price, passed to `Plan.Price`
    */
-  width: PropTypes.string,
+  price:PropTypes.string,
+
+  /**
+   * The currency, passed to `Price``
+   */
+  currency:PropTypes.string,
   /*
   : PropTypes.shape({
     id: PropTypes.string.isRequired,
@@ -105,11 +160,11 @@ Plan.propTypes = {
   */
 }
 
-/*
 Plan.defaultProps = {
-  status: 'neutral',
-  //height:'2.2em',
-  //as:'p',
+  currency:'€',
 }
-*/
+
+Plan.Feature = Feature
+Plan.Price = Feature
+
 export default Plan

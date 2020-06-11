@@ -1,4 +1,5 @@
 /* @fwrlines/generator-react-component 2.3.3 */
+
 /*
 
 Classes :
@@ -6,6 +7,9 @@ Classes :
 
 */
 
-.plan{
+.plan {
+  background: var(--light-y);
+
+  --z: var(--y);
 
 }
