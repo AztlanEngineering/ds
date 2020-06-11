@@ -55,6 +55,27 @@ export const Default = () => (
 
 )
 
+export const BackFace = () => (
+  <Card
+    backFaceClassName='y-indigo'
+    backFace={
+    <Card.Section>
+      Hello from the other side
+    </Card.Section>
+
+    }
+  >
+    <Card.Section>
+      <h2 className='small'>This card has a secret</h2>
+    </Card.Section>
+    <Card.Divider/>
+    <Card.Section>
+      Click on the top right icon
+    </Card.Section>
+  </Card>
+
+)
+
 export const WithSectionAndSection = () =>(
 
   <Card className='y-blue'>
