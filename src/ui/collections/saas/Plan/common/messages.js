@@ -1,16 +1,16 @@
 /* @fwrlines/generator-react-component 2.3.3 */
-import { defineMessages } from "react-intl"
+import { defineMessages } from 'react-intl'
 
-const messages = {
-  free: {
+const messages = defineMessages({
+  free:{
     id            :'ds.collections.saas.plan.price.free',
-    defaultMessage: "Free",
-    description: "Text to display when the price is zero",
+    defaultMessage:'Free',
+    description   :'Text to display when the price is zero',
   },
-  monthly: {
+  monthly:{
     id            :'ds.collections.saas.plan.price.monthly',
-    defaultMessage: "/month",
-    description   : "Next to the price to indicate periodicity",
+    defaultMessage:'/month',
+    description   :'Next to the price to indicate periodicity',
   },
   /*
   pppTitle:{
@@ -24,6 +24,6 @@ const messages = {
     description   :'Page Subtitle'
   },
   */
-}
+})
 
-export default defineMessages(messages)
+export default messages
