@@ -3,6 +3,5 @@ import { addDecorator } from '@storybook/react'
 import { IntlProvider } from 'react-intl'
 import '@fwrlines/alphabet-scss/main.scss'
 
-
 addDecorator(storyFn => <IntlProvider locale='it'>{ storyFn() }</IntlProvider>)
 

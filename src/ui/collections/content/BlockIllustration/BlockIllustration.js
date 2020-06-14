@@ -54,7 +54,7 @@ const BlockIllustration = ({
         [
         //styles[baseClassName],
           baseClassName,
-          'g u2 pv-u',
+          'g pv-u',
           C[side],
           className
         ].filter(e => e).join(' ')

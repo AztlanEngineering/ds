@@ -7,9 +7,9 @@ export default {
 }
 
 const storyParameters = {
- previewTabs: { 
-    'canvas': { 
-      hidden: true 
+  previewTabs:{
+    'canvas':{
+      hidden:true
     },
   }
 }
@@ -32,7 +32,10 @@ const WHEEL = [
   'azure',
   'blue',
   'violet',
-  'pink'
+  'pink',
+  'black',
+  'white',
+  'grey'
 ]
 
 const MODALS = [
@@ -123,15 +126,15 @@ export const Setters = () => {
     ))
 
   return (
-  <>
-    <p>Theme</p>
-    { setterTester(THEME) }
-    <p>Wheel</p>
-    { setterTester(WHEEL) }
-    <p>Modals</p>
-    { setterTester(MODALS) }
-  </>
-) }
+    <>
+      <p>Theme</p>
+      { setterTester(THEME) }
+      <p>Wheel</p>
+      { setterTester(WHEEL) }
+      <p>Modals</p>
+      { setterTester(MODALS) }
+    </>
+  ) }
 
 export const Getters = () => {
 
@@ -171,15 +174,15 @@ export const Getters = () => {
           <span className='c-light-z'>Color Light</span>
         </div>
       </>
-    )) 
+    ))
 
   return(
-  <>
-    { getterTester(THEME) }
-    { getterTester(WHEEL) }
-    { getterTester(MODALS) }
-  </>
-)}
+    <>
+      { getterTester(THEME) }
+      { getterTester(WHEEL) }
+      { getterTester(MODALS) }
+    </>
+  )}
 
 Swatches.parameters = storyParameters
 Setters.parameters = storyParameters

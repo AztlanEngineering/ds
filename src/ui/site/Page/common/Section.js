@@ -31,7 +31,10 @@ const Section = ({
   caretDownDuration,
   caretDownSmooth
 }) => {
-  const { id:contextId }= useContext(Context)
+  const { 
+    id:contextId,
+    childrenClassName:sharedClassName,
+  }= useContext(Context)
   return (
     <section
       id={ id && (id + (contextId ? '_' + contextId : ''))}
@@ -39,7 +42,9 @@ const Section = ({
         [
           //styles[baseClassName],
           baseClassName,
-          header ? C.headSection : C.section,
+          sharedClassName,
+          //header ? C.headSection : C.section,
+          header && C.headSection,
           inverted && C.inverted,
           transparent && C.transparent,
           className

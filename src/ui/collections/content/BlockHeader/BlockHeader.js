@@ -56,7 +56,7 @@ const BlockHeader = ({
           baseClassName,
           center && C.center,
           !center && 'g',
-          'u2 pv-u',
+          //'u2 pv-u',
           className
         ].filter(e => e).join(' ')
       }

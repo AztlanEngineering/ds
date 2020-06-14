@@ -54,7 +54,7 @@ const BlockCards = ({
         //styles[baseClassName],
           baseClassName,
           grid && C.grid,
-          'g u2 pv-u',
+          'g',
           className
         ].filter(e => e).join(' ')
       }

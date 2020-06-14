@@ -32,6 +32,7 @@ const Page = ({
   children,
 
   itemType,
+  childrenClassName,
   HELMET
 }) => {
 
@@ -48,6 +49,7 @@ const Page = ({
     <Context.Provider
       value={{
         id,
+        childrenClassName,
       }}
     >
       <div
@@ -86,6 +88,11 @@ Page.propTypes = {
    * The html class names to be provided to this element
    */
   className:PropTypes.string,
+
+  /**
+   * The html class names to be provided to the children of this element (passed through context)
+   */
+  childrenClassName:PropTypes.string,
 
   /**
    * The JSX-Written, css styles to apply to the element.
