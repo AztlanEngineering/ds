@@ -56,6 +56,8 @@ const Plan = ({
 
   price,
   currency,
+
+  ...otherProps
 }) => {
 
   return (
@@ -74,6 +76,7 @@ const Plan = ({
         }
         id={ id }
         style={ style }
+        { ...otherProps }
       >
         <Card.Section>
           <Heading

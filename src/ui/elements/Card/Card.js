@@ -22,6 +22,7 @@ const baseClassName = 'card'
 const Card = ({
   id,
   className,
+  wrapperClassName,
   style,
   children,
 
@@ -40,15 +41,20 @@ const Card = ({
   const flipper = backFace &&
     <span
       className='flip fi'
-      simple
-      circle
       onClick={ flipCard }
     >
       i
     </span>
 
   return (
-    <div className='scene'>
+      <div
+        className={
+          [
+            'scene',
+            wrapperClassName
+          ].filter(e => e).join(' ')
+        }
+      >
       <div
         className={
           [
@@ -111,6 +117,11 @@ Card.propTypes = {
    * The html class names to be provided to this element
    */
   className:PropTypes.string,
+
+  /**
+   * The html class names to be provided to the wrapper of this element
+   */
+  wrapperClassName:PropTypes.string,
 
   /**
    * The JSX-Written, css styles to apply to the element.

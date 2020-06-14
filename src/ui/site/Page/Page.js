@@ -72,7 +72,6 @@ const Page = ({
           />
         }
         { HELMET && <LocalHelmet { ...HELMET }/> }
-        { HELMET && 'HEYHEYHEYHEY' }
 
         { children }
       </div>

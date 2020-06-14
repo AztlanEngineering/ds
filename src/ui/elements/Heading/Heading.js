@@ -135,7 +135,10 @@ Heading.propTypes = {
   /**
    * the Label
    */
-  label:PropTypes.string,
+  label:PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.node,
+  ]),
 
   /**
    * The label html class
@@ -158,7 +161,10 @@ Heading.propTypes = {
   /**
    * The subtitle
    */
-  subtitle:PropTypes.string,
+  subtitle:PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.node,
+  ]),
 
   /**
    * The subtitle html class
