@@ -14,79 +14,79 @@ const helmet_map = [
   {
     variables:['robots'],
     render   :(v) =>
-      `<meta name='robots' content=${ v || '"index, follow"'} />`
+      <meta name='robots' content={ v || '"index, follow"'} />
   },
 
 
   {
     variables:['title_tag', 'title'],
     render   :(v) =>
-      `<title>${v}</title>`
+      <title>{ v }</title>
   },
 
   {
     variables:['meta_description'],
     render   :(v) =>
-      `<meta name='description' content=${v} />`
+      <meta name='description' content={v} />
   },
 
   {
     variables:['canonical'],
     render   :(v, c) =>
       c.SITE_CANONICAL ?
-      `<link rel='canonical' href=${c.SITE_CANONICAL}/${v} />` :
-      `<link rel='canonical' href=${v} />`
+      <link rel='canonical' href={`"${c.SITE_CANONICAL}/${v}"`} /> :
+      <link rel='canonical' href={v} />
   },
 
   {
     variables:['twitter_title', 'title', 'title_tag'],
     render   :(v) =>
-      `<meta name='twitter:title' content=${ v } />`
+      <meta name='twitter:title' content={ v } />
   },
 
   {
     variables:['twitter_description', 'meta_description'],
     render   :(v) =>
-      `<meta name='twitter:description' content={v}/>`
+      <meta name='twitter:description' content={ v }/>
   },
 
   {
     test     :true,
     variables:['twitter_image, main_image'],
     render   :(v) =>
-      `<meta name='twitter:image' content=${ v } />`
+      <meta name='twitter:image' content={ v } />
   },
 
   {
     variables:['og_title','title', 'title_tag'],
     render   :(v) =>
-      `<meta property='og:title' content=${ v } />`
+      <meta property='og:title' content={ v } />
   },
 
   {
     variables:['og_description', 'meta_description'],
     render   :(v) =>
-      `<meta property='og:description' content=${ v } />`
+      <meta property='og:description' content={ v } />
   },
 
   {
     test     :true,
     variables:['og_image', 'main_image'],
     render   :(v) =>
-      `<meta property='og:image' content=${ v } />`
+      <meta property='og:image' content={ v } />
   },
 
   {
     test     :true,
     variables:['og_type'],
     render   :(v) =>
-      `<meta property='og:type' content=${ v || '"article"' } />`
+      <meta property='og:type' content={ v || "article" } />
   },
 
   {
     variables:['og_url'],
     render   :(v) =>
-      `<meta property='og:url' content=${ v } />`
+      <meta property='og:url' content={ v } />
   },
 
 ]
@@ -108,9 +108,10 @@ const conditionMatchAndGetProps = (props, context) =>
     if (typeof test === 'undefined' || (test && content.length)) {
       current = render(content, context)
     }
-    return a + current
+    current && a.push(current)
+    return a
   }
-  ,'')
+  ,[])
 
 
 const LocalHelmet = ({
@@ -120,6 +121,7 @@ const LocalHelmet = ({
   const context = useContext(SiteContext)
 
   const HelmetProps = conditionMatchAndGetProps(props, context)
+  
   return (
     <Helmet>
       { HelmetProps }

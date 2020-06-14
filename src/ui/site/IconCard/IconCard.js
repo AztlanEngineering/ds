@@ -65,10 +65,12 @@ const IconCard = ({
       }
       id={ id }
       style={ style }
+      /*
       backFace={
        <Card.Section>Hello from the other side</Card.Section>
       }
       backFaceClassName='y-primary'
+       */
       { ...cardProps }
     >
       <Card.Section>

@@ -71,7 +71,8 @@ const Page = ({
             content={ HELMET && HELMET.canonical }
           />
         }
-        { HELMET && <MemoLocalHelmet { ...HELMET }/> }
+        { HELMET && <LocalHelmet { ...HELMET }/> }
+        { HELMET && 'HEYHEYHEYHEY' }
 
         { children }
       </div>

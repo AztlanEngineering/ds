@@ -86,7 +86,7 @@ const Card = ({
                 selectable && C.selectable,
                 basic && C.basic,
                 simple && C.simple,
-                backFaceClassName
+                backFaceClassName || className
               ].filter(e => e).join(' ')
             }
             id={id}
