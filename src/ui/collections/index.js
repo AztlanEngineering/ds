@@ -1,4 +1,5 @@
 export * from './content'
+export * from './cp'
 export * from './dashboard'
 export * from './oauth2'
 export * from './saas'

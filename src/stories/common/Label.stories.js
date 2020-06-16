@@ -50,6 +50,10 @@ export const Default = () => (
   <Label>This is a simple label</Label>
 )
 
+export const NewStory = () => (
+  <Label className='x-red b-x'>New story test</Label>
+)
+
 export const Variant = () => (
   variants.map((e,i) =>
     <Label

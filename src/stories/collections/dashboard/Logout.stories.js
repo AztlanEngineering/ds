@@ -30,5 +30,5 @@ export default {
 }
 
 export const Default = () => (
-  'This component needn\'t be visually tested. Don\'t forget to provide ProfileContext'
+  'This component needn\'t be visually tested. Don\'t forget to provide SessionContext'
 )

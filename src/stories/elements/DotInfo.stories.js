@@ -11,7 +11,7 @@ import { DotInfo } from 'ui'
 //const endpoint = 'https://api.fwrlines.com/graphql'
 
 export default {
-  title     :'elements/DotInfo',
+  title  :'elements/DotInfo',
   component :DotInfo,
   parameters:{
     decorators:[
@@ -24,16 +24,16 @@ export default {
 
 const map = [
   {
-    name  :'In Progress',
-    circle:'y-warning'
+    children:'In Progress',
+    circle  :'y-warning'
   },
   {
-    name  :'Error',
-    circle:'y-error'
+    children:'Error',
+    circle  :'y-error'
   },
   {
-    name  :'Ready',
-    circle:'y-success'
+    children:'Ready',
+    circle  :'y-success'
   },
 ]
 
@@ -45,12 +45,49 @@ export const Default = () => (
       key={i}
     >
       <DotInfo
-        title={e.name}
         className={e.circle}
-      />
+      >
+        { e.children }
+      </DotInfo>
     </div>
 
   )
+)
+
+export const Lower = () => (
+  map.map((e,i) =>
+    <div
+      className='p1'
+      key={i}
+    >
+      <DotInfo
+        subtitleUpper={ false }
+        className={e.circle}
+      >
+        { e.children }
+      </DotInfo>
+    </div>
+
+  )
+)
+
+export const Children = () => (
+  <div
+    className='p1'
+  >
+    <DotInfo
+      subtitleUpper={ false }
+      className={'y-secondary'}
+    >
+        <span>
+          Hello it's
+          <b>me</b>
+          !
+        </span>
+
+    </DotInfo>
+  </div>
+
 )
 
 export const Colors = () => (
@@ -60,9 +97,10 @@ export const Colors = () => (
       key={i}
     >
       <DotInfo
-        title={e.name}
-        className={ e.circle + ' x-indigo' }
-      />
+        className={e.circle}
+      >
+        { e.children }
+      </DotInfo>
     </div>
 
   )

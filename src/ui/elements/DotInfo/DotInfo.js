@@ -17,16 +17,22 @@ if(!isBackend) {
 
 const baseClassName = 'dot_info'
 
+/**
+ * Circle has color `y` and text has color `x`
+ *
+ *
+ */
 const DotInfo = ({
   id,
   className,
   style,
 
-  title,
+  children,
   //link,
 
   circleClassName,
   subtitleClassName,
+  subtitleUpper
 }) => {
 
 
@@ -52,10 +58,10 @@ const DotInfo = ({
       </div>
       <div className={ C.content + ' yib wb ph05' }>
         <Subtitle
-          upper
+          upper={ subtitleUpper }
           className={ subtitleClassName }
         >
-          { title }
+          { children }
         </Subtitle>
       </div>
     </div>
@@ -78,9 +84,9 @@ DotInfo.propTypes = {
   style:PropTypes.object,
 
   /**
-   *  The title of the element
+   *  The children JSX
    */
-  title:PropTypes.string.isRequired,
+  children:PropTypes.node.isRequired,
 
   /**
    * A link, on Click (internal or external)
@@ -96,12 +102,15 @@ DotInfo.propTypes = {
    * The class name of the circle
    */
   circleClassName:PropTypes.string,
+
+  /**
+   * Whether the subtitle is in uppercase
+   */
+  subtitleUpper:PropTypes.bool,
 }
 
-/*
 DotInfo.defaultProps = {
-  status: 'neutral',
+  subtitleUpper:true
 }
-*/
 
 export default DotInfo
