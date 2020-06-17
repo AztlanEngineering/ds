@@ -21,11 +21,11 @@ import {
 
 /* Relative imports
    import styles from './status_bar.scss' */
-import { isBackend } from 'ui/isBackend'
+/*import { isBackend } from 'ui/isBackend'
 
 if(!isBackend) {
   import('./status_bar.scss')
-}
+}*/
 
 const baseClassName = 'status_bar'
 

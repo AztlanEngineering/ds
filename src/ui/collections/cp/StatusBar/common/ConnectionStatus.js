@@ -5,10 +5,10 @@ import PropTypes from 'prop-types'
 
 
 
-import { useQuery } from '@apollo/client'
+import { useQuery, } from '@apollo/client'
 import gql from 'graphql-tag'
 import QUERY from './graphql/time.graphql'
-import CONFIG from 'config'
+//import CONFIG from 'config'
 
 import { DotInfo } from 'ui/elements'
 
@@ -42,18 +42,22 @@ const ConnectionStatus = ({
 
   const toggleDisplayResult = () => setDisplayResult(!displayResult)
 
+
   const {
     loading,
     error,
     data:{ time:response }={},
     refetch,
-    networkStatus
-  } = useQuery(gql(QUERY))
+    //networkStatus,
+  } = useQuery(gql(QUERY), {
+    notifyOnNetworkStatusChange:true
+  })
 
-  const connected = !response ? true : false
+
+  const connected = response ? true : false
 
   const messagesContext = {
-    endpoint:process.env.GRAPHQL_ENDPOINT || CONFIG.ENDPOINT,
+    endpoint:process.env.GRAPHQL_ENDPOINT || '{ endpoint_url }',
     response,
   }
 
@@ -75,10 +79,20 @@ const ConnectionStatus = ({
     >
       {
         loading &&
-          <FormattedMessage
-            {...messages.loading }
-            values={ messagesContext }
-          />
+          <>
+            <span className='sm-h xs-h'>
+              <FormattedMessage
+                {...messages.loading }
+                values={ messagesContext }
+              />
+            </span>
+            <span className='md-h lg-h'>
+              <FormattedMessage
+                {...messages.loadingShort }
+                values={ messagesContext }
+              />
+            </span>
+          </>
       }
       {! loading && (connected ?
         <>
@@ -105,7 +119,7 @@ const ConnectionStatus = ({
             </>:
             <>
               <span
-                className='pointer xs-h sm-h'
+                className='pointer md-h lg-h'
                 onClick={ toggleDisplayResult }
               >
                 <FormattedMessage
@@ -127,7 +141,7 @@ const ConnectionStatus = ({
                 </span>
               </span>
               <span
-                className='pointer md-h lg-h'
+                className='pointer sm-h xs-h'
                 onClick={ toggleDisplayResult }
               >
                 <FormattedMessage
