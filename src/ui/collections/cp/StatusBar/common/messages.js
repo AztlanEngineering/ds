@@ -38,7 +38,7 @@ export default defineMessages({
     description   :'Text if the endpoint is not connected',
   },
   loadingShort:{
-    id            :'ds.collections.cp.status_bar.loading',
+    id            :'ds.collections.cp.status_bar.loading_short',
     defaultMessage:'Connecting...',
     description   :'Text to retry connecting.',
   },
