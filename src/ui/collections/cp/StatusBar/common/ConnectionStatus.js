@@ -50,7 +50,7 @@ const ConnectionStatus = ({
     networkStatus
   } = useQuery(gql(QUERY))
 
-  const connected = response ? true : false
+  const connected = !response ? true : false
 
   const messagesContext = {
     endpoint:process.env.GRAPHQL_ENDPOINT || CONFIG.ENDPOINT,
@@ -83,54 +83,107 @@ const ConnectionStatus = ({
       {! loading && (connected ?
         <>
           { !displayResult ?
-            <span
-              className='pointer'
-              onClick={ toggleDisplayResult }
-            >
-              <FormattedMessage
-                {...messages.connected }
-                values={ messagesContext }
-              />
-            </span>:
-            <span
-              className='pointer'
-              onClick={ toggleDisplayResult }
-            >
-              <FormattedMessage
-                {...messages.responseIs }
-                values={ messagesContext }
-              />
-              {' '}
+            <>
               <span
-                className='pointer'
-                onClick={ (e) => {
-                  e.stopPropagation()
-                  refetch() }
-                }
+                className='pointer xs-h sm-h'
+                onClick={ toggleDisplayResult }
               >
                 <FormattedMessage
-                  {...messages.update }
+                  {...messages.connected }
                   values={ messagesContext }
                 />
               </span>
-            </span>
+              <span
+                className='pointer md-h lg-h'
+                onClick={ toggleDisplayResult }
+              >
+                <FormattedMessage
+                  {...messages.connectedShort }
+                  values={ messagesContext }
+                />
+              </span>
+            </>:
+            <>
+              <span
+                className='pointer xs-h sm-h'
+                onClick={ toggleDisplayResult }
+              >
+                <FormattedMessage
+                  {...messages.responseIsShort }
+                  values={ messagesContext }
+                />
+                {' '}
+                <span
+                  className='pointer'
+                  onClick={ (e) => {
+                    e.stopPropagation()
+                    refetch() }
+                  }
+                >
+                  <FormattedMessage
+                    {...messages.update }
+                    values={ messagesContext }
+                  />
+                </span>
+              </span>
+              <span
+                className='pointer md-h lg-h'
+                onClick={ toggleDisplayResult }
+              >
+                <FormattedMessage
+                  {...messages.responseIs }
+                  values={ messagesContext }
+                />
+                {' '}
+                <span
+                  className='pointer'
+                  onClick={ (e) => {
+                    e.stopPropagation()
+                    refetch() }
+                  }
+                >
+                  <FormattedMessage
+                    {...messages.update }
+                    values={ messagesContext }
+                  />
+                </span>
+              </span>
+            </>
           }
         </>
         :
         <>
-          <FormattedMessage
-            {...messages.connectionError }
-            values={ messagesContext }
-          />
-          {' '}
-          <span
-            className='pointer'
-            onClick={ () => refetch() }
-          >
+          <span className='xs-h sm-h'>
             <FormattedMessage
-              {...messages.retry }
+              {...messages.connectionError }
               values={ messagesContext }
             />
+            {' '}
+            <span
+              className='pointer'
+              onClick={ () => refetch() }
+            >
+              <FormattedMessage
+                {...messages.retry }
+                values={ messagesContext }
+              />
+            </span>
+          </span>
+          <span className='lg-h md-h'>
+            <FormattedMessage
+              {...messages.connectionErrorShort }
+              values={ messagesContext }
+            />
+            {' '}
+            <span
+              className='pointer'
+              onClick={ () => refetch() }
+            >
+              <FormattedMessage
+                {...messages.retry }
+                values={ messagesContext }
+              />
+            </span>
           </span>
         </>
 

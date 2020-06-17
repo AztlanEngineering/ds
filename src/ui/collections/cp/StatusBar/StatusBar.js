@@ -48,7 +48,7 @@ const StatusBar = ({
         [
         //styles[baseClassName],
           baseClassName,
-          'u1',
+          'u50',
           className
         ].filter(e => e).join(' ')
       }
