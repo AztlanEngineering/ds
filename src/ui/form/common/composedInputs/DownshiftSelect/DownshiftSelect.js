@@ -240,16 +240,17 @@ const DownshiftSelect = ({
     >
       <div className='yb'>
         <div className='yib xv'>
-          <Button
+          <button
             id={ inputId }
             { ...otherToggleButtonProps }
             { ...buttonProps }
+            className='b-x c-on-x x-primary'
 
           >
             { (selectedItem && displaySelectedItem(selectedItem))
             || ( uncontrolledSelectedItem && displaySelectedItem(uncontrolledSelectedItem ))
             || buttonChildren }
-          </Button>
+          </button>
           <Popup
             className={ popupClassName }
             id={ popupId }

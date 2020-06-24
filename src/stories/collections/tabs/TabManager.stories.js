@@ -32,7 +32,7 @@ export default {
 }
 
 export const Default = () => (
-  <TabManager></TabManager>
+  <TabManager test></TabManager>
 )
 
 export const Variant = () => (

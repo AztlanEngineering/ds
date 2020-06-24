@@ -33,7 +33,7 @@ const LOCAL_STORAGE_KEY = 'tabs'
 
 const generateRandomString = () => Math.random().toString(36).substring(7)
 
-const baseClassName = 'main'
+const baseClassName = 'layout'
 
 const reducer = (state, action) =>{
   switch (action.type) {
@@ -107,6 +107,7 @@ const Main = ({
   children,
 
   as:Wrapper,
+  test,
 
   homeTab,
 }) => {
@@ -211,10 +212,11 @@ const Main = ({
         style={ style }
       >
         <Tabline></Tabline>
+        { test && 
         <h3>
           Focus is :
           { state.focus }
-        </h3>
+        </h3>}
         { children }
       </Wrapper>
     </TabContext.Provider>
@@ -262,6 +264,12 @@ Main.propTypes = {
     path :PropTypes.string.isRequired,
     title:PropTypes.string.isRequired,
   }),
+
+
+  /**
+   * Whether test mode is enabled
+   */
+  test:PropTypes.bool
   /*
   : PropTypes.func,
   : PropTypes.func,
@@ -274,6 +282,7 @@ Main.defaultProps = {
     path :'/',
     title:'Home',
   },
+  test:false,
   as:'div',
   /* height:'2.2em',
      as:'p', */

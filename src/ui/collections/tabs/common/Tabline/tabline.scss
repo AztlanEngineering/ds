@@ -7,10 +7,10 @@ Classes :
 
 */
 
-$tabline-background:var(--light-black);
+$tabline-background:var(--metadata);
 $tabline-padding:.5em .5em 0;
-$tab-background-inactive:var(--dark-background);
-$tab-background-active:var(--background);
+$tab-background-inactive:var(--background);
+$tab-background-active:var(--light-background);
 $tab-padding-normal:0 .5em;
 $tab-padding-closable:0 .1em 0 .5em;
 $tab-padding-add:0 0 .2em;
@@ -22,6 +22,7 @@ $tab-between-margin:.2em;
   background: $tabline-background;
   display: flex;
   padding: $tabline-padding;
+  margin:0;
 
   > li {
     margin-bottom: 0;
