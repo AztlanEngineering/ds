@@ -126,7 +126,7 @@ const Album = ({
       id={ id }
       style={ style }
     >
-      <span className='uc u-4 p-u c-on-x md-h lg-h yb' id='rotationmsg'>Rotate  your device in mode landscape for a better experience.</span>
+      <span className='uc u-4 p-u c-on-x md-h lg-h yb' id='rotationmsg'>Rotate  your device to landscape for a better experience.</span>
       <a
         className='pointer content'
         onClick={ moveForward }
