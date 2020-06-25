@@ -6,6 +6,10 @@ Classes :
 .album : default
 
 */
+#main {
+  //this is the react container
+  height:100%;
+}
 
 .album {
   display: flex;
