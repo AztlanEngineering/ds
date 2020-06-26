@@ -6,6 +6,8 @@ Classes :
 .album : default
 
 */
+$transition-duration:.3s;
+
 #main {
   //this is the react container
   height: 100%;
@@ -17,11 +19,18 @@ Classes :
   height: 100%;
   justify-content: center;
   padding: 2em;
-  transition: background color font-size .3s;
+  transition:
+    background $transition-duration,
+    color $transition-duration,
+    font-size $transition-duration;
 
   a {
     color: unset;
     display: block;
+    transition:
+      background $transition-duration,
+      color $transition-duration,
+      font-size $transition-duration;
   }
 
   a.jsx {
@@ -31,7 +40,7 @@ Classes :
   a.jsx > * {
     margin-left: auto;
     margin-right: auto;
-    max-width: 700px;
+    max-width: 620px;
     text-align: center;
   }
 
