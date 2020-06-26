@@ -3,7 +3,8 @@ import * as React from 'react'
 import { useMemo, useEffect, useReducer } from 'react'
 import PropTypes from 'prop-types'
 
-import { useHistory } from 'react-router-dom'
+import { useHistory, useRouteMatch } from 'react-router-dom'
+import path from 'path'
 
 import { Figure } from 'ui/common'
 
@@ -35,13 +36,14 @@ const reducer = (state, action) =>{
   case 'SET_INITIAL_PICTURE':
     return {
       ...state,
-      currentPicture:state.pictures[0]
+      index       :action.payload || 0,
+      currentSlide:state.slides[action.payload || 0]
     }
   case 'MOVE_FORWARD':
     return {
       ...state,
-      index         :(state.index + 1) % (state.pictures.length ),
-      currentPicture:state.pictures[(state.index + 1) % (state.pictures.length )]
+      index       :(state.index + 1) % (state.slides.length ),
+      currentSlide:state.slides[(state.index + 1) % (state.slides.length )]
     }
 
   default:
@@ -60,28 +62,30 @@ const Album = ({
   style,
   as:Wrapper,
 
-  pictures:initialPictures,
+  slides:initialPictures,
   baseUrl
 }) => {
+  const getPath = (p) => path.join(baseUrl, p)
 
   const history = useHistory()
+  const match = useRouteMatch(getPath('/:slideid'))
 
-  const pictureSet = useMemo(
-    () => initialPictures.sort(randomSort), 
+  const slideSet = useMemo(
+    () => initialPictures.sort(randomSort),
     [initialPictures]
   )
 
   const [{
-    pictures,
-    currentPicture,
+    slides,
+    currentSlide,
     index
   }, dispatch] = useReducer(reducer, {
-    pictures      :pictureSet,
-    index         :0,
-    currentPicture:{},
+    slides      :slideSet,
+    index       :0,
+    currentSlide:{},
   })
 
-  const setInitialPicture = (id) => {
+  const setInitialPicture = (id=false) => {
     dispatch({
       type   :'SET_INITIAL_PICTURE',
       payload:id
@@ -89,26 +93,31 @@ const Album = ({
   }
 
   const moveForward = () => {
-    console.log('movin frwd to', index+1, 'out of ', pictures.length,'modular',  (index +1) %( pictures.length ))
+    console.log('movin frwd to', index+1, 'out of ', slides.length,'modular',  (index +1) %( slides.length ))
     dispatch({
       type:'MOVE_FORWARD',
     })
   }
 
-  //Get initial picture
+  //Get initial slide
   useEffect( () => {
-    setInitialPicture()
+    const matchId = match ? match.params.slideid : null
+    console.log('matched', matchId)
+    const initialPictureIndex = matchId ? slides.findIndex(e => e.id === match.params.slideid) : null
+    console.log('INITIAL', initialPictureIndex)
+    setInitialPicture(initialPictureIndex)
   },
   []
   )
 
+
   useEffect( ()=> {
-    console.log('picture chqnged', index, currentPicture)
+    console.log('slide chqnged', index, currentSlide)
     if (index > 0) {
-      history.push(currentPicture.id)
+      history.push(getPath(currentSlide.id))
     } else history.push(baseUrl)
   },
-    [currentPicture.id]
+  [currentSlide.id]
   )
 
 
@@ -118,28 +127,41 @@ const Album = ({
         [
         //styles[baseClassName],
           baseClassName,
-          currentPicture.wrapperClassName,
-          'b-x',
+          currentSlide.wrapperClassName,
+          //'b-x',
           className
         ].filter(e => e).join(' ')
       }
       id={ id }
       style={ style }
     >
-      <span className='uc u-4 p-u c-on-x md-h lg-h yb' id='rotationmsg'>Rotate  your device to landscape for a better experience.</span>
+      <span
+        className='uc u-4 p-u c-on-x md-h lg-h yb'
+        id='rotationmsg'
+      >
+        Rotate  your device to landscape for a better experience.
+      </span>
       <a
-        className='pointer content'
+        className={[
+          'pointer content',
+          currentSlide.jsx ? 'jsx' : 'picture',
+        ].filter(e => e).join(' ')
+        }
         onClick={ moveForward }
       >
-        <Figure
-          src={ currentPicture.source }
-          alt={currentPicture.alt}
-          objectFit='contain'
-        >
-          <span className='c-on-x'>
-          { currentPicture.caption }
-          </span>
-        </Figure>
+        { currentSlide.jsx ?
+          currentSlide.jsx
+          :
+          <Figure
+            src={ currentSlide.source }
+            alt={currentSlide.alt}
+            objectFit='contain'
+          >
+            <span className='c-on-x'>
+              { currentSlide.caption }
+            </span>
+          </Figure>
+        }
       </a>
     </Wrapper>
   )}
@@ -174,14 +196,14 @@ Album.propTypes = {
   ]),
 
   /**
-   * The base url for the first picture
+   * The base url for the first slide
    */
-  baseUrl: PropTypes.string,
+  baseUrl:PropTypes.string,
 
   /**
-   * The pictures of the album
+   * The slides of the album
    */
-  pictures:PropTypes.arrayOf(PropTypes.shape({
+  slides:PropTypes.arrayOf(PropTypes.shape({
     id              :PropTypes.string.isRequired,
     source          :PropTypes.string.isRequired,
     alt             :PropTypes.string,
@@ -200,7 +222,7 @@ Album.defaultProps = {
   /* status: 'neutral',
      height:'2.2em', */
   baseUrl:'/',
-  as:'main',
+  as     :'main',
 }
 
 export default Album
