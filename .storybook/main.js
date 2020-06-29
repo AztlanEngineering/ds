@@ -1,6 +1,6 @@
 const path=require('path')
 
-const ADD_SCSS_LIB_TO_CONTEXT = '../src/scss'
+const ADD_SCSS_LIB_TO_CONTEXT = '../node_modules'
 
 module.exports = {
     webpackFinal: async (config, { configType }) => {

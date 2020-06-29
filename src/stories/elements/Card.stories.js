@@ -1,7 +1,7 @@
 /* @fwrlines/generator-storybook-story 1.0.1 */
 import * as React from 'react'
 
-import { Card, SVG } from 'ui'
+import { Card, SimpleCard, SVG } from 'ui'
 import { ALL_COLORS } from '../config'
 
 export default {
@@ -39,6 +39,21 @@ Como el otro, este juego es infinito.
 
 const img_src='https://images.pexels.com/photos/157811/pexels-photo-157811.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'
 
+
+export const Simple = () => (
+  <SimpleCard className='y-accent1'>
+    <SimpleCard.Section>
+      <h2 className='small'>Ajedrez</h2>
+    </SimpleCard.Section>
+    <SimpleCard.Divider/>
+    <SimpleCard.Section>
+      <p dangerouslySetInnerHTML={{__html: text}}>
+
+      </p>
+    </SimpleCard.Section>
+  </SimpleCard>
+
+)
 
 export const Default = () => (
   <Card>
@@ -204,7 +219,7 @@ export const Colors = () => (
   )
 )
 
-export const Basic = () => (
+export const BasicStyle = () => (
   ALL_COLORS.map((e,i) =>
     <Card
       style={{ width: '320px' }}
@@ -231,7 +246,7 @@ export const Basic = () => (
   )
 )
 
-export const Simple = () => (
+export const SimpleStyle = () => (
   ALL_COLORS.map((e,i) =>
     <Card
       style={{ width: '320px' }}

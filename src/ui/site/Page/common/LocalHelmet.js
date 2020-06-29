@@ -145,7 +145,7 @@ const conditionMatchAndGetProps = (props, context, intl) =>
     if (typeof test === 'undefined' || (test && content.length)) {
       // if content is an object, then its a message and we need to render it as a string first
       const stringContent = typeof content === 'string' ? content : intl.formatMessage(content) 
-      console.log(stringContent, content)
+      //console.log(stringContent, content)
       current = render(stringContent, context)
     }
     current && a.push(current)
@@ -157,7 +157,7 @@ const conditionMatchAndGetProps = (props, context, intl) =>
 const LocalHelmet = ({
   ...props
 }) => {
-  console.log(props)
+  //console.log(props)
 
   const intl = useIntl()
 

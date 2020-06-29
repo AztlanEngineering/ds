@@ -6,17 +6,17 @@ Classes :
 */
 
 .animated_v_caret {
-  display: inline;
   cursor: pointer;
+  display: inline;
 
   line {
-    transition: stroke 0.3s;
-    stroke: var(--x, var(--black, black));
+    stroke: var(--z, var(--on-y, var(--black, black)));
+    transition: stroke .3s;
   }
 
   &.active {
     line {
-      stroke: var(--y, var(--x, var(--black, black)));
+      stroke: var(--z, var(--on-y, var(--black, black)));
     }
   }
 }

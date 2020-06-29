@@ -6,11 +6,12 @@ Classes :
 .block_cards : default
 
 */
-$scrollPadding:calc(var(--u, 2) * 1rem);
+$scrollPadding:calc(var(--u, 0) * 1rem);
 $gaps:.5em;
 $card-width:300px;
 
 .block_cards {
+
   &.grid {
     .cards {
       display: grid;

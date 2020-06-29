@@ -23,6 +23,7 @@ const baseClassName = 'animated_v_caret'
  */
 const AnimatedVCaret = ({
   id,
+  listenerId,
   className,
   style,
 
@@ -48,6 +49,8 @@ const AnimatedVCaret = ({
 
   const lpath_active = `M ${swd} 50 L 50 ${swd}`
   const rpath_active = `M ${swd} 50 L 50 ${swd}`
+
+  const listenToId = listenerId || id
 
   //const subId = (sub) => id ? id + '_' + sub : sub
 
@@ -98,7 +101,7 @@ const AnimatedVCaret = ({
                   //dur={ animationDuration + 's' }
                   repeatCount='1'
                   restart='always'
-                  begin={`${id}.click`}
+                  begin={`${listenToId}.click`}
                 />
 						  :
                 <animate
@@ -111,7 +114,7 @@ const AnimatedVCaret = ({
                   //dur={ animationDuration + 's' }
                   repeatCount='1'
                   restart='always'
-                  begin={`${id}.click`}
+                  begin={`${listenToId}.click`}
                 />
               }
 
@@ -130,6 +133,11 @@ AnimatedVCaret.propTypes = {
    * Provide an HTML id to this element
    */
   id:PropTypes.string,
+
+  /**
+   * Which id to listen to for the animation (default : current)
+   */
+  listenerId:PropTypes.string,
 
   /**
    * The html class names to be provided to this element

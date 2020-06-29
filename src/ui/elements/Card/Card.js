@@ -15,16 +15,20 @@ if(!isBackend) {
 import {
   Section,
   Divider,
+  Simple as BaseCard,
 } from './common'
 
-const baseClassName = 'card'
+//const baseClassName = 'card' //Provided by the simple card
 
 const Card = ({
   id,
   className,
-  wrapperClassName,
   style,
   children,
+
+  wrapperClassName,
+  wrapperId,
+  wrapperStyle,
 
   basic,
   simple,
@@ -46,15 +50,26 @@ const Card = ({
       i
     </span>
 
+  const cardProps = {
+
+    active,
+    selectable,
+    basic,
+    simple,
+    onClick,
+  }
+
   return (
-      <div
-        className={
-          [
-            'scene',
-            wrapperClassName
-          ].filter(e => e).join(' ')
-        }
-      >
+    <div
+      className={
+        [
+          'scene',
+          wrapperClassName
+        ].filter(e => e).join(' ')
+      }
+      id={wrapperId}
+      style={wrapperStyle}
+    >
       <div
         className={
           [
@@ -63,35 +78,27 @@ const Card = ({
           ].filter(e => e).join(' ')
         }
       >
-        <div
+        <BaseCard
+          { ...cardProps }
           className={
             [
-              baseClassName,
               backFace && 'front-face',
-              active && C.active,
-              selectable && C.selectable,
-              basic && C.basic,
-              simple && C.simple,
               className
             ].filter(e => e).join(' ')
           }
-          id={id}
           onClick={onClick}
           style={style}
+          id={ id }
         >
           { backFace && flipper}
           { children }
-        </div>
+        </BaseCard>
         { backFace &&
-          <div
+          <BaseCard
+            { ...cardProps }
             className={
               [
-                baseClassName,
                 'back-face',
-                active && C.active,
-                selectable && C.selectable,
-                basic && C.basic,
-                simple && C.simple,
                 backFaceClassName || className
               ].filter(e => e).join(' ')
             }
@@ -101,7 +108,7 @@ const Card = ({
           >
             { flipper }
             { backFace }
-          </div>
+          </BaseCard>
         }
       </div>
     </div>
@@ -114,6 +121,11 @@ Card.propTypes = {
   id:PropTypes.string,
 
   /**
+   * Provide an HTML id to this wrapper of this element
+   */
+  wrapperId:PropTypes.string,
+
+  /**
    * The html class names to be provided to this element
    */
   className:PropTypes.string,
@@ -124,9 +136,14 @@ Card.propTypes = {
   wrapperClassName:PropTypes.string,
 
   /**
-   * The JSX-Written, css styles to apply to the element.
+   * The JSX-Written, css styles to apply to this element.
    */
   style:PropTypes.object,
+
+  /**
+   * The JSX-Written, css styles to apply to the wrapper of this element.
+   */
+  wrapperStyle:PropTypes.object,
 
   /**
    *  The children JSX

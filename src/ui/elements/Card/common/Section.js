@@ -18,6 +18,7 @@ const Section = ({
   image,
 
   as:Wrapper,
+  ...otherProps
 }) => {
 
   return (
@@ -31,6 +32,7 @@ const Section = ({
       }
       id={id}
       style={style}
+      { ...otherProps }
     >
       { children }
     </Wrapper>

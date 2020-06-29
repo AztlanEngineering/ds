@@ -1,6 +1,6 @@
 export { Breadcrumb } from './Breadcrumb'
 export { Button } from './Button'
-export { Card } from './Card'
+export { Card, SimpleCard } from './Card'
 export { CircleInfo } from './CircleInfo'
 export { DotInfo } from './DotInfo'
 export { FileExplorer } from './FileExplorer'

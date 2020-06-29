@@ -22,7 +22,7 @@ export default {
   'circle'           :'circle',
   //LocalIndex, CardChoice (Input), Input
   'compact'          :'compact',
-  //CardChoice (Input), Slide ( Dashboard Navigation ), BlockHeader (collections/content)
+  //CardChoice (Input), Slide ( Dashboard Navigation ), BlockHeader (collections/content), Item (Accordion)
   'content'          :'content',
   'contour'          :'contour',
   // Label
@@ -44,7 +44,7 @@ export default {
   'header'           :'header',
   // Group (Button)
   'horizontalStretch':'hstretch',
-  // (CaretDown) Page, InputIcon,
+  // (CaretDown) Page, InputIcon, Accordion
   'icon'             :'fi',
   // Button
   'iconInside'       :'i',
@@ -83,7 +83,7 @@ export default {
   // SideBar (ContentSlides)
   'next'             :'next',
   'part'             :'part',
-  // SideBar (ContentSlides)
+  // SideBar (ContentSlides), Accordion
   'pointer'          :'pointer',
   // Slide (Dashboard Navigation)
   'previous'         :'prev',
@@ -112,6 +112,7 @@ export default {
   'svg'              :'svg',
   // useTheme, SiteContext users
   'themes'           :themes,
+  // Item (Accordion)
   'title'            :'title',
   // Popup
   'top'              :'top',
