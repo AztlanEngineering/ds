@@ -167,4 +167,6 @@ IconCard.defaultProps = {
      as:'p', */
 }
 
+IconCard.Group = Card.Group
+
 export default IconCard

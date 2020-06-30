@@ -71,7 +71,7 @@ $shadow:.2em .2em .4em var(--dark-background);
 
   box-shadow:$shadow;
 
-  & > .section {
+  & > .section.visible {
     z-index: 0;
 
     /*

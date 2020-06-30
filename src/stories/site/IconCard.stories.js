@@ -18,7 +18,7 @@ export default {
   component    :IconCard,
   //componentSubtitle:'Component subtitle',
   subcomponents:{
-    //Item:IconCard.Item
+    'IconCard.Group':IconCard.Group
   },
   parameters:{
     decorators:[

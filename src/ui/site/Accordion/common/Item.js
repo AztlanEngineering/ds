@@ -107,10 +107,11 @@ const Item = ({
           }
         </div>
       </SimpleCard.Section>
-      { isOpenOrBackend &&
         <SimpleCard.Section
+          hidden={ !isOpenOrBackend }
           className={
             [
+              !isOpenOrBackend && 'h',
               C.content,
               's0 k-s',
               toggleStyle
@@ -119,7 +120,6 @@ const Item = ({
         >
           { children }
         </SimpleCard.Section>
-      }
     </SimpleCard>
   )}
 

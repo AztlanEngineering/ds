@@ -16,17 +16,22 @@ const Section = ({
   children,
 
   image,
+  hidden,
 
   as:Wrapper,
+  hiddenAs:HiddenWrapper,
   ...otherProps
 }) => {
 
+  const ComputedWrapper = hidden ? HiddenWrapper : Wrapper
+
   return (
-    <Wrapper
+    <ComputedWrapper
       className={
         [
           baseClassName,
           image && C.image,
+          hidden ? 'h' : 'visible',
           className
         ].filter(e => e).join(' ')
       }
@@ -35,7 +40,7 @@ const Section = ({
       { ...otherProps }
     >
       { children }
-    </Wrapper>
+    </ComputedWrapper>
   )}
 
 Section.propTypes = {
@@ -69,12 +74,21 @@ Section.propTypes = {
     PropTypes.string,
     PropTypes.object
   ]),
+
+  /**
+  * The node to display the element with 
+  * */
+  hiddenAs:PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object
+  ]),
 }
 
 Section.defaultProps = {
   /* status: 'neutral',
      height:'2.2em', */
-  as:'div',
+  as:'section',
+  hiddenAs:'div'
 }
 
 export default Section
