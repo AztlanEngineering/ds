@@ -34,6 +34,7 @@ const Figure = ({
   alt,
   imgStyle,
   objectFit,
+  objectPosition
 }) => {
 
   return (
@@ -52,6 +53,7 @@ const Figure = ({
         src={src}
         alt={alt}
         objectFit={ objectFit }
+        objectPosition={ objectPosition }
         style={ imgStyle }
       />
       { children &&
@@ -107,7 +109,12 @@ Figure.propTypes = {
     'cover',
     'none',
     'scale-down'
-  ])
+  ]),
+
+  /**
+   * Where is the image pinned, for instance `center center` or `left bottom`
+   */
+  objectPosition:PropTypes.string
 }
 
 Figure.defaultProps = {
