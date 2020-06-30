@@ -41,7 +41,7 @@ const img_src='https://images.pexels.com/photos/157811/pexels-photo-157811.jpeg?
 
 
 export const Simple = () => (
-  <SimpleCard className='y-accent1'>
+  <SimpleCard className='y-accent1 b-light-y'>
     <SimpleCard.Section>
       <h2 className='small'>Ajedrez</h2>
     </SimpleCard.Section>
@@ -72,7 +72,8 @@ export const Default = () => (
 
 export const BackFace = () => (
   <Card
-    backFaceClassName='y-indigo'
+    className='y-red b-dark-y x-white c-x'
+    backFaceClassName='y-indigo b-light-y'
     backFace={
     <Card.Section>
       Hello from the other side
@@ -81,7 +82,7 @@ export const BackFace = () => (
     }
   >
     <Card.Section>
-      <h2 className='small'>This card has a secret</h2>
+      <h2 className='small c-x'>This card has a secret</h2>
     </Card.Section>
     <Card.Divider/>
     <Card.Section>
@@ -93,7 +94,7 @@ export const BackFace = () => (
 
 export const WithSectionAndSection = () =>(
 
-  <Card className='y-blue'>
+  <Card className='y-blue b-y x-white'>
     <Card.Section>
       <h2 className='small'>Ajedrez</h2>
     </Card.Section>
@@ -148,7 +149,7 @@ export const Selectable = () =>(
 
 export const WithImage = () =>(
   <div className='p2'>
-    <Card style={{ width: 'min-content' }}>
+    <Card style={{ width: 'min-content' }} className='b-y y-yellow'>
       <Card.Section
         image
         as='header'
@@ -198,7 +199,7 @@ export const Colors = () => (
     <Card
       style={{ width: '320px' }}
       className={
-        'y-' + e.toLowerCase()
+        'y-' + e.toLowerCase() + ' b-y'
       }
       key={i}
     >
@@ -224,7 +225,7 @@ export const BasicStyle = () => (
     <Card
       style={{ width: '320px' }}
       className={
-        'x-' + e.toLowerCase()
+        'x-' + e.toLowerCase() 
       }
       basic
       key={i}

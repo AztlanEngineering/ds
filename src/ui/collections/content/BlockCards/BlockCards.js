@@ -53,7 +53,6 @@ const BlockCards = ({
         [
         //styles[baseClassName],
           baseClassName,
-          grid && C.grid,
           'g',
           className
         ].filter(e => e).join(' ')
@@ -75,6 +74,7 @@ const BlockCards = ({
         className={
           [
             C.content,
+            grid && C.grid,
             'pt-u pb-u',
             'cards'
           ].filter(e => e).join(' ')

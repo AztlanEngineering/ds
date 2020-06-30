@@ -33,7 +33,7 @@ export const Default = () => {
 
   const cardMap = [
     {
-      className   :'y-background',
+      className   :'y-background b-y',
       headingProps:{
 
         heading         :'Cars and autos',
@@ -44,7 +44,7 @@ export const Default = () => {
       children :<p className='c-on-y'>One of the features explained in just a few words.</p>,
     },
     {
-      className   :'y-background',
+      className   :'y-background b-dark-y',
       headingProps:{
         heading         :'Car engine',
         headingAs       :'h2',
@@ -54,7 +54,7 @@ export const Default = () => {
       children :<p className='c-on-y'>One of the features explained in a short sentence.</p>,
     },
     {
-      className   :'y-grey',
+      className   :'y-grey b-light-y',
       headingProps:{
         heading         :'Car lights',
         headingAs       :'h2',
@@ -67,7 +67,7 @@ export const Default = () => {
 
   return(
     <BlockCards
-      className='s1 k-s'
+      className='s1 k-s u3'
       headingProps={{
         label         :'Our philosophy',
         labelClassName:'x-green',
@@ -92,7 +92,7 @@ export const Grid = () => {
 
   const cardMap = [
     {
-      className   :'y-background',
+      className   :'y-background b-y',
       headingProps:{
 
         heading         :'Cars and autos',
@@ -103,7 +103,7 @@ export const Grid = () => {
       children :<p className='c-on-y'>One of the features explained in just a few words.</p>,
     },
     {
-      className   :'y-background',
+      className   :'y-background b-dark-y',
       headingProps:{
         heading         :'Car engine',
         headingAs       :'h2',
@@ -113,7 +113,7 @@ export const Grid = () => {
       children :<p className='c-on-y'>One of the features explained in a short sentence.</p>,
     },
     {
-      className   :'y-grey',
+      className   :'y-grey b-light-y',
       headingProps:{
         heading         :'Car lights',
         headingAs       :'h2',
@@ -123,7 +123,7 @@ export const Grid = () => {
       children :<p className='c-on-y'>This car also has lights for safety. Very modern indeed</p>,
     },
     {
-      className   :'y-grey',
+      className   :'y-olive b-y',
       headingProps:{
         heading         :'Car lights',
         headingAs       :'h2',
@@ -133,7 +133,7 @@ export const Grid = () => {
       children :<p className='c-on-y'>This car also has lights for safety. Very modern indeed</p>,
     },
     {
-      className   :'y-indigo',
+      className   :'y-indigo b-light-y',
       headingProps:{
         heading         :'Car engine',
         headingAs       :'h2',
