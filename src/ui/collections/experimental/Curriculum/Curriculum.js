@@ -3,6 +3,9 @@ import * as React from 'react'
 //import {} from 'react'
 import PropTypes from 'prop-types'
 
+import { Heading } from 'ui/elements'
+import { Accordion } from 'ui/site'
+
 import { Item } from './common'
 
 
@@ -32,25 +35,37 @@ const baseClassName = 'curriculum'
 const Curriculum = ({
   id,
   className,
-  style
+  style,
+  children
 }) => {
 
 
   return (
-    <div
-      className={
-        [
-        //styles[baseClassName],
-          baseClassName,
-          className
-        ].filter(e => e).join(' ')
-      }
-      id={ id }
-      style={ style }
-    >
-      <FormattedMessage {...messages.title} />
-      {' '}
-    </div>
+    <>
+      <div className='mb-u u4'>
+      <Heading
+        headingAs='h2'
+        className='s2 k-s u-1 mb-u'
+        heading='Education'
+        subtitle={
+          <FormattedMessage {...messages.title} />
+        }
+      />
+      </div>
+      <Accordion
+        className={
+          [
+            //styles[baseClassName],
+            baseClassName,
+            className
+          ].filter(e => e).join(' ')
+        }
+        id={ id }
+        style={ style }
+      >
+        { children }
+      </Accordion>
+    </>
   )}
 
 Curriculum.propTypes = {

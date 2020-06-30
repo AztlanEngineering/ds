@@ -41,7 +41,7 @@ const reducer = (state, action) =>{
   case 'UNREGISTER':
     return {
       ...state,
-      items:state.items.filter(e => e.id !== action.payload),
+      items:state.items.filter(e => e !== action.payload),
       open :state.open.filter(e => e !== action.payload),
     }
   case 'TOGGLE_ONE':

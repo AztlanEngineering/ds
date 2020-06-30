@@ -3,91 +3,109 @@ import * as React from 'react'
 //import {} from 'react'
 import PropTypes from 'prop-types'
 
-
+import { Heading } from 'ui/elements'
+import { Accordion } from 'ui/site'
 
 
 //Intl
 
-//import { FormattedMessage} from "react-intl";
-//import messages from "./messages";
-// <FormattedMessage {...messages.title} />
+/* import { FormattedMessage} from "react-intl";
+   import messages from "./messages";
+    <FormattedMessage {...messages.title} /> */
 
 //Config
 
 //import C from 'ui/cssClasses'
 
-//Relative imports
-//import styles from './item.scss'
+/* Relative imports
+   import styles from './item.scss' */
 
 const baseClassName = 'item'
 
 
 /**
  * Use `Item` to
- * Has color `x` 
+ * Has color `x`
  */
 const Item = ({
   id,
   className,
-  style
+  style,
+  children,
+  title,
+  subtitle
 }) => {
-  
-  
+
+  const composedTitle =
+    <Heading
+      heading={title}
+      headingAs='h3'
+      headingClassName='c-dark-x'
+      subtitle={subtitle}
+      subtitleUpper
+    >
+    </Heading>
+
+
   return (
-  <div 
-    className={
-      [
+    <Accordion.Item
+      className={
+        [
         //styles[baseClassName],
-        baseClassName,
-        className
-      ].filter(e => e).join(' ')
-  }
-    id={ id }
-    style={ style }
-  >
-    <h2>Welcome to the Item component</h2>
-  </div>
-)}
+          baseClassName,
+          className
+        ].filter(e => e).join(' ')
+      }
+      id={ id }
+      style={ style }
+      title={ composedTitle }
+    >
+      <div className='s1 k-s'>
+      { children }
+      </div>
+
+    </Accordion.Item>
+  )}
 
 Item.propTypes = {
   /**
    * Provide an HTML id to this element
    */
-  id: PropTypes.string,
+  id:PropTypes.string,
 
   /**
    * The html class names to be provided to this element
    */
-  className: PropTypes.string,
+  className:PropTypes.string,
 
   /**
    * The JSX-Written, css styles to apply to the element.
    */
-  style: PropTypes.object,
+  style:PropTypes.object,
 
   /**
    *  The children JSX
    */
-  children: PropTypes.node,
+  children:PropTypes.node,
 
   /**
    * Which html tag to use
    */
-  as: PropTypes.oneOfType([
+  as:PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object
-  ]), 
+  ]),
   //as: PropTypes.string,
 
   /**
    * The height of the element
    */
-  height: PropTypes.string,
+  height:PropTypes.string,
 
   /**
    * The width of the element
    */
-  width: PropTypes.string,
+  width:PropTypes.string,
   /*
   : PropTypes.shape({
     id: PropTypes.string.isRequired,

@@ -90,10 +90,10 @@ const Item = ({
           { toggleStyle === 'caret' ?
             <AnimatedVCaret
               height='2em'
-              strokeWidth='15'
+              strokeWidth='13'
               listenerId={ id + 'Title' }
               active={ isOpenOrBackend }
-              style={{'--z': 'var(--x)'}}
+              style={{'--z': 'var(--dark-x)'}}
             //    className='c-on-y'
             />
             :

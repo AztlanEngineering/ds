@@ -4,7 +4,7 @@ import { defineMessages } from "react-intl"
 export default defineMessages({
   title: {
     id: "ds.collections.experimental.curriculum.title",
-    defaultMessage: "Welcome home",
+    defaultMessage: "Here are my degrees in antichronological order.",
     description: "The title of the component",
   },
   /*
