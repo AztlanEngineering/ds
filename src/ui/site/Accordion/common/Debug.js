@@ -34,7 +34,7 @@ const baseClassName = 'debug'
  */
 const Debug = ({
 }) => {
-  console.log('IN THE DEBUG', AccordionContext)
+  //console.log('IN THE DEBUG', AccordionContext)
 
   const {
     openOne,
@@ -43,6 +43,7 @@ const Debug = ({
     closeOne,
     toggleOne,
     items,
+    openItems
   } = useContext(AccordionContext)
 
   const actions = [
@@ -75,21 +76,31 @@ const Debug = ({
 
 
   return (
-    <Button.Group stretch='horizontal'>
-      { actions.map((e ,i)=>
-        <Button
-          className={
-            [
+    <>
+      <p>
+        <strong>All </strong>
+        { items }
+      </p>
+      <p>
+        <strong>Open </strong>
+        { openItems }
+      </p>
+      <Button.Group stretch='horizontal'>
+        { actions.map((e ,i)=>
+          <Button
+            className={
+              [
               //styles[baseClassName],
-              e.className,
-            ].filter(e => e).join(' ')
-          }
-          onClick={ e.action }
-        >
-          { e.name }
-        </Button>
-      ) }
-    </Button.Group>
+                e.className,
+              ].filter(e => e).join(' ')
+            }
+            onClick={ e.action }
+          >
+            { e.name }
+          </Button>
+        ) }
+      </Button.Group>
+    </>
   )}
 
 Debug.propTypes = {

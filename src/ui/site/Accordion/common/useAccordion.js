@@ -46,7 +46,7 @@ export default (
     if (defaultIsOpen) {
       openOne(id)
     }
-    return unregister(id)
+    return () => unregister(id)
   },
   []
   )
