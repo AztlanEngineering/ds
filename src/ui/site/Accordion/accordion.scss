@@ -52,7 +52,7 @@ $icon-width:2em;
     .content {
       &.plus {
         & > * {
-          padding-left: $icon-width * 3 / 2;
+          padding-left: calc((#{$icon-width} * 3 / 2)/var(--s, 1)) ;
         }
       }
     }

@@ -8,11 +8,8 @@ $transitionDuration:.2s;
 $selectionAnimationHeight:.1em;
 $transformHoverScale:1.02;
 $section-padding:1.4em;
+$shadow:.2em .2em .4em var(--dark-background);
 
-//Cards
-$scrollPadding:calc(var(--u, 0) * 1rem);
-$gaps:.5em;
-$card-width:300px;
 
 .scene {
   perspective: 600px;
@@ -72,6 +69,8 @@ $card-width:300px;
   visibility: visible;
   width: 100%;
 
+  box-shadow:$shadow;
+
   & > .section {
     z-index: 0;
 
@@ -85,6 +84,12 @@ $card-width:300px;
     span, {
       color: var(--x, var(--y-on));
     } */
+    &.img {
+      & > figure,
+      & > img {
+        width: 100%;
+      }
+    }
 
     &:not(.img) {
       padding: $section-padding;
@@ -127,73 +132,6 @@ $card-width:300px;
     &:hover,
     &:focus {
       transform: scale($transformHoverScale);
-    }
-  }
-}
-
-.cards {
-  &.grid {
-    display: grid;
-    grid-gap: $gaps;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    margin: 0 $scrollPadding;
-  }
-
-  &:not(.grid) {
-    @media (max-width: 899px) {
-      align-items: stretch;
-      // Enable Safari touch scrolling physics which is needed for scroll snap
-      display: flex;
-      -webkit-overflow-scrolling: touch;
-      -ms-overflow-style: none;
-      overflow-x: scroll;
-      overflow-y: hidden;
-      scroll-padding: 0 0 0 $scrollPadding;
-      scroll-snap-type: x mandatory;
-      scrollbar-width: none;
-
-      &::-webkit-scrollbar {
-        display: none;
-      }
-
-      > :first-child {
-        margin-left: $scrollPadding;
-      }
-
-      > :last-child {
-        //margin-right: $scrollPadding;
-      }
-
-      .scene {
-        min-width: 300px;
-        position: relative;
-        scroll-snap-align: start;
-
-        & + .scene {
-          margin-left: $gaps;
-        }
-
-      }
-        &::after {
-          content: "";
-          flex: 0 0 $scrollPadding;
-        }
-
-      figcaption {
-        display: none;
-      }
-    }
-
-    @media (min-width: 900px) {
-      display: grid;
-      grid-gap: $gaps;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      margin: 0 $scrollPadding;
-
-      .card {
-
-
-      }
     }
   }
 }

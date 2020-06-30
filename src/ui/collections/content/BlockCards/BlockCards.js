@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
 
 
 import { Figure } from 'ui/common'
-import { Heading } from 'ui/elements'
+import { Heading, Card } from 'ui/elements'
 import { Page, IconCard } from 'ui/site'
 
 //Intl
@@ -70,19 +70,18 @@ const BlockCards = ({
       >
         <Heading { ...headingProps }/>
       </div>
-      <div
+      <Card.Group
+        grid={ grid }
         className={
           [
             C.content,
-            grid && C.grid,
             'pt-u pb-u',
-            'cards'
           ].filter(e => e).join(' ')
         }
       >
         { children }
 
-      </div>
+      </Card.Group>
     </Page.Section>
   )}
 

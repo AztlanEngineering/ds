@@ -132,8 +132,92 @@ export const Default = () => {
 
 //Default.parameters = storyParameters
 
-export const Variant = () => (
-  <Curriculum></Curriculum>
-)
+export const Plus = () => {
+  const items = [
+    {
+      className:'y-trqnspqrent x-subtitle',
+      children :<IconList>
+        <IconList.Item
+          icon='l'
+          style={{'--z': 'var(--y)'}}
+          className='c-dark-x'
+        >
+          Courses in cooking
+        </IconList.Item>
+        <IconList.Item
+          icon='l'
+          style={{'--z': 'var(--y)'}}
+          className='c-dark-x'
+        >
+          Courses in business
+        </IconList.Item>
+        <IconList.Item
+          icon='l'
+          style={{'--z': 'var(--y)'}}
+          className='c-dark-x'
+        >
+          Teamwork in managing the kitchen
+        </IconList.Item>
+      </IconList>,
+      title   :'Senior developper, Space X',
+      subtitle:'2012 - present, Palo Alto, California',
+      id      :'ms',
+      simple   :true
+    },
+    {
+      className:'y-green x-black',
+      children :<IconList>
+        <IconList.Item
+          icon='l'
+          style={{'--z': 'var(--y)'}}
+          className='c-x'
+        >
+          Courses in cooking
+        </IconList.Item>
+        <IconList.Item
+          icon='l'
+          style={{'--z': 'var(--y)'}}
+          className='c-x'
+        >
+          Courses in business
+        </IconList.Item>
+        <IconList.Item
+          icon='l'
+          style={{'--z': 'var(--y)'}}
+          className='c-x'
+        >
+          Teamwork in managing the kitchen
+        </IconList.Item>
+        <IconList.Item
+          icon='o'
+          style={{'--z': 'var(--y)'}}
+          className='c-x'
+        >
+          Award in chess (Elo score = 2150)
+        </IconList.Item>
+        <IconList.Item
+          icon='o'
+          style={{'--z': 'var(--y)'}}
+          className='c-x'
+        >
+          Best poem of the year 2005
+        </IconList.Item>
+      </IconList>,
+      title   :'Chief of Product, Microsoft',
+      subtitle:'2001-2012, Seattle, Wa.',
+      id      :'bs'
+    }
+  ]
+  return(
+    <Curriculum toggleStyle='plus'>
+      { items.map((e, i) =>
+        <Curriculum.Item
+          key={i}
+          {...e}
+        />
+      ) }
+    </Curriculum>
+  )
 
+}
 //Variant.parameters = storyParameters

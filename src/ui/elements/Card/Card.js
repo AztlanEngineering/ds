@@ -16,6 +16,7 @@ import {
   Section,
   Divider,
   Simple as BaseCard,
+  Group
 } from './common'
 
 //const baseClassName = 'card' //Provided by the simple card
@@ -198,5 +199,6 @@ Card.defaultProps = {
 
 Card.Section = Section
 Card.Divider = Divider
+Card.Group = Group
 
 export default Card

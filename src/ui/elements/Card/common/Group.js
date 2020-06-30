@@ -3,8 +3,7 @@ import * as React from 'react'
 //import {} from 'react'
 import PropTypes from 'prop-types'
 
-import { Heading } from 'ui/elements'
-import { Accordion } from 'ui/site'
+
 
 
 //Intl
@@ -15,61 +14,60 @@ import { Accordion } from 'ui/site'
 
 //Config
 
-//import C from 'ui/cssClasses'
+import C from 'ui/cssClasses'
 
 /* Relative imports
-   import styles from './item.scss' */
+   import styles from './group.scss' */
+import { isBackend } from 'ui/isBackend'
 
-const baseClassName = 'item'
+if(!isBackend) {
+  import('./group.scss')
+}
+
+const baseClassName = 'cards'
 
 
 /**
- * Use `Item` to
+ * Use `Group` to
  * Has color `x`
  */
-const Item = ({
+const Group = ({
   id,
   className,
   style,
   children,
-  title,
-  subtitle,
+
+  as:Wrapper,
+
+  grid,
+  cardWidth,
+
   ...otherProps
 }) => {
 
-  const composedTitle =
-    <Heading
-      heading={title}
-      headingAs='h3'
-      headingClassName='c-dark-x'
-      subtitle={subtitle}
-      subtitleUpper
-    >
-    </Heading>
-
 
   return (
-    <Accordion.Item
+    <Wrapper
       className={
         [
         //styles[baseClassName],
           baseClassName,
+          grid && C.grid,
           className
         ].filter(e => e).join(' ')
       }
       id={ id }
-      style={ style }
-      title={ composedTitle }
+      style={{
+        '--card-width':cardWidth,
+        ...style
+      }}
       { ...otherProps }
     >
-      <div className='s1 k-s'>
       { children }
-      </div>
-
-    </Accordion.Item>
+    </Wrapper>
   )}
 
-Item.propTypes = {
+Group.propTypes = {
   /**
    * Provide an HTML id to this element
    */
@@ -100,31 +98,22 @@ Item.propTypes = {
   //as: PropTypes.string,
 
   /**
-   * The height of the element
+   * Whether the group appears in a grid
    */
-  height:PropTypes.string,
+  grid:PropTypes.bool,
 
   /**
-   * The width of the element
+   *  The card width, for instance `300px`. If `grid`  is true, this will translate into the min of the minmax
    */
-  width:PropTypes.string,
-  /*
-  : PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    state: PropTypes.string.isRequired,
-  }),
-  : PropTypes.func,
-  : PropTypes.func,
-  : PropTypes.oneOf(['', ''])
-  */
+  cardWidth:PropTypes.string
+
 }
 
-/*
-Item.defaultProps = {
-  status: 'neutral',
-  //height:'2.2em',
-  //as:'p',
+Group.defaultProps = {
+  as  :'div',
+  grid:false
+  /* height:'2.2em',
+     as:'p', */
 }
-*/
-export default Item
+
+export default Group

@@ -1,15 +1,17 @@
 /* @fwrlines/generator-storybook-story 1.0.1 */
 import * as React from 'react'
+import faker from 'faker'
 
-import { Card, SimpleCard, SVG } from 'ui'
+import { Image, Card, SimpleCard, SVG } from 'ui'
 import { ALL_COLORS } from '../config'
 
 export default {
   title        :'elements/Card',
   component    :Card,
   subcomponents:{
-    Section:Card.Section,
-    Divider:Card.Divider,
+    'Card.Section':Card.Section,
+    'Card.Divider':Card.Divider,
+    'Card.Group'  :Card.Group,
   },
   parameters:{
     decorators:[
@@ -75,9 +77,9 @@ export const BackFace = () => (
     className='y-red b-dark-y x-white c-x'
     backFaceClassName='y-indigo b-light-y'
     backFace={
-    <Card.Section>
-      Hello from the other side
-    </Card.Section>
+      <Card.Section>
+        Hello from the other side
+      </Card.Section>
 
     }
   >
@@ -149,7 +151,10 @@ export const Selectable = () =>(
 
 export const WithImage = () =>(
   <div className='p2'>
-    <Card style={{ width: 'min-content' }} className='b-y y-yellow'>
+    <Card
+      style={{ width: '500px' }}
+      className='b-y y-yellow'
+    >
       <Card.Section
         image
         as='header'
@@ -225,7 +230,7 @@ export const BasicStyle = () => (
     <Card
       style={{ width: '320px' }}
       className={
-        'x-' + e.toLowerCase() 
+        'x-' + e.toLowerCase()
       }
       basic
       key={i}
@@ -273,5 +278,69 @@ export const SimpleStyle = () => (
 
     </Card>
   )
+)
+
+export const GroupFlex = () =>(
+  <Card.Group>
+    {
+      [ 'yellow', 'indigo', 'background' ].map((e , i)=>
+        <Card
+          className={'b-y y-' + e}
+          key={i}
+        >
+          <Card.Section
+            image
+            as='header'
+          >
+            <img
+              src={ img_src }
+              alt='alt img'
+              className='fit'
+              height={200}
+              width={350}
+            />
+          </Card.Section>
+          <Card.Section>
+            <p dangerouslySetInnerHTML={{__html: text}}>
+
+            </p>
+          </Card.Section>
+        </Card>
+      )}
+
+  </Card.Group>
+)
+
+export const GroupGrid = () =>(
+  <Card.Group
+    grid
+    cardWidth='500px'
+  >
+    {
+      [ 'yellow', 'indigo', 'background', 'red' ].map((e , i)=>
+        <Card
+          className={'b-y y-' + e}
+          key={i}
+        >
+          <Card.Section
+            image
+            as='header'
+          >
+            <Image
+              src={ img_src }
+              alt='alt img'
+              objectFit='cover'
+              height={200}
+            />
+          </Card.Section>
+          <Card.Section>
+            <p>
+              { faker.lorem.paragraph() }
+            </p>
+          </Card.Section>
+        </Card>
+      )}
+
+  </Card.Group>
 )
 

@@ -36,7 +36,7 @@ export default {
   'error'            :'error',
   // StatusBar
   'fixed'            :'fixed',
-  // collection/content/BlockCards
+  // Group (Cards)
   'grid':'grid',
   // Group (Button)
   'group'            :'group',

@@ -36,7 +36,9 @@ const Curriculum = ({
   id,
   className,
   style,
-  children
+  children,
+
+  ...otherProps
 }) => {
 
 
@@ -53,6 +55,7 @@ const Curriculum = ({
       />
       </div>
       <Accordion
+        {...otherProps}
         className={
           [
             //styles[baseClassName],
