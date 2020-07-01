@@ -62,9 +62,7 @@ const Item = ({
       title={ composedTitle }
       { ...otherProps }
     >
-      <div className='s1 k-s'>
       { children }
-      </div>
 
     </Accordion.Item>
   )}

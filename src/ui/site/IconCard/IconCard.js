@@ -73,15 +73,16 @@ const IconCard = ({
        */
       { ...cardProps }
     >
-      <Card.Section>
-        <SVG
-          height={ svgHeight }
-          width={ svgWidth }
-          target={ svgTarget }
-          sprite={ svgSprite }
-          className={ svgClassName }
-        />
-      </Card.Section>
+      { svgTarget &&
+        <Card.Section>
+          <SVG
+            height={ svgHeight }
+            width={ svgWidth }
+            target={ svgTarget }
+            sprite={ svgSprite }
+            className={ svgClassName }
+          />
+        </Card.Section>}
       <Card.Section>
         <Heading
           { ...headingProps }
@@ -161,12 +162,14 @@ IconCard.propTypes = {
 IconCard.defaultProps = {
   svgHeight   :'4em',
   svgWidth    :'4em',
-  svgTarget   :'engine',
+  //svgTarget   :'engine',
   svgClassName:'x-primary',
   /* height:'2.2em',
      as:'p', */
 }
 
+IconCard.Section = Card.Section
+IconCard.Divider = Card.Divider
 IconCard.Group = Card.Group
 
 export default IconCard

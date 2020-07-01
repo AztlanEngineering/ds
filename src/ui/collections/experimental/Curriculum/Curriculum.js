@@ -43,17 +43,6 @@ const Curriculum = ({
 
 
   return (
-    <>
-      <div className='mb-u u4'>
-      <Heading
-        headingAs='h2'
-        className='s2 k-s u-1 mb-u'
-        heading='Education'
-        subtitle={
-          <FormattedMessage {...messages.title} />
-        }
-      />
-      </div>
       <Accordion
         {...otherProps}
         className={
@@ -68,7 +57,6 @@ const Curriculum = ({
       >
         { children }
       </Accordion>
-    </>
   )}
 
 Curriculum.propTypes = {

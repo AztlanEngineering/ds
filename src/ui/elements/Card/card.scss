@@ -23,10 +23,11 @@ $shadow:.2em .2em .4em var(--dark-background);
 
   .flip {
     color: var(--dark-x, var(--on-y));
+    opacity:.8;
     cursor: pointer;
     display: block;
     font-size: calc(var(--s-1) * 1em);
-    opacity: .5;
+    opacity: .34;
     position: absolute;
     right: $section-padding / 2;
     top: $section-padding / 2;
