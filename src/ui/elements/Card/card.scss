@@ -8,7 +8,8 @@ $transitionDuration:.2s;
 $selectionAnimationHeight:.1em;
 $transformHoverScale:1.02;
 $section-padding:1.4em;
-$shadow:.2em .2em .42em rgba(220, 220, 220, .2);
+$shadow:var(--shadow);
+$shadow-hover:var(--shadow-hover);
 
 
 .scene {
@@ -71,6 +72,11 @@ $shadow:.2em .2em .42em rgba(220, 220, 220, .2);
   width: 100%;
 
   box-shadow:$shadow;
+
+  &:hover,
+  &:focus {
+    box-shadow:$shadow-hover;
+  }
 
   & > .section.visible {
     z-index: 0;

@@ -93,7 +93,7 @@ const Item = ({
               strokeWidth='13'
               listenerId={ id + 'Title' }
               active={ isOpenOrBackend }
-              style={{'--z': 'var(--dark-x)'}}
+              style={{'--z': 'var(--dark-subtitle)'}}
             //    className='c-on-y'
             />
             :
