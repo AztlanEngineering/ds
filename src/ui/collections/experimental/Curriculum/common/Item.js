@@ -41,7 +41,7 @@ const Item = ({
     <Heading
       heading={title}
       headingAs='h3'
-      headingClassName='c-dark-x'
+      //headingClassName='x-'
       subtitle={subtitle}
       subtitleUpper
     >

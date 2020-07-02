@@ -23,6 +23,14 @@ const SiteContextProvider = ({
   //console.warn(9999, 'site', initialTheme)
 
   const theme = useTheme(initialTheme)
+  /*
+    {
+  | userTheme,
+  | preferredTheme,
+  | setPreferredTheme,
+  }
+
+   */
 
   return (
     <SiteContext.Provider

@@ -32,9 +32,11 @@ const SVG = ({
   sprite,
   target,
   targets,
+  source,
 
   strokeWidth,
   animated,
+  ...otherProps
 }) => {
 
   return (
@@ -54,8 +56,16 @@ const SVG = ({
       width={width || (!height ? '512' : undefined)}
       height={height || ( !width ? '512' : undefined)}
       viewBox={viewBox}
+      { ...otherProps }
     >
-      { !targets ?
+      { source ?
+        <UseSVG
+          className={ useClassName }
+          source={ source }
+          strokeWidth={ strokeWidth }
+        />
+        :
+       !targets ?
         <UseSVG
           className={ useClassName }
           sprite={ sprite }
@@ -127,6 +137,11 @@ SVG.propTypes = {
    * The id of the target in the sprite
    */
   target:PropTypes.string,
+
+  /**
+   * In case this is not a sprite but a standalone svg. Not recommended here, better use Figure. The only reason you would wanna use this instead of target is in the case you need to dynamically pass css classes to the inner svg components
+   */
+  source:PropTypes.string,
 
   /**
    * An array of targets

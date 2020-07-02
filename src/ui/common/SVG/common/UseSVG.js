@@ -13,6 +13,7 @@ const UseSVG = ({
 
   sprite,
   target,
+  source,
 
   strokeWidth
 }) => {
@@ -23,7 +24,7 @@ const UseSVG = ({
           className,
         ].filter(e => e).join(' ')
       }
-      href={(sprite) + (target ? '#' + target : '')}
+      href={source ? source : (sprite) + (target ? '#' + target : '')}
       style={ strokeWidth ?
         {
           ...style,
@@ -63,6 +64,11 @@ UseSVG.propTypes = {
    * The target image id in the sprite
    */
   target:PropTypes.string,
+
+  /**
+   * The source image in case this is not a sprite
+   */
+  source:PropTypes.string,
 
   /**
    * The SVG property stroke-width

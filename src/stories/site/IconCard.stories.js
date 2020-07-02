@@ -31,6 +31,7 @@ export default {
 
 export const Default = () => (
   <IconCard
+    svgTarget='engine'
 
     headingProps={{
 
@@ -45,6 +46,7 @@ export const Default = () => (
 
 export const Background = () => (
   <IconCard
+    svgTarget='engine'
     className='y-indigo'
 
     headingProps={{
@@ -61,6 +63,7 @@ export const Background = () => (
 
 export const Size = () => (
   <IconCard
+    svgTarget='engine'
     className='y-grey s-2 k-s'
 
     headingProps={{

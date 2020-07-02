@@ -3,7 +3,7 @@ import * as React from 'react'
 //import {} from 'react'
 import PropTypes from 'prop-types'
 
-
+import { SVG } from 'ui/common'
 
 
 //Intl
@@ -47,6 +47,18 @@ const Group = ({
 
 
   return (
+    <>
+      { !grid &&
+        <div className='row uc md-h lg-h'>
+          <SVG
+            height='1.2em'
+            width='9em'
+            source='/arrow.svg#arrow'
+            viewBox='0 0 512 60'
+            useClassName='x-subtitle c-light-x'
+
+          />
+        </div>}
     <Wrapper
       className={
         [
@@ -65,6 +77,7 @@ const Group = ({
     >
       { children }
     </Wrapper>
+    </>
   )}
 
 Group.propTypes = {

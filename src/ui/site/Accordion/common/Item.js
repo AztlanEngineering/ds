@@ -98,7 +98,7 @@ const Item = ({
             />
             :
             <span
-              className='yb h2 c-x'
+              className='yb h2 c-x x-subtitle'
             >
               { isOpenOrBackend ?
                 '-':'+'
