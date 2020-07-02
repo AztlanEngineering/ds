@@ -16,7 +16,7 @@ $text-font-size:calc(var(--s,1) * var(--s0) * 1em);
   .heading {
 
     .content {
-      font-size:$heading-font-size;
+      //font-size:$heading-font-size;
     } 
 
     & + *{
