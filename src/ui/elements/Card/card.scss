@@ -9,7 +9,7 @@ $selectionAnimationHeight:.1em;
 $transformHoverScale:1.02;
 $section-padding:1.4em;
 $shadow:var(--shadow);
-$shadow-hover:var(--shadow-hover);
+$shadow-hover:var(--shadow-hover, var(--shadow));
 
 
 .scene {

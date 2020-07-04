@@ -85,7 +85,6 @@ const Item = ({
         <div className={ C.content }>
           { title }
         </div>
-
         <div className='icon'>
           { toggleStyle === 'caret' ?
             <AnimatedVCaret
@@ -93,12 +92,12 @@ const Item = ({
               strokeWidth='13'
               listenerId={ id + 'Title' }
               active={ isOpenOrBackend }
-              style={{'--z': 'var(--dark-subtitle)'}}
+              style={{'--z': 'var(--dark-subtitle)'}}ding-mul
             //    className='c-on-y'
             />
             :
             <span
-              className='yb h2 c-x x-subtitle'
+              className='yb mv-v v0 h2 c-x x-subtitle'
             >
               { isOpenOrBackend ?
                 '-':'+'

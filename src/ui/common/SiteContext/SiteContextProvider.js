@@ -55,8 +55,8 @@ SiteContextProvider.propTypes = {
   config:PropTypes.shape({
     SITE_NAME     :PropTypes.string.isRequired,
     SITE_CANONICAL:PropTypes.string.isRequired,
-    FACEBOOK      :PropTypes.string.isRequired,
-    INSTAGRAM     :PropTypes.string.isRequired,
+    FACEBOOK      :PropTypes.string,
+    INSTAGRAM     :PropTypes.string,
   }).isRequired,
 
   /**
