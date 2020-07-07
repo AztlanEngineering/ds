@@ -39,6 +39,8 @@ const Card = ({
 
   backFace,
   backFaceClassName,
+
+  ...otherProps
 }) => {
 
   const [isFlipped, setFlip] = useState(false)
@@ -70,6 +72,7 @@ const Card = ({
       }
       id={wrapperId}
       style={wrapperStyle}
+      { ...otherProps }
     >
       <div
         className={
