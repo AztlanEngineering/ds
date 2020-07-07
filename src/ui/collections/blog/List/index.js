@@ -1,11 +1,2 @@
 /* @fwrlines/generator-react-component 2.3.4 */
-/*
-
-Classes :
-.list : default
-
-*/
-
-.list{
-
-}
+export { default as List } from './List'

@@ -1,4 +1,5 @@
 export * from './content'
+export * from './blog'
 export * from './cp'
 export * from './dashboard'
 export * from './experimental'
