@@ -24,7 +24,9 @@ const GrayscaleIcon = ({
 
   src,
   alt,
-  link
+  link,
+
+  objectPosition
 }) => {
 
 
@@ -50,9 +52,11 @@ const GrayscaleIcon = ({
           C.content
           //+ (? '':'')
             + (className ? ' ' + className : '')
-            + ' fit'
         }
         id={ id }
+        style={{
+          objectPosition
+        }}
       />
     </a>
   )}
@@ -97,10 +101,17 @@ GrayscaleIcon.propTypes = {
    *  The width of the image
    */
   width:PropTypes.string,
+
+  /**
+   *  The position of the object in css
+   */
+  objectPosition:PropTypes.string,
+    
 }
 
 GrayscaleIcon.defaultProps = {
   height:'2.2em',
+  objectPosition:'bottom left',
 }
 
 export default GrayscaleIcon

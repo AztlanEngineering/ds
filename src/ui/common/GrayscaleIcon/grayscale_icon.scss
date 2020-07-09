@@ -9,21 +9,20 @@ $baseOpacity:.4;
 $hoverOpacity:1;
 $grayscale:.9;
 
-.grayscale_icon{
-	display:inline-block;
-	opacity:$baseOpacity;
-	filter: grayscale($grayscale) ;
-	-webkit-filter: grayscale($grayscale);
+.grayscale_icon {
+  display: inline-block;
+  -webkit-filter: grayscale($grayscale);
+  filter: grayscale($grayscale);
+  opacity: $baseOpacity;
 
-	&:hover,
-	&:focus {
-		opacity:$hoverOpacity
-	}
+  &:hover,
+  &:focus {
+    opacity: $hoverOpacity;
+  }
 
-	.content {
-		height:100%;
-		width:100%;
-	}
-
-
+  .content {
+    height: 100%;
+    object-fit: contain;
+    width: 100%;
+  }
 }
