@@ -70,7 +70,7 @@ const CloseBackOrRedirect = ({
       style={ style }
       onClick={onClick}
     >
-      <span className='fi s0 k-s pointer'>
+      <span className='fi-icon fi s0 k-s pointer'>
         { icon }
       </span>
     </a>

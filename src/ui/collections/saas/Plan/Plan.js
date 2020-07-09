@@ -75,10 +75,14 @@ const Plan = ({
           ].filter(e => e).join(' ')
         }
         id={ id }
-        style={ style }
+        style={{
+          overflow:'visible',
+          ...style,
+        }}
         { ...otherProps }
       >
-        <Card.Section>
+        <Card.Section className='price_tag'>
+          
           <Heading
             heading={ name }
             headingClassName={

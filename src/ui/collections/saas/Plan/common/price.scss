@@ -10,50 +10,52 @@ Classes :
 $gap:.5em;
 
 .price {
+  column-gap: $gap;
   display: grid;
   grid-template-areas:
     ". integer decimal"
     "currency integer periodicity";
-  justify-content:start;
-  column-gap:$gap;
+  justify-content: start;
   //row-gap:$gap;
-  
+
   > p {
-    margin:0;
+    margin: 0;
   }
 
   .currency {
+    align-self: start;
+    color: var(--subtitle);
     grid-area: currency;
-    align-self:start;
-    color:var(--subtitle);
   }
 
   .integer {
+    color: var(--paragraph);
+    font-size: calc(var(--s6) * 1em);
     grid-area: integer;
-    font-size:calc(var(--s6) * 1em);
   }
 
   .decimal {
+    align-self: end;
+    color: var(--dark-paragraph);
     grid-area: decimal;
-    align-self:end;
   }
 
-  .integer { 
-    font-weight:bold;
+  .integer {
+    color: var(--paragraph);
+    font-weight: bold;
   }
 
   .periodicity {
+    align-self: start;
+    color: var(--dark-subtitle);
     grid-area: periodicity;
-    align-self:start;
-    color:var(--subtitle);
   }
-  
-  .free {
-    grid-area:1/1/3/4;
-    font-size:calc(var(--s5) * 1em);
-    color:var(--dark-subtitle);
-    font-weight:bold;
-    text-transform:uppercase;
 
+  .free {
+    color: var(--dark-subtitle);
+    font-size: calc(var(--s5) * 1em);
+    font-weight: bold;
+    grid-area: 1/1/3/4;
+    text-transform: uppercase;
   }
 }

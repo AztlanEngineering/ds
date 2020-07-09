@@ -37,7 +37,22 @@ export const Default = () => (
         name={ e}
         key={ i }
       >
-        <span className='fi'>{ e }</span>
+        <span className='fi fi-icon'>{ e }</span>
+      </IconItem>
+    )
+    }
+  </IconGallery>
+)
+
+
+export const Cairo = () => (
+  <IconGallery>
+    {chars.map((e,i) =>
+      <IconItem
+        name={ e}
+        key={ i }
+      >
+        <span className='fi fi-cairo'>{ e }</span>
       </IconItem>
     )
     }

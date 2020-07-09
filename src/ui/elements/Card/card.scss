@@ -62,7 +62,7 @@ $shadow-hover:var(--shadow-hover, var(--shadow));
   //background: var(--y, transparent);
   border-radius: var(--r);
 
-  display: inline-block;
+  display: block;
   height: 100%;
   overflow: hidden;
   -webkit-perspective: 0;

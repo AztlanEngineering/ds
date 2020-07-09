@@ -5,27 +5,26 @@ import faker from 'faker'
 
 //import { action } from '@storybook/addon-actions'
 
-import { BlogContextProvider, BlogSingle } from 'ui'
+import { Footer } from 'ui'
 //import QUERY from './graphql/query.graphql'
-import { AplProvider } from 'stories/utils'
+//import { AplProvider } from 'stories/utils'
 //import { Router } from 'stories/utils'
 //import {ALL_COLORS, SIZES } from 'stories/config.js'
 //import { LIST, LIST_XS, TEXT_XXS_ESC, TEXT_XXS, TEXT_XS, TEXT } from 'stories/utils/Dummy'
 
-const endpoint = 'https://s.meccamico.com/graphql'
+//const endpoint = 'https://api.fwrlines.com/graphql'
 
 export default {
-  title: 'collections/blog/BlogSingle',
-  component:BlogSingle,
+  title: 'site/Footer',
+  component:Footer,
   //componentSubtitle:'Component subtitle',
   subcomponents: {
-    //Item:BlogSingle.Item
+    //Item:Footer.Item
   },
   parameters: {
     decorators: [ 
       //storyfn => <div className="">{ storyfn() }</div>,
-      storyfn => <BlogContextProvider>{ storyfn() }</BlogContextProvider>,
-      storyfn => <AplProvider endpoint={ endpoint }>{ storyfn() }</AplProvider>,
+      //storyfn => <AplProvider endpoint={ endpoint }>{ storyfn() }</AplProvider>,
       //storyfn => <Router>{ storyfn() }</Router>,
     ]
   }
@@ -44,13 +43,13 @@ const storyParameters = {
  */
 
 export const Default = () => (
-  <BlogSingle></BlogSingle> 
+  <Footer></Footer> 
 )
 
 //Default.parameters = storyParameters
 
 export const Variant = () => (
-    <BlogSingle></BlogSingle> 
+    <Footer></Footer> 
 )
 
 //Variant.parameters = storyParameters

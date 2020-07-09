@@ -14,7 +14,7 @@ import { HamburgerIcon } from 'ui'
 //const endpoint = 'https://api.fwrlines.com/graphql'
 
 export default {
-  title        :'common/HamburgerIcon',
+  title        :'site/common/HamburgerIcon',
   component    :HamburgerIcon,
   //componentSubtitle:'Component subtitle',
   subcomponents:{

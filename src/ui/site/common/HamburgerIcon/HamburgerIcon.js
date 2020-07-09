@@ -44,17 +44,20 @@ const HamburgerIcon = ({
         //styles[baseClassName],
           baseClassName,
           active && 'is-active',
+          'pointer',
+          '',
           variant,
           className
         ].filter(e => e).join(' ')
       }
+      simple
       id={ id }
       style={ style }
       { ...otherProps }
 
     >
-      <span className='hamburger-box'>
-        <span className='hamburger-inner'></span>
+      <span className='hamburger-box pointer'>
+        <span className='hamburger-inner pointer'></span>
       </span>
     </Button>
 

@@ -24,7 +24,7 @@ $hamburger-layer-height        : 0.18em !default;
 $hamburger-layer-spacing       : 0.24em !default;
 $hamburger-layer-color         : var(--on-x, var(--paragraph)) !default;
 $hamburger-layer-color-alt     : var(--x, var(--paragraph)) !default;
-$hamburger-layer-color-alt-hover: var(--dark-x, var(--paragraph)) !default;
+$hamburger-layer-color-alt-hover: var(--light-x, var(--paragraph)) !default;
 $hamburger-layer-color-alt-focus: var(--on-x, var(--paragraph)) !default;
 $hamburger-layer-border-radius : 0.18em !default;
 $hamburger-hover-opacity       : 0.7 !default;
@@ -89,8 +89,9 @@ $hamburger-active-hover-filter: $hamburger-hover-filter !default;
 .hamburger-box {
   display: inline-block;
   position: relative;
-  top: 50%;
-  transform: translateY(-50%);
+  top:.16em;
+  //top: 50%;
+  //transform: translateY(-50%);
   width: $hamburger-layer-width;
   height: $hamburger-layer-height * 3 + $hamburger-layer-spacing * 2;
 }

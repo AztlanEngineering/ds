@@ -5,27 +5,27 @@ import faker from 'faker'
 
 //import { action } from '@storybook/addon-actions'
 
-import { NavBar } from 'ui'
-//import QUERY from './graphql/query.graphql'
-//import { AplProvider } from 'stories/utils'
-//import { Router } from 'stories/utils'
-//import {ALL_COLORS, SIZES } from 'stories/config.js'
-//import { LIST, LIST_XS, TEXT_XXS_ESC, TEXT_XXS, TEXT_XS, TEXT } from 'stories/utils/Dummy'
+import { Button, NavBar, SiteContextProvider } from 'ui'
+/* import QUERY from './graphql/query.graphql'
+   import { AplProvider } from 'stories/utils' */
+import { Router } from 'stories/utils'
+/* import {ALL_COLORS, SIZES } from 'stories/config.js'
+   import { LIST, LIST_XS, TEXT_XXS_ESC, TEXT_XXS, TEXT_XS, TEXT } from 'stories/utils/Dummy' */
 
 //const endpoint = 'https://api.fwrlines.com/graphql'
 
 export default {
-  title: 'site/NavBar',
-  component:NavBar,
+  title        :'site/NavBar',
+  component    :NavBar,
   //componentSubtitle:'Component subtitle',
-  subcomponents: {
+  subcomponents:{
     //Item:NavBar.Item
   },
-  parameters: {
-    decorators: [ 
-      //storyfn => <div className="">{ storyfn() }</div>,
-      //storyfn => <AplProvider endpoint={ endpoint }>{ storyfn() }</AplProvider>,
-      //storyfn => <Router>{ storyfn() }</Router>,
+  parameters:{
+    decorators:[
+      /* storyfn => <div className="">{ storyfn() }</div>,
+         storyfn => <AplProvider endpoint={ endpoint }>{ storyfn() }</AplProvider>, */
+      storyfn => <Router>{ storyfn() }</Router>,
     ]
   }
 }
@@ -42,14 +42,48 @@ const storyParameters = {
 
  */
 
-export const Default = () => (
-  <NavBar></NavBar> 
-)
+export const Default = () => {
+  const config={
+    SITE_NAME:'Meccamico',
+    HOME_URL :'/home',
+  }
+
+  const FooterComponent = ({open}) => {
+    return (
+      <Button.Group className={ `${open && ''} gc-footer yf` }>
+        <Button className='x-blue'>
+          There
+        </Button>
+        <Button className='x-red'>
+          Hello
+        </Button>
+      </Button.Group>
+    )
+  }
+
+  return (
+    <SiteContextProvider config={ config }>
+      <div className='x-green b-x'>
+        <NavBar
+          className='u1 z-blue'
+          headerClassName='b-z ui-dark x-link'
+          contentClassName='y-background b-dark-y'
+          headerOpenClassName='b-z z-red x-paragraph ui-dark'
+          FooterComponent={ FooterComponent }
+        >
+          <NavBar.Item link='/'>
+            Link
+          </NavBar.Item>
+          <NavBar.Item link='/pricing'>
+            Pricing
+          </NavBar.Item>
+        </NavBar>
+        <p>{ faker.lorem.paragraph(120) }</p>
+      </div>
+    </SiteContextProvider>
+  )
+}
 
 //Default.parameters = storyParameters
 
-export const Variant = () => (
-    <NavBar></NavBar> 
-)
 
-//Variant.parameters = storyParameters

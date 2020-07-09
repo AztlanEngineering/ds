@@ -1,0 +1,110 @@
+/* @fwrlines/generator-react-component 2.3.4 */
+
+/*
+
+Classes :
+.nav_bar : default
+
+*/
+@use "@fwrlines/alphabet-scss/scss/mixins";
+@use "@fwrlines/alphabet-scss/scss/vars/responsive" as *;
+
+.nav_bar {
+  display: grid;
+
+  .gc-content,
+  .gc-footer {
+    display: flex;
+    padding: calc(var(--u, 1) * .5em);
+  }
+
+  .gc-content {
+    margin: 0;
+  }
+
+  .gc-header {
+    display:flex;
+    align-items: center;
+  }
+
+  .gc-content {
+  }
+
+  .gc-footer {
+  }
+
+  @include mixins.media($from:$sm-md) {
+    grid-template-areas: "header content footer";
+    grid-template-columns: min-content 1fr min-content;
+    position:sticky;
+    top:0;
+
+    .gc-content {
+      align-items: center;
+      justify-content: flex-end;
+
+      > li {
+        margin-bottom: 0;
+
+        & + li {
+          margin-left: 1em;
+        }
+      }
+    }
+
+    .gc-footer {
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hamburger {
+      display: none;
+    }
+  }
+
+  @include mixins.media($to:$sm-md) {
+    &:not(.open) {
+      grid-template-areas: "header content footer";
+      grid-template-columns: min-content 1fr min-content;
+      position: sticky;
+
+      top: var(--top, 0);
+
+      .title {
+        display: none;
+      }
+
+      .gc-content {
+        display: none;
+      }
+    }
+
+    &.open {
+      z-index:2;
+      grid-template-areas:
+        "header"
+        "content"
+        "footer";
+      grid-template-rows: min-content 1fr min-content;
+      height: 100%;
+      left: 0;
+      overflow-y: scroll;
+      position: fixed;
+      top: 0;
+      width: 100%;
+
+      title {
+        display: block;
+      }
+    }
+
+
+    .gc-content {
+      flex-direction: column;
+      //align-items:flex-end;
+    }
+    .gc-footer {
+      align-items: center;
+    }
+  }
+}

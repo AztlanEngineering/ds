@@ -77,7 +77,7 @@ const Button = ({
               dangerouslySetInnerHTML={ dangerouslySetInnerHTML }
             >
             </span> : children }
-          { icon && <i className={'icon'}>{ icon }</i>}
+          { icon && <i className={'fi'}>{ icon }</i>}
         </>
       }
     </Element>
