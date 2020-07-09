@@ -3,6 +3,8 @@ import * as React from 'react'
 //import {} from 'react'
 import PropTypes from 'prop-types'
 
+import { Main } from './common'
+
 
 
 
@@ -34,12 +36,14 @@ const baseClassName = 'footer'
 const Footer = ({
   id,
   className,
-  style
+  style,
+  children,
+
 }) => {
   
   
   return (
-  <div 
+  <footer 
     className={
       [
         //styles[baseClassName],
@@ -50,8 +54,8 @@ const Footer = ({
     id={ id }
     style={ style }
   >
-    <h2>Welcome to the Footer component</h2>
-  </div>
+    { children }
+  </footer>
 )}
 
 Footer.propTypes = {
@@ -112,4 +116,6 @@ Footer.defaultProps = {
   //as:'p',
 }
 */
+
+Footer.Main = Main
 export default Footer

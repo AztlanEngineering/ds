@@ -39,6 +39,7 @@ $shadow-hover:var(--shadow-hover, var(--shadow));
   }
 
   .back-face.back-face.back-face {
+    overflow-y:scroll;
     top:0;
     height: 100%;
     left: 0;

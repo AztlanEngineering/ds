@@ -48,9 +48,10 @@ const IconCard = ({
   svgSprite,
   svgTarget,
   svgClassName,
+  svgUseClassName,
 
   headingProps,
-  cardProps,
+  ...otherProps
 }) => {
 
 
@@ -71,7 +72,7 @@ const IconCard = ({
       }
       backFaceClassName='y-primary'
        */
-      { ...cardProps }
+      { ...otherProps }
     >
       { svgTarget &&
         <Card.Section>
@@ -81,6 +82,7 @@ const IconCard = ({
             target={ svgTarget }
             sprite={ svgSprite }
             className={ svgClassName }
+            useClassName={ svgUseClassName }
           />
         </Card.Section>}
       <Card.Section>
@@ -143,10 +145,16 @@ IconCard.propTypes = {
    */
   svgSprite:PropTypes.string,
 
+
   /**
    * The className of the `SVG`
    */
   svgClassName:PropTypes.string,
+
+  /**
+   * The className of the use tag
+   */
+  svgUseClassName:PropTypes.string,
 
   /**
    * The props passed to `Card`

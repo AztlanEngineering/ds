@@ -47,7 +47,7 @@ const Card = ({
   const flipCard = () => setFlip(!isFlipped)
   const flipper = backFace &&
     <span
-      className='flip fi'
+      className='flip fi fi-icon'
       onClick={ flipCard }
     >
       i
