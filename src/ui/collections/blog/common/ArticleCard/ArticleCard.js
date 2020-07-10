@@ -6,13 +6,12 @@ import PropTypes from 'prop-types'
 import { Image } from 'ui/common'
 import { Heading, Card } from 'ui/elements'
 
-
+import { AnalyticsButton as LocalButton } from 'ui/collections/analytics'
 
 //Intl
 
-/* import { FormattedMessage} from "react-intl";
-   import messages from "./messages";
-    <FormattedMessage {...messages.title} /> */
+import { FormattedMessage} from 'react-intl'
+import messages from './messages'
 
 //Config
 
@@ -41,21 +40,31 @@ const ArticleCard = ({
   title,
   description,
   slug,
+  category,
 
   headingAs,
 
   imageSrc,
-  imageAlt
+  imageAlt,
+
+  size
 }) => {
 
 
   return (
     <Card
-      className={
+      wrapperClassName={
         [
         //styles[baseClassName],
           baseClassName,
-          'b-y y-red',
+          size && `size-${size}`,
+        ].filter(e => e).join(' ')
+
+      }
+
+      className={
+        [
+        //styles[baseClassName],
           className
         ].filter(e => e).join(' ')
       }
@@ -74,13 +83,29 @@ const ArticleCard = ({
       <Card.Section className='gc-heading'>
         <Heading
           headingAs={ headingAs }
-          headingClassName=''
-          heading={ title }
+          headingClassName='x-paragraph c-x'
+          heading={
+            <>
+              { category &&
+                <span className='x-subtitle c-x'>
+                  { category.name }
+                  &nbsp;
+                  {' / '}
+                </span>
+              }
+              { title }
+            </>
+          }
+          labelClassName='x-green'
           subtitle={ description }
         />
       </Card.Section>
       <Card.Section className='gc-extra ur'>
-        CTA
+        <LocalButton
+          className='x-paragraph'
+        >
+          <FormattedMessage {...messages.readMore} />
+        </LocalButton>
       </Card.Section>
     </Card>
   )}
@@ -126,6 +151,11 @@ ArticleCard.propTypes = {
   description:PropTypes.string,
 
   /**
+   * The description text
+   */
+  category:PropTypes.string,
+
+  /**
    * the image src
    */
   imageSrc:PropTypes.string,
@@ -144,6 +174,11 @@ ArticleCard.propTypes = {
    * The width of the element
    */
   width:PropTypes.string,
+
+  /**
+   * The size of the article card. If undefined will render a uniform card.
+   */
+  size:PropTypes.oneOf(['xs', 'sm', 'md', 'lg'])
   /*
   : PropTypes.shape({
     id: PropTypes.string.isRequired,
@@ -152,7 +187,6 @@ ArticleCard.propTypes = {
   }),
   : PropTypes.func,
   : PropTypes.func,
-  : PropTypes.oneOf(['', ''])
   */
 }
 
