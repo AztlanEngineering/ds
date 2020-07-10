@@ -46,7 +46,8 @@ const Main = ({
     FACEBOOK,
     INSTAGRAM,
     TWITTER,
-    HOME_URL
+    HOME_URL,
+    SITE_DESCRIPTION
   } = useContext(SiteContext)
 
   const socials = useMemo(() => {
@@ -112,6 +113,13 @@ const Main = ({
         />
         </Link>
       </div>
+      { SITE_DESCRIPTION &&
+      <div className="ph-u">
+        <p>
+          {SITE_DESCRIPTION}
+        </p>
+      </div>
+      }
       { children }
     </div>
   )}

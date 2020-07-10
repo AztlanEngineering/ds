@@ -1,6 +1,7 @@
 /* @fwrlines/generator-storybook-story 1.2.0 */
 import * as React from 'react'
 import { useContext } from 'react'
+import faker from 'faker'
 
 //import { action } from '@storybook/addon-actions'
 
@@ -37,7 +38,8 @@ export const Default = () => {
     SITE_CANONICAL:'https://internet1999.org',
     FACEBOOK      :'facebook_id',
     INSTAGRAM     :'@superaccount',
-    SUPPORT_EMAIL:'support@support.com'
+    SUPPORT_EMAIL:'support@support.com',
+    SITE_DESCRIPTION:faker.lorem.paragraph(10)
   }
   return (
     <SiteContextProvider config={ config }>

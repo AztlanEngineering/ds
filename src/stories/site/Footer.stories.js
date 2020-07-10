@@ -44,18 +44,19 @@ const storyParameters = {
 
 export const Default = () => {
   const config={
-    SITE_NAME     :'Internet 1999',
+    SITE_NAME       :'Internet 1999',
     //SITE_CANONICAL:'https://internet1999.org',
-    FACEBOOK      :'facebook_id',
-    INSTAGRAM     :'@superaccount',
+    FACEBOOK        :'facebook_id',
+    INSTAGRAM       :'@superaccount',
     //SUPPORT_EMAIL:'support@support.com',
-    HOME_URL :'/home',
+    HOME_URL        :'/home',
+    SITE_DESCRIPTION:faker.lorem.paragraph(3)
   }
 
   return (
     <SiteContextProvider config={ config }>
       <Footer>
-        <Footer.Main className="b-y y-yellow uc sm-ul">
+        <Footer.Main className='b-y y-yellow uc sm-ul'>
           { faker.lorem.paragraph() }
         </Footer.Main>
         <div className='col1 b-y y-red uc sm-ul'>{ faker.lorem.paragraph() }</div>
