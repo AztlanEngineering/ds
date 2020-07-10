@@ -1,4 +1,7 @@
 /* @fwrlines/generator-react-component 2.3.4 */
+@use "@fwrlines/alphabet-scss/scss/mixins";
+@use "@fwrlines/alphabet-scss/scss/vars/responsive" as *;
+
 /*
 
 Classes :
@@ -6,6 +9,25 @@ Classes :
 
 */
 
-.article_card{
+.article_card {
+  display: grid;
 
+  @include mixins.media($to:$sm-md) {
+    grid-template-areas:
+      "illustration heading"
+      "illustration extra";
+  }
+
+  @include mixins.media($from:$sm-md) {
+    grid-template-areas:
+      "illustration"
+      "heading"
+      "extra";
+  }
+
+  .img {
+    max-height: 300px;
+  }
 }
+
+

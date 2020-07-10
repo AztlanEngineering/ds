@@ -1,3 +1,4 @@
+export * from './analytics'
 export * from './content'
 export * from './blog'
 export * from './cp'
