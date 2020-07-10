@@ -33,6 +33,8 @@ const IconList = ({
   icon,
   iconHover,
 
+  iconsStyle,
+
   ...otherProps
 }) => {
 
@@ -49,6 +51,7 @@ const IconList = ({
       id={ id }
       style={{
         ...style,
+        '--fi':iconsStyle ?`${iconsStyle}` : undefined,
         '--list-icon'      :icon && `"${icon}"`,
         '--list-icon-hover':iconHover && `"${iconHover}"`,
       }}
@@ -88,9 +91,17 @@ IconList.propTypes = {
    * The default icon of the list elements on hover
    */
   iconHover:PropTypes.string,
+
+  /**
+   * The style of the icons (set var `--fi:{iconStyle}` in css)
+   *
+   */
+  iconsStyle:PropTypes.string,
+
 }
 
 IconList.defaultProps = {
+  iconsStyle:'icons',
   /* height:'2.2em',
      as:'p', */
 }

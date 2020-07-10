@@ -8,7 +8,7 @@ Classes :
 */
 
 $default-icon:"'    '"; //We provide an empty default
-$iconFontName:"if";
+$iconFontName:"icons";
 $paddingRight:0.5em;
 
 .icon_list {
@@ -16,13 +16,15 @@ $paddingRight:0.5em;
   list-style: none;
 
   li {
+    position:relative;
     &::before {
-      position: relative;
+      position: absolute;
+      left:-2em;
       top: 0.2em;
       padding-right: $paddingRight;
       white-space: pre;
       color: var(--y, var(--x));
-      font-family: $iconFontName;
+      font-family: var(--fi);
       content: var(--list-icon, #{$default-icon});
     }
 
