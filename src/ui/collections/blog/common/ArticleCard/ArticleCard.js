@@ -9,6 +9,7 @@ import { Heading, Card } from 'ui/elements'
 import { AnalyticsButton as LocalButton } from 'ui/collections/analytics'
 
 import { BlogLink } from '../Link'
+import { CategoryButton } from '../CategoryButton'
 //Intl
 
 import { FormattedMessage} from 'react-intl'
@@ -48,7 +49,9 @@ const ArticleCard = ({
   imageSrc,
   imageAlt,
 
-  readMoreIcon,
+  readMoreButton,
+
+  categoryClassName,
 
   size
 }) => {
@@ -78,45 +81,54 @@ const ArticleCard = ({
         image
         className='gc-illustration'
       >
-        <BlogLink to='SINGLE' params={{slug}}>
-        <Image
-          src={imageSrc}
-          alt={imageAlt}
-        />
-          </BlogLink>
+        <BlogLink
+          to='SINGLE'
+          params={{slug}}
+        >
+          <Image
+            src={imageSrc}
+            alt={imageAlt}
+          />
+        </BlogLink>
       </Card.Section>
       <Card.Section className='gc-heading'>
+        { category &&
+          <CategoryButton
+            slug={ category.slug }
+            name={ category.name }
+            className={
+        [
+          categoryClassName,
+          's0 k-s'
+        ].filter(e => e).join(' ')
+
+            }
+          />
+        }
         <Heading
           headingAs={ headingAs }
           headingClassName=''
           heading={
-            <BlogLink to='SINGLE' params={{slug}} className='x-paragraph c-x'>
-              { category &&
-                <span className='x-subtitle c-x s-1 k-s tu'>
-                  { category.name }
-                  &nbsp;
-                  {'/ '}
-                </span>
-              }
+            <BlogLink
+              to='SINGLE'
+              params={{slug}}
+              className='x-paragraph c-x'
+            >
               { title }
             </BlogLink>
           }
-          labelClassName='x-green'
           subtitle={ description }
         />
       </Card.Section>
-      {/*
-      <Card.Section className='gc-extra ur'>
-        <LocalButton
-          className='it x-paragraph xh-link'
-          simple
-          icon={ readMoreIcon }
-          iconSide='r'
-        >
-          <FormattedMessage {...messages.readMore} />
-        </LocalButton>
-      </Card.Section>
-      */}
+      { readMoreButton &&
+        <Card.Section className='gc-extra ur'>
+          <LocalButton
+            { ...readMoreButton }
+          >
+            <FormattedMessage {...messages.readMore} />
+          </LocalButton>
+        </Card.Section>
+      }
     </Card>
   )}
 
@@ -189,6 +201,12 @@ ArticleCard.propTypes = {
    * The icon for read more
    */
   readMoreIcon:PropTypes.string,
+
+  /**
+   * The html class names to be provided to the category button
+   */
+  categoryClassName:PropTypes.string,
+
 
   /**
    * The size of the article card. If undefined will render a uniform card.

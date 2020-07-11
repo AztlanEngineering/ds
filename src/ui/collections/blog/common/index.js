@@ -7,3 +7,4 @@ export {
 
 export { ArticleCard } from './ArticleCard'
 export { BlogLink } from './Link'
+export { CategoryButton } from './CategoryButton'

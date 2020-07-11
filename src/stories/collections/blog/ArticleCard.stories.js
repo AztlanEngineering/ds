@@ -67,6 +67,7 @@ const genFake = () => {
     main_image :'https://images.pexels.com/photos/821668/pexels-photo-821668.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260',
     category   :{
       name:faker.commerce.department(),
+      slug:faker.helpers.slugify(faker.commerce.productName()),
 
     },
 

@@ -5,7 +5,7 @@ import faker from 'faker'
 
 //import { action } from '@storybook/addon-actions'
 
-import { Button, BlogLink, BlogContextProvider, BlogContextTester } from 'ui'
+import { Button, CategoryButton, BlogLink, BlogContextProvider, BlogContextTester } from 'ui'
 import { Router } from 'stories/utils'
 
 /* import QUERY from './graphql/query.graphql'
@@ -96,6 +96,7 @@ export const Default = () => {
           </Button>
         </BlogLink>
       </Button.Group>
+        <CategoryButton name='name' slug='diy-advice' / >
     </BlogContextProvider>
   )
 
