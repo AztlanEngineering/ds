@@ -1,45 +1,51 @@
 /* @fwrlines/generator-react-component 2.3.4 */
 import * as React from 'react'
-//import {} from 'react'
+import { useMemo } from 'react'
 import PropTypes from 'prop-types'
 
-
-
-
+import Context from './Context'
 //Intl
 
-//import { FormattedMessage} from "react-intl";
-//import messages from "./messages";
-// <FormattedMessage {...messages.title} />
+/* import { FormattedMessage} from "react-intl";
+   import messages from "./messages";
+    <FormattedMessage {...messages.title} /> */
 
 //Config
 
 //import C from 'ui/cssClasses'
 
-//Relative imports
-//import styles from './blog_context.scss'
+/* Relative imports
+   import styles from './blog_context.scss' */
 import { isBackend } from 'ui/isBackend'
 
 if(!isBackend) {
-  import('./blog_context.scss')
+  //import('./blog_context.scss')
 }
 
-const baseClassName = 'blog_context'
-
+//const baseClassName = 'blog_context'
 
 /**
  * Use `BlogContext` to
- * Has color `x` 
+ * Has color `x`
  */
 const BlogContext = ({
   id,
   className,
-  style
+  style,
+  children,
+  routes,
+  value
 }) => {
-  
-  
+
+
   return (
-  <div 
+    <Context.Provider value={{
+      ...routes,
+      ...value
+    }}
+    >
+      {/*
+    <div
     className={
       [
         //styles[baseClassName],
@@ -49,67 +55,69 @@ const BlogContext = ({
   }
     id={ id }
     style={ style }
-  >
-    <h2>Welcome to the BlogContext component</h2>
-  </div>
-)}
+    >
+    </div>*/}
+      { children }
+    </Context.Provider>
+  )}
 
 BlogContext.propTypes = {
   /**
    * Provide an HTML id to this element
    */
-  id: PropTypes.string,
+  id:PropTypes.string,
 
   /**
    * The html class names to be provided to this element
    */
-  className: PropTypes.string,
+  className:PropTypes.string,
 
   /**
    * The JSX-Written, css styles to apply to the element.
    */
-  style: PropTypes.object,
+  style:PropTypes.object,
 
   /**
    *  The children JSX
    */
-  children: PropTypes.node,
+  children:PropTypes.node,
 
   /**
    * Which html tag to use
    */
-  as: PropTypes.oneOfType([
+  as:PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object
-  ]), 
+  ]),
   //as: PropTypes.string,
-
-  /**
-   * The height of the element
-   */
-  height: PropTypes.string,
 
   /**
    * The width of the element
    */
-  width: PropTypes.string,
-  /*
-  : PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    state: PropTypes.string.isRequired,
+  routes:PropTypes.shape({
+    BASE              :PropTypes.string.isRequired,
+    HOME              :PropTypes.string.isRequired,
+    HOME_PAGINATED    :PropTypes.string.isRequired,
+    CATEGORY          :PropTypes.string,
+    CATEGORY_PAGINATED:PropTypes.string,
+    SINGLE            :PropTypes.string.isRequired,
   }),
+
+  /**
+   * Extra values to pass to the context
+   */
+  values:PropTypes.object,
+  /*
   : PropTypes.func,
   : PropTypes.func,
   : PropTypes.oneOf(['', ''])
   */
 }
 
-/*
 BlogContext.defaultProps = {
-  status: 'neutral',
-  //height:'2.2em',
-  //as:'p',
+  values:{}
+  /* height:'2.2em',
+     as:'p', */
 }
-*/
+
 export default BlogContext

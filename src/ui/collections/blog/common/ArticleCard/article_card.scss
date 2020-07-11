@@ -14,6 +14,14 @@ Classes :
     display: grid;
   }
 
+  .gc-illustration a {
+    display:block;
+    width:100%;
+    height:100%;
+    img {
+      width:100%;
+    }
+  }
 
   &.size-xs {
     //background: var(--light-background);

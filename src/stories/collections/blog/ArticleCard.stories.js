@@ -5,7 +5,7 @@ import faker from 'faker'
 
 //import { action } from '@storybook/addon-actions'
 
-import { Card, ArticleCard } from 'ui'
+import { BlogContextProvider, Card, ArticleCard } from 'ui'
 import QUERY from './graphql/posts.graphql'
 import { AplProvider } from 'stories/utils'
 import { Router } from 'stories/utils'
@@ -13,6 +13,10 @@ import { Router } from 'stories/utils'
    import { LIST, LIST_XS, TEXT_XXS_ESC, TEXT_XXS, TEXT_XS, TEXT } from 'stories/utils/Dummy' */
 
 const endpoint = 'https://meccamico.com/graphql'
+
+  const paginationParam = ':page([0-9]{1,5})'
+  const slugUrlParam = ':slug([0-9a-z-]{5,80})'
+  const categoryUrlParam = ':category([0-9a-z-]{5,80})'
 
 export default {
   title        :'collections/blog/common/ArticleCard',
@@ -23,7 +27,18 @@ export default {
   },
   parameters:{
     decorators:[
-      //storyfn => <div className="">{ storyfn() }</div>,
+      storyfn => <BlogContextProvider
+      routes={{
+
+        BASE              :'/blog',
+        HOME              :'/blog',
+        HOME_PAGINATED    :`/blog/${paginationParam}`,
+        CATEGORY          :`/blog/c/${categoryUrlParam}`,
+        CATEGORY_PAGINATED:`/blog/c/${categoryUrlParam}/${paginationParam}`,
+        SINGLE            :`/blog/${slugUrlParam}/`,
+      }}
+    >
+      { storyfn() }</BlogContextProvider>,
       storyfn => <AplProvider endpoint={ endpoint }>{ storyfn() }</AplProvider>,
       storyfn => <Router>{ storyfn() }</Router>,
     ]

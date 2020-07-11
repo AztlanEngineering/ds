@@ -8,6 +8,7 @@ import { Heading, Card } from 'ui/elements'
 
 import { AnalyticsButton as LocalButton } from 'ui/collections/analytics'
 
+import { BlogLink } from '../Link'
 //Intl
 
 import { FormattedMessage} from 'react-intl'
@@ -47,6 +48,8 @@ const ArticleCard = ({
   imageSrc,
   imageAlt,
 
+  readMoreIcon,
+
   size
 }) => {
 
@@ -75,38 +78,45 @@ const ArticleCard = ({
         image
         className='gc-illustration'
       >
+        <BlogLink to='SINGLE' params={{slug}}>
         <Image
           src={imageSrc}
           alt={imageAlt}
         />
+          </BlogLink>
       </Card.Section>
       <Card.Section className='gc-heading'>
         <Heading
           headingAs={ headingAs }
-          headingClassName='x-paragraph c-x'
+          headingClassName=''
           heading={
-            <>
+            <BlogLink to='SINGLE' params={{slug}} className='x-paragraph c-x'>
               { category &&
-                <span className='x-subtitle c-x'>
+                <span className='x-subtitle c-x s-1 k-s tu'>
                   { category.name }
                   &nbsp;
-                  {' / '}
+                  {'/ '}
                 </span>
               }
               { title }
-            </>
+            </BlogLink>
           }
           labelClassName='x-green'
           subtitle={ description }
         />
       </Card.Section>
+      {/*
       <Card.Section className='gc-extra ur'>
         <LocalButton
-          className='x-paragraph'
+          className='it x-paragraph xh-link'
+          simple
+          icon={ readMoreIcon }
+          iconSide='r'
         >
           <FormattedMessage {...messages.readMore} />
         </LocalButton>
       </Card.Section>
+      */}
     </Card>
   )}
 
@@ -176,6 +186,11 @@ ArticleCard.propTypes = {
   width:PropTypes.string,
 
   /**
+   * The icon for read more
+   */
+  readMoreIcon:PropTypes.string,
+
+  /**
    * The size of the article card. If undefined will render a uniform card.
    */
   size:PropTypes.oneOf(['xs', 'sm', 'md', 'lg'])
@@ -191,7 +206,8 @@ ArticleCard.propTypes = {
 }
 
 ArticleCard.defaultProps = {
-  headingAs:'h2'
+  readMoreIcon:'l',
+  headingAs   :'h2'
   /* height:'2.2em',
      as:'p', */
 }
