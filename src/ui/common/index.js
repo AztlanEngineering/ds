@@ -11,7 +11,8 @@ export { Popup } from './Popup'
 export { ProgressBar } from './ProgressBar'
 export {
   SiteContext,
-  SiteContextProvider
+  SiteContextProvider,
+  useSite
 } from './SiteContext'
 export { Subtitle } from './Subtitle'
 export { SVG } from './SVG'

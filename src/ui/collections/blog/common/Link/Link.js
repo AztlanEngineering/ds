@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 
 import { generatePath, Link as BaseLink } from 'react-router-dom'
 
-import { BlogContext } from '../Context'
+import { useBlog } from '../Context'
 
 
 //Intl
@@ -40,10 +40,12 @@ const Link = ({
   ...otherProps
 }) => {
 
-  const context = useContext(BlogContext)
+  const {
+    generateLocalPath
+  } = useBlog()
 
-  const path = generatePath(
-    context[to],
+  const path = generateLocalPath(
+    to,
     params
   )
 

@@ -4,6 +4,10 @@ import { useMemo } from 'react'
 import PropTypes from 'prop-types'
 
 import Context from './Context'
+
+import { generatePath } from 'react-router-dom'
+
+import { useSite } from 'ui/common'
 //Intl
 
 /* import { FormattedMessage} from "react-intl";
@@ -37,11 +41,24 @@ const BlogContext = ({
   value
 }) => {
 
+  const {
+    SITE_CANONICAL
+  } = useSite()
+
+  const generateLocalPath = (to, params, canonical=false) => {
+    const path = generatePath(
+    routes[to],
+    params
+  )
+    return canonical ? [SITE_CANONICAL, path].join('') : path
+
+  }
 
   return (
     <Context.Provider value={{
       ...routes,
-      ...value
+      ...value,
+      generateLocalPath
     }}
     >
       {/*

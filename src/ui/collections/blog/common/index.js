@@ -1,7 +1,8 @@
 export {
   BlogContextTester,
   BlogContext,
-  BlogContextProvider
+  BlogContextProvider,
+  useBlog
 } from './Context'
 
 export { ArticleCard } from './ArticleCard'
