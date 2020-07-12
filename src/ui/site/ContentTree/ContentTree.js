@@ -36,8 +36,6 @@ const ContentTree = ({
 
   title,
 
-  content,
-
   elementClassName,
   activeClassName,
   pastClassName,
@@ -54,12 +52,13 @@ const ContentTree = ({
 
   as:Element,
   itemAs,
+
+  sticky,
 }) => {
 
   const {
     contentTree,
     idList,
-    setContentTree
   } = useContext(Context)
 
   const {
@@ -70,11 +69,6 @@ const ContentTree = ({
       idList,
       offsetPx
     }
-  )
-
-  useEffect(
-    () => setContentTree(content),
-    [content, setContentTree]
   )
 
   const params = {
@@ -100,6 +94,7 @@ const ContentTree = ({
       className={
         [
           baseClassName,
+          sticky && 'sticky',
           className
         ].filter(e => e).join(' ')
       }
@@ -132,11 +127,6 @@ ContentTree.propTypes = {
    *  The children JSX
    */
   children:PropTypes.node,
-
-  /**
-   * The html id for the content to spy on
-   */
-  content:PropTypes.string.isRequired,
 
   /**
    * The title to display for the local index
@@ -211,6 +201,11 @@ ContentTree.propTypes = {
     PropTypes.string,
     PropTypes.node
   ]),
+  
+  /**
+   * If its sticky
+   */
+  sticky:PropTypes.bool,
 }
 
 ContentTree.defaultProps = {
@@ -218,7 +213,7 @@ ContentTree.defaultProps = {
   scrollLinkOffset  :0,
   scrollLinkSmooth  :true,
   scrollLinkDuration:defaultDurationFromDistance,
-  activeClassName   :'x-blue cx',
+  activeClassName   :'x-blue c-x',
   as                :LocalIndex,
   itemAs            :LocalIndex.Item
 }

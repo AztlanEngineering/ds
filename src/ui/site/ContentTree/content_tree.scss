@@ -5,9 +5,28 @@ Classes :
 
 */
 
-.content_tree{
-	li a {
-		cursor:pointer!important;
-	}
+.content_tree {
+  li a {
+    cursor: pointer !important;
+  }
 
+  &.sticky {
+    height: min-content;
+    max-height: calc(100vh - var(--sticky-padding, 0));
+    overflow-y: scroll;
+    -ms-overflow_style: none;
+    position: sticky;
+    scrollbar-width: none;
+    top: var(--sticky-padding, 0);
+    &:after {
+      display:block;
+      content:" ";
+      height:calc(var(--u, 0) * 1em);
+
+    }
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
 }

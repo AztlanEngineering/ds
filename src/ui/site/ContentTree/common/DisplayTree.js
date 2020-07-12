@@ -12,23 +12,25 @@ const DisplayTree = ({
 }
 ) =>{
   const {
-    style,
+  style,
 
-    activeId,
-    pastIds,
-    onElementClick,
+  activeId,
+  pastIds,
+  onElementClick,
 
-    withScrollLink,
-    scrollLinkOffset,
-    scrollLinkSmooth,
-    scrollLinkDuration,
 
-    elementClassName,
-    activeClassName,
-    pastClassName,
-    linkClassName,
 
-    unfoldActive,
+  withScrollLink,
+  scrollLinkOffset,
+  scrollLinkSmooth,
+  scrollLinkDuration,
+
+  elementClassName,
+  activeClassName,
+  pastClassName,
+  linkClassName,
+  
+  unfoldActive,
     as:Element,
   } = props
 

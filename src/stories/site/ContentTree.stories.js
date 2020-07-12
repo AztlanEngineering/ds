@@ -18,7 +18,11 @@ export default {
   component :ContentTree,
   parameters:{
     decorators:[
-      storyfn => <ContextProvider>{ storyfn() }</ContextProvider>
+      storyfn => <ContextProvider
+        content={ TEXT }
+      >
+        { storyfn() }
+      </ContextProvider>
       /* storyfn => <div className="">{ storyfn() }</div>,
          storyfn => <AplProvider endpoint={ endpoint }>{ storyfn() }</AplProvider>,
          storyfn => <Router>{ storyfn() }</Router>, */
@@ -29,7 +33,6 @@ export default {
 export const Default = () => (
   <>
     <ContentTree
-      content={ TEXT }
       style={{
     		position  :'fixed',
     		top       :'0',
@@ -50,30 +53,6 @@ export const Default = () => (
 export const PastStyle = () => (
   <>
     <ContentTree
-      content={ TEXT }
-      style={{
-    		position  :'fixed',
-    		top       :'0',
-    		left      :'0',
-		    background:'beige'
-		  }}
-      pastClassName='c-x x-red ti'
-      activeClassName='c-x x-blue'
-      elementClassName='nt'
-    />
-    <div
-      className='content'
-      dangerouslySetInnerHTML={{__html: TEXT}}
-      style={{ paddingTop: '500px', paddingBottom: '500px' }}
-    />
-
-  </>
-)
-
-export const UnfoldActive = () => (
-  <>
-    <ContentTree
-      content={ TEXT }
       style={{
     		position  :'fixed',
     		top       :'0',
@@ -96,7 +75,6 @@ export const UnfoldActive = () => (
 export const As = () => (
   <>
     <ContentTree
-      content={ TEXT }
       as={ Button.Group }
       itemAs={ Button }
       style={{
@@ -114,4 +92,19 @@ export const As = () => (
     />
 
   </>
+)
+
+export const Sticky = () => (
+  <div className='gt-center'>
+    <ContentTree
+      sticky
+      activeClassName='c-x x-red b-black ui-dark'
+    />
+    <div
+      className='content gc-content'
+      dangerouslySetInnerHTML={{__html: TEXT}}
+      style={{ paddingTop: '500px', paddingBottom: '500px' }}
+    />
+
+  </div>
 )

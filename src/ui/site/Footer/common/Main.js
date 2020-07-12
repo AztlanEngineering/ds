@@ -38,38 +38,51 @@ const Main = ({
   id,
   className,
   style,
-  children
+  children,
+
+  overrides
 }) => {
 
-  const {
-    SITE_NAME,
-    FACEBOOK,
-    INSTAGRAM,
-    TWITTER,
-    HOME_URL,
-    SITE_DESCRIPTION
-  } = useContext(SiteContext)
+  const context = useContext(SiteContext)
+
+  const localVars =[
+    'SITE_NAME',
+    'FACEBOOK',
+    'INSTAGRAM',
+    'TWITTER',
+    'HOME_URL',
+    'SITE_DESCRIPTION'
+  ]
+
+  const computedVars = {}
+
+  localVars.forEach((e) =>  {
+    computedVars[e] = overrides[e] || context[e]
+
+  })
+
+  const cv = computedVars
 
   const socials = useMemo(() => {
 
     let ntks = [
       {
-        url :FACEBOOK,
+        url :cv.FACEBOOK,
         name:'facebook'
       },
       {
-        url :INSTAGRAM,
+        url :cv.INSTAGRAM,
         name:'instagram'
       },
       {
-        url :TWITTER,
+        url :cv.TWITTER,
         name:'instagram'
       },
     ]
 
     return ntks.filter(e => e.url)
 
-  }, [FACEBOOK, INSTAGRAM, TWITTER]
+  }, [cv.FACEBOOK, cv.INSTAGRAM, cv.TWITTER]
   )
 
   const SocialsComp = useMemo(() => () => <ul 
@@ -103,9 +116,9 @@ const Main = ({
       style={ style }
     >
       <div className='ph-u'>
-        <Link to={ HOME_URL }>
+        <Link to={ cv.HOME_URL }>
         <Heading
-          heading={ SITE_NAME }
+          heading={ cv.SITE_NAME }
           headingClassName='h3'
           subtitle={
             <SocialsComp/>
@@ -113,10 +126,10 @@ const Main = ({
         />
         </Link>
       </div>
-      { SITE_DESCRIPTION &&
+      { cv.SITE_DESCRIPTION &&
       <div className="ph-u">
         <p>
-          {SITE_DESCRIPTION}
+          { cv.SITE_DESCRIPTION}
         </p>
       </div>
       }
@@ -155,14 +168,14 @@ Main.propTypes = {
   //as: PropTypes.string,
 
   /**
-   * The height of the element
+   * Override the site context
    */
-  height:PropTypes.string,
+  overrides: PropTypes.object,
 
   /**
-   * The width of the element
-   */
-  width:PropTypes.string,
+   * A dictionnary of keys to override sitecontext
+   * /
+  overrides:PropTypes.object
   /*
   : PropTypes.shape({
     id: PropTypes.string.isRequired,
@@ -175,11 +188,9 @@ Main.propTypes = {
   */
 }
 
-/*
 Main.defaultProps = {
-  status: 'neutral',
+  overrides:{}
   //height:'2.2em',
   //as:'p',
 }
-*/
 export default Main

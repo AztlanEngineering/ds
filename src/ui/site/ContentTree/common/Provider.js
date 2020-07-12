@@ -8,13 +8,19 @@ import Context from './Context'
 class ContextProvider extends Component {
   constructor(props){
     super(props)
-    this.state = {
-      contentTree:[],
-      idList     :[]
+    if (props.content) {
+      this.state = this.setContentTree(props.content)
+    } else {
+      this.state = {
+        contentTree:[],
+        idList     :[]
+      }
+
     }
+    props.content && this.setContentTree(props.content)
   }
 
-  setContentTree = (html) => {
+  setContentTree(html) {
     //console.log('THE CONTENT IS', html)
     const el = document.createElement(null)
     el.innerHTML = html
@@ -52,10 +58,21 @@ class ContextProvider extends Component {
     }
     , [])
 
-    this.setState({
+    return{
       contentTree,
       idList
-    })
+    }
+  }
+
+  componentDidUpdate(p) {
+    //console.log(778877, this.props.content)
+    if(p.content != this.props.content) {
+      //console.log('received content', this.props.content)
+      this.setState({
+        ...this.state,
+        ...this.setContentTree(this.props.content)
+      })
+    }
   }
 
   render() {
@@ -64,7 +81,7 @@ class ContextProvider extends Component {
       <Context.Provider
         value={{
           ...this.state,
-          setContentTree:this.setContentTree
+          //setContentTree:this.setContentTree
         }}
       >
         { this.props.children }
@@ -82,6 +99,11 @@ ContextProvider.propTypes = {
    * How many levels we should make the tree for
    */
   levels:PropTypes.number,
+
+  /**
+   * The source
+  */
+  content:PropTypes.string,
 
   /**
    * The JSX children of this Context Provider

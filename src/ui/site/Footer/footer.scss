@@ -20,7 +20,7 @@ $default-padding:1;
   }
 
   @include mixins.media($from:$sm-md) {
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    grid-template-columns: minmax(200px, 2fr) repeat(auto-fit, minmax(100px, 1fr));
 
   }
 }
