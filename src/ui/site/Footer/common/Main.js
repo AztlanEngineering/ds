@@ -3,6 +3,8 @@ import * as React from 'react'
 import { useContext, useMemo } from 'react'
 import PropTypes from 'prop-types'
 
+import { useIntl } from 'react-intl'
+
 import { SiteContext } from 'ui/common'
 import { Heading } from 'ui/elements'
 
@@ -42,6 +44,7 @@ const Main = ({
 
   overrides
 }) => {
+  const intl = useIntl()
 
   const context = useContext(SiteContext)
 
@@ -76,13 +79,13 @@ const Main = ({
       },
       {
         url :cv.TWITTER,
-        name:'instagram'
+        name:'twitter'
       },
     ]
 
     return ntks.filter(e => e.url)
 
-  }, [cv.FACEBOOK, cv.INSTAGRAM, cv.TWITTER]
+  }, [cv.INSTAGRAM, cv.TWITTER, cv.FACEBOOK]
   )
 
   const SocialsComp = useMemo(() => () => <ul 
@@ -91,7 +94,7 @@ const Main = ({
     {socials.map(
     (e) => 
       <li>
-        <a href={ e.url }>{ e.name }</a>
+        <a href={ typeof e.url === 'string' ? e.url : intl.formatMessage(e.url.props) } rel='nofollow' target='_blank'>{ e.name }</a>
       </li>
   )}
   </ul>

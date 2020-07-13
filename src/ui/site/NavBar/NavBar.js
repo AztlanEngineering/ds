@@ -105,7 +105,6 @@ const NavBar = ({
       [
         'ph-u v0 mv-v',
         'gc-content',
-        'xs-h sm-h',
         className,
         open ? contentOpenClassName : contentClosedClassName,
         contentClassName
@@ -159,14 +158,16 @@ const NavBar = ({
       { Leader ?
         <>
           <div className='md-h lg-h'>
+            { open &&
+              <DesktopContent className='gc-content'/>
+            }
             {! open &&
               <Leader
                 isTop={ isTop }
                 open={ open }
               />
             }
-            <DesktopContent/>
-            { MobileContent &&
+            { (!open && MobileContent) &&
               <MobileContent/>
             }
 
@@ -174,10 +175,13 @@ const NavBar = ({
           <div className='xs-h sm-h'>
             <DesktopContent/>
           </div>
-          { !open ? isTop ? 
-            <FooterComponent open={open}/> 
-              : <FooterComponent open={open} className='xs-h sm-h'/>
-              : <FooterComponent/>
+          { !open ? isTop ?
+            <FooterComponent open={open}/>
+            : <FooterComponent
+              open={open}
+              className='xs-h sm-h'
+              />
+            : <FooterComponent/>
           }
         </>
         :

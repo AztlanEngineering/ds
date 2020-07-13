@@ -66,14 +66,14 @@ $min-height:$min-padding + 2.5rem;
 
 
 
+    &:not(.active) {
+
     ol,
     ol ol,
     ul,
     ul ul {
       margin: 0;
     }
-
-    &:not(.active) {
       .item {
         position: absolute;
         top: 50%;
