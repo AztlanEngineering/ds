@@ -43,7 +43,7 @@ const helmet_map = [
       c.SITE_CANONICAL ?
         <link
           rel='canonical'
-          href={`"${c.SITE_CANONICAL}/${v}"`}
+          href={`${c.SITE_CANONICAL}/${v}`}
         /> :
         <link
           rel='canonical'
@@ -118,12 +118,18 @@ const helmet_map = [
   },
 
   {
-    variables:['og_url'],
-    render   :(v) =>
-      <meta
-        property='og:url'
-        content={ v }
-      />
+    variables:['og_url', 'canonical'],
+    render   :(v, c) =>
+      c.SITE_CANONICAL ?
+        <meta
+          property='og:url'
+          content={`${c.SITE_CANONICAL}/${v}`}
+        />
+        :
+        <meta
+          property='og:url'
+          content={ v }
+        />
   },
 
 ]
@@ -144,7 +150,7 @@ const conditionMatchAndGetProps = (props, context, intl) =>
     }
     if (typeof test === 'undefined' || (test && content.length)) {
       // if content is an object, then its a message and we need to render it as a string first
-      const stringContent = typeof content === 'string' ? content : intl.formatMessage(content) 
+      const stringContent = typeof content === 'string' ? content : intl.formatMessage(content)
       //console.log(stringContent, content)
       current = render(stringContent, context)
     }
