@@ -9,6 +9,15 @@ Classes :
 @use "@fwrlines/alphabet-scss/scss/mixins";
 @use "@fwrlines/alphabet-scss/scss/vars/responsive" as *;
 
+@keyframes display {
+  0% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
+}
+
 .nav_bar {
   display: grid;
 
@@ -22,6 +31,7 @@ Classes :
     margin: 0;
   }
 
+  .leader,
   .gc-header {
     display:flex;
     align-items: center;
@@ -74,7 +84,14 @@ Classes :
         display: none;
       }
 
-      .gc-content {
+      .leader:not(.isTop),
+      .leader.istop + .gc_content {
+        animation:display .3s linear 1 forwards;
+      }
+
+      .leader.istop,
+      .default_content:first-child, 
+      .leader:not(.istop) + .gc-content {
         display: none;
       }
     }

@@ -5,13 +5,13 @@ Classes :
 
 */
 
-ul.local_index {
+ol.local_index {
   border-radius: var(--r);
 
   > li {
     font-weight: bold;
 
-    ul {
+    ol {
       > li {
         font-weight: normal;
       }

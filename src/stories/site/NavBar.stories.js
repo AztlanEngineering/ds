@@ -84,6 +84,74 @@ export const Default = () => {
   )
 }
 
+export const Leader = () => {
+  const config={
+    SITE_NAME:'Meccamico',
+    HOME_URL :'/home',
+  }
+
+  const FooterComponent = ({open}) => {
+    return (
+      <Button.Group className={ `${open && ''} gc-footer yf` }>
+        <Button className='x-blue'>
+          There
+        </Button>
+        <Button className='x-red'>
+          Hello
+        </Button>
+      </Button.Group>
+    )
+  }
+
+  const offsetPx = 100
+
+  return (
+    <SiteContextProvider config={ config }>
+      <div className='x-green b-x'>
+        <NavBar
+          className='u1 z-blue'
+          headerClassName='b-z ui-dark x-link'
+          contentClassName='y-background b-dark-y'
+          headerOpenClassName='b-z z-red x-paragraph ui-dark'
+          FooterComponent={ FooterComponent }
+          offsetPx={ offsetPx }
+          Leader={ ({open, isTop}) => {
+            return (
+              <div
+                className={
+                  [
+                    'leader',
+                    'y-background b-dark-y',
+                    isTop && 'istop'
+                  ].filter(e => e).join(' ')
+                }
+
+              >
+                {'Leader at '}
+                { offsetPx }
+                Istop :
+                {' '}
+                { isTop && ' TRUE' }
+                isOpen :
+                {' '}
+                { open && 'true' }
+              </div>
+            )
+          } }
+        >
+          <NavBar.Item link='/'>
+            Link
+          </NavBar.Item>
+          <NavBar.Item link='/pricing'>
+            Pricing
+          </NavBar.Item>
+        </NavBar>
+        <p>{ faker.lorem.paragraph(120) }</p>
+      </div>
+    </SiteContextProvider>
+  )
+}
+
 //Default.parameters = storyParameters
 
 

@@ -8,6 +8,7 @@ import { SiteContext } from 'ui/common'
 import { HamburgerIcon } from 'ui/site'
 import { Link } from 'react-router-dom'
 
+import { useIsTop } from '@fwrlines/utils'
 
 //Intl
 
@@ -70,10 +71,13 @@ const NavBar = ({
   children,
 
   as:Wrapper,
+  Leader,
+  offsetPx,
 
   TitleComponent,
   FooterComponent,
   ExtraContentComponent,
+  MobileContent,
 
   openClassName,
   closedClassName,
@@ -93,6 +97,25 @@ const NavBar = ({
   const [open, setOpen] = useState(false)
 
   const toggleOpen = () => setOpen(!open)
+
+  const isTop = useIsTop({offsetPx})
+
+  const DesktopContent=({ className, ...props }) => (<ul
+    className={
+      [
+        'ph-u v0 mv-v',
+        'gc-content',
+        'xs-h sm-h',
+        className,
+        open ? contentOpenClassName : contentClosedClassName,
+        contentClassName
+      ].filter(e => e).join(' ')
+    }
+    style={ contentStyle }
+  >
+    { children }
+    <ExtraContentComponent open={open}/>
+                                                     </ul>)
 
   return (
     <Wrapper
@@ -133,20 +156,37 @@ const NavBar = ({
         />
         {  }
       </header>
-      <ul
-        className={
-          [
-            'gc-content ph-u',
-            open ? contentOpenClassName : contentClosedClassName,
-            contentClassName
-          ].filter(e => e).join(' ')
-        }
-        style={ contentStyle }
-      >
-        { children }
-        <ExtraContentComponent open={open}/>
-      </ul>
-      <FooterComponent open={open}/>
+      { Leader ?
+        <>
+          <div className='md-h lg-h'>
+            {! open &&
+              <Leader
+                isTop={ isTop }
+                open={ open }
+              />
+            }
+            <DesktopContent/>
+            { MobileContent &&
+              <MobileContent/>
+            }
+
+          </div>
+          <div className='xs-h sm-h'>
+            <DesktopContent/>
+          </div>
+          { !open ? isTop ? 
+            <FooterComponent open={open}/> 
+              : <FooterComponent open={open} className='xs-h sm-h'/>
+              : <FooterComponent/>
+          }
+        </>
+        :
+        <>
+          <DesktopContent className='gc-content'/>
+          <FooterComponent open={open}/>
+        </>
+      }
+
     </Wrapper>
   )}
 
@@ -245,6 +285,23 @@ NavBar.propTypes = {
    */
   ExtraContentComponent:PropTypes.node,
 
+  /**
+   * A leader to display more advanced logic. Please give it .gc-content
+   */
+  Leader:PropTypes.node,
+
+
+  /**
+   * At how many pxs from the top trigger the Leader
+   */
+  offsetPx:PropTypes.number,
+
+
+  /**
+   * A component to be displayed om mobile instead of the normal one
+   *
+   */
+  MobileContent:PropTypes.node,
 
   /*
   : PropTypes.shape({
@@ -259,10 +316,11 @@ NavBar.propTypes = {
 }
 
 NavBar.defaultProps = {
-  as:'nav',
+  as                   :'nav',
   TitleComponent       :DefaultTitleComponent,
   FooterComponent      :DefaultFooterComponent,
   ExtraContentComponent:() => null,
+  offsetPx             :400,
   //headerClassName:'',
   /* height:'2.2em',
      as:'p', */

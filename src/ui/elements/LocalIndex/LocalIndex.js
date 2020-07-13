@@ -26,7 +26,7 @@ const LocalIndex = ({
 
 
   return (
-    <ul
+    <ol
       className={
         [
           baseClassName,
@@ -39,6 +39,7 @@ const LocalIndex = ({
       id={ id }
       style={ style }
     >
+      { title && 
       <Subtitle
         className={
           ' x-metadata'
@@ -46,9 +47,9 @@ const LocalIndex = ({
         upper
       >
         { title }
-      </Subtitle>
+      </Subtitle>}
       { children }
-    </ul>
+    </ol>
   )}
 
 LocalIndex.propTypes = {

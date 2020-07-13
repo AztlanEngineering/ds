@@ -59,6 +59,7 @@ const AnimatedVCaret = ({
       className={
         [
           baseClassName,
+          'pointer',
           className,
           active && C.active
         ].filter(e => e).join(' ')

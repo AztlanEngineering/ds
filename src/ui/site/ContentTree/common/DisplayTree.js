@@ -3,7 +3,7 @@ import * as React from 'react'
 import PropTypes from 'prop-types'
 import { Link as ScrollLink } from 'react-scroll'
 
-//import C from 'ui/cssClasses'
+import C from 'ui/cssClasses'
 
 
 const DisplayTree = ({
@@ -32,6 +32,7 @@ const DisplayTree = ({
   
   unfoldActive,
     as:Element,
+
   } = props
 
   const childrenReducer = (a,e) => {
@@ -72,6 +73,7 @@ const DisplayTree = ({
           [
             elementClassName,
             (activeId == e.id) && activeClassName,
+            (activeId == e.id) && C.active,
             (pastClassName && pastIds.includes(e.id)) && pastClassName,
           ].filter(e => e).join(' ')
         }

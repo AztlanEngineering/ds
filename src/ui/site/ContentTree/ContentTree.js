@@ -1,8 +1,10 @@
 /* @fwrlines/generator-react-component 1.1.2 */
 import * as React from 'react'
-import { useEffect, useContext } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import PropTypes from 'prop-types'
 
+import { BodyLocker } from 'ui/site/NavBar/common' //:oveto co;;on
+import { AnimatedVCaret } from 'ui/common'
 import { useScrollspy } from '@fwrlines/utils'
 
 import C from 'ui/cssClasses'
@@ -41,7 +43,7 @@ const ContentTree = ({
   pastClassName,
 
   unfoldActive,
-  onElementClick,
+  onElementClick:userOnElementClick,
 
   offsetPx,
 
@@ -54,7 +56,10 @@ const ContentTree = ({
   itemAs,
 
   sticky,
+  min
 }) => {
+
+  const [isOpen, setIsOpen] = useState(false)
 
   const {
     contentTree,
@@ -71,6 +76,9 @@ const ContentTree = ({
     }
   )
 
+  const onElementClick = min ? () => setIsOpen(false) : userOnElementClick
+
+
   const params = {
     tree:contentTree,
     activeId,
@@ -85,7 +93,6 @@ const ContentTree = ({
     pastClassName,
     unfoldActive,
     as  :itemAs,
-
   }
 
   return(
@@ -95,6 +102,8 @@ const ContentTree = ({
         [
           baseClassName,
           sticky && 'sticky',
+          min && 'min s-1 ',
+          isOpen && 'active',
           className
         ].filter(e => e).join(' ')
       }
@@ -103,13 +112,25 @@ const ContentTree = ({
     >
       { children }
       <DisplayTree { ...params } />
+      { min &&
+        <>
+          <AnimatedVCaret
+            width='1.4em'
+            duration='0.3'
+            id={ id + '_arrow' }
+            active={ isOpen }
+            setActive={ setIsOpen }
+          />
+          { isOpen && <BodyLocker /> }
+        </>
+      }
     </Element>
 
   )}
 
 ContentTree.propTypes = {
   /**
-   * Provide an HTML id to this element
+   * Provide an HTML id to this element. This is required if min is true.
    */
   id:PropTypes.string,
 
@@ -201,11 +222,16 @@ ContentTree.propTypes = {
     PropTypes.string,
     PropTypes.node
   ]),
-  
+
   /**
    * If its sticky
    */
   sticky:PropTypes.bool,
+
+  /**
+   * Accordion style
+   */
+  min:PropTypes.bool,
 }
 
 ContentTree.defaultProps = {
@@ -215,7 +241,9 @@ ContentTree.defaultProps = {
   scrollLinkDuration:defaultDurationFromDistance,
   activeClassName   :'x-blue c-x',
   as                :LocalIndex,
-  itemAs            :LocalIndex.Item
+  itemAs            :LocalIndex.Item,
+  sticky            :false,
+  min               :false,
 }
 
 export default ContentTree
