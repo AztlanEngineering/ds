@@ -38,6 +38,7 @@ const Footer = ({
   className,
   style,
   children,
+  end
 
 }) => {
   
@@ -54,7 +55,10 @@ const Footer = ({
     id={ id }
     style={ style }
   >
+    <div className="content">
     { children }
+    </div>
+    { end }
   </footer>
 )}
 
@@ -107,6 +111,11 @@ Footer.propTypes = {
   : PropTypes.func,
   : PropTypes.oneOf(['', ''])
   */
+
+  /**
+   * The very end of the footer, the end of the page
+   */
+  end:PropTypes.node
 }
 
 /*

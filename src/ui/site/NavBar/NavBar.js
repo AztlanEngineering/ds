@@ -1,12 +1,12 @@
 /* @fwrlines/generator-react-component 2.3.4 */
 import * as React from 'react'
-import { useState, useContext, useLayoutEffect } from 'react'
+import { useEffect, useState, useContext, useLayoutEffect } from 'react'
 import PropTypes from 'prop-types'
 
 import { Item, BodyLocker } from './common'
 import { SiteContext } from 'ui/common'
 import { HamburgerIcon } from 'ui/site'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 import { useIsTop } from '@fwrlines/utils'
 
@@ -94,16 +94,22 @@ const NavBar = ({
 
 }) => {
 
+  const location = useLocation()
+
   const [open, setOpen] = useState(false)
 
   const toggleOpen = () => setOpen(!open)
 
   const isTop = useIsTop({offsetPx})
 
+  useEffect(() => {
+    setOpen(false)
+  },[location]) //In case the link clicked redirects to the same view
+
   const DesktopContent=({ className, ...props }) => (<ul
     className={
       [
-        'ph-u v0 mv-v',
+        'v0 mv-v',
         'gc-content',
         className,
         open ? contentOpenClassName : contentClosedClassName,

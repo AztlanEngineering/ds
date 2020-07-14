@@ -24,7 +24,7 @@ Classes :
   .gc-content,
   .gc-footer {
     display: flex;
-    padding: calc(var(--u, 1) * .5em);
+  //.padding: calc(var(--u, 1) * .5em);
   }
 
   .gc-content {
@@ -128,6 +128,7 @@ Classes :
       //align-items:flex-end;
     }
     .gc-footer {
+      justify-content:space-between;
       align-items: center;
     }
   }

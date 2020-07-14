@@ -12,6 +12,7 @@ Classes :
 $default-padding:1;
 
 .footer {
+  .content {
   display: grid;
   grid-gap:calc(var(--u, #{$default-padding}) * 1em);
 
@@ -21,6 +22,8 @@ $default-padding:1;
 
   @include mixins.media($from:$sm-md) {
     grid-template-columns: minmax(200px, 2fr) repeat(auto-fit, minmax(100px, 1fr));
+
+  }
 
   }
 }
