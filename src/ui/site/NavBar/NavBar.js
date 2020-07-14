@@ -174,7 +174,7 @@ const NavBar = ({
               />
             }
             { (!open && MobileContent) &&
-              <MobileContent/>
+              <MobileContent isTop={isTop}/>
             }
 
           </div>

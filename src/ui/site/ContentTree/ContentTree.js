@@ -78,6 +78,12 @@ const ContentTree = ({
 
   const onElementClick = min ? () => setIsOpen(false) : userOnElementClick
 
+  const clickToOpen = (e) => {
+    e.stopPropagation()
+    setIsOpen(true)
+  }
+
+  
 
   const params = {
     tree:contentTree,
@@ -109,12 +115,14 @@ const ContentTree = ({
       }
       id={ id }
       style={ style }
+      onClick= { (min && !isOpen) && clickToOpen }
     >
       { children }
       <DisplayTree { ...params } />
       { min &&
         <>
           <AnimatedVCaret
+            className='z-paragraph'
             width='1.4em'
             duration='0.3'
             id={ id + '_arrow' }

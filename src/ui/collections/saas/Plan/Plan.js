@@ -56,6 +56,7 @@ const Plan = ({
 
   price,
   currency,
+  cta,
 
   ...otherProps
 }) => {
@@ -97,7 +98,7 @@ const Plan = ({
             currency={ currency }
           ></Price>
         </Card.Section>
-        <Card.Section>
+        <Card.Section className='features'>
           <Heading
             heading='Features'
             headingClassName={
@@ -111,6 +112,12 @@ const Plan = ({
             { children }
           </IconList>
         </Card.Section>
+        { cta &&
+        <Card.Section className='ur'>
+          { cta }
+        </Card.Section>
+
+        }
       </Card>
     </PlanContext.Provider>
   )}
@@ -155,6 +162,11 @@ Plan.propTypes = {
    * The currency, passed to `Price``
    */
   currency:PropTypes.string,
+
+  /**
+   * The cta
+   */
+  cta:PropTypes.node,
   /*
   : PropTypes.shape({
     id: PropTypes.string.isRequired,

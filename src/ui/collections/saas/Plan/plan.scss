@@ -12,6 +12,13 @@ Classes :
 
 .plan {
   --z: var(--y);
+  display:flex;
+
+  flex-direction:column;
+
+  .features {
+    flex-grow:99;
+  }
 
   .section {
       background:inherit;

@@ -21,7 +21,8 @@ const LocalIndex = ({
   style,
   children,
 
-  title
+  title,
+  ...otherProps
 }) => {
 
 
@@ -38,6 +39,7 @@ const LocalIndex = ({
       }
       id={ id }
       style={ style }
+      { ...otherProps }
     >
       { title && 
       <Subtitle
