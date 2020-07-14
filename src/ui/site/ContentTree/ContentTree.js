@@ -26,7 +26,7 @@ import {
 } from './common'
 
 
-const defaultDurationFromDistance = (distance) => Math.abs(distance) / 2
+const defaultDurationFromDistance = (distance) => Math.abs(distance) / 4
 
 const baseClassName = 'content_tree'
 

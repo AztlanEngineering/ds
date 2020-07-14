@@ -187,7 +187,7 @@ const NavBar = ({
               open={open}
               className='xs-h sm-h'
               />
-            : <FooterComponent/>
+            : <FooterComponent open={open}/>
           }
         </>
         :
