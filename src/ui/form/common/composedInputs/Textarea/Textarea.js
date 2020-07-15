@@ -64,6 +64,7 @@ const Textarea = ({
 
   //Specific to this input
   placeholder,
+  ...otherProps
 }) => {
 
   const holderProps = {
@@ -112,7 +113,8 @@ const Textarea = ({
     value,
     onChange,
     onBlur,
-    onFocus
+    onFocus,
+    ...otherProps
 
   }
 

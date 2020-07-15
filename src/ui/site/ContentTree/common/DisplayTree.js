@@ -8,29 +8,32 @@ import C from 'ui/cssClasses'
 
 const DisplayTree = ({
   tree,
+
   ...props
 }
 ) =>{
   const {
-  style,
+    style,
 
-  activeId,
-  pastIds,
-  onElementClick,
+    isOpen,
+
+    activeId,
+    pastIds,
+    onElementClick,
 
 
 
-  withScrollLink,
-  scrollLinkOffset,
-  scrollLinkSmooth,
-  scrollLinkDuration,
+    withScrollLink,
+    scrollLinkOffset,
+    scrollLinkSmooth,
+    scrollLinkDuration,
 
-  elementClassName,
-  activeClassName,
-  pastClassName,
-  linkClassName,
-  
-  unfoldActive,
+    elementClassName,
+    activeClassName,
+    pastClassName,
+    linkClassName,
+
+    unfoldActive,
     as:Element,
 
   } = props
@@ -38,14 +41,17 @@ const DisplayTree = ({
   const childrenReducer = (a,e) => {
     a.push(e.id)
     return a
+
+
   }
+
 
   return(
     tree.map((e) =>
       <Element
         key={ e.id }
         title={
-          withScrollLink ?
+          isOpen ? withScrollLink ?
             <ScrollLink
               to={ e.id }
               offset={scrollLinkOffset}
@@ -66,7 +72,13 @@ const DisplayTree = ({
               className={ linkClassName }
             >
               { e.innerText }
-            </a>
+            </a> :
+            <span
+              onClick={ onElementClick }
+              className={ linkClassName }
+            >
+              { e.innerText }
+            </span>
         }
 
         className={
@@ -79,13 +91,13 @@ const DisplayTree = ({
         }
       >
         { e.children
-					&& (!unfoldActive ||
-								(unfoldActive &&
-									((activeId == e.id) || e.children.reduce(
-									  childrenReducer,
-									  []).includes(activeId))
-								)
-					)
+          && (!unfoldActive ||
+                (unfoldActive &&
+                  ((activeId == e.id) || e.children.reduce(
+                    childrenReducer,
+                    []).includes(activeId))
+                )
+          )
             && <DisplayTree
               tree={ e.children }
               { ...props }
@@ -183,6 +195,12 @@ DisplayTree.propTypes = {
    */
   pastClassName:PropTypes.string,
 
+
+  /**
+   * Whether the menu is open. If not, the link will not be clickable
+   */
+  isOpen:PropTypes.bool,
+
   /**
    * Whether to unfold the current subsection
    */
@@ -191,6 +209,7 @@ DisplayTree.propTypes = {
 
 DisplayTree.defaultProps = {
   unfoldActive:false,
+  isOpen      :true
 }
 
 export default DisplayTree

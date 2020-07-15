@@ -7,7 +7,7 @@ Classes :
 
 */
 
-$defaultHeight:calc(var(--s5) * var(--t, 1) * 1em) !default;
+$defaultHeight:calc(var(--s6) * var(--s, 1) * 1em) !default;
 $paddingTop:0.6em !default;
 $paddingBottom:0.65em !default;
 $paddingSide:0.9em !default;
@@ -22,7 +22,7 @@ $boxShadowDefault:$boxShadowWidth 0 0 0 $boxShadowColor,
   $boxShadowWidth 0 0 0   adowcolor inset,
   0 $boxShadowWidth 0 0   adowcolor inset !default;
 //$boxShadow:none;//$boxShadowDefault!default;
-$separationMarginTop:calc(var(--t, 1) * 0.4em);
+$separationMarginTop:calc(var(--s, 1) * 0.4em);
 
 $background:var(--dark-white);//transparent!default;
 $border-radius:var(--r) !default;
@@ -155,6 +155,7 @@ $transitionTime:0.3s;
     //background:var(--cb, $background)aa;
     border: $border;
     border-radius: $border-radius;
+    font-size:calc(var(--s0,1) * var(--s, 1) * 1em);
     width: 100%;
     height: 100%;
     line-height: $inputLineHeight;

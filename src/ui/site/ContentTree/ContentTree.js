@@ -89,7 +89,7 @@ const ContentTree = ({
     tree:contentTree,
     activeId,
     pastIds,
-    onElementClick,
+    onElementClick:onElementClick || min && clickToOpen,
     withScrollLink,
     scrollLinkOffset,
     scrollLinkSmooth,
@@ -99,6 +99,7 @@ const ContentTree = ({
     pastClassName,
     unfoldActive,
     as  :itemAs,
+    isOpen:min ? isOpen : true,
   }
 
   return(
@@ -108,7 +109,8 @@ const ContentTree = ({
         [
           baseClassName,
           sticky && 'sticky',
-          min && 'min s-1 ',
+          min && 'min s-1',
+          min && !isOpen && 'pointer',
           isOpen && 'active',
           className
         ].filter(e => e).join(' ')

@@ -92,6 +92,8 @@ const NavBar = ({
   contentClosedClassName,
   contentStyle,
 
+  min
+
 }) => {
 
   const location = useLocation()
@@ -150,11 +152,12 @@ const NavBar = ({
         style={ headerStyle }
       >
 
+        { !min && 
         <HamburgerIcon
           onClick={ toggleOpen }
           active={open}
           className='md-h lg-h'
-        />
+        />}
         <TitleComponent
           className='title'
           open={ open }
@@ -323,6 +326,10 @@ NavBar.propTypes = {
   : PropTypes.func,
   : PropTypes.oneOf(['', ''])
   */
+  /**
+   * Whether this is a minimal menu (only header and footer)
+   */
+  min:PropTypes.bool,
 }
 
 NavBar.defaultProps = {
@@ -331,6 +338,7 @@ NavBar.defaultProps = {
   FooterComponent      :DefaultFooterComponent,
   ExtraContentComponent:() => null,
   offsetPx             :400,
+  min:false,
   //headerClassName:'',
   /* height:'2.2em',
      as:'p', */
