@@ -50,6 +50,8 @@ const BaseHTMLSelect = ({
       { ...otherProps }
     >
       { options.map((e,i) =>
+      <>
+          { e.label }
         <option
           key={ i }
           value={ e.value }
@@ -59,6 +61,7 @@ const BaseHTMLSelect = ({
         >
           { e.label }
         </option>
+      </>
       )
       }
     </select>

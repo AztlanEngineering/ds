@@ -20,6 +20,9 @@ const Item = ({
   //itemId,//Unknown
   to,
   position,
+
+
+  name:userName
 }) => {
   var Wrapper
   const wrapper_args = { itemProp: 'item' }
@@ -30,6 +33,8 @@ const Item = ({
     Wrapper = Link
     wrapper_args['to'] = to
   }
+  const name = userName || children
+
   return (
     <li
       className={
@@ -48,6 +53,10 @@ const Item = ({
         { ...wrapper_args }
       >
         { children }
+        { name && <meta
+          itemProp='name'
+          content={ name }
+                      />}
         { position && <meta
           itemProp='position'
           content={ position }
@@ -109,6 +118,11 @@ Item.propTypes = {
    * On click, internal link to
    */
   to:PropTypes.string,
+
+  /**
+   * The name of the breadcrumb item
+   */
+  name:PropTypes.string,
 
   /**
    *

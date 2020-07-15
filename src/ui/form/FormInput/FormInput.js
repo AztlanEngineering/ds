@@ -1,5 +1,6 @@
 /* @fwrlines/generator-react-component 1.4.0 */
 import * as React from 'react'
+import { memo } from 'react'
 import PropTypes from 'prop-types'
 
 import {
@@ -26,7 +27,9 @@ import formConfig from '../formConfig'
    import styles from './input.scss' */
 //import('./form_input.scss')
 
-//const baseClassName = 'input' // Better define in holder
+/* const baseClassName = 'input' // Better define in holder
+    */
+const  eqfunction = ({prevValue}, {nextValue}) => prevValue === nextValue
 
 const AcceptedHTMLInputTypes = [
   'text',
@@ -63,57 +66,57 @@ const FormInput = ({
   }
 
   //console.log(passedProps.onChange)
+  const displayComponent = (baseComp, props) => {
+    const Comp = baseComp
+    return <Comp {...props} />
+
+  }
 
   if (AcceptedHTMLInputTypes.includes(type)) return(
-    <Input
-      type={ type }
-      { ...passedProps }
-    />
+    displayComponent(Input, {
+      type,
+      ...passedProps
+    })
   )
 
   else if (type === 'textarea') return(
-    <Textarea
-      { ...passedProps }
-    />
-
+    displayComponent(Textarea, {
+      ...passedProps
+    })
   )
 
   else if (type === 'select') return(
-    <Select
+    displayComponent(Select, {
       //multiple={ type === 'checkboxes' ? true : false } //Multiple not implemented because select multiple has a terrible UI
-      { ...passedProps }
-    />
-
+      ...passedProps
+    })
   )
 
   else if ([ 'checkboxes', 'radios' ].includes(type)) return(
-    <Choice
-      multiple={ type === 'checkboxes' ? true : false }
-      {...passedProps}
-    />
-
+    displayComponent(Choice, {
+      multiple:type === 'checkboxes' ? true : false ,
+      ...passedProps
+    })
   )
 
   else if ([ 'svg-checkboxes', 'svg-radios' ].includes(type)) return(
-    <SVGChoice
-      multiple={ type === 'svg-checkboxes' ? true : false }
-      { ...passedProps }
-    />
-
+    displayComponent(SVGChoice, {
+      multiple:type === 'svg-checkboxes' ? true : false,
+      ...passedProps
+    })
   )
 
   else if ([ 'card-checkboxes', 'card-radios' ].includes(type)) return(
-    <CardChoice
-      multiple={ type === 'card-checkboxes' ? true : false }
-      { ...passedProps }
-    />
-
+    displayComponent(CardChoice, {
+      multiple:type === 'card-checkboxes' ? true : false ,
+      ...passedProps
+    })
   )
 
   else if ( type == 'downshift-select' ) return(
-    <DownshiftSelect
-      { ...passedProps }
-    />
+    displayComponent(DownshiftSelect, {
+      ...passedProps
+    })
   )
 
   else if ( type == 'downshift-combobox' ) return(
