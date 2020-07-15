@@ -1,4 +1,5 @@
 export {
+  useForm,
   FormContext,
   FormContextProvider,
   FormContextDebugger,
