@@ -4,6 +4,8 @@ import PropTypes from 'prop-types'
 
 import { Link } from 'react-router-dom'
 
+import { useIntl } from 'react-intl'
+
 
 //Config
 import C from 'ui/cssClasses'
@@ -22,8 +24,10 @@ const Item = ({
   position,
 
 
-  name:userName
+  name:userName,
 }) => {
+  const intl = useIntl()
+
   var Wrapper
   const wrapper_args = { itemProp: 'item' }
   if (!to) {
@@ -33,7 +37,15 @@ const Item = ({
     Wrapper = Link
     wrapper_args['to'] = to
   }
-  const name = userName || children
+
+  const childIsMessage = children && children.defaultMessage && true
+  const userNameIsMessage = userName && userName.defaultMessage && true
+
+  const passedChildren = childIsMessage ? intl.formatMessage(children) : children
+  const passedName = userNameIsMessage ? intl.formatMessage(userName) : userName
+  
+
+  const name = passedName || passedChildren
 
   return (
     <li
@@ -52,7 +64,7 @@ const Item = ({
       <Wrapper
         { ...wrapper_args }
       >
-        { children }
+        { passedChildren }
         { name && <meta
           itemProp='name'
           content={ name }
