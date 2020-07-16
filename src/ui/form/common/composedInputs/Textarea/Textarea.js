@@ -57,6 +57,7 @@ const Textarea = ({
   descriptionClassName,
   descriptionStyle,
 
+  name,
   value,
   onChange,
   onBlur,
