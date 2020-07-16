@@ -70,7 +70,7 @@ class ContextProvider extends Component {
     }
     else {
       return {
-        contentTree:{},
+        contentTree:[],
         idList:[]
       }
     }
