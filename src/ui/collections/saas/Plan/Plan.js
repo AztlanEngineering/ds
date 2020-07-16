@@ -3,9 +3,9 @@ import * as React from 'react'
 //import {} from 'react'
 import PropTypes from 'prop-types'
 
-
 import {
-  IconList
+  IconList,
+  useSite,
 } from 'ui/common'
 
 import {
@@ -56,7 +56,7 @@ const Plan = ({
 
   price,
   currency,
-  cta,
+  Cta,
 
   ...otherProps
 }) => {
@@ -112,9 +112,9 @@ const Plan = ({
             { children }
           </IconList>
         </Card.Section>
-        { cta &&
+        { Cta &&
         <Card.Section className='ur'>
-          { cta }
+          <Cta name={ name } />
         </Card.Section>
 
         }
@@ -166,7 +166,7 @@ Plan.propTypes = {
   /**
    * The cta
    */
-  cta:PropTypes.node,
+  Cta:PropTypes.node,
   /*
   : PropTypes.shape({
     id: PropTypes.string.isRequired,

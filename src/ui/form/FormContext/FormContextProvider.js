@@ -3,8 +3,10 @@ import * as React from 'react'
 import { useEffect, useState, useReducer } from 'react'
 import PropTypes from 'prop-types'
 
+import { usePage } from 'ui/site'
 
 import FormContext from './FormContext'
+import ga from 'react-ga'
 
 import { useFormState } from '@fwrlines/utils'
 /* Config
@@ -24,12 +26,44 @@ const FormContextProvider = ({
 
   initialValues,
   initialTouched,
+
+  useGa,
+  gaCategory
 }) => {
+
+  const { id:pageId } = usePage()
 
   const contextValues = useFormState({
     initialValues,
     initialTouched,
   })
+
+  const [sentEvents, setSentEvents] = useState([])
+
+  const pushSentEvent = (e) => setSentEvents([...sentEvents, e])
+
+
+  useEffect(() => {
+    console.log('touched changed', contextValues.touched)
+    if(useGa) {
+    Object.keys(contextValues.touched).forEach(inputId =>
+    {
+      console.log(inputId, sentEvents)
+      if(contextValues.touched[inputId] && !sentEvents.includes(inputId))
+
+        ga.event({
+          category:gaCategory || pageId && `${pageId}`,
+          action  :`input_touched__${inputId}`
+        })
+      pushSentEvent(inputId)
+
+    })
+
+
+    }
+
+  }, [contextValues.touched])
+
 
   // console.warn(12309, contextValues)
 
@@ -62,6 +96,16 @@ FormContextProvider.propTypes = {
    */
   initialTouched:PropTypes.object,
 
+  /**
+   * Whether to track the form using ga events
+   */
+  useGa:PropTypes.bool,
+
+  /**
+   * The category of the GA events
+   */
+  gaCategory:PropTypes.string,
+
   /*
   : PropTypes.shape({
     id: PropTypes.string.isRequired,
@@ -76,6 +120,7 @@ FormContextProvider.propTypes = {
 
 FormContextProvider.defaultProps = {
   context:FormContext,
+  useGa  :false
   /* height:'2.2em',
      as:'p', */
 }

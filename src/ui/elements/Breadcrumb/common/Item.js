@@ -36,7 +36,7 @@ const Item = ({
   else {
     Wrapper = Link
     wrapper_args['to'] = to
-  }
+  } 
 
   const childIsMessage = children && children.defaultMessage && true
   const userNameIsMessage = userName && userName.defaultMessage && true
