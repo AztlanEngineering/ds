@@ -209,7 +209,8 @@ DisplayTree.propTypes = {
 
 DisplayTree.defaultProps = {
   unfoldActive:false,
-  isOpen      :true
+  isOpen      :true,
+  tree:[]
 }
 
 export default DisplayTree
