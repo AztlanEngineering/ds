@@ -40,6 +40,8 @@ const PageProgressBar = ({
   offsetPx,
   throttleMs=100,
 
+  dependencies,
+
   ...barProps
 }) => {
 
@@ -49,7 +51,8 @@ const PageProgressBar = ({
     activeDefaultId:initializeAt,
     contentId      :spyOn,
     offsetPx,
-    throttleMs
+    throttleMs,
+    dependencies,
   })
 
   return (

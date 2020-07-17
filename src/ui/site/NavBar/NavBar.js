@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 
 import { Item, BodyLocker } from './common'
 import { SiteContext } from 'ui/common'
+import { PageProgressBar } from 'ui/elements'
 import { HamburgerIcon } from 'ui/site'
 import { Link, useLocation } from 'react-router-dom'
 
@@ -92,7 +93,12 @@ const NavBar = ({
   contentClosedClassName,
   contentStyle,
 
-  min
+  min,
+
+  progressBar,
+  progressBarProps,
+
+  ...otherProps
 
 }) => {
 
@@ -139,6 +145,7 @@ const NavBar = ({
       }
       id={ id }
       style={ style }
+      { ...otherProps }
     >
       { open && <BodyLocker /> }
       <header
@@ -198,6 +205,9 @@ const NavBar = ({
           <DesktopContent className='gc-content'/>
           <FooterComponent open={open}/>
         </>
+      }
+      { progressBar && 
+      <PageProgressBar spyOn={ (typeof progressBar !== 'boolean') && progressBar } { ...progressBarProps }/>
       }
 
     </Wrapper>
@@ -281,7 +291,19 @@ NavBar.propTypes = {
     PropTypes.string,
     PropTypes.object
   ]),
-  //as: PropTypes.string,
+
+  /**
+   * Whether the navbar should display a progressbar. Can be true (tracks all the page), or a specific html id selector
+   */
+  progressBar:PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.bool
+  ]),
+
+  /**
+   * Progress bar props
+   */
+  progressBarProps:PropTypes.object,
 
   /**
    *  The children JSX for the title. Takes prop `open` as a boolean

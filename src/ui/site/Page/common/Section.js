@@ -37,7 +37,7 @@ const Section = ({
   }= useContext(Context)
   return (
     <section
-      id={ id && (id + (contextId ? '_' + contextId : ''))}
+      id={ id && `${contextId}__${id}`}
       className={
         [
           //styles[baseClassName],
