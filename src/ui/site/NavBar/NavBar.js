@@ -159,12 +159,12 @@ const NavBar = ({
         style={ headerStyle }
       >
 
-        { !min && 
-        <HamburgerIcon
-          onClick={ toggleOpen }
-          active={open}
-          className='md-h lg-h'
-        />}
+        { !min &&
+          <HamburgerIcon
+            onClick={ toggleOpen }
+            active={open}
+            className='md-h lg-h'
+          />}
         <TitleComponent
           className='title'
           open={ open }
@@ -206,8 +206,19 @@ const NavBar = ({
           <FooterComponent open={open}/>
         </>
       }
-      { progressBar && 
-      <PageProgressBar spyOn={ (typeof progressBar !== 'boolean') && progressBar } { ...progressBarProps }/>
+      { progressBar &&
+        <PageProgressBar
+          spyOn={ (typeof progressBar !== 'boolean') && progressBar }
+          { ...{
+            style:{
+              ...(progressBarProps || {}).style,
+              '--fill':'var(--link)'
+              
+            },
+            ...progressBarProps,
+            offsetPx:-200
+          }}
+        />
       }
 
     </Wrapper>
@@ -360,7 +371,7 @@ NavBar.defaultProps = {
   FooterComponent      :DefaultFooterComponent,
   ExtraContentComponent:() => null,
   offsetPx             :400,
-  min:false,
+  min                  :false,
   //headerClassName:'',
   /* height:'2.2em',
      as:'p', */
