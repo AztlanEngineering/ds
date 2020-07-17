@@ -14,6 +14,8 @@ import {
    import './input_label.scss' */
 
 //const baseClassName = 'input_label'
+ import { FormattedMessage} from "react-intl";
+ import messages from "./messages"
 
 
 /**
@@ -31,7 +33,6 @@ const InputLabel = ({
   as:Wrapper,
 
   optional,
-  optionalText,
 }) => {
 
   return (
@@ -51,11 +52,14 @@ const InputLabel = ({
       { children }
       { optional &&
         <Label
-          className='ls s-2 x-blue'
+          className='k-s s-2 x-link'
           simple
+          style={{
+            fontWeight:'normal'
+          }}
         >
           (
-          { optionalText }
+            <FormattedMessage {...messages.optional } />
           )
         </Label>
       }
@@ -100,17 +104,11 @@ InputLabel.propTypes = {
    * Whether the input is optional. Is considered a better practice than to mark the required fields
    */
   optional:PropTypes.bool,
-
-  /**
-   * The text to display if the input is optional
-   */
-  optionalText:PropTypes.string,
 }
 
 InputLabel.defaultProps = {
   as          :'label',
   optional    :false,
-  optionalText:'optional'
 }
 
 export default InputLabel
