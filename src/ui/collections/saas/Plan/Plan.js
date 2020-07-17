@@ -22,9 +22,8 @@ import PlanContext from './Context'
 
 //Intl
 
-/* import { FormattedMessage} from "react-intl";
-   import messages from "./messages";
-    <FormattedMessage {...messages.title} /> */
+ import { FormattedMessage} from "react-intl";
+ import messages from "./messages"
 
 //Config
 
@@ -100,7 +99,7 @@ const Plan = ({
         </Card.Section>
         <Card.Section className='features'>
           <Heading
-            heading='Features'
+            heading={ <FormattedMessage {...messages.features } /> }
             headingClassName={
               [
                 'h4',
