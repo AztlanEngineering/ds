@@ -212,11 +212,12 @@ const NavBar = ({
           { ...{
             style:{
               ...(progressBarProps || {}).style,
+              zIndex  :'-1',
               '--fill':'var(--link)'
-              
+
             },
             ...progressBarProps,
-            offsetPx:-200
+            offsetPx:-300
           }}
         />
       }

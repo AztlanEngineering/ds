@@ -4,7 +4,6 @@ import PropTypes from 'prop-types'
 
 
 
-import { gql } from 'graphql-tag'
 /* Config */
 import C from 'ui/cssClasses'
 import { isBackend } from 'ui/isBackend'
