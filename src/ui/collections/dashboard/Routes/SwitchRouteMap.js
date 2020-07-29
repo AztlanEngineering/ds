@@ -22,12 +22,15 @@ const SwitchRouteMap = ({
   NotFound,
 }) => {
 
+  console.log('SRM')
+
   return (
     <Switch
       children={
         [
-          ...routes.map(({ isPrivate, ...routeProps }, i) =>
-            isPrivate ?
+          ...routes.map(({ isPrivate, ...routeProps }, i) =>{
+            console.log(routeProps)
+            return isPrivate ?
               <PrivateRoute
                 key={i}
                 {...routeProps}
@@ -35,13 +38,11 @@ const SwitchRouteMap = ({
               <Route
                 key={i}
                 {...routeProps}
-              />
+              />}
           ),
           ...(NotFound ?
             [
-              <Route status={404}>
-                { NotFound }
-              </Route>
+              <Route component={ NotFound }/>
             ]
             : [])
         ]
