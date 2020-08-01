@@ -84,10 +84,11 @@ const ArticleCard = ({
         <BlogLink
           to='SINGLE'
           params={{slug}}
+          aria-label={ description }
         >
           <Image
             src={imageSrc}
-            alt={imageAlt}
+            alt={imageAlt || title}
           />
         </BlogLink>
       </Card.Section>

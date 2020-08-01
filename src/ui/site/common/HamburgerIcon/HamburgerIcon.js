@@ -53,6 +53,7 @@ const HamburgerIcon = ({
       simple
       id={ id }
       style={ style }
+      aria-label='menu'
       { ...otherProps }
 
     >

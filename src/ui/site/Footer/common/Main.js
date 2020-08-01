@@ -94,7 +94,7 @@ const Main = ({
     {socials.map(
     (e) => 
       <li>
-        <a href={ typeof e.url === 'string' ? e.url : intl.formatMessage(e.url.props) } rel='nofollow' target='_blank'>{ e.name }</a>
+        <a href={ typeof e.url === 'string' ? e.url : intl.formatMessage(e.url.props) } rel='noreferrer nofollow' target='_blank'>{ e.name }</a>
       </li>
   )}
   </ul>
