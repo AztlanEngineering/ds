@@ -95,8 +95,8 @@ const InputHolder = ({
           ].filter( e => e ).join(' ') }
           style={ descriptionStyle }
         >
-          { errors && (
-            typeof errors === 'string'? errors :
+          {errors && (
+            ['string', 'object'].includes(typeof errors) ? errors :
           <ul>
           { errors && errors.map((e, i) => <li key={i} className='x-error c-x'>{e}</li>) }
           </ul>

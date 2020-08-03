@@ -22,14 +22,12 @@ const SwitchRouteMap = ({
   NotFound,
 }) => {
 
-  console.log('SRM')
 
   return (
     <Switch
       children={
         [
           ...routes.map(({ isPrivate, ...routeProps }, i) =>{
-            console.log(routeProps)
             return isPrivate ?
               <PrivateRoute
                 key={i}
