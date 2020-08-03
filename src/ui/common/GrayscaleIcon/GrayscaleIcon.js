@@ -55,7 +55,7 @@ const GrayscaleIcon = ({
         }
         id={ id }
         style={{
-          objectPosition
+          objectPosition,
         }}
       />
     </a>

@@ -55,28 +55,28 @@ const Group = ({
             width='9em'
             source='/arrow.svg#arrow'
             viewBox='0 0 512 60'
-            useClassName='x-subtitle c-light-x'
+            useClassName='x-metadata c-x'
 
           />
         </div>}
-    <Wrapper
-      className={
-        [
-        //styles[baseClassName],
-          baseClassName,
-          grid && C.grid,
-          className
-        ].filter(e => e).join(' ')
-      }
-      id={ id }
-      style={{
-        '--card-width':cardWidth,
-        ...style
-      }}
-      { ...otherProps }
-    >
-      { children }
-    </Wrapper>
+      <Wrapper
+        className={
+          [
+            //styles[baseClassName],
+            baseClassName,
+            grid && C.grid,
+            className
+          ].filter(e => e).join(' ')
+        }
+        id={ id }
+        style={{
+          '--card-width':cardWidth,
+          ...style
+        }}
+        { ...otherProps }
+      >
+        { children }
+      </Wrapper>
     </>
   )}
 

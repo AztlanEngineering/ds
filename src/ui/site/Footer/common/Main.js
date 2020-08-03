@@ -118,7 +118,7 @@ const Main = ({
       id={ id }
       style={ style }
     >
-      <div className='ph-u'>
+      <div className=''>
         <Link to={ cv.HOME_URL }>
         <Heading
           heading={ cv.SITE_NAME }
@@ -130,7 +130,7 @@ const Main = ({
         </Link>
       </div>
       { cv.SITE_DESCRIPTION &&
-      <div className="ph-u">
+      <div className="">
         <p>
           { cv.SITE_DESCRIPTION}
         </p>

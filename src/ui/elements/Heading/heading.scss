@@ -23,4 +23,8 @@ $heading-margin-bottom:0.5em;
   &:not(:last-child) {
     margin-bottom:$heading-margin-bottom;
   }
+  .label.simple {
+    padding-left:0;
+    padding-right:0;
+  }
 }

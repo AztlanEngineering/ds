@@ -16,7 +16,7 @@ $card-width:300px;
   &.grid {
     display: grid;
     grid-gap: $gaps;
-    grid-template-columns: repeat(auto-fit, minmax(var(--card-width, 200px), 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(var(--card-width, 180px), 1fr));
     margin: 0 $scrollPadding;
   }
 
@@ -46,7 +46,7 @@ $card-width:300px;
       }
 
       .scene {
-        min-width: var(--card-width, 300px);
+        min-width: var(--card-width-xs, var(--card-width, 300px));
         position: relative;
         scroll-snap-align: start;
 

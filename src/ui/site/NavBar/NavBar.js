@@ -58,7 +58,7 @@ const DefaultTitleComponent = ({title, className, link, open,...otherProps}) => 
 }
 
 const DefaultFooterComponent = ({ open }) =>
-  <footer className='gc-footer'>
+  <footer className='i-footer'>
     &nbsp;
   </footer>
 /**
@@ -118,7 +118,7 @@ const NavBar = ({
     className={
       [
         'v0 mv-v',
-        'gc-content',
+        'i-content',
         className,
         open ? contentOpenClassName : contentClosedClassName,
         contentClassName
@@ -151,7 +151,7 @@ const NavBar = ({
       <header
         className={
           [
-            'gc-header',
+            'i-header',
             open ? headerOpenClassName : headerClosedClassName,
             headerClassName
           ].filter(e => e).join(' ')
@@ -175,7 +175,7 @@ const NavBar = ({
         <>
           <div className='md-h lg-h'>
             { open &&
-              <DesktopContent className='gc-content'/>
+              <DesktopContent className='i-content'/>
             }
             {! open &&
               <Leader
@@ -202,7 +202,7 @@ const NavBar = ({
         </>
         :
         <>
-          <DesktopContent className='gc-content'/>
+          <DesktopContent className='i-content'/>
           <FooterComponent open={open}/>
         </>
       }

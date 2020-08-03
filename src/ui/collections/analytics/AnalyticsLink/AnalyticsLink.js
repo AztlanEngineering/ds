@@ -1,12 +1,14 @@
-/* @fwrlines/generator-react-component 2.4.0 */
+/* @fwrlines/generator-react-component 2.4.1 */
 import * as React from 'react'
 //import {} from 'react'
 import PropTypes from 'prop-types'
-import { Button } from 'ui/elements'
-import { usePage } from 'ui/site'
 
 
 import ga from 'react-ga'
+
+import { usePage } from 'ui/site'
+
+import { Link } from 'react-router-dom'
 
 //Intl
 
@@ -19,32 +21,31 @@ import ga from 'react-ga'
 //import C from 'ui/cssClasses'
 
 /* Relative imports
-   import styles from './analytics_button.scss' */
+   import styles from './analytics_link.scss' */
 /*
 import { isBackend } from 'ui/isBackend'
 
 if(!isBackend) {
-  import('./analytics_button.scss')
-}*/
+  import('./analytics_link.scss')
+}
+*/
 
-const baseClassName = ''//'analytics_button'
+const baseClassName = 'analytics_link'
+
 
 /**
- * Use `AnalyticsButton` associate events with a clickable button. Atm this is not set up and only reexportes the base button.
+ * Use `AnalyticsLink` to
  * Has color `x`
  */
-const AnalyticsButton = ({
+const AnalyticsLink = ({
   id,
   className,
   style,
+  children,
 
   event,
 
-  onClick:userOnClick,
   ...otherProps
-
-
-
 }) => {
 
   const { id:pageId } = usePage()
@@ -54,11 +55,10 @@ const AnalyticsButton = ({
       category:pageId && `${pageId}`,
       ...event
     })
-    userOnClick(e)
   }
 
   return (
-    <Button
+    <Link
       className={
         [
         //styles[baseClassName],
@@ -68,12 +68,15 @@ const AnalyticsButton = ({
       }
       id={ id }
       style={ style }
-      onClick={ onClick }
       { ...otherProps }
-    />
+    >
+      <span onClick={ onClick }>
+        { children }
+      </span>
+    </Link>
   )}
 
-AnalyticsButton.propTypes = {
+AnalyticsLink.propTypes = {
   /**
    * Provide an HTML id to this element
    */
@@ -94,6 +97,7 @@ AnalyticsButton.propTypes = {
    */
   children:PropTypes.node,
 
+
   /**
    * The GA event to send on click
    */
@@ -106,11 +110,11 @@ AnalyticsButton.propTypes = {
   }).isRequired,
 }
 
-AnalyticsButton.defaultProps = {
-  status:'neutral',
-  event :{},
-  /* height:'2.2em',
-     as:'p', */
+/*
+AnalyticsLink.defaultProps = {
+  status: 'neutral',
+  //height:'2.2em',
+  //as:'p',
 }
-
-export default AnalyticsButton
+*/
+export default AnalyticsLink

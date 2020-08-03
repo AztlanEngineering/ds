@@ -21,30 +21,30 @@ Classes :
 .nav_bar {
   display: grid;
 
-  .gc-content,
-  .gc-footer {
+  .i-content,
+  .i-footer {
     display: flex;
   //.padding: calc(var(--u, 1) * .5em);
   }
 
-  .gc-content {
+  .i-content {
     margin: 0;
   }
 
   .leader,
-  .gc-header {
+  .i-header {
     display:flex;
     align-items: center;
   }
 
-  .gc-content {
+  .i-content {
 
     a {
       //color:inherit;
     }
   }
 
-  .gc-footer {
+  .i-footer {
   }
 
   @include mixins.media($from:$sm-md) {
@@ -53,7 +53,7 @@ Classes :
     position:sticky;
     top:0;
 
-    .gc-content {
+    .i-content {
       align-items: center;
       justify-content: flex-end;
 
@@ -66,7 +66,7 @@ Classes :
       }
     }
 
-    .gc-footer {
+    .i-footer {
       align-items: center;
       justify-content: center;
     }
@@ -87,18 +87,18 @@ Classes :
       .title {
         display: none;
       }
-      .gc-content {
+      .i-content {
         display:none;
       }
 
       .leader:not(.isTop),
-      .leader.istop + .gc_content {
+      .leader.istop + .i_content {
         animation:display .3s linear 1 forwards;
       }
 
       .leader.istop,
       .default_content:first-child, 
-      .leader:not(.istop) + .gc-content {
+      .leader:not(.istop) + .i-content {
         display: none;
       }
     }
@@ -123,11 +123,11 @@ Classes :
     }
 
 
-    .gc-content {
+    .i-content {
       flex-direction: column;
       //align-items:flex-end;
     }
-    .gc-footer {
+    .i-footer {
       justify-content:space-between;
       align-items: center;
     }

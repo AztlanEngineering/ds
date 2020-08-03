@@ -44,20 +44,20 @@ const FormContextProvider = ({
 
 
   useEffect(() => {
-    console.log('touched changed', contextValues.touched)
+    //console.log('touched changed', contextValues.touched)
     if(useGa) {
-    Object.keys(contextValues.touched).forEach(inputId =>
-    {
-      console.log(inputId, sentEvents)
-      if(contextValues.touched[inputId] && !sentEvents.includes(inputId))
+      Object.keys(contextValues.touched).forEach(inputId =>
+      {
+        console.log(inputId, sentEvents)
+        if(contextValues.touched[inputId] && !sentEvents.includes(inputId))
 
-        ga.event({
-          category:gaCategory || pageId && `${pageId}`,
-          action  :`input_touched__${inputId}`
-        })
-      pushSentEvent(inputId)
+          ga.event({
+            category:gaCategory || pageId && `${pageId}`,
+            action  :`touched.${inputId}`
+          })
+        pushSentEvent(inputId)
 
-    })
+      })
 
 
     }
