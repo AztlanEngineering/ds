@@ -136,7 +136,7 @@ export const Error = () => (
     type='text'
     inputId='token_error'
     leftSide='token id'
-    error='Please input a valid token'
+    errors='Please input a valid token'
     rightIcon='h'
     description='Enter here the token you have been provided'
   />

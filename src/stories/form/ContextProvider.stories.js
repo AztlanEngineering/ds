@@ -43,6 +43,25 @@ export const Default = () => (
       'fellini'    :new Set(['saty', 'otto']),
       'dscs':'magenta'
     }}
+    validation={{
+      _all:(f) => {
+        const c1 = [
+          f.planet_name === 'mars',
+          'The planet cannot be mars'
+        ]
+        const c2 = [
+          f.planet_name === 'venus',
+          'The planet cannot be venus'
+        ]
+        const errors = [c1, c2].reduce((a, e) => {
+          e[0] && a.push(e[1])
+          return a
+        }, [] )
+        return errors.length ? errors : false
+      },
+      planet_name:(v) => (v === 'earth') && ['cannot be earth', 'this doenst include the z letter'],
+      story:(v) => (v.length <= 6) && 'The story is not long enough'
+    }}
   >
     <FormInput
       context={ context }

@@ -31,7 +31,9 @@ const Debugger = ({
 }) => {
   const {
     values,
-    touched
+    touched,
+    errors,
+    isValid
   } = useContext(context)
 
   return (
@@ -73,6 +75,29 @@ const Debugger = ({
           )
           }
         </ul>
+      </div>
+      <div>
+        <p className='h2'>Errors</p>
+        <ul className='compact'>
+          { errors && Object.keys(errors).map((e, i) =>
+            <li key={i}>
+              <em>{ e }</em>
+&nbsp;:&nbsp;
+              { JSON.stringify(errors[e]) }
+            </li>
+          )
+          }
+        </ul>
+      </div>
+      <div>
+        { isValid ? 
+            <p className='h2'>
+              FORM IS VALID
+            </p>:
+            <p className='h2'>
+              FORM IS INVALID
+            </p>
+        }
       </div>
 
     </Wrapper>

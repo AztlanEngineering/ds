@@ -31,7 +31,7 @@ const InputHolder = ({
   style,
   children,
 
-  error,
+  errors,
   valid,
 
   disabled,
@@ -62,7 +62,7 @@ const InputHolder = ({
         baseClassName,
         className,
         aesthetic,
-        error && C.error,
+        errors && C.error,
         valid && C.valid,
         compact && C.compact
       ].filter(e => e).join(' ')
@@ -85,17 +85,25 @@ const InputHolder = ({
         </InputLabel>
       }
       { children }
-      { (description || error || valid) &&
+      { (description || errors || valid) &&
         <InputDescription
           as={ descriptionAs }
           className={[
             descriptionClassName,
-            error && C.error,
+            errors && C.error,
             valid && C.valid
           ].filter( e => e ).join(' ') }
           style={ descriptionStyle }
         >
-          { error || valid || description }
+          { errors && (
+            typeof errors === 'string'? errors :
+          <ul>
+          { errors && errors.map((e, i) => <li key={i} className='x-error c-x'>{e}</li>) }
+          </ul>
+
+          ) 
+          }
+          { !errors && (valid || description) }
         </InputDescription>
       }
     </Wrapper>
@@ -140,9 +148,9 @@ InputHolder.propTypes = {
   ]),
 
   /**
-   * Whether the input is on an error state. Will be displayed before the description.
+   * Whether the input is on an errors state. Will be displayed before the description.
    */
-  error:PropTypes.string,
+  errors:PropTypes.string,
 
   /**
    * Whether the input is valid. If a sentence, will be displayed before the description.

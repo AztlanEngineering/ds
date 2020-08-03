@@ -26,9 +26,13 @@ const FormContextProvider = ({
 
   initialValues,
   initialTouched,
+  initialErrors,
+  validation,
 
   useGa,
-  gaCategory
+  gaCategory,
+
+  validationDebounceMs
 }) => {
 
   const { id:pageId } = usePage()
@@ -36,6 +40,9 @@ const FormContextProvider = ({
   const contextValues = useFormState({
     initialValues,
     initialTouched,
+    initialErrors,
+    validation,
+    debounceMs:validationDebounceMs,
   })
 
   const [sentEvents, setSentEvents] = useState([])
@@ -48,7 +55,7 @@ const FormContextProvider = ({
     if(useGa) {
       Object.keys(contextValues.touched).forEach(inputId =>
       {
-        console.log(inputId, sentEvents)
+        //console.log(inputId, sentEvents)
         if(contextValues.touched[inputId] && !sentEvents.includes(inputId))
 
           ga.event({
@@ -95,6 +102,21 @@ FormContextProvider.propTypes = {
    * A map of input names to boolean values to initialiwe the touched attribute of the inputs
    */
   initialTouched:PropTypes.object,
+
+  /**
+   * The dict of errors with which to instantiate the form 
+   */
+  initialErrors:PropTypes.object,
+
+  /**
+   * the dict of validation functions. the keys must correspond to the input names . use special key `_all` to validate all
+   */
+  validation:PropTypes.object,
+
+  /**
+   * The debounce time
+   */
+  validationDebounceMs:PropTypes.number,
 
   /**
    * Whether to track the form using ga events

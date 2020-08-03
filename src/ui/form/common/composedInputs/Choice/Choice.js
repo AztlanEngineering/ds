@@ -30,7 +30,7 @@ const Choice = ({
   className,
   style,
 
-  error,
+  errors,
   valid,
 
   disabled,
@@ -78,7 +78,7 @@ const Choice = ({
     ].filter(e => e).join(' '),
     style,
 
-    error,
+    errors,
     valid,
 
     disabled,
@@ -151,9 +151,9 @@ Choice.propTypes = {
   style:PropTypes.object,
 
   /**
-   * Whether the input is on an error state. Will be displayed before the description.
+   * Whether the input is on an errors state. Will be displayed before the description.
    */
-  error:PropTypes.string,
+  errors:PropTypes.string,
 
   /**
    * Whether the input is valid. If a sentence, will be displayed before the description.

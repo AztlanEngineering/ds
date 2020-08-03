@@ -41,7 +41,7 @@ const DownshiftSelect = ({
   className,
   style,
 
-  error,
+  errors,
   valid,
 
   disabled,
@@ -203,7 +203,7 @@ const DownshiftSelect = ({
     //className, // We transform the classname as usual so not needed here
     style,
 
-    error,
+    errors,
     valid,
 
     disabled,
@@ -259,8 +259,8 @@ const DownshiftSelect = ({
               isVisible={ isOpen }
               preferredOrder={ popupPreferredOrder }
             >
-                      <ul {...getMenuProps()}>
-          {isOpen &&
+              <ul {...getMenuProps()}>
+                {isOpen &&
             items.map((item, index) => (
               <li
                 style={
@@ -273,12 +273,12 @@ const DownshiftSelect = ({
               >
                 {
                   selectedItem === item ?
-                  displaySelectedItem(item) :
-                  displayItem(item)
+                    displaySelectedItem(item) :
+                    displayItem(item)
                 }
               </li>
             ))}
-        </ul>
+              </ul>
             </Popup>
           </Button>
         </div>
@@ -311,9 +311,9 @@ DownshiftSelect.propTypes = {
   ]),
 
   /**
-   * Whether the input is on an error state. Will be displayed before the description.
+   * Whether the input is on an errors state. Will be displayed before the description.
    */
-  error:PropTypes.string,
+  errors:PropTypes.string,
 
   /**
    * Whether the input is valid. If a sentence, will be displayed before the description.

@@ -60,8 +60,8 @@ const FormInput = ({
   //console.warn('IP', inputProps)
 
   const passedProps = {
-    ...allProps,
     ...inputProps,
+    ...allProps,
     name,
   }
 
