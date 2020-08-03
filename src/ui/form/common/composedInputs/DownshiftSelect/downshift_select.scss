@@ -8,6 +8,9 @@ Classes :
 
 .downshift_select{
 
+  .button {
+    overflow:visible;
+  }
   .popup {
     border:var(--form-border);
     border-radius:var(--form-border-radius);

@@ -32,6 +32,7 @@ export default {
 
 export const Default = () => (
   <DownshiftSelect
+    inputId='fruit'
     label='Please select your favourite fruit'
     options={ LIST }
     description='Here is a list of very tasty fruits you can choose your favourite from'

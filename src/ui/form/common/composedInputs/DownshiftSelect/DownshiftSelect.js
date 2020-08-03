@@ -191,6 +191,8 @@ const DownshiftSelect = ({
     finalUseSelectProps
   )
 
+
+
   const {
     id:inputId,
     ...otherToggleButtonProps
@@ -240,7 +242,7 @@ const DownshiftSelect = ({
     >
       <div className='yb'>
         <div className='yib xv'>
-          <button
+          <Button
             id={ inputId }
             { ...otherToggleButtonProps }
             { ...buttonProps }
@@ -250,33 +252,35 @@ const DownshiftSelect = ({
             { (selectedItem && displaySelectedItem(selectedItem))
             || ( uncontrolledSelectedItem && displaySelectedItem(uncontrolledSelectedItem ))
             || buttonChildren }
-          </button>
-          <Popup
-            className={ popupClassName }
-            id={ popupId }
-            style={{ width: '200px', ...popupStyle }}
-            isVisible={ isOpen }
-            preferredOrder={ popupPreferredOrder }
-          >
-            <ul { ...getMenuProps() }>
-              { isOpen && items.map((item, i) => (
-                <li
-                  key={i}
-                  style={ itemStyle }
-                  className={
-                    [
-                      //styles[baseClassName],
-                      itemClassName,
-                      highlightedIndex === i && highlightedClassName
-                    ].filter(e => e).join(' ')
-                  }
-                  { ...getItemProps({item, i}) }
-                >
-                  { displayItem(item) }
-                </li>
-              )) }
-            </ul>
-          </Popup>
+            <Popup
+              className={ popupClassName }
+              id={ popupId }
+              //style={{ width: '200px', ...popupStyle }}
+              isVisible={ isOpen }
+              preferredOrder={ popupPreferredOrder }
+            >
+                      <ul {...getMenuProps()}>
+          {isOpen &&
+            items.map((item, index) => (
+              <li
+                style={
+                  highlightedIndex === index
+                    ? { backgroundColor: '#bde4ff' }
+                    : {}
+                }
+                key={`${item}${index}`}
+                {...getItemProps({ item, index })}
+              >
+                {
+                  selectedItem === item ?
+                  displaySelectedItem(item) :
+                  displayItem(item)
+                }
+              </li>
+            ))}
+        </ul>
+            </Popup>
+          </Button>
         </div>
       </div>
     </Holder>

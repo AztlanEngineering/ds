@@ -15,7 +15,7 @@ import { Group } from './common'
 
 const baseClassName = 'button'
 
-const Button = ({
+const Button = React.forwardRef(({
   id,
   className,
   style,
@@ -30,13 +30,13 @@ const Button = ({
 
   disabled,
   loading,
-  loaderType='bars',
+  loaderType,
 
   as:Element,
   dangerouslySetInnerHTML,
 
   ...additionalProps
-}) => {
+}, ref) => {
 
   return (
     <Element
@@ -59,6 +59,7 @@ const Button = ({
           className
         ].filter(e => e).join(' ')
       }
+      ref={ ref }
       disabled={ disabled }
       { ...additionalProps }
     >
@@ -82,6 +83,7 @@ const Button = ({
       }
     </Element>
   )}
+)
 
 Button.propTypes = {
   /**
