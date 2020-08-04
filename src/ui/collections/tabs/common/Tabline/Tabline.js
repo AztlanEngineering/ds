@@ -75,7 +75,9 @@ const Tabline = ({
           tabId={e.id}
           closable={ e.closable }
         >
-          { e.title }
+          <strong>
+          { e.title || e.label }
+          </strong>
         </Tab>
       ) }
       <li className='add-tab'>
@@ -91,6 +93,11 @@ const Tabline = ({
            value={preferredTheme} */
           buttonChildren=''
           value=''
+          popupClassName='ul'
+          itemClassName='ph-u'
+          popupStyle={{
+
+          }}
           style={{
             display:'inline-block',
             width  :'auto'

@@ -258,16 +258,14 @@ const DownshiftSelect = ({
               //style={{ width: '200px', ...popupStyle }}
               isVisible={ isOpen }
               preferredOrder={ popupPreferredOrder }
+              style={ popupStyle }
             >
               <ul {...getMenuProps()}>
-                {isOpen &&
+                {
             items.map((item, index) => (
               <li
-                style={
-                  highlightedIndex === index
-                    ? { backgroundColor: '#bde4ff' }
-                    : {}
-                }
+                className={ itemClassName }
+                style={ itemStyle }
                 key={`${item}${index}`}
                 {...getItemProps({ item, index })}
               >

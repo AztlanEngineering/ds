@@ -72,7 +72,7 @@ const reducer = (state, action) =>{
 }
 
 
-const openMenuOptions = [
+const defaultItems = [
   {
     value:'/apple',
     id   :'light',
@@ -108,6 +108,8 @@ const Main = ({
 
   as:Wrapper,
   test,
+
+  items:openMenuOptions,
 
   homeTab,
 }) => {
@@ -265,6 +267,15 @@ Main.propTypes = {
     title:PropTypes.string.isRequired,
   }),
 
+  /*
+   * Items
+   */
+  items:PropTypes.arrayOf(PropTypes.shape({
+    value :PropTypes.string.isRequired,
+    id:PropTypes.string.isRequired,
+    label:PropTypes.string.isRequired,
+
+  })),
 
   /**
    * Whether test mode is enabled
@@ -278,6 +289,7 @@ Main.propTypes = {
 }
 
 Main.defaultProps = {
+  items:defaultItems,
   homeTab:{
     path :'/',
     title:'Home',

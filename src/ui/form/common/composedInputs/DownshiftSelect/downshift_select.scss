@@ -12,10 +12,12 @@ Classes :
     overflow:visible;
   }
   .popup {
-    border:var(--form-border);
-    border-radius:var(--form-border-radius);
-    background:var(--form-popup-background);
+    //border:var(--form-border);
+    border-radius:var(--r);
+    background:var(--z, var(--light-background));
+    box-shadow:var(--shadow);
     outline:none;
+    z-index:1;
 
     ul {
       margin:0;
