@@ -64,6 +64,21 @@ const reducer = (state, action) =>{
           state.tabs.findIndex( e => e.id === action.payload) - 1
         ].id : state.focus
     }
+  case 'SET_TITLE_OF_CURRENT':
+    return {
+      ...state,
+      tabs:[
+        ...state.tabs.map((e, i) => {
+          const currentTabIndex = state.tabs.findIndex(e => e.id === state.focus)
+          if (i === currentTabIndex) {
+            return {
+              ...e,
+              title:action.payload
+            }
+          } else return e
+        })
+      ]
+    }
 
   default:
     return state
@@ -152,6 +167,13 @@ const Main = ({
     })
   }
 
+  const renameCurrentTab = useMemo(() => (newTitle) => {
+    dispatch({
+      type   :'SET_TITLE_OF_CURRENT',
+      payload:newTitle
+    })
+  }, [])
+
   const focusedTab = useMemo(() => state.tabs.find(e => e.id === state.focus),
     [state.focus]
   )
@@ -199,6 +221,7 @@ const Main = ({
       //Actions
       openNewTab,
       closeTab,
+      renameCurrentTab,
       selectTab
     }}
     >
@@ -214,11 +237,11 @@ const Main = ({
         style={ style }
       >
         <Tabline></Tabline>
-        { test && 
-        <h3>
-          Focus is :
-          { state.focus }
-        </h3>}
+        { test &&
+          <h3>
+            Focus is :
+            { state.focus }
+          </h3>}
         { children }
       </Wrapper>
     </TabContext.Provider>
@@ -267,12 +290,10 @@ Main.propTypes = {
     title:PropTypes.string.isRequired,
   }),
 
-  /*
-   * Items
-   */
+  /* Items */
   items:PropTypes.arrayOf(PropTypes.shape({
-    value :PropTypes.string.isRequired,
-    id:PropTypes.string.isRequired,
+    value:PropTypes.string.isRequired,
+    id   :PropTypes.string.isRequired,
     label:PropTypes.string.isRequired,
 
   })),
@@ -289,13 +310,13 @@ Main.propTypes = {
 }
 
 Main.defaultProps = {
-  items:defaultItems,
+  items  :defaultItems,
   homeTab:{
     path :'/',
     title:'Home',
   },
   test:false,
-  as:'div',
+  as  :'div',
   /* height:'2.2em',
      as:'p', */
 }
