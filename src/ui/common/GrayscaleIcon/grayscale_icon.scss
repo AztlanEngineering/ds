@@ -12,8 +12,12 @@ $grayscale:1;
 .grayscale_icon {
   display: inline-block;
   -webkit-filter: grayscale($grayscale);
-  filter: grayscale($grayscale);
-  opacity: $baseOpacity;
+
+  &,
+  .ui-light & {
+    filter: grayscale($grayscale);
+    opacity: $baseOpacity;
+  }
 
   &:hover,
   &:focus {
@@ -25,4 +29,10 @@ $grayscale:1;
     object-fit: contain;
     width: 100%;
   }
+
+  .ui-dark & {
+    -webkit-filter: grayscale($grayscale) invert(1);
+    filter: grayscale($grayscale) invert(1);
+  }
 }
+
