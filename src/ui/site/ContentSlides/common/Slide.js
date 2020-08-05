@@ -66,7 +66,6 @@ const Slide = ({
     >
       { title }
       { children }
-      <p className='c-on-z'>{ active && ' active' }</p>
     </Wrapper>
   )}
 
