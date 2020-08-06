@@ -35,7 +35,16 @@ export const Default = () => (
   <TabManager test></TabManager>
 )
 
-export const Variant = () => (
-  <TabManager></TabManager>
+
+
+export const Footer = () => {
+  const FooterComponent = (props) => (
+  <li>List element</li>
+  )
+return(
+  <TabManager FooterComponent={FooterComponent}></TabManager>
 )
+
+}
+
 

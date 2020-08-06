@@ -82,7 +82,7 @@ const Tab = ({
       { closable &&
         <Button
           onClick={ onCloseClick }
-          className='s-1 k-s'
+          className='x-heading s-1 k-s'
           simple
           icon='p'
         />

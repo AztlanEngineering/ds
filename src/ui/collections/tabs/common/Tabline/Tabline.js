@@ -36,7 +36,9 @@ const baseClassName = 'tabline'
 const Tabline = ({
   id,
   className,
-  style
+  style,
+
+  FooterComponent
 }) => {
 
   const {
@@ -51,6 +53,7 @@ const Tabline = ({
     openNewTab({
       path :selectedItem.value,
       title:selectedItem.label,
+      className:selectedItem.className
     })
   }
 
@@ -74,6 +77,7 @@ const Tabline = ({
           key={ i }
           tabId={e.id}
           closable={ e.closable }
+          className={ e.className }
         >
           <strong>
           { e.title || e.label }
@@ -110,6 +114,7 @@ const Tabline = ({
           }}
         />
       </li>
+      { FooterComponent && <FooterComponent/>}
     </ul>
 
   )}
@@ -153,6 +158,11 @@ Tabline.propTypes = {
    * The width of the element
    */
   width:PropTypes.string,
+
+  /**
+   *  A component to display as footer
+   */
+  FooterComponent:PropTypes.node,
   /*
   : PropTypes.shape({
     id: PropTypes.string.isRequired,

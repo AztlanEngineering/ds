@@ -7,10 +7,10 @@ Classes :
 
 */
 
-$tabline-background:var(--metadata);
+$tabline-background:var(--dark-y, var(--dark-background));
 $tabline-padding:.5em .5em 0;
-$tab-background-inactive:var(--background);
-$tab-background-active:var(--light-background);
+$tab-background-inactive:var(--y, var(--background));
+$tab-background-active:var(--light-y, var(--light-background));
 $tab-padding-normal:0 .5em;
 $tab-padding-closable:0 .1em 0 .5em;
 $tab-padding-add:0 0 .2em;

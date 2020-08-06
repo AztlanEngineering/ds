@@ -1,0 +1,7 @@
+query {
+  allFruits{
+    id
+    name
+    taste
+  }
+}

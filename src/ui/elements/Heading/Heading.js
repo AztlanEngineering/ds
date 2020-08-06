@@ -23,15 +23,18 @@ const Heading = ({
   heading,
   headingClassName,
   headingAs:HeadingElement,
+  headingStyle,
   headingProps,
 
   label,
   labelClassName,
   labelAs:LabelElement,
+  labelStyle,
   labelProps,
 
   subtitle,
   subtitleClassName,
+  subtitleStyle,
   subtitleProps,
 
   ...otherProps
@@ -55,6 +58,7 @@ const Heading = ({
             (labelClassName ? ' ' + labelClassName : '')
 
           }
+          style={ labelStyle }
           { ...labelProps }
         >
           { label }
@@ -66,6 +70,7 @@ const Heading = ({
           C.content
       + (headingClassName ? ' ' + headingClassName : '')
         }
+        style={ headingStyle }
         { ...headingProps }
       >
         { heading }
@@ -76,6 +81,7 @@ const Heading = ({
           className={
             (subtitleClassName ? ' ' + subtitleClassName : '')
           }
+    style={ subtitleStyle }
           { ...subtitleProps }
         >
           { subtitle }
@@ -128,6 +134,11 @@ Heading.propTypes = {
   headingClassName:PropTypes.string,
 
   /**
+   * The JSX-Written, css styles to apply to the element.
+   */
+  headingStyle:PropTypes.object,
+
+  /**
    * Extra props to pass to the heading
    */
   headingProps:PropTypes.object,
@@ -154,6 +165,11 @@ Heading.propTypes = {
   ]),
 
   /**
+   * The JSX-Written, css styles to apply to the element.
+   */
+  labelStyle:PropTypes.object,
+
+  /**
    * Extra props to pass to the label
    */
   labelProps:PropTypes.object,
@@ -170,6 +186,11 @@ Heading.propTypes = {
    * The subtitle html class
    */
   subtitleClassName:PropTypes.string,
+
+  /**
+   * The JSX-Written, css styles to apply to the element.
+   */
+  subtitleStyle:PropTypes.object,
 
   /**
    * Extra props to pass to the subtitle

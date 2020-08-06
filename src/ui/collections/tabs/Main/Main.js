@@ -120,6 +120,7 @@ const Main = ({
   className,
   style,
   children,
+  FooterComponent,
 
   as:Wrapper,
   test,
@@ -236,7 +237,7 @@ const Main = ({
         id={ id }
         style={ style }
       >
-        <Tabline></Tabline>
+        <Tabline FooterComponent={FooterComponent}></Tabline>
         { test &&
           <h3>
             Focus is :
@@ -288,6 +289,7 @@ Main.propTypes = {
   homeTab:PropTypes.shape({
     path :PropTypes.string.isRequired,
     title:PropTypes.string.isRequired,
+    className:PropTypes.string
   }),
 
   /* Items */
@@ -297,6 +299,11 @@ Main.propTypes = {
     label:PropTypes.string.isRequired,
 
   })),
+
+  /**
+   *  A component to display as footer. Be carerful this will be displayed as a list element
+   */
+  FooterComponent:PropTypes.node,
 
   /**
    * Whether test mode is enabled
@@ -314,6 +321,7 @@ Main.defaultProps = {
   homeTab:{
     path :'/',
     title:'Home',
+    className:'b-y y-green'
   },
   test:false,
   as  :'div',
