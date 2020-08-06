@@ -53,7 +53,7 @@ const SessionContextProvider = ({
     data={}
   }] = useLazyQuery(gql(GQL_QUERY_ME))
 
-  console.log('got the result of data', data)
+  //console.log('got the result of data', data)
 
   const { me:currentUserData } = data
 

@@ -1,0 +1,23 @@
+mutation addFruit(
+  $name: String
+  $taste: String
+) {
+  addFruit(
+    input:{
+      name: $name
+      taste: $taste
+    })
+  {
+    id
+    #name
+    #taste
+    #createdAt
+    #updatedAt
+  }
+}
+
+
+
+
+
+

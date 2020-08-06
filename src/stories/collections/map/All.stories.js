@@ -15,6 +15,7 @@ import {
 
 import QUERY_ONE from './graphql/getFruit.gql'
 import QUERY_ALL from './graphql/allFruits.gql'
+import MUTATION_ADD from './graphql/addFruit.gql'
 import MUTATION_DELETE from './graphql/deleteFruit.gql'
 import MUTATION_UPDATE from './graphql/updateFruit.gql'
 import { AplProvider } from 'stories/utils'
@@ -127,6 +128,7 @@ const typeList = [{
       ONE:QUERY_ONE
     },
     mutations:{
+      ADD:MUTATION_ADD,
       DELETE:MUTATION_DELETE,
       UPDATE:MUTATION_UPDATE
     }

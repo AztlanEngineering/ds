@@ -50,7 +50,7 @@ const Tab = ({
   const isTabActive = focus === tabId
 
   const onTabClick = useCallback((e) => {
-    console.log(e.target)
+    //console.log(e.target)
     e.stopPropagation()
     selectTab(tabId)
   }, [tabId])

@@ -34,7 +34,7 @@ const baseClassName = 'accordion'
 const reducer = (state, action) =>{
   switch (action.type) {
   case 'REGISTER':
-    console.log(action)
+    //console.log(action)
     return {
       ...state,
       items:[...state.items, action.payload].sort(),
@@ -100,7 +100,7 @@ const Accordion = ({
     open :[]
   })
 
-  console.log("ITEMS", items)
+  //console.log("ITEMS", items)
 
 
   const openOne = useMemo(

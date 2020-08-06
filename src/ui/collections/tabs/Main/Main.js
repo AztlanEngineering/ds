@@ -2,7 +2,7 @@
 import * as React from 'react'
 import { useEffect, useMemo, useReducer } from 'react'
 import PropTypes from 'prop-types'
-import { useHistory } from 'react-router-dom'
+import { useHistory, useLocation } from 'react-router-dom'
 
 import {
   Context as TabContext,
@@ -41,6 +41,11 @@ const reducer = (state, action) =>{
     return {
       ...action.payload
     }
+  case 'SET_READY':
+    return {
+      ...state,
+      ready:true
+    }
   case 'OPEN_NEW_TAB':
     return {
       ...state,
@@ -63,6 +68,21 @@ const reducer = (state, action) =>{
         state.tabs[
           state.tabs.findIndex( e => e.id === action.payload) - 1
         ].id : state.focus
+    }
+  case 'SET_CURRENT_TAB':
+    return {
+      ...state,
+      tabs:[
+        ...state.tabs.map((e, i) => {
+          const currentTabIndex = state.tabs.findIndex(e => e.id === state.focus)
+          if (i === currentTabIndex) {
+            return {
+              ...e,
+              ...action.payload
+            }
+          } else return e
+        })
+      ]
     }
   case 'SET_TITLE_OF_CURRENT':
     return {
@@ -136,6 +156,7 @@ const Main = ({
         ...homeTab,
         id      :'__home',
         closable:false,
+        ready   :false,
       }
     ],
     focus:'__home',
@@ -143,13 +164,15 @@ const Main = ({
 
   const history = useHistory()
 
+  const location = useLocation()
+
   const openNewTab = (payload) => {
     console.log('opening new tab', payload)
     dispatch({
       type   :'OPEN_NEW_TAB',
       payload:{
+        id:generateRandomString(),
         ...payload,
-        id:generateRandomString()
       }, //'sidebar', 'main'
     })
   }
@@ -175,6 +198,13 @@ const Main = ({
     })
   }, [])
 
+  const setCurrentTab = useMemo(() => (payload) => {
+    dispatch({
+      type:'SET_CURRENT_TAB',
+      payload
+    })
+  }, [])
+
   const focusedTab = useMemo(() => state.tabs.find(e => e.id === state.focus),
     [state.focus]
   )
@@ -191,8 +221,24 @@ const Main = ({
       }
 
     }
+    dispatch({
+      type:'SET_READY',
+    })
   }
   ,[])
+
+  useEffect(() => {
+    if (state.ready) {
+      const tabOpen = state.tabs.find(e => e.path === location.pathname)
+      console.warn(state, state.tabs, location.pathname, tabOpen)
+      !tabOpen ?
+        openNewTab({
+          path :location.pathname,
+          title:'Loading...',
+        }) : selectTab(tabOpen.id)
+
+    }
+  }, [state.ready])
 
   // Updating the store on each state change
   useEffect(() => {
@@ -207,7 +253,8 @@ const Main = ({
 
   // Pushing to the url on each focus change
   useEffect(() => {
-    history.push(focusedTab.path)
+    console.log('will push to', focusedTab.path)
+    state.ready && history.push(focusedTab.path)
   }, [focusedTab])
 
   return (
@@ -223,6 +270,7 @@ const Main = ({
       openNewTab,
       closeTab,
       renameCurrentTab,
+      setCurrentTab,
       selectTab
     }}
     >
@@ -287,8 +335,8 @@ Main.propTypes = {
    * The home tab
    */
   homeTab:PropTypes.shape({
-    path :PropTypes.string.isRequired,
-    title:PropTypes.string.isRequired,
+    path     :PropTypes.string.isRequired,
+    title    :PropTypes.string.isRequired,
     className:PropTypes.string
   }),
 
@@ -319,8 +367,8 @@ Main.propTypes = {
 Main.defaultProps = {
   items  :defaultItems,
   homeTab:{
-    path :'/',
-    title:'Home',
+    path     :'/',
+    title    :'Home',
     className:'b-y y-green'
   },
   test:false,

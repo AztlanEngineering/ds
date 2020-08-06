@@ -17,8 +17,8 @@ import {
 import gql from 'graphql-tag'
 import { useQuery, useMutation } from '@apollo/client'
 import {
-  generatePath,
   useHistory,
+  useLocation,
   useParams,
   useRouteMatch,
   Link
@@ -52,8 +52,11 @@ const baseClassName = 'list_view'
 const ListView = ({
   id,
   className,
-  style
+  style,
+  setCurrentTab
 }) => {
+
+  const location = useLocation()
 
   const {
     currentType={},
@@ -91,8 +94,17 @@ const ListView = ({
   )
 
   useEffect(() => {
-    setCurrentView(availableViews.find(e => e.view === view) || availableViews[0] )
+    if(view !== currentView.view) {
+      setCurrentView(availableViews.find(e => e.view === view) || availableViews[0] )
+    }
+    if(setCurrentTab) {
+      setCurrentTab({
+        path :`${location.pathname}`,
+        title:`${currentType.name} | ${currentView.name}`
+      })
+    }
   }, [view])
+
 
 
   const getViewUrl = (newView) => {
@@ -163,6 +175,18 @@ const ListView = ({
             )
           }
           ) }
+          <Link to={
+            generateLocalPath(
+              'new',
+              { 
+                ...routeParams
+              }
+            )
+            }>
+          <Button className='x-orange'>
+            New
+          </Button>
+          </Link>
         </Button.Group>
       </Heading>
 
@@ -206,14 +230,18 @@ ListView.propTypes = {
   //as: PropTypes.string,
 
   /**
-   * The height of the element
+   * Which html tag to use
    */
-  height:PropTypes.string,
+  as:PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object
+  ]),
+  //as: PropTypes.string,
 
   /**
-   * The width of the element
+   * For the case this needs to be executed inside of a tab context, we use this to change the current tab context
    */
-  width:PropTypes.string,
+  setCurrentTab:PropTypes.func
   /*
   : PropTypes.shape({
     id: PropTypes.string.isRequired,

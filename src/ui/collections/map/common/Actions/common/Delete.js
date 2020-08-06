@@ -1,6 +1,6 @@
 /* @fwrlines/generator-react-component 2.4.1 */
 import * as React from 'react'
-import { useMemo } from 'react'
+import { useMemo, useEffect } from 'react'
 import PropTypes from 'prop-types'
 
 
@@ -55,11 +55,7 @@ const Delete = ({
     data={},
     loading,
     error
-  }] = useMutation(gql(DELETE), {
-    variables:{
-      id:item.id
-    }
-  })
+  }] = useMutation(gql(DELETE))
 
   /* NOT USED ATM : TO EXTRACT THE SERVER RESPONSE
   const finalData = useMemo(() => (data && data[Object.keys(data).reduce((a, e) => {
@@ -69,9 +65,22 @@ const Delete = ({
      */
 
   const onClick = (e) => {
-    deleteItem(),
-    refetch && refetch()
+    const variables = {
+      id:item.id
+    }
+    deleteItem({ variables })
   }
+
+  const finalData = useMemo(() => (data && data[Object.keys(data).reduce((a, e) => {
+    return e
+  }, '')]) || [],
+  [currentType.name, loading])
+
+  useEffect(() => {
+    //console.log('WILL NOW REFETCH', finalData)
+    finalData && refetch && refetch()
+  }
+  , [finalData] )
 
   return (
     <Button

@@ -1,6 +1,6 @@
 /* @fwrlines/generator-react-component 2.4.1 */
 import * as React from 'react'
-import { useMemo } from 'react'
+import { useEffect, useMemo } from 'react'
 import PropTypes from 'prop-types'
 
 import {
@@ -16,7 +16,7 @@ import { Button, Heading } from 'ui/elements'
 
 import { useObjectMap, MapActions as Actions } from '../common'
 
-import { Link, useParams } from 'react-router-dom'
+import { Link, useLocation, useParams } from 'react-router-dom'
 
 import gql from 'graphql-tag'
 import { useQuery, useMutation } from '@apollo/client'
@@ -50,7 +50,10 @@ const SingleView = ({
   className,
   style,
   itemId,
+  setCurrentTab
 }) => {
+
+  const location = useLocation()
 
   const {
     guid:currentId,
@@ -72,7 +75,7 @@ const SingleView = ({
       variables:{
         id:itemId || currentId
       },
-      skip                       :!currentType.name,
+      skip                       :!currentId || !currentType.name,
       notifyOnNetworkStatusChange:true
     })
 
@@ -84,11 +87,46 @@ const SingleView = ({
   }, '')]) || {},
   [currentType.name, loading])
 
-  const [updateItem, {
+  const [saveItem, {
     data:mutationData={},
     error:mutationError,
     loading:mutationLoading
-  }] = useMutation(gql(currentType.graphql.mutations.UPDATE))
+  }] = useMutation(gql(
+    currentId ?
+      currentType.graphql.mutations.UPDATE:
+      currentType.graphql.mutations.ADD
+  ))
+
+  const mutationResponse = useMemo(() => (mutationData && mutationData[Object.keys(data).reduce((a, e) => {
+    return e
+  }, '')]) || {},
+  [mutationLoading])
+
+  const name = currentId ? (finalData._string || finalData.name || (finalData.id && finalData.id.substring(0, 8)) || 'Loading') : `New ${currentType.name}`
+
+  useEffect(() =>
+  {
+    setCurrentTab && setCurrentTab({
+      path :`${location.pathname}`,
+      title:`${name}`
+    })
+  },
+  [finalData.id]
+  )
+
+  useEffect(() =>
+  {
+    mutationResponse.id && (mutationResponse.id !== currentId) && history.push(generateLocalPath(
+      'single',
+      {
+        guid:mutationResponse.id,
+        ...routeParams
+      }
+    ))
+  }
+
+  ,[ mutationResponse ]
+  )
 
   const SubmitButton = React.memo((props) => {
     const {
@@ -99,7 +137,7 @@ const SingleView = ({
     } = useForm()
 
     const mutate = () => {
-      updateItem({variables:values}),
+      saveItem({variables: values})
       refetch()
     }
 
@@ -114,7 +152,7 @@ const SingleView = ({
       </Button>
     )})
 
-  if(finalData.__typename) return (
+  if(!currentId || finalData.__typename) return (
     <div
       className={
         [
@@ -130,18 +168,19 @@ const SingleView = ({
         <Heading
           headingAs='h1'
           label={
-            
-            <Link to={ 
+
+            <Link to={
               generateLocalPath('list',
                 {
                   ...routeParams
-              }) 
-              }>  
+                })
+            }
+            >
               { currentType.name }
             </Link>
 
           }
-          heading={ finalData._string || finalData.name || finalData.id }
+          heading={ name }
         />
       </div>
       <FormContextProvider
@@ -160,6 +199,7 @@ const SingleView = ({
           <Actions
             item={ finalData }
             enableEdit={false}
+            enableDelete={ currentId }
             independent
             style={{
               justifyContent:'end'
@@ -202,11 +242,13 @@ const SingleView = ({
               }
               id={ 'form_debugger' }
             >
+              {/*
               <FormContextDebugger/>
+*/}
             </Accordion.Item>
             { error &&
               <Accordion.Item
-                className='y-error b-y'
+                className='y-error b-dark-y ui-dark'
                 title={
                   <Heading
                     headingAs='h2'
@@ -216,10 +258,14 @@ const SingleView = ({
                 }
                 id={ 'form_debugger' }
               >
+                <pre className='c-x x-paragraph'>
+
+                  { data && JSON.stringify(error, null, 2) }
+                </pre>
               </Accordion.Item>}
             { mutationError &&
               <Accordion.Item
-                className='y-error b-y'
+                className='y-error b-dark-y ui-dark'
                 title={
                   <Heading
                     headingAs='h2'
@@ -229,6 +275,10 @@ const SingleView = ({
                 }
                 id={ 'form_debugger' }
               >
+                <pre className='c-x x-paragraph'>
+
+                  { data && JSON.stringify(mutationError, null, 2) }
+                </pre>
               </Accordion.Item>}
           </Accordion>
         </div>
@@ -281,6 +331,11 @@ SingleView.propTypes = {
    * Overloads the automatic detection of the id in the url
    */
   itemId:PropTypes.string,
+
+  /**
+   * For the case this needs to be executed inside of a tab context, we use this to change the current tab context
+   */
+  setCurrentTab:PropTypes.func
 
   /*
   : PropTypes.shape({
