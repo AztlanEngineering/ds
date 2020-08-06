@@ -6,9 +6,17 @@ import faker from 'faker'
 
 //import { action } from '@storybook/addon-actions'
 
-import { Card, MapContextProvider, MapListView as ListView } from 'ui'
+import { 
+  Card, 
+  MapContextProvider, 
+  MapListView as ListView,
+  MapSingleView as SingleView
+} from 'ui'
+
+import QUERY_ONE from './graphql/getFruit.gql'
 import QUERY_ALL from './graphql/allFruits.gql'
 import MUTATION_DELETE from './graphql/deleteFruit.gql'
+import MUTATION_UPDATE from './graphql/updateFruit.gql'
 import { AplProvider } from 'stories/utils'
 import { Router } from 'stories/utils'
 /* import {ALL_COLORS, SIZES } from 'stories/config.js'
@@ -79,6 +87,25 @@ const typeList = [{
       )
     },
     single:{
+      fields:[
+        {
+          label:'ID',
+          name:'id',
+          inputId:'item-id',
+          disabled:true
+        },
+        {
+          label:'Name',
+          name:'name',
+          inputId:'name',
+        },
+        {
+          label:'Taste',
+          name:'taste',
+          inputId:'taste',
+          type:'textarea'
+        }
+      ]
 
     }
   },
@@ -97,16 +124,17 @@ const typeList = [{
   graphql:{
     queries:{
       ALL:QUERY_ALL,
-      //ONE:QUERY_ONE
+      ONE:QUERY_ONE
     },
     mutations:{
-      DELETE:MUTATION_DELETE
+      DELETE:MUTATION_DELETE,
+      UPDATE:MUTATION_UPDATE
     }
   }
 }]
 
 export default {
-  title        :'collections/map/ListView',
+  title        :'collections/map/All',
   component    :ListView,
   //componentSubtitle:'Component subtitle',
   subcomponents:{
@@ -134,7 +162,7 @@ const storyParameters = {
 
  */
 
-export const Default = () => {
+export const List = () => {
   const Redirector = () => {
     const history=useHistory()
 
@@ -176,6 +204,54 @@ export const Default = () => {
         exact={ true }
       >
         <ListView/>
+      </Route>
+    </MapContextProvider>
+  )
+
+}
+
+export const Single = () => {
+  const Redirector = () => {
+    const history=useHistory()
+
+    useEffect(() =>
+    {
+      history.push('/fruits')
+    }, [])
+    return 'Redirected'
+
+  }
+
+  const basePath = '/'
+  const typeUrlParam = ':type([0-9a-z-]{3,80})'
+  const viewUrlParam = ':view([0-9a-z]{3,80})'
+  const idUrlParam = ':guid([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})'
+  //const redeemParam = ':slug([0-9a-f]{24})'
+
+  const urls = {
+  //LOGIN  :'login',
+    list   :_u(basePath,),
+    listAlt:_u(basePath,viewUrlParam),
+    single :_u(basePath,idUrlParam),
+    new    :_u(basePath,'new')
+  }
+
+
+  return (
+    <MapContextProvider
+      typeList={ typeList }
+      testParam='fruits'
+      routes={ urls }
+    >
+      <Route
+        path={[
+          urls.list,
+          urls.listAlt
+
+        ]}
+        exact={ true }
+      >
+        <SingleView itemId='bb514981-f696-4660-ae5b-27e914da2e77'/>
       </Route>
     </MapContextProvider>
   )

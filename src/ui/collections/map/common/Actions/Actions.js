@@ -7,23 +7,23 @@ import { Button } from 'ui/elements'
 
 import { useObjectMap } from '../Context'
 
-import { 
+import {
   Delete,
   Edit
 } from './common'
 
 //Intl
 
-//import { FormattedMessage} from "react-intl";
-//import messages from "./messages";
-// <FormattedMessage {...messages.title} />
+/* import { FormattedMessage} from "react-intl";
+   import messages from "./messages";
+    <FormattedMessage {...messages.title} /> */
 
 //Config
 
 //import C from 'ui/cssClasses'
 
-//Relative imports
-//import styles from './actions.scss'
+/* Relative imports
+   import styles from './actions.scss' */
 import { isBackend } from 'ui/isBackend'
 
 if(!isBackend) {
@@ -35,7 +35,7 @@ const baseClassName = 'actions'
 
 /**
  * Use `Actions` to
- * Has color `x` 
+ * Has color `x`
  */
 const Actions = ({
   id,
@@ -43,89 +43,124 @@ const Actions = ({
   style,
   item,
   refetch,
+  enableEdit,
+  enableDelete,
+  extraActions,
   ...otherProps
 }) => {
-  
+
   const {
     currentType
   } = useObjectMap()
-
-  const defaultActions = useMemo(() => [
-    {
-      condition:(user) => true,
-      Component:Edit,
-      className:'x-blue'
-    },
-    {
-      condition:(user) => true,
-      Component:Delete,
-      className:'x-error'
-    }
-  ], 
-    [currentType]
-  )
 
   const {
     actions:typeActions
   } = currentType
 
-  const actions = defaultActions
-  
-  return (
-  <Button.Group 
-    className={
-      [
-        //styles[baseClassName],
-        baseClassName,
-        className
-      ].filter(e => e).join(' ')
+  const actions = useMemo(() => {
+    var acts = []
+    enableEdit && acts.push(
+      {
+        condition:(user) => true,
+        Component:Edit,
+        className:'x-blue',
+      })
+    enableDelete && acts.push(
+      {
+        condition:(user) => true,
+        Component:Delete,
+        className:'x-error',
+      }
+
+    )
+    return [
+      ...acts,
+      ...extraActions
+    ]
+
   }
-    id={ id }
-    style={ style }
-    { ...otherProps }
-  >
-    { actions.map(({ Component, ...e }, i) =>
-    <Component {...e} key={ i } item={ item } refetch={ refetch }/>
-      
-    ) }
-  </Button.Group>
-)}
+  ,
+  [currentType, extraActions]
+  )
+
+  return (
+    <Button.Group
+      className={
+        [
+        //styles[baseClassName],
+          baseClassName,
+          className
+        ].filter(e => e).join(' ')
+      }
+      id={ id }
+      style={ style }
+      { ...otherProps }
+    >
+      { actions.map(({ Component, ...e }, i) =>
+        <Component
+          {...e}
+          key={ i }
+          item={ item }
+          refetch={ refetch }
+        />
+
+      ) }
+    </Button.Group>
+  )}
 
 Actions.propTypes = {
   /**
    * Provide an HTML id to this element
    */
-  id: PropTypes.string,
+  id:PropTypes.string,
 
   /**
    * The html class names to be provided to this element
    */
-  className: PropTypes.string,
+  className:PropTypes.string,
 
   /**
    * The JSX-Written, css styles to apply to the element.
    */
-  style: PropTypes.object,
+  style:PropTypes.object,
 
   /**
    * A dict of values representing the current item. Must have key id
    */
-  item: PropTypes.object.isRequired,
+  item:PropTypes.object.isRequired,
 
   /**
    *  The children JSX
    */
-  children: PropTypes.node,
+  children:PropTypes.node,
+
+  /**
+   *  Whether to display the edit action
+   */
+  enableEdit:PropTypes.bool,
+
+  /**
+   *  Whether to display the delete action
+   */
+  enableDelete:PropTypes.bool,
+
+  /**
+   * Extra actions to be added
+   */
+  extraActions:PropTypes.arrayOf(
+    PropTypes.shape({
+      condition:PropTypes.func,
+      Component:PropTypes.node.isRequired,
+    })
+  )
 
 }
 
-/*
 Actions.defaultProps = {
-  status: 'neutral',
-  //height:'2.2em',
-  //as:'p',
+  enableEdit  :true,
+  enableDelete:true,
+  extraActions:[]
 }
-*/
 
 Actions.Delete = Delete
 Actions.Edit = Edit

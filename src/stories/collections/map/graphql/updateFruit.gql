@@ -1,0 +1,24 @@
+mutation updateFruit(
+  $id: ID!
+  $name: String
+  $taste: String
+) {
+  updateFruit(id:$id
+    input:{
+      name: $name
+      taste: $taste
+    })
+  {
+    id
+    #name
+    #taste
+    #createdAt
+    #updatedAt
+  }
+}
+
+
+
+
+
+
