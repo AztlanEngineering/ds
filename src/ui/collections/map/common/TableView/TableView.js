@@ -2,6 +2,7 @@
 import * as React from 'react'
 import { useMemo } from 'react'
 import PropTypes from 'prop-types'
+import { Button } from 'ui/elements'
 
 import { useObjectMap } from '../Context'
 
@@ -10,6 +11,7 @@ import { useTable, useSortBy } from 'react-table'
 import gql from 'graphql-tag'
 import { useQuery, useMutation } from '@apollo/client'
 //Intl
+import { Actions } from '../Actions'
 
 /* import { FormattedMessage} from "react-intl";
    import messages from "./messages";
@@ -47,10 +49,12 @@ const TableView = ({
   const {
     loading,
     error,
-    data={}
+    data={},
+    refetch
   } = useQuery(gql(currentType.graphql.queries.ALL),
     {
-      skip:!currentType.name
+      skip:!currentType.name,
+      notifyOnNetworkStatusChange: true
     })
 
   const columns = useMemo(() => currentType.defaultViews.table.columns, [currentType.name])
@@ -88,8 +92,14 @@ const TableView = ({
       id={ id }
       style={ style }
     >
-      { loading && 'LOADING' }
       { error && JSON.stringify(error) }
+      <Button.Group style={{
+          justifyContent:'end'
+        }} independent>
+        <Button onClick={ !loading ? () => refetch() : undefined } className='x-green' loading={ loading }>
+          Refetch (r)
+        </Button>
+      </Button.Group>
 
       <div>
         <ul className='yf'>
@@ -125,6 +135,9 @@ const TableView = ({
                     </span>
                   </th>
                 ))}
+              <th class='actions'>
+              Actions
+              </th>
               </tr>
             ))}
           </thead>
@@ -139,12 +152,17 @@ const TableView = ({
                   >
                     {e.cells.map(cell => {
                       return (
+                        
                         <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
                       )
                     })}
+                    <td class='actions'>
+                      <Actions className='s-2 k-s' style={{ justifyContent:'end' }} item={ e.values } refetch={ refetch }/>
+                    </td>
                   </tr>
                 )}
             )}
+
           </tbody>
         </table>
       }

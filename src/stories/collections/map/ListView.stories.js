@@ -8,6 +8,7 @@ import faker from 'faker'
 
 import { Card, MapContextProvider, MapListView as ListView } from 'ui'
 import QUERY_ALL from './graphql/allFruits.gql'
+import MUTATION_DELETE from './graphql/deleteFruit.gql'
 import { AplProvider } from 'stories/utils'
 import { Router } from 'stories/utils'
 /* import {ALL_COLORS, SIZES } from 'stories/config.js'
@@ -81,13 +82,25 @@ const typeList = [{
 
     }
   },
+  actions:{
+    defaultActions:{
+
+    },
+    extraActions:[
+      {
+        condition:(user) => true,
+        Component:() => 'Star'
+      }
+    ]
+
+  },
   graphql:{
     queries:{
       ALL:QUERY_ALL,
       //ONE:QUERY_ONE
     },
-    mutation:{
-      //DELETE:MUTATION_DELETE
+    mutations:{
+      DELETE:MUTATION_DELETE
     }
   }
 }]

@@ -1,4 +1,5 @@
 /* @fwrlines/generator-react-component 2.4.1 */
+
 /*
 
 Classes :
@@ -6,22 +7,30 @@ Classes :
 
 */
 
-.table_view{
-  th, td, tr {
-    border:0;
-  }
+.table_view {
+  th,
+  td,
+  tr {
+    border: 0;
 
-  table {
-    width:100%;
-    thead {
-      background:var(--dark-background);
-      border-radius:var(--r);
-      position:sticky;
-      top:0;
-      th {
-        text-align:left;
-      }
+    &.actions {
+      text-align:right;
     }
   }
 
+  table {
+    color: var(--paragraph);
+    width: 100%;
+
+    thead {
+      background: var(--dark-background);
+      border-radius: var(--r);
+      position: sticky;
+      top: 0;
+
+      th {
+        text-align: left;
+      }
+    }
+  }
 }
