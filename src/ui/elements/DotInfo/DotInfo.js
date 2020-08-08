@@ -92,7 +92,7 @@ DotInfo.propTypes = {
   /**
    *  The children JSX
    */
-  children:PropTypes.node.isRequired,
+  children:PropTypes.node,
 
   /**
    * A link, on Click (internal or external)

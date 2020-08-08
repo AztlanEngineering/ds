@@ -40,6 +40,11 @@ const Edit = ({
   className,
   style,
   item,
+
+  //These are extracted not to be passed to the children button
+  refetch,
+  condition,
+
   ...otherProps
 }) => {
 

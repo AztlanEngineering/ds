@@ -68,7 +68,9 @@ const Delete = ({
     const variables = {
       id:item.id
     }
-    deleteItem({ variables })
+    if (confirm(`Please confirm you want to delete ${item._string || item.name || item.id }`) == true) {
+      deleteItem({ variables })
+    }
   }
 
   const finalData = useMemo(() => (data && data[Object.keys(data).reduce((a, e) => {
@@ -78,7 +80,7 @@ const Delete = ({
 
   useEffect(() => {
     //console.log('WILL NOW REFETCH', finalData)
-    finalData && refetch && refetch()
+    finalData.id && refetch && refetch()
   }
   , [finalData] )
 

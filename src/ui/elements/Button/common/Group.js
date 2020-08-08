@@ -65,7 +65,7 @@ Group.propTypes = {
   /**
    * If this is a vertical group
    */
-  vertical:PropTypes.boolean,
+  vertical:PropTypes.bool,
 
   /**
    * How the group should stretch

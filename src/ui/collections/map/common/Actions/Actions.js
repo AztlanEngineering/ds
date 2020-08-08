@@ -74,17 +74,19 @@ const Actions = ({
       }
 
     )
-    return [
+    const res = [
       ...acts,
       ...extraActions
     ]
+    reverse && res.reverse()
+    return res
+
 
   }
   ,
-  [currentType, extraActions]
+  [currentType, extraActions, reverse]
   )
 
-  const actionsToDisplay = reverse ? actions.reverse() : actions
 
   return (
     <Button.Group
@@ -99,7 +101,7 @@ const Actions = ({
       style={ style }
       { ...otherProps }
     >
-      { actionsToDisplay.map(({ Component, ...e }, i) =>
+      { actions.map(({ Component, ...e }, i) =>
         <Component
           {...e}
           key={ i }

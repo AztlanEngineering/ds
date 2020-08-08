@@ -12,6 +12,7 @@ import gql from 'graphql-tag'
 import { useQuery, useMutation } from '@apollo/client'
 //Intl
 import { Actions } from '../Actions'
+import { Row } from './common'
 
 /* import { FormattedMessage} from "react-intl";
    import messages from "./messages";
@@ -53,15 +54,15 @@ const TableView = ({
     refetch
   } = useQuery(gql(currentType.graphql.queries.ALL),
     {
-      skip:!currentType.name,
-      notifyOnNetworkStatusChange: true
+      skip                       :!currentType.name,
+      notifyOnNetworkStatusChange:true
     })
 
   const columns = useMemo(() => currentType.defaultViews.table.columns, [currentType.name])
   const finalData = useMemo(() => (data && data[Object.keys(data).reduce((a, e) => {
-        return e
-      }, '')]) || [],
-     [currentType.name, loading])
+    return e
+  }, '')]) || [],
+  [currentType.name, loading])
 
   const {
     getTableProps,
@@ -93,10 +94,17 @@ const TableView = ({
       style={ style }
     >
       { error && JSON.stringify(error) }
-      <Button.Group style={{
+      <Button.Group
+        style={{
           justifyContent:'end'
-        }} independent>
-        <Button onClick={ !loading ? () => refetch() : undefined } className='x-green' loading={ loading }>
+        }}
+        independent
+      >
+        <Button
+          onClick={ !loading ? () => refetch() : undefined }
+          className='x-green'
+          loading={ loading }
+        >
           Refetch (r)
         </Button>
       </Button.Group>
@@ -122,7 +130,7 @@ const TableView = ({
                    we can add them into the header props */
                   <th
                     {...f.getHeaderProps(f.getSortByToggleProps())}
-                    key={i}
+                    key={j}
                   >
                     {f.render('Header')}
                     {/* Add a sort direction indicator */}
@@ -135,9 +143,9 @@ const TableView = ({
                     </span>
                   </th>
                 ))}
-              <th class='actions'>
-              Actions
-              </th>
+                <th className='actions'>
+                  Actions
+                </th>
               </tr>
             ))}
           </thead>
@@ -152,15 +160,15 @@ const TableView = ({
                   >
                     {e.cells.map(cell => {
                       return (
-                        
                         <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
                       )
                     })}
-                    <td class='actions'>
-                      <Actions 
-                        className='s-2 k-s' 
-                        style={{ justifyContent:'end' }} 
-                        item={ e.values } refetch={ refetch }
+                    <td className='actions'>
+                      <Actions
+                        className='s-2 k-s'
+                        style={{ justifyContent: 'end' }}
+                        item={ e.values }
+                        refetch={ refetch }
                         /*
                         extraActions={[
                           condition:(user) => true,

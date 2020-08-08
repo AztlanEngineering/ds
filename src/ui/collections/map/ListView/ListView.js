@@ -156,7 +156,7 @@ const ListView = ({
           { (availableViews.length > 1) && availableViews.map((e, i) =>{
             const isActive = e === currentView
             return (
-              <Link to={ getViewUrl(e.view) }>
+              <Link to={ getViewUrl(e.view) } key={i}>
                 <Button
                   className={ isActive ? e.className : 'x-grey' }
                   key={i}

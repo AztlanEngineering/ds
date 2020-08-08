@@ -57,7 +57,7 @@ const typeList = [{
         {
           Header  :'Edible ?',
           accessor:'edible',
-          Cell:(v) => <DotInfo boolean={v}/>
+          Cell:(v) => <DotInfo boolean={v.value}/>
         },
         {
           Header  :'$/Kilo',

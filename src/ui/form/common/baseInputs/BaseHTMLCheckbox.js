@@ -49,9 +49,9 @@ HTMLCheckbox.propTypes = {
   id:PropTypes.string,
 
   /**
-   * The JSX-Written, css styles to apply to the element.
+   * The value of the input 
    */
-  value:PropTypes.string,
+  value:PropTypes.bool,
 
 }
 
