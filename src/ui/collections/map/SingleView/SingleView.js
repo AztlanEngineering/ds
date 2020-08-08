@@ -92,7 +92,7 @@ const SingleView = ({
   }, '')]) || {},
   [currentType.name, loading, location])
 
-  console.log(777, loading, error, data, finalData, currentId)
+  //console.log(777, loading, error, data, finalData, currentId)
 
   const name = currentId ? (finalData._string || finalData.name || (finalData.id && finalData.id.substring(0, 8)) || 'Loading') : `New ${currentType.name}`
 
@@ -261,6 +261,7 @@ const SingleView = ({
             enableEdit={false}
             enableDelete={ currentId }
             independent
+            reverse={ false }
             style={{
               justifyContent:'end'
             }}
@@ -350,15 +351,22 @@ const SingleView = ({
         [
           //styles[baseClassName],
           baseClassName,
+          'x-paragraph',
+          's-2 k-s',
           className
         ].filter(e => e).join(' ')
       }
       id={ id }
       style={ style }
     >
+      
+      <pre className='c-x'>
       { loading && ' LOADING' }
-      { error && JSON.stringify(error) }
+      { error && JSON.stringify(error, null, 2) }
+      </pre>
+      <p className='c-x'>
       If nothing else appears, the object was not found or there was no data returned
+      </p>
 
     </div>
   )

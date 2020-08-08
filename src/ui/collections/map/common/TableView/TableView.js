@@ -146,15 +146,17 @@ const TableView = ({
                     {...f.getHeaderProps(f.getSortByToggleProps())}
                     key={j}
                   >
+                    <div className='yf inside'>
                     {f.render('Header')}
                     {/* Add a sort direction indicator */}
-                    <span>
+                    <span className='fi'>
                       {f.isSorted
                         ? f.isSortedDesc
-                          ? ' 🔽'
-                          : ' 🔼'
+                          ? 'j'
+                          : 'k'
                         : ''}
                     </span>
+                    </div>
                   </th>
                 ))}
                 <th className='actions'>

@@ -30,6 +30,9 @@ Classes :
 
       th {
         text-align: left;
+        .inside {
+          justify-content:space-between;
+        }
       }
     }
   }
