@@ -3,6 +3,8 @@ query getFruit($id:ID!){
     id
     name
     taste
+    edible
+    pricePerKilo
     createdAt
     updatedAt
     _string

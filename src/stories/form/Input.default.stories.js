@@ -86,6 +86,16 @@ export const Type = () => (
   />
 )
 
+export const SingleCheckbox = () => (
+  <FormInput
+    type='checkbox'
+    name={ 'openquestion' }
+    label='Subscribe'
+    description='Subscribe to then ewsletter'
+    inputId='subscribe'
+  />
+)
+
 export const Disabled = () => (
   <FormInput
     type='email'

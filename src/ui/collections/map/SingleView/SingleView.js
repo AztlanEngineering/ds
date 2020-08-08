@@ -1,6 +1,6 @@
 /* @fwrlines/generator-react-component 2.4.1 */
 import * as React from 'react'
-import { useEffect, useMemo } from 'react'
+import { useCallback, useEffect, useMemo } from 'react'
 import PropTypes from 'prop-types'
 
 import {
@@ -10,13 +10,15 @@ import {
   FormContextDebugger
 } from 'ui/form'
 
+import { Timestamp } from 'ui/common'
+
 import { Accordion } from 'ui/site'
 
 import { Button, Heading } from 'ui/elements'
 
 import { useObjectMap, MapActions as Actions } from '../common'
 
-import { Link, useLocation, useParams } from 'react-router-dom'
+import { Link, useLocation, useParams, useHistory } from 'react-router-dom'
 
 import gql from 'graphql-tag'
 import { useQuery, useMutation } from '@apollo/client'
@@ -55,6 +57,8 @@ const SingleView = ({
 
   const location = useLocation()
 
+  const history = useHistory()
+
   const {
     guid:currentId,
     ...routeParams
@@ -79,13 +83,18 @@ const SingleView = ({
       notifyOnNetworkStatusChange:true
     })
 
+
   const { fields=[] } = currentType.name ?
     currentType.defaultViews.single : {}
 
   const finalData = useMemo(() => (data && data[Object.keys(data).reduce((a, e) => {
     return e
   }, '')]) || {},
-  [currentType.name, loading])
+  [currentType.name, loading, location])
+
+  console.log(777, loading, error, data, finalData, currentId)
+
+  const name = currentId ? (finalData._string || finalData.name || (finalData.id && finalData.id.substring(0, 8)) || 'Loading') : `New ${currentType.name}`
 
   const [saveItem, {
     data:mutationData={},
@@ -97,12 +106,11 @@ const SingleView = ({
       currentType.graphql.mutations.ADD
   ))
 
-  const mutationResponse = useMemo(() => (mutationData && mutationData[Object.keys(data).reduce((a, e) => {
+  const mutationResponse = useMemo(() => (mutationData && mutationData[Object.keys(mutationData).reduce((a, e) => {
     return e
   }, '')]) || {},
-  [mutationLoading])
+  [mutationLoading, mutationData])
 
-  const name = currentId ? (finalData._string || finalData.name || (finalData.id && finalData.id.substring(0, 8)) || 'Loading') : `New ${currentType.name}`
 
   useEffect(() =>
   {
@@ -116,30 +124,61 @@ const SingleView = ({
 
   useEffect(() =>
   {
-    mutationResponse.id && (mutationResponse.id !== currentId) && history.push(generateLocalPath(
-      'single',
-      {
-        guid:mutationResponse.id,
-        ...routeParams
-      }
-    ))
+    //console.log('SHOULD REDIR here', mutationResponse.id, mutationData)
+    if(mutationResponse.id && (mutationResponse.id !== currentId)) {
+      const path = generateLocalPath(
+        'single',
+        {
+          guid:mutationResponse.id,
+          ...routeParams
+        }
+      )
+      history.push(path)
+
+    }
+    if(mutationResponse.id) {
+      refetch()
+    }
   }
 
   ,[ mutationResponse ]
   )
 
+
   const SubmitButton = React.memo((props) => {
+
     const {
-      values,
-      /* touched,
+      parsed:values,
+      touched,
+      setInputValue,
+      mergeValues
+    /* touched,
          errors,
          isValid */
     } = useForm()
 
-    const mutate = () => {
-      saveItem({variables: values})
-      refetch()
-    }
+    const mutate = useCallback(() => {
+      const variables = values ? Object.keys(values).reduce((a, e) => {
+        if (Object.keys(touched).includes(e)) {
+          const customType = currentType.graphql.types && currentType.graphql.types[e]
+          a[e] = customType ? customType(values[e]) : values[e]
+        }
+        return a
+      }
+      ,{}) : {}
+      if (values && values.id) {
+        variables['id'] = values.id
+      }
+      console.log('Will now mutate', variables)
+      saveItem({variables})
+    }, [values])
+
+    useEffect(() => {
+      if (mutationResponse.id) {
+        mergeValues(mutationResponse)
+
+      }
+    }, [mutationResponse])
 
     return(
       <Button
@@ -151,6 +190,7 @@ const SingleView = ({
         Submit
       </Button>
     )})
+
 
   if(!currentId || finalData.__typename) return (
     <div
@@ -181,10 +221,30 @@ const SingleView = ({
 
           }
           heading={ name }
-        />
+        >
+          { finalData.createdAt &&
+            <Timestamp
+              time={ finalData.createdAt }
+              className={ 'x-subtitle c-x' }
+              prefix={
+              <strong>Created</strong>
+              }
+            />
+          }
+          { finalData.updatedAt &&
+            <Timestamp
+              time={ finalData.updatedAt }
+              className={ 'x-primary c-x' }
+              prefix={
+              <strong>Updated</strong>
+              }
+            />
+          }
+        </Heading>
       </div>
       <FormContextProvider
         initialValues={ finalData }
+        parsers={ currentType.graphql.types }
       >
         <div className='pv-v v2i s-1 k-s'>
           { fields.map((e, i) =>
@@ -242,9 +302,7 @@ const SingleView = ({
               }
               id={ 'form_debugger' }
             >
-              {/*
               <FormContextDebugger/>
-*/}
             </Accordion.Item>
             { error &&
               <Accordion.Item
@@ -256,7 +314,7 @@ const SingleView = ({
                     subtitle='This only appears if the object didnt load properly.'
                   />
                 }
-                id={ 'form_debugger' }
+                id={ 'loading_error' }
               >
                 <pre className='c-x x-paragraph'>
 
@@ -273,7 +331,7 @@ const SingleView = ({
                     subtitle='This only appears if the object didnt save properly.'
                   />
                 }
-                id={ 'form_debugger' }
+                id={ 'mutation_error' }
               >
                 <pre className='c-x x-paragraph'>
 

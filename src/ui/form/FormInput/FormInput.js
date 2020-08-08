@@ -8,11 +8,13 @@ import {
 } from '@fwrlines/utils'
 
 import {
+  Checkbox,
   Input,
   Textarea,
   Choice,
   Select,
   SVGChoice,
+  SVGCheckbox,
   CardChoice,
   DownshiftSelect,
 } from '../common'
@@ -81,6 +83,18 @@ const FormInput = ({
 
   else if (type === 'textarea') return(
     displayComponent(Textarea, {
+      ...passedProps
+    })
+  )
+
+  else if (type === 'checkbox') return(
+    displayComponent(Checkbox, {
+      ...passedProps
+    })
+  )
+
+  else if (type === 'svg-checkbox') return(
+    displayComponent(SVGCheckbox, {
       ...passedProps
     })
   )

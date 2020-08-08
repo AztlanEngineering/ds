@@ -31,6 +31,7 @@ const Debugger = ({
 }) => {
   const {
     values,
+    parsed,
     touched,
     errors,
     isValid
@@ -57,7 +58,22 @@ const Debugger = ({
             <li key={i}>
               <em>{ e }</em>
 &nbsp;:&nbsp;
-              { (values[e] && values[e].size) ? '[' + [...values[e]].join(', ')+ ']' : values[e] }
+              { JSON.stringify(values[e]) }
+              {/* (values[e] && values[e].size) ? '[' + [...values[e]].join(', ')+ ']' : values[e] */}
+            </li>
+          )
+          }
+        </ul>
+      </div>
+      <div>
+        <p className='h2'>Parsed</p>
+        <ul className='compact'>
+          { values && Object.keys(parsed).map((e, i) =>
+            <li key={i}>
+              <em>{ e }</em>
+&nbsp;:&nbsp;
+              { JSON.stringify(parsed[e]) }
+              {/* (values[e] && values[e].size) ? '[' + [...values[e]].join(', ')+ ']' : values[e] */}
             </li>
           )
           }

@@ -6,9 +6,9 @@ import faker from 'faker'
 
 //import { action } from '@storybook/addon-actions'
 
-import { 
-  Card, 
-  MapContextProvider, 
+import {
+  Card,
+  MapContextProvider,
   MapListView as ListView,
   MapSingleView as SingleView
 } from 'ui'
@@ -53,6 +53,14 @@ const typeList = [{
           Header  :'Taste',
           accessor:'taste'
         },
+        {
+          Header  :'Edible ?',
+          accessor:'edible'
+        },
+        {
+          Header  :'$/Kilo',
+          accessor:'pricePerKilo'
+        },
         /*
         {
           Header  :'Visits',
@@ -73,15 +81,18 @@ const typeList = [{
       Component:({item, ...props}) => (
         <Card { ...props }>
           <Card.Section>
-            <p className="h2">{ item.name }</p>
+            <p className='h2'>{ item.name }</p>
           </Card.Section>
           <Card.Section>
             <p>{ item.id }</p>
           </Card.Section>
           <Card.Section>
-            <p>This fruit tastes{' '}<strong>
-            { item.taste }
-            </strong>
+            <p>
+              This fruit tastes
+              {' '}
+              <strong>
+                { item.taste }
+              </strong>
             </p>
           </Card.Section>
         </Card>
@@ -90,21 +101,33 @@ const typeList = [{
     single:{
       fields:[
         {
-          label:'ID',
-          name:'id',
-          inputId:'item-id',
-          disabled:true
+          label   :'ID',
+          name    :'id',
+          inputId :'item-id',
+          disabled:true,
         },
         {
-          label:'Name',
-          name:'name',
+          label  :'Name',
+          name   :'name',
           inputId:'name',
         },
         {
-          label:'Taste',
-          name:'taste',
+          label  :'Taste',
+          name   :'taste',
           inputId:'taste',
-          type:'textarea'
+          type   :'textarea'
+        },
+        {
+          label  :'Edible',
+          name   :'edible',
+          inputId:'edible',
+          type   :'checkbox'
+        },
+        {
+          label  :'$/Kilo',
+          name   :'pricePerKilo',
+          inputId:'pricePerKilo',
+          type   :'tel',
         }
       ]
 
@@ -128,9 +151,13 @@ const typeList = [{
       ONE:QUERY_ONE
     },
     mutations:{
-      ADD:MUTATION_ADD,
+      ADD   :MUTATION_ADD,
       DELETE:MUTATION_DELETE,
       UPDATE:MUTATION_UPDATE
+    },
+    types:{
+      'edible'      :Boolean,
+      'pricePerKilo':Number,
     }
   }
 }]
@@ -253,7 +280,48 @@ export const Single = () => {
         ]}
         exact={ true }
       >
-        <SingleView itemId='bb514981-f696-4660-ae5b-27e914da2e77'/>
+        <SingleView
+          itemId='12b28d8b-cb0e-4be8-82eb-3f75768fd0a3'
+        />
+      </Route>
+    </MapContextProvider>
+  )
+
+}
+
+export const New = () => {
+
+  const basePath = '/'
+  const typeUrlParam = ':type([0-9a-z-]{3,80})'
+  const viewUrlParam = ':view([0-9a-z]{3,80})'
+  const idUrlParam = ':guid([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})'
+  //const redeemParam = ':slug([0-9a-f]{24})'
+
+  const urls = {
+  //LOGIN  :'login',
+    list   :_u(basePath,),
+    listAlt:_u(basePath,viewUrlParam),
+    single :_u(basePath,idUrlParam),
+    new    :_u(basePath,'new')
+  }
+
+
+  return (
+    <MapContextProvider
+      typeList={ typeList }
+      testParam='fruits'
+      routes={ urls }
+    >
+      <Route
+        path={[
+          urls.single,
+          urls.new,
+          '/',
+
+        ]}
+        exact={ true }
+      >
+        <SingleView/>
       </Route>
     </MapContextProvider>
   )

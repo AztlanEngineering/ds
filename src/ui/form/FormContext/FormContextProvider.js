@@ -27,6 +27,7 @@ const FormContextProvider = ({
   initialValues,
   initialTouched,
   initialErrors,
+  parsers,
   validation,
 
   useGa,
@@ -41,6 +42,7 @@ const FormContextProvider = ({
     initialValues,
     initialTouched,
     initialErrors,
+    parsers,
     validation,
     debounceMs:validationDebounceMs,
   })
@@ -127,6 +129,11 @@ FormContextProvider.propTypes = {
    * The category of the GA events
    */
   gaCategory:PropTypes.string,
+
+  /**
+   * Parsers : A dict of function that parses the input value to the parsed state, The keys are the input names
+   */
+  parsers:PropTypes.object
 
   /*
   : PropTypes.shape({

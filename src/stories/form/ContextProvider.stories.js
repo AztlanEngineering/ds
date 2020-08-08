@@ -35,13 +35,14 @@ export default {
 const context = React.createContext()
 
 export const Default = () => (
+  <div className='s-1 k-s'>
   <ContextProvider
     context={ context }
     initialValues={{
       'planet_name':'jupyter',
       'story'      :'april is the cruellest month, breeding, lilacs out of the dead land, mixing, memory and desire',
       'fellini'    :new Set(['saty', 'otto']),
-      'dscs':'magenta'
+      'dscs'       :'magenta'
     }}
     validation={{
       _all:(f) => {
@@ -60,7 +61,7 @@ export const Default = () => (
         return errors.length ? errors : false
       },
       planet_name:(v) => (v === 'earth') && ['cannot be earth', 'this doenst include the z letter'],
-      story:(v) => (v.length <= 6) && 'The story is not long enough'
+      story      :(v) => (v.length <= 6) && 'The story is not long enough'
     }}
   >
     <FormInput
@@ -80,6 +81,14 @@ export const Default = () => (
       label='your story'
       description='please enter here your story'
       inputId='story'
+    />
+    <FormInput
+      context={ context }
+      type='checkbox'
+      name={ 'subscribe' }
+      label='Subscribe'
+      description='Subscribe to then ewsletter'
+      inputId='subscribe'
     />
     <FormInput
       context={ context }
@@ -192,7 +201,7 @@ export const Default = () => (
         {
           value:'blue',
           label:'Blue',
-          id:'blu'
+          id   :'blu'
         }
       ]}
       label='Favourite color?'
@@ -205,9 +214,9 @@ export const Default = () => (
       inputClassName='y-indigo'
       buttonProps={{
         className:'j x-metadata',
-        simple:true,
-          icon:'j',
-          iconSide:'r'
+        simple   :true,
+        icon     :'j',
+        iconSide :'r'
       }}
       options={[
         {
@@ -223,7 +232,7 @@ export const Default = () => (
         {
           value:'blue',
           label:'Blue s the best',
-          id:'id0blu'
+          id   :'id0blu'
         }
       ]}
       label='Favourite color?'
@@ -232,6 +241,7 @@ export const Default = () => (
     />
     <FormContextDebugger context={ context }/>
   </ContextProvider>
+  </div>
 )
 
 export const Variant = () => (
