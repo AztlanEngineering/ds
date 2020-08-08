@@ -14,6 +14,10 @@ import { useQuery, useMutation } from '@apollo/client'
 import { Actions } from '../Actions'
 import { Row } from './common'
 
+import {
+  Shortcut
+} from 'ui/site'
+
 /* import { FormattedMessage} from "react-intl";
    import messages from "./messages";
     <FormattedMessage {...messages.title} /> */
@@ -105,7 +109,17 @@ const TableView = ({
           className='x-green'
           loading={ loading }
         >
-          Refetch (r)
+          Refetch
+          {' '}
+              <Shortcut
+                className='s-2 k-s x-white'
+                action={
+                  () => refetch()
+                }
+                keys={[
+                  'r'
+                ]}
+              />
         </Button>
       </Button.Group>
 

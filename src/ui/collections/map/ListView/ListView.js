@@ -13,6 +13,9 @@ import {
   useObjectMap
 } from '../common'
 
+import {
+  Shortcut
+} from 'ui/site'
 
 import gql from 'graphql-tag'
 import { useQuery, useMutation } from '@apollo/client'
@@ -57,6 +60,8 @@ const ListView = ({
 }) => {
 
   const location = useLocation()
+
+  const history = useHistory()
 
   const {
     currentType={},
@@ -156,7 +161,10 @@ const ListView = ({
           { (availableViews.length > 1) && availableViews.map((e, i) =>{
             const isActive = e === currentView
             return (
-              <Link to={ getViewUrl(e.view) } key={i}>
+              <Link
+                to={ getViewUrl(e.view) }
+                key={i}
+              >
                 <Button
                   className={ isActive ? e.className : 'x-grey' }
                   key={i}
@@ -164,11 +172,16 @@ const ListView = ({
                   <strong>
                     { e.name }
                   </strong>
-                  <span>
-                    (
-                    { e.shortcut }
-                    )
-                  </span>
+                  {' '}
+                  <Shortcut
+                    className='s-2 k-s x-white'
+                    action={
+                      () => history.push(getViewUrl(e.view))
+                    }
+                    keys={[
+                      e.shortcut
+                    ]}
+                  />
                 </Button>
               </Link>
 
@@ -178,14 +191,32 @@ const ListView = ({
           <Link to={
             generateLocalPath(
               'new',
-              { 
+              {
                 ...routeParams
               }
             )
-            }>
-          <Button className='x-orange'>
-            New
-          </Button>
+          }
+          >
+            <Button className='x-orange'>
+              New
+              {' '}
+              <Shortcut
+                className='s-2 k-s x-white'
+                action={
+                  () => history.push(
+                    generateLocalPath(
+                      'new',
+                      {
+                        ...routeParams
+                      }
+                    )
+                  )
+                }
+                keys={[
+                  'n'
+                ]}
+              />
+            </Button>
           </Link>
         </Button.Group>
       </Heading>
