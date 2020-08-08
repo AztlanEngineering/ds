@@ -46,6 +46,7 @@ const Actions = ({
   enableEdit,
   enableDelete,
   extraActions,
+  reverse,
   ...otherProps
 }) => {
 
@@ -83,6 +84,8 @@ const Actions = ({
   [currentType, extraActions]
   )
 
+  const actionsToDisplay = reverse ? actions.reverse() : actions
+
   return (
     <Button.Group
       className={
@@ -96,7 +99,7 @@ const Actions = ({
       style={ style }
       { ...otherProps }
     >
-      { actions.map(({ Component, ...e }, i) =>
+      { actionsToDisplay.map(({ Component, ...e }, i) =>
         <Component
           {...e}
           key={ i }
@@ -145,6 +148,11 @@ Actions.propTypes = {
   enableDelete:PropTypes.bool,
 
   /**
+   *  Whether to reverse the order of the actions
+   */
+  reverse:PropTypes.bool,
+
+  /**
    * Extra actions to be added
    */
   extraActions:PropTypes.arrayOf(
@@ -159,7 +167,8 @@ Actions.propTypes = {
 Actions.defaultProps = {
   enableEdit  :true,
   enableDelete:true,
-  extraActions:[]
+  extraActions:[],
+  reverse:true
 }
 
 Actions.Delete = Delete

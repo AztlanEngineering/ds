@@ -151,6 +151,7 @@ FormInput.propTypes = {
   type:PropTypes.oneOf([
     ...AcceptedHTMLInputTypes,
     'textarea',
+    'checkbox',
     'checkboxes',
     'radios',
     'select',
@@ -159,7 +160,7 @@ FormInput.propTypes = {
     'svg-checkboxes',
     'svg-radios',
     'downshift-combobox',
-    'downshift-select'
+    'downshift-select',
   ]
   ),
 

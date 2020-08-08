@@ -151,7 +151,7 @@ Item.propTypes = {
   /**
    * The title of the accordion item
    */
-  title:PropTypes.string,
+  title:PropTypes.node,
 
 }
 

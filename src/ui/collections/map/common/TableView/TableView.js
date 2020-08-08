@@ -157,7 +157,16 @@ const TableView = ({
                       )
                     })}
                     <td class='actions'>
-                      <Actions className='s-2 k-s' style={{ justifyContent:'end' }} item={ e.values } refetch={ refetch }/>
+                      <Actions 
+                        className='s-2 k-s' 
+                        style={{ justifyContent:'end' }} 
+                        item={ e.values } refetch={ refetch }
+                        /*
+                        extraActions={[
+                          condition:(user) => true,
+                          Component:DisplayJson
+                         ]}*/
+                      />
                     </td>
                   </tr>
                 )}

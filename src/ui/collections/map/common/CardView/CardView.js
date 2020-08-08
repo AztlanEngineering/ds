@@ -79,12 +79,20 @@ const CardView = ({
 
       { data &&
         <Card.Group style={{
-          '--card-width':'200px'
+          '--card-width':currentType.defaultViews.card.minWidth || '200px'
         }}
           className='u0'
         >
           { finalData.map((e, i) =>
             <CardComponent
+              backFace={
+                <Card.Section>
+                  <pre className='x-paragraph c-x'>
+                    { JSON.stringify(e, null, 2) }
+                  </pre>
+                </Card.Section>
+
+              }
               item={ e }
               key={ i }
               className='y-background b-y'

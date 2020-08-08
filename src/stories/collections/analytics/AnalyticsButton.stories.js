@@ -43,7 +43,12 @@ const storyParameters = {
  */
 
 export const Default = () => (
-  <AnalyticsButton className='x-red'>Click me</AnalyticsButton> 
+  <AnalyticsButton className='x-red' event={{
+    category:'cta',
+    action:'card.cta',
+    label:'When the user clicks the card cta',
+    value:5,
+  }}>Click me</AnalyticsButton> 
 )
 
 //Default.parameters = storyParameters

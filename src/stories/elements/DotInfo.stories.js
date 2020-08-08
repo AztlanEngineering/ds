@@ -11,7 +11,7 @@ import { DotInfo } from 'ui'
 //const endpoint = 'https://api.fwrlines.com/graphql'
 
 export default {
-  title  :'elements/DotInfo',
+  title     :'elements/DotInfo',
   component :DotInfo,
   parameters:{
     decorators:[
@@ -54,6 +54,55 @@ export const Default = () => (
   )
 )
 
+export const Min = () => (
+  map.map((e,i) =>
+    <div
+      className='p1'
+      key={i}
+    >
+      <DotInfo
+        className={e.circle}
+      >
+      </DotInfo>
+    </div>
+
+  )
+)
+
+export const Boolean = () => (
+  <div
+    className='p1'
+  >
+    <DotInfo
+      //className={e.circle}
+      boolean={false}
+    >
+      False
+    </DotInfo>
+    <DotInfo
+      //className={e.circle}
+      boolean={false}
+      falseClassName='y-warning'
+    >
+      False
+    </DotInfo>
+    <DotInfo
+      //className={e.circle}
+      boolean={true}
+    >
+      True
+    </DotInfo>
+    <DotInfo
+      //className={e.circle}
+      boolean={true}
+      trueClassName='y-primary'
+    >
+      True
+    </DotInfo>
+  </div>
+
+)
+
 export const Lower = () => (
   map.map((e,i) =>
     <div
@@ -79,11 +128,11 @@ export const Children = () => (
       subtitleUpper={ false }
       className={'y-secondary'}
     >
-        <span>
-          Hello it's
-          <b>me</b>
-          !
-        </span>
+      <span>
+        Hello it's
+        <b>me</b>
+        !
+      </span>
 
     </DotInfo>
   </div>

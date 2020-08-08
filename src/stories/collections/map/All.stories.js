@@ -8,6 +8,7 @@ import faker from 'faker'
 
 import {
   Card,
+  DotInfo,
   MapContextProvider,
   MapListView as ListView,
   MapSingleView as SingleView
@@ -55,7 +56,8 @@ const typeList = [{
         },
         {
           Header  :'Edible ?',
-          accessor:'edible'
+          accessor:'edible',
+          Cell:(v) => <DotInfo boolean={v}/>
         },
         {
           Header  :'$/Kilo',
@@ -96,7 +98,8 @@ const typeList = [{
             </p>
           </Card.Section>
         </Card>
-      )
+      ),
+      minWidth:'300px'
     },
     single:{
       fields:[

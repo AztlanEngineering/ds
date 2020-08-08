@@ -32,7 +32,11 @@ const DotInfo = ({
 
   circleClassName,
   subtitleClassName,
-  subtitleUpper
+  subtitleUpper,
+
+  boolean,
+  trueClassName,
+  falseClassName
 }) => {
 
 
@@ -41,6 +45,7 @@ const DotInfo = ({
       className={
         [
           baseClassName,
+          (typeof boolean === 'boolean') && (boolean ? trueClassName : falseClassName), 
           className
         ].filter(e => e).join(' ')
       }
@@ -56,6 +61,7 @@ const DotInfo = ({
       }
       >
       </div>
+      { children && 
       <div className={ C.content + ' yib wb ph05' }>
         <Subtitle
           upper={ subtitleUpper }
@@ -63,7 +69,7 @@ const DotInfo = ({
         >
           { children }
         </Subtitle>
-      </div>
+      </div>}
     </div>
   )}
 
@@ -104,13 +110,25 @@ DotInfo.propTypes = {
   circleClassName:PropTypes.string,
 
   /**
-   * Whether the subtitle is in uppercase
+   * The class name of the circle in case `boolean` is provided and is `true`
    */
-  subtitleUpper:PropTypes.bool,
+  trueClassName:PropTypes.string,
+
+  /**
+   * The class name of the circle in case `boolean` is provided and is `false`
+   */
+  falseClassName:PropTypes.string,
+
+  /**
+   * A boolean to set the circle color to 
+   */
+  boolean:PropTypes.bool,
 }
 
 DotInfo.defaultProps = {
-  subtitleUpper:true
+  subtitleUpper:true,
+  trueClassName:'y-success',
+  falseClassName:'y-error'
 }
 
 export default DotInfo
