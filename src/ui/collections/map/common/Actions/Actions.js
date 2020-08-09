@@ -47,6 +47,7 @@ const Actions = ({
   enableDelete,
   extraActions,
   reverse,
+  redirectAfterDelete,
   ...otherProps
 }) => {
 
@@ -107,6 +108,7 @@ const Actions = ({
           key={ i }
           item={ item }
           refetch={ refetch }
+          redirect={ redirectAfterDelete }
         />
 
       ) }
@@ -155,6 +157,11 @@ Actions.propTypes = {
   reverse:PropTypes.bool,
 
   /**
+   *  Whether to reverse the order of the actions
+   */
+  redirectAfterDelete:PropTypes.bool,
+
+  /**
    * Extra actions to be added
    */
   extraActions:PropTypes.arrayOf(
@@ -169,6 +176,7 @@ Actions.propTypes = {
 Actions.defaultProps = {
   enableEdit  :true,
   enableDelete:true,
+  redirectAfterDelete:false,
   extraActions:[],
   reverse:true
 }

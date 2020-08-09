@@ -105,7 +105,7 @@ const Accordion = ({
 
   const openOne = useMemo(
     () => (id) => {
-      console.log('O1')
+      //console.log('O1')
       dispatch({
         type   :'OPEN_ONE',
         payload:id

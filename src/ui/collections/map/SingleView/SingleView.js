@@ -246,7 +246,7 @@ const SingleView = ({
         initialValues={ finalData }
         parsers={ currentType.graphql.types }
       >
-        <div className='pv-v v2i s-1 k-s'>
+        <div className='pv-v v2 s-1 k-s'>
           { fields.map((e, i) =>
             <FormInput
               key={i}
@@ -259,9 +259,10 @@ const SingleView = ({
           <Actions
             item={ finalData }
             enableEdit={false}
-            enableDelete={ currentId }
+            enableDelete={ currentId ? true : false }
             independent
             reverse={ false }
+            redirectAfterDelete={ true }
             style={{
               justifyContent:'end'
             }}

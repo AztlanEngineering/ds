@@ -11,6 +11,8 @@ import gql from 'graphql-tag'
 import { useMutation } from '@apollo/client'
 
 import { useObjectMap } from '../../Context'
+
+import { useHistory, useParams } from 'react-router-dom'
 //Intl
 
 /* import { FormattedMessage} from "react-intl";
@@ -42,11 +44,17 @@ const Delete = ({
   style,
   item,
   refetch,
+  redirect,
   ...otherProps
 }) => {
 
+  const routeParams = useParams()
+
+  const history = useHistory()
+
   const {
-    currentType
+    currentType,
+    generateLocalPath,
   } = useObjectMap()
 
   const { DELETE } = currentType.graphql.mutations
@@ -57,12 +65,10 @@ const Delete = ({
     error
   }] = useMutation(gql(DELETE))
 
-  /* NOT USED ATM : TO EXTRACT THE SERVER RESPONSE
   const finalData = useMemo(() => (data && data[Object.keys(data).reduce((a, e) => {
-        return e
-      }, '')]) || [],
-     [currentType.name, loading])
-     */
+    return e
+  }, '')]) || '',
+  [currentType.name, loading])
 
   const onClick = (e) => {
     const variables = {
@@ -73,10 +79,17 @@ const Delete = ({
     }
   }
 
-  const finalData = useMemo(() => (data && data[Object.keys(data).reduce((a, e) => {
-    return e
-  }, '')]) || [],
-  [currentType.name, loading])
+  useEffect(() => {
+    if(redirect && (finalData === item.id)) {
+      const url = generateLocalPath(
+        'list',
+        {
+          ...routeParams
+        }
+      )
+      history.push(url)
+    }
+  }, [finalData])
 
   useEffect(() => {
     //console.log('WILL NOW REFETCH', finalData)
@@ -135,7 +148,12 @@ Delete.propTypes = {
   /**
    *  function that will be executed after the end of the mutation
    */
-  refetch:PropTypes.func
+  refetch:PropTypes.func,
+
+  /*
+   * Whether to redirect to the main list page after deletion
+   */
+  redirect:PropTypes.bool
 }
 
 /*
