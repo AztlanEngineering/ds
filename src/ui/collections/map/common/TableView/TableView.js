@@ -18,6 +18,8 @@ import {
   Shortcut
 } from 'ui/site'
 
+import { InlineLoader } from 'ui/common'
+
 /* import { FormattedMessage} from "react-intl";
    import messages from "./messages";
     <FormattedMessage {...messages.title} /> */
@@ -84,7 +86,7 @@ const TableView = ({
 
   const firstPageRows = rows
 
-  return (
+  if(!(loading || error)) return (
     <div
       className={
         [
@@ -200,7 +202,34 @@ const TableView = ({
         </table>
       }
     </div>
-  )}
+  )
+  else return(
+    <div
+      className={
+        [
+          //styles[baseClassName],
+          baseClassName,
+          'x-paragraph',
+          's-2 k-s',
+          className
+        ].filter(e => e).join(' ')
+      }
+      id={ id }
+      style={ style }
+    >
+      
+      { loading && <InlineLoader/> }
+      <pre className='c-x'>
+      { error && JSON.stringify(error, null, 2) }
+      </pre>
+      {!(loading || error) &&
+      <p className='c-x'>
+      If nothing else appears, the object was not found or there was no data returned
+      </p>}
+
+    </div>
+  )
+}
 
 TableView.propTypes = {
   /**

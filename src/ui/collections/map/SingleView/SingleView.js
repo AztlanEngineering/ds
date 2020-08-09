@@ -10,7 +10,7 @@ import {
   FormContextDebugger
 } from 'ui/form'
 
-import { Timestamp } from 'ui/common'
+import { InlineLoader, Timestamp } from 'ui/common'
 
 import { Accordion } from 'ui/site'
 
@@ -359,14 +359,15 @@ const SingleView = ({
       id={ id }
       style={ style }
     >
+      { loading && <InlineLoader/> }
       
       <pre className='c-x'>
-      { loading && ' LOADING' }
       { error && JSON.stringify(error, null, 2) }
       </pre>
+      {!(loading || error) &&
       <p className='c-x'>
       If nothing else appears, the object was not found or there was no data returned
-      </p>
+      </p>}
 
     </div>
   )
