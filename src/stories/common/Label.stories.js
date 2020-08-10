@@ -57,7 +57,7 @@ export const NewStory = () => (
 export const Variant = () => (
   variants.map((e,i) =>
     <Label
-      key={i }
+      key={i}
       className={ e.className }
     >
       { e.content || 'blah' }
@@ -72,6 +72,7 @@ export const Colors = () => (
     <Label
       className={ 'x-'+e}
       circle={ i % 2 }
+      key={i}
     >
       { variants[1].content || 'blah'}
     </Label>
@@ -86,6 +87,7 @@ export const Simple = () => (
     <Label
       className={ 'x-'+e}
       simple
+      key={i}
     >
       { variants[1].content || 'blah'}
     </Label>
@@ -101,6 +103,7 @@ export const Dash = () => (
       <Label
         className={ 'x-'+e}
         dash
+        key={i}
       >
         { 'Our Story'}
       </Label>
@@ -119,6 +122,7 @@ export const Basic = () => (
       className={ 'x-'+e}
       circle={ i % 2 }
       basic
+      key={i}
     >
       { variants[1].content || 'blah'}
     </Label>
@@ -132,6 +136,7 @@ export const Sizes = () => (
   SIZES.map((e,i) =>
     <Label
       className={ 'x-blue ks s'+e}
+      key={i}
     >
       { variants[1].content || 'blah'}
     </Label>

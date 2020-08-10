@@ -188,11 +188,11 @@ LocalHelmet.propTypes = {
   title:PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object
-  ]).isRequired,
+  ]),
   title_tag:PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object
-  ]).isRequired,
+  ]),
   canonical:PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object

@@ -25,7 +25,7 @@ const id = 'homepage'
 const titles = [
 
   {
-    classname:'uc',
+    className       :'uc',
     heading         :'Spartacus',
     subtitle        :'Stanley Kubrick, 1960',
     headingAs       :'h1',
