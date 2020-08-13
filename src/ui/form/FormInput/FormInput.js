@@ -17,6 +17,7 @@ import {
   SVGCheckbox,
   CardChoice,
   DownshiftSelect,
+  Dropzone
 } from '../common'
 
 import { FormContext } from '../FormContext'
@@ -136,6 +137,20 @@ const FormInput = ({
   else if ( type == 'downshift-combobox' ) return(
     <>h</>
   )
+  
+  else if ( type == 'dropzone' ) return(
+    displayComponent(Dropzone, {
+      ...passedProps
+    })
+  )
+  
+  else if ( type == 'image-dropzone' ) return(
+    displayComponent(Dropzone, {
+      imageUploader:true,
+      accept  :'image/jpeg, image/png',
+      ...passedProps
+    })
+  )
 
 }
 
@@ -161,6 +176,8 @@ FormInput.propTypes = {
     'svg-radios',
     'downshift-combobox',
     'downshift-select',
+    'dropzone',
+    'image-dropzone'
   ]
   ),
 

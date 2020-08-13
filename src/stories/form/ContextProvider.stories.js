@@ -239,6 +239,14 @@ export const Default = () => (
         inputId='colorchoicer2'
         buttonChildren={ 'Select your favourite color' }
       />
+      <FormInput
+        context={ context }
+        type='image-dropzone' //radios
+        name='illustration'
+        label='Please select an illustration'
+        description='Drag and drop a file on the square'
+        inputId='illustration'
+      />
       <FormContextDebugger context={ context }/>
     </ContextProvider>
   </div>

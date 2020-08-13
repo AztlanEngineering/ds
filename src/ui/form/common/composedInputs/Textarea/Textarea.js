@@ -122,7 +122,6 @@ const Textarea = ({
   return (
     <InputHolder
       { ...holderProps }
-      l
     >
       <InputInside >
         <BaseHTMLTextarea

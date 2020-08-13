@@ -150,7 +150,10 @@ InputHolder.propTypes = {
   /**
    * Whether the input is on an errors state. Will be displayed before the description.
    */
-  errors:PropTypes.string,
+  errors:PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.array,
+    PropTypes.object ]),
 
   /**
    * Whether the input is valid. If a sentence, will be displayed before the description.
