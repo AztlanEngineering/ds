@@ -109,12 +109,12 @@ Rating.propTypes = {
   /**
    * The author name
    */
-  author:PropTypes.string,
+  author:PropTypes.string.isRequired,
 
   /**
    * The title of the review
    */
-  title:PropTypes.string,
+  title:PropTypes.string.isRequired,
 
   /**
    * The content of the review

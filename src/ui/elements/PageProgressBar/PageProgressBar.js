@@ -73,7 +73,7 @@ PageProgressBar.propTypes = {
   /**
    * The html ID to spy on, for instance a container of content
    */
-  spyOn:PropTypes.string,
+  spyOn:PropTypes.string.isRequired,
 
   /**
    * Whats the minimum frequency before each update of the progress
