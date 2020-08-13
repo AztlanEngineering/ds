@@ -7,6 +7,11 @@ export default defineMessages({
     defaultMessage: "Read more.",
     description: "Read more on the shortener",
   },
+  show: {
+    id: "ds.common.shortener.show",
+    defaultMessage: "Show",
+    description: "Used on the minimal version of the shortener",
+  },
   /*
   pppTitle:{
     id            :'app.shortener.pages.ppp.title',

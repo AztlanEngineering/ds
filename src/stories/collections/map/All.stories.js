@@ -7,11 +7,14 @@ import faker from 'faker'
 //import { action } from '@storybook/addon-actions'
 
 import {
+  Button,
   Card,
   DotInfo,
   MapContextProvider,
   MapListView as ListView,
-  MapSingleView as SingleView
+  MapSingleView as SingleView,
+  Shortener,
+  Timestamp,
 } from 'ui'
 
 import QUERY_ONE from './graphql/getFruit.gql'
@@ -41,10 +44,30 @@ const typeList = [{
   baseUrl     :'fruits',
   defaultViews:{
     table:{
+      initialState:{
+        hiddenColumns:[
+          'fullId',
+          'createdAt',
+          'updatedAt'
+        ]
+      },
       columns:[
         {
-          Header  :'Id',
-          accessor:'id'
+          Header  :'id',
+          accessor:'id',
+          Cell    :(v) =>
+            <span className='f-mono'>
+              { v.value.split('-').slice(0,1) }
+            </span>
+        },
+        {
+          Header  :'id (full)',
+          accessor:'id',
+          id      :'fullId',
+          Cell    :(v) =>
+            <span className='f-mono'>
+              { v.value }
+            </span>
         },
         {
           Header  :'Name',
@@ -57,11 +80,24 @@ const typeList = [{
         {
           Header  :'Edible ?',
           accessor:'edible',
-          Cell:(v) => <DotInfo boolean={v.value}/>
+          Cell    :(v) => <DotInfo boolean={v.value}/>
         },
         {
           Header  :'$/Kilo',
           accessor:'pricePerKilo'
+        },
+        {
+          Header  :'createdAt',
+          accessor:'createdAt',
+          Cell    :(v) =>
+            <Timestamp time={ new Date(v.value) }/>
+        },
+        {
+          Header  :'updatedAt',
+          accessor:'updatedAt',
+          Cell    :(v) => 
+            <Timestamp time={ new Date(v.value) }/>
+            //<Timestamp time={ v.value }/>
         },
         /*
         {
@@ -143,7 +179,7 @@ const typeList = [{
     extraActions:[
       {
         condition:(user) => true,
-        Component:() => 'Star'
+        Component:({ item }) => <Button>{ item.name }</Button>
       }
     ]
 
