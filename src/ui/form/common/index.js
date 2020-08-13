@@ -32,4 +32,5 @@ export {
   SVGCheckbox,
   DownshiftSelect,
   DownshiftCombobox,
+  Dropzone
 } from './composedInputs'

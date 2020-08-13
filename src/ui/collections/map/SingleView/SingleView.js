@@ -168,6 +168,7 @@ const SingleView = ({
       ,{}) : {}
       if (values && values.id) {
         variables['id'] = values.id
+        
       }
       console.log('Will now mutate', variables)
       saveItem({variables})

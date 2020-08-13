@@ -7,6 +7,7 @@ import { useState } from 'react'
 import {
   FormInput,
   FormContextProvider,
+  FormContextDebugger
 } from 'ui'
 /* import QUERY from './graphql/query.graphql'
    import { AplProvider } from 'stories/utils'
@@ -33,6 +34,7 @@ export default {
         }}
                  >
         { storyfn() }
+        <FormContextDebugger/>
       </FormContextProvider>,
       /*
          storyfn => <AplProvider endpoint={ endpoint }>{ storyfn() }</AplProvider>,
@@ -350,5 +352,16 @@ export const CardChoices = () => (
     ]}
     label='Whats your favourite composer'
     inputId='compo3'
+  />
+)
+
+export const Dropzone = () => (
+  <FormInput
+    type='image-dropzone' //radios
+    name='illustration'
+    multiple
+    label='Please select an illustration'
+    description='Drag and drop a file on the square'
+    inputId='illustration'
   />
 )
