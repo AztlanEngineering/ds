@@ -99,11 +99,23 @@ const Dropzone = ({
 
   const onDrop = useCallback(async (acceptedFiles, rejectedFiles, event) => {
     if(acceptedFiles.length) {
-      const compressorOptions = imageUploader ? {
-        maxWidth :imageCompressorMaxWidth,
-        maxHeight:imageCompressorMaxHeight,
-        quality  :imageCompressorQuality
-      }: null
+
+      var compressorOptions
+
+      if (imageUploader) {
+        compressorOptions =  {
+          maxWidth :imageCompressorMaxWidth,
+          maxHeight:imageCompressorMaxHeight,
+          quality  :imageCompressorQuality
+        }
+        compressorOptions = Object.keys(compressorOptions).reduce((a, e) => {
+          if (compressorOptions[e]){
+            a[e] = compressorOptions[e]
+          }
+          return a
+        }, {})
+
+      }
       const filesState = await Promise.all(acceptedFiles.map(async file => {
 
         //If we upload an image we compress and add a preview
