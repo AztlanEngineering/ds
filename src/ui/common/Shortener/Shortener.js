@@ -38,7 +38,9 @@ const Shortener = ({
 
   as:Element,
 
-  limit
+  limit,
+  separator,
+  min,
 }) => {
 
   const [displayFull, setDisplayFull] = useState(false)
@@ -55,9 +57,9 @@ const Shortener = ({
       id={ id }
       style={ style }
     >
-      { text && (!displayFull && (text.split(' ').length > limit)) ?
+      { text && (!displayFull && (text.split(separator).length > limit)) ?
         <>
-          { text.split(' ').slice(0, limit).join(' ') }{ '... ' }
+          { text.split(separator).slice(0, limit).join(separator) }{ '... ' }
           <a
             href='#'
             onClick={ (e) => {
@@ -66,7 +68,10 @@ const Shortener = ({
               setDisplayFull(true) }
             }
           >
+            { min ?
+              <FormattedMessage {...messages.show} /> :
             <FormattedMessage {...messages.readMore} />
+            }
           </a>
         </>:
         text
@@ -105,9 +110,20 @@ Shortener.propTypes = {
   //as: PropTypes.string,
 
   /**
-   *
+   * How many separated element to accept before the read more
    */
   limit:PropTypes.number,
+
+  /**
+   * Which separator to use
+   */
+  separator:PropTypes.string.isRequired,
+
+
+  /**
+   * Whether the shortener style is minimal. ATM is only gives a shorter message
+   */
+  min:PropTypes.bool,
 
   /*
   : PropTypes.shape({
@@ -123,7 +139,9 @@ Shortener.propTypes = {
 
 Shortener.defaultProps = {
   as   :'span',
+  separator:' ',
   limit:20,
+  min:false,
 
   /* height:'2.2em',
      as:'p', */

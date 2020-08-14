@@ -1,6 +1,6 @@
 /* @fwrlines/generator-react-component 2.4.1 */
 import * as React from 'react'
-import { useMemo } from 'react'
+import { useState, useMemo } from 'react'
 import PropTypes from 'prop-types'
 import { Button } from 'ui/elements'
 
@@ -13,6 +13,8 @@ import { useQuery, useMutation } from '@apollo/client'
 //Intl
 import { Actions } from '../Actions'
 import { Row } from './common'
+
+import { Popup } from 'ui/common'
 
 import {
   Shortcut
@@ -49,6 +51,8 @@ const TableView = ({
   style,
 }) => {
 
+  const [columnSelectorDisplay, setColumnSelectorDisplay] = useState(false)
+
   const {
     currentType
   } = useObjectMap()
@@ -76,10 +80,12 @@ const TableView = ({
     headerGroups,
     rows,
     prepareRow,
+    allColumns,
   } = useTable(
     {
       columns,
-      data:finalData
+      data:finalData,
+      initialState:currentType.defaultViews.table.initialState,
     },
     useSortBy
   )
@@ -107,32 +113,95 @@ const TableView = ({
         independent
       >
         <Button
+          id='toggle_button'
+          className='x-yellow'
+          style={{ overflow: 'initial' }}
+          onMouseEnter={() => setColumnSelectorDisplay(true)}
+          onMouseLeave={() => setColumnSelectorDisplay(false)}
+        >
+          Toggle
+          {' '}
+          <Shortcut
+            className='s-2 k-s x-white'
+            action={
+              () => setColumnSelectorDisplay(!columnSelectorDisplay)
+            }
+            keys={[
+              'g'
+            ]}
+          />
+          <Popup
+            className='u50'
+            isVisible={ columnSelectorDisplay }
+          >
+            <div
+              className='l-resgrid ul'
+            >
+              <div className='p-u'>
+                <span className='tb fh x-paragraph c-x'>
+                  Visible
+                </span>
+                <ul className='compact visible-columns'>
+                  {allColumns.map(column => 
+                    (column.isVisible && !(column.id === 'id')) && 
+                    <li key={column.id}>
+                      <label>
+                        <input
+                          type='checkbox'
+                          {...column.getToggleHiddenProps()}
+                        />
+                        {' '}
+                        {column.id}
+                      </label>
+                    </li>
+                  )}
+                </ul>
+              </div>
+              <div className='p-u'>
+                <span className='tb fh x-paragraph c-x'>
+                  Hidden
+                </span>
+                <ul className='compact hidden-columns'>
+                  {allColumns.map(column => 
+                    !column.isVisible && 
+                    <li key={column.id}>
+                      <label>
+                        <input
+                          type='checkbox'
+                          {...column.getToggleHiddenProps()}
+                        />
+                        {' '}
+                        {column.id}
+                      </label>
+                    </li>
+                  )}
+                </ul>
+              </div>
+            </div>
+          </Popup>
+        </Button>
+        <Button
           onClick={ !loading ? () => refetch() : undefined }
           className='x-green'
           loading={ loading }
         >
           Refetch
           {' '}
-              <Shortcut
-                className='s-2 k-s x-white'
-                action={
-                  () => refetch()
-                }
-                keys={[
-                  'r'
-                ]}
-              />
+          <Shortcut
+            className='s-2 k-s x-white'
+            action={
+              () => refetch()
+            }
+            keys={[
+              'r'
+            ]}
+          />
         </Button>
       </Button.Group>
 
-      <div>
-        <ul className='yf'>
-          <li><strong>Visible :</strong></li>
-        </ul>
-        <ul className='yf'>
-          <li><strong>Hidden :</strong></li>
-        </ul>
-      </div>
+      <br />
+      
+
       { data &&
         <table {...getTableProps()}>
           <thead>
@@ -149,15 +218,15 @@ const TableView = ({
                     key={j}
                   >
                     <div className='yf inside'>
-                    {f.render('Header')}
-                    {/* Add a sort direction indicator */}
-                    <span className='fi'>
-                      {f.isSorted
-                        ? f.isSortedDesc
-                          ? 'j'
-                          : 'k'
-                        : ''}
-                    </span>
+                      {f.render('Header')}
+                      {/* Add a sort direction indicator */}
+                      <span className='fi'>
+                        {f.isSorted
+                          ? f.isSortedDesc
+                            ? 'j'
+                            : 'k'
+                          : ''}
+                      </span>
                     </div>
                   </th>
                 ))}
@@ -187,11 +256,9 @@ const TableView = ({
                         style={{ justifyContent: 'end' }}
                         item={ e.values }
                         refetch={ refetch }
-                        /*
-                        extraActions={[
-                          condition:(user) => true,
-                          Component:DisplayJson
-                         ]}*/
+                        extraActions={
+                          currentType.actions ? currentType.actions.extraActions: undefined
+                         }
                       />
                     </td>
                   </tr>
@@ -217,15 +284,15 @@ const TableView = ({
       id={ id }
       style={ style }
     >
-      
+
       { loading && <InlineLoader/> }
       <pre className='c-x'>
-      { error && JSON.stringify(error, null, 2) }
+        { error && JSON.stringify(error, null, 2) }
       </pre>
       {!(loading || error) &&
-      <p className='c-x'>
-      If nothing else appears, the object was not found or there was no data returned
-      </p>}
+        <p className='c-x'>
+          If nothing else appears, the object was not found or there was no data returned
+        </p>}
 
     </div>
   )

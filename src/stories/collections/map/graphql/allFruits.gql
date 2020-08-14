@@ -5,5 +5,7 @@ query {
     taste
     edible
     pricePerKilo
+    createdAt
+    updatedAt
   }
 }

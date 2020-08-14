@@ -10,7 +10,7 @@ Classes :
 .popup {
   display: inline-block;
   position: absolute;
-  background: blue;
+  background: var(--y, blue);
   //overflow-y:scroll;
 
   &:not(.visible) {

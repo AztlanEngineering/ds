@@ -14,7 +14,7 @@ Classes :
     border: 0;
 
     &.actions {
-      text-align:right;
+      text-align: right;
     }
   }
 
@@ -30,8 +30,53 @@ Classes :
 
       th {
         text-align: left;
+
         .inside {
-          justify-content:space-between;
+          justify-content: space-between;
+        }
+      }
+    }
+  }
+
+  #toggle_button {
+    .popup {
+      background:var(--light-yellow);
+      border-radius: var(--r);
+      box-shadow: var(--shadow);
+      text-align: left;
+      width: 220px;
+
+      z-index: 1;
+
+      .l-resgrid {
+        --grid-column-xs: 2;
+        --grid-column-md: 2;
+      }
+
+      ul {
+        margin: 0;
+
+        li {
+          input {
+            display: none;
+          }
+          label {
+            font-weight:normal;
+            cursor:pointer;
+          }
+        }
+
+        &.visible-columns {
+          label {
+            color: var(--x-subtitle);
+          }
+        }
+
+        &.hidden-columns {
+          label {
+            color: var(--x-metadata);
+            text-decoration: line-through;
+          }
         }
       }
     }
