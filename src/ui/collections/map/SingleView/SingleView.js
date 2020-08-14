@@ -87,10 +87,15 @@ const SingleView = ({
   const { fields=[] } = currentType.name ?
     currentType.defaultViews.single : {}
 
-  const finalData = useMemo(() => (data && data[Object.keys(data).reduce((a, e) => {
-    return e
-  }, '')]) || {},
-  [currentType.name, loading, location])
+  const finalData = useMemo(() => {
+    var result = {}
+    if(data) {
+      const dataKey = Object.keys(data).reduce((a, e) => e)
+      result = data[dataKey]
+    }
+    return result
+  },
+  [currentType.name, loading, location, data])
 
   useEffect(() => {
     if(currentId && (!finalData.id)) {
@@ -375,6 +380,10 @@ const SingleView = ({
       {!(loading || error) &&
       <p className='c-x'>
       If nothing else appears, the object was not found or there was no data returned
+        <pre>
+        { JSON.stringify(finalData) }
+        { JSON.stringify(data) }
+        </pre>
       </p>}
 
     </div>
