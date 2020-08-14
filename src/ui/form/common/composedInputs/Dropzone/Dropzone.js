@@ -1,4 +1,5 @@
 /* @fwrlines/generator-react-component 2.4.1 */
+import regeneratorRuntime from 'regenerator-runtime'
 import * as React from 'react'
 import { useState, useCallback, useMemo, useEffect } from 'react'
 import PropTypes from 'prop-types'
