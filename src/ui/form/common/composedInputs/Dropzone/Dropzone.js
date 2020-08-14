@@ -99,9 +99,9 @@ const Dropzone = ({
   const onDrop = useCallback(async (acceptedFiles, rejectedFiles, event) => {
     if(acceptedFiles.length) {
       const compressorOptions = imageUploader ? {
-        maxWidth:imageCompressorMaxWidth,
+        maxWidth :imageCompressorMaxWidth,
         maxHeight:imageCompressorMaxHeight,
-        quality:imageCompressorQuality
+        quality  :imageCompressorQuality
       }: null
       const filesState = await Promise.all(acceptedFiles.map(async file => {
 
@@ -510,17 +510,17 @@ Dropzone.propTypes = {
   accept:PropTypes.string,
 
   /**
-   * Max Height for the image compressor in pixels. (Only if `imageUploader` is `true`) 
+   * Max Height for the image compressor in pixels. (Only if `imageUploader` is `true`)
    */
   imageCompressorMaxHeight:PropTypes.number,
 
   /**
-   * Max Width for the image compressor in pixels. (Only if `imageUploader` is `true`) 
+   * Max Width for the image compressor in pixels. (Only if `imageUploader` is `true`)
    */
   imageCompressorMaxWidth:PropTypes.number,
 
   /**
-   * Quality for the image compressor (as a number between `0` and `1`, like `.3`). (Only if `imageUploader` is `true`) 
+   * Quality for the image compressor (as a number between `0` and `1`, like `.3`). (Only if `imageUploader` is `true`)
    */
   imageCompressorQuality:PropTypes.number,
 }
