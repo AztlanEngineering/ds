@@ -14,6 +14,8 @@ import { InputHolder, InputInside } from '../../elements'
 
 import compressImage from './compressImage'
 
+import { readableFileSize } from '@fwrlines/utils'
+
 //Intl
 
 /* import { FormattedMessage} from "react-intl";
@@ -135,6 +137,7 @@ const Dropzone = ({
               preview:URL.createObjectURL(finalImage)
             }
           )
+          console.log(finalImage)
           return finalImage
         }
 
@@ -315,7 +318,9 @@ const Dropzone = ({
             <div key={i}>
               <Figure src={ e.preview }>
                 <span className='x-subtitle c-x'>
-                  { e.path }
+                  { e.name } 
+                  {' '}
+                  <small className='c-light-x'>{ readableFileSize(value.size) }</small>
                 </span>
 
               </Figure>
@@ -325,7 +330,9 @@ const Dropzone = ({
           <div>
             <Figure src={ value.preview }>
               <span className='x-subtitle c-x'>
-                { value.path }
+                { value.name }
+                 {' '}
+                <small className='c-light-x'>{ readableFileSize(value.size) }</small>
               </span>
 
             </Figure>
