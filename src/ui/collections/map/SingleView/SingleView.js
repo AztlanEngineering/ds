@@ -21,7 +21,7 @@ import { useObjectMap, MapActions as Actions } from '../common'
 import { Link, useLocation, useParams, useHistory } from 'react-router-dom'
 
 import gql from 'graphql-tag'
-import { useQuery, useMutation } from '@apollo/client'
+import { useLazyQuery, useMutation } from '@apollo/client'
 //Intl
 
 /* import { FormattedMessage} from "react-intl";
@@ -69,12 +69,12 @@ const SingleView = ({
     generateLocalPath
   } = useObjectMap()
 
-  const {
+  const [getItem, {
     loading,
     error,
-    data={},
+    data,
     refetch
-  } = useQuery(gql(currentType.graphql.queries.ONE),
+  }] = useLazyQuery(gql(currentType.graphql.queries.ONE),
     {
       variables:{
         id:itemId || currentId
@@ -91,6 +91,12 @@ const SingleView = ({
     return e
   }, '')]) || {},
   [currentType.name, loading, location])
+
+  useEffect(() => {
+    if(currentId && (!finalData.id)) {
+      getItem({variables:{id:currentId}})
+    }
+  }, [])
 
   //console.log(777, loading, error, data, finalData, currentId)
 
@@ -137,7 +143,7 @@ const SingleView = ({
 
     }
     if(mutationResponse.id) {
-      refetch()
+      currentId && refetch()
     }
   }
 
