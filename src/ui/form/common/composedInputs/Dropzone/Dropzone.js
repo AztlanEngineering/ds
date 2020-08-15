@@ -1,4 +1,5 @@
 /* @fwrlines/generator-react-component 2.4.1 */
+import regeneratorRuntime from 'regenerator-runtime'
 import * as React from 'react'
 import { useState, useCallback, useMemo, useEffect } from 'react'
 import PropTypes from 'prop-types'
@@ -10,6 +11,10 @@ import { SnapSlider } from 'ui/elements'
 import { useDropzone } from 'react-dropzone'
 
 import { InputHolder, InputInside } from '../../elements'
+
+import compressImage from './compressImage'
+
+import { readableFileSize } from '@fwrlines/utils'
 
 //Intl
 
@@ -83,6 +88,9 @@ const Dropzone = ({
   multiple,
 
   imageUploader, //A boolean that sets up some other healthy default
+  imageCompressorMaxWidth,
+  imageCompressorMaxHeight,
+  imageCompressorQuality,
 
   ...otherProps
 }) => {
@@ -91,13 +99,54 @@ const Dropzone = ({
 
   //console.log(`Component rendered with ${value} ${typeof value}`)
 
-  const onDrop = useCallback((acceptedFiles, rejectedFiles, event) => {
+  const onDrop = useCallback(async (acceptedFiles, rejectedFiles, event) => {
     if(acceptedFiles.length) {
-      const filesState = acceptedFiles.map(file => {
-        return Object.assign(file, {
-        preview:URL.createObjectURL(file) 
+
+      var compressorOptions
+
+      if (imageUploader) {
+        compressorOptions =  {
+          maxWidth :imageCompressorMaxWidth,
+          maxHeight:imageCompressorMaxHeight,
+          quality  :imageCompressorQuality
+        }
+        compressorOptions = Object.keys(compressorOptions).reduce((a, e) => {
+          if (compressorOptions[e]){
+            a[e] = compressorOptions[e]
           }
-      )})
+          return a
+        }, {})
+
+      }
+      const filesState = await Promise.all(acceptedFiles.map(async file => {
+
+        //If we upload an image we compress and add a preview
+        if (imageUploader) {
+          //console.log('WILL NOW COMPRESS THE I', file)
+          var finalImage = new File(
+            [await compressImage(file, compressorOptions)],
+            file.name,
+            {
+              type:file.type ,
+            }
+          )
+          //console.log(finalImage)
+          Object.assign(
+            finalImage
+            , {
+              preview:URL.createObjectURL(finalImage)
+            }
+          )
+          console.log(finalImage)
+          return finalImage
+        }
+
+        //Else we return the original file
+        else {
+          return file
+        }
+      })
+      )
       setInputValue(multiple ? filesState : filesState[0])
     } else {
       setInputValue(null)
@@ -127,7 +176,7 @@ const Dropzone = ({
 
   useEffect(() => () => {
     // Make sure to revoke the data uris to avoid memory leaks
-    value && (multiple ? 
+    value && (multiple ?
       value.forEach(file => URL.revokeObjectURL(file.preview)) :
       URL.revokeObjectURL(value.preview))
   }, [value])
@@ -207,14 +256,14 @@ const Dropzone = ({
 
   const finalOnBlur = useCallback((e) => {
     e.persist()
-    console.log('9988', e)
+    //console.log('9988', e)
     dropzoneOnRootBlur(e)
     onBlur(e)
-  }, 
-    [
-      dropzoneOnRootBlur,
-      onBlur
-    ])
+  },
+  [
+    dropzoneOnRootBlur,
+    onBlur
+  ])
 
   const inputProps = {
     ...getInputProps(),
@@ -269,21 +318,25 @@ const Dropzone = ({
             <div key={i}>
               <Figure src={ e.preview }>
                 <span className='x-subtitle c-x'>
-                  { e.path }
+                  { e.name } 
+                  {' '}
+                  <small className='c-light-x'>{ readableFileSize(value.size) }</small>
                 </span>
 
               </Figure>
             </div>
           ) }
         { !multiple && imageUploader && value &&
-            <div>
-              <Figure src={ value.preview }>
-                <span className='x-subtitle c-x'>
-                  { value.path }
-                </span>
+          <div>
+            <Figure src={ value.preview }>
+              <span className='x-subtitle c-x'>
+                { value.name }
+                 {' '}
+                <small className='c-light-x'>{ readableFileSize(value.size) }</small>
+              </span>
 
-              </Figure>
-            </div>
+            </Figure>
+          </div>
         }
 
 
@@ -475,6 +528,21 @@ Dropzone.propTypes = {
    * The mime type accepted by the input. See https://react-dropzone.js.org/ for details
    */
   accept:PropTypes.string,
+
+  /**
+   * Max Height for the image compressor in pixels. (Only if `imageUploader` is `true`)
+   */
+  imageCompressorMaxHeight:PropTypes.number,
+
+  /**
+   * Max Width for the image compressor in pixels. (Only if `imageUploader` is `true`)
+   */
+  imageCompressorMaxWidth:PropTypes.number,
+
+  /**
+   * Quality for the image compressor (as a number between `0` and `1`, like `.3`). (Only if `imageUploader` is `true`)
+   */
+  imageCompressorQuality:PropTypes.number,
 }
 
 Dropzone.defaultProps = {

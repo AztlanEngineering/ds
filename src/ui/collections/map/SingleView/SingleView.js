@@ -21,7 +21,7 @@ import { useObjectMap, MapActions as Actions } from '../common'
 import { Link, useLocation, useParams, useHistory } from 'react-router-dom'
 
 import gql from 'graphql-tag'
-import { useQuery, useMutation } from '@apollo/client'
+import { useLazyQuery, useMutation } from '@apollo/client'
 //Intl
 
 /* import { FormattedMessage} from "react-intl";
@@ -69,12 +69,12 @@ const SingleView = ({
     generateLocalPath
   } = useObjectMap()
 
-  const {
+  const [getItem, {
     loading,
     error,
-    data={},
+    data,
     refetch
-  } = useQuery(gql(currentType.graphql.queries.ONE),
+  }] = useLazyQuery(gql(currentType.graphql.queries.ONE),
     {
       variables:{
         id:itemId || currentId
@@ -87,10 +87,21 @@ const SingleView = ({
   const { fields=[] } = currentType.name ?
     currentType.defaultViews.single : {}
 
-  const finalData = useMemo(() => (data && data[Object.keys(data).reduce((a, e) => {
-    return e
-  }, '')]) || {},
-  [currentType.name, loading, location])
+  const finalData = useMemo(() => {
+    var result = {}
+    if(data) {
+      const dataKey = Object.keys(data).reduce((a, e) => e)
+      result = data[dataKey]
+    }
+    return result
+  },
+  [currentType.name, loading, location, data])
+
+  useEffect(() => {
+    if(currentId && (!finalData.id)) {
+      getItem({variables:{id:currentId}})
+    }
+  }, [])
 
   //console.log(777, loading, error, data, finalData, currentId)
 
@@ -137,7 +148,7 @@ const SingleView = ({
 
     }
     if(mutationResponse.id) {
-      refetch()
+      currentId && refetch()
     }
   }
 
@@ -369,6 +380,10 @@ const SingleView = ({
       {!(loading || error) &&
       <p className='c-x'>
       If nothing else appears, the object was not found or there was no data returned
+        <pre>
+        { JSON.stringify(finalData) }
+        { JSON.stringify(data) }
+        </pre>
       </p>}
 
     </div>
