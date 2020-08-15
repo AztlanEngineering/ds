@@ -113,32 +113,38 @@ const DownshiftSelect = ({
   [items]
   )
 
-  const itemToString = userItemToString ?
+  const itemToString = useCallback(userItemToString ?
     userItemToString : (areItemsObjects ?
       (item => (item ? item.value : '')) :
       (item => (item ? String(item) : ''))
-    )
+    ),
+  [userItemToString, areItemsObjects]
+  )
 
-  const displayItem = userDisplayItem ?
+  const displayItem = useCallback(userDisplayItem ?
     userDisplayItem : (areItemsObjects ?
       (item => (item ? item.label : '')) :
       (item => (item ? String(item) : ''))
-    )
+    ),
+  [displayItem, areItemsObjects]
+  )
 
-  const displaySelectedItem = userDisplaySelectedItem ?
+  const displaySelectedItem = useCallback(userDisplaySelectedItem ?
     userDisplaySelectedItem : (areItemsObjects ?
       (item => (item ? item.label : '')) :
       (item => (item ? String(item) : ''))
-    )
+    ),
+  [userDisplaySelectedItem, areItemsObjects]
+  )
 
   //console.log(otherProps)
 
-  const onSelectedItemChange = (setInputValue || userOnSelectedItemChange) ?
+  const onSelectedItemChange = useCallback((setInputValue || userOnSelectedItemChange) ?
     userOnSelectedItemChange ? userOnSelectedItemChange : (c) => {
       console.log('DS change', c)
       !touched && setInputTouched && setInputTouched()
       setInputValue(itemToString(c.selectedItem))
-    } : undefined
+    } : () => null)
 
   const selectedItem = value ? items.find((e) => itemToString(e) == value) : undefined
 
@@ -253,7 +259,11 @@ const DownshiftSelect = ({
             || ( uncontrolledSelectedItem && displaySelectedItem(uncontrolledSelectedItem ))
             || buttonChildren }
             <Popup
-              className={ popupClassName }
+              className={ [
+                popupClassName,
+                'b-y y-background',
+              ].filter(e => e).join(' ')
+              }
               id={ popupId }
               //style={{ width: '200px', ...popupStyle }}
               isVisible={ isOpen }
@@ -262,20 +272,24 @@ const DownshiftSelect = ({
             >
               <ul {...getMenuProps()}>
                 {
-            items.map((item, index) => (
-              <li
-                className={ itemClassName }
-                style={ itemStyle }
-                key={`${item}${index}`}
-                {...getItemProps({ item, index })}
-              >
-                {
-                  selectedItem === item ?
-                    displaySelectedItem(item) :
-                    displayItem(item)
-                }
-              </li>
-            ))}
+                  items.map((item, index) => (
+                    <li
+                      className={ [
+                        itemClassName,
+                        (highlightedIndex === index) && highlightedClassName
+                      ].filter(e => e).join(' ')
+                      }
+                      style={ itemStyle }
+                      key={`${item}${index}`}
+                      {...getItemProps({ item, index })}
+                    >
+                      {
+                        selectedItem === item ?
+                          displaySelectedItem(item) :
+                          displayItem(item)
+                      }
+                    </li>
+                  ))}
               </ul>
             </Popup>
           </Button>
@@ -571,10 +585,10 @@ DownshiftSelect.propTypes = {
 DownshiftSelect.defaultProps = {
   buttonChildren      :'Select',
   buttonProps         :{},
-  highlightedClassName:'x-red b-x c-on-x',
   //displayItem         :(i) => i,
   circularNavigation  :true,
   popupPreferredOrder :['bottom', 'right', 'top', 'left'],
+  highlightedClassName:'b-light-y'
   /* height:'2.2em',
      as:'p', */
 }

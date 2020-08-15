@@ -241,6 +241,37 @@ export const Default = () => (
       />
       <FormInput
         context={ context }
+        type='downshift-combobox' //radios
+        name='favourite-color'
+        inputClassName='y-indigo'
+        buttonProps={{
+          className:'j x-metadata',
+          simple   :true,
+          icon     :'j',
+          iconSide :'r'
+        }}
+        options={[
+          {
+            value:'magenta',
+            label:'Magenta is my fav',
+            id   :'id0mag',
+          },
+          {
+            value:'red',
+            label:'I like Red',
+            id   :'id0red',
+          },
+          {
+            value:'blue',
+            label:'Blue s the best',
+            id   :'id0blu'
+          }
+        ]}
+        label='Favourite color?'
+        inputId='colorchoicer2'
+      />
+      <FormInput
+        context={ context }
         type='image-dropzone' //radios
         name='illustration'
         label='Please select an illustration'

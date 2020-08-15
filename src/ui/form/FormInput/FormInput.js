@@ -17,6 +17,7 @@ import {
   SVGCheckbox,
   CardChoice,
   DownshiftSelect,
+  DownshiftCombobox,
   Dropzone
 } from '../common'
 
@@ -135,7 +136,9 @@ const FormInput = ({
   )
 
   else if ( type == 'downshift-combobox' ) return(
-    <>h</>
+    displayComponent(DownshiftCombobox, {
+      ...passedProps
+    })
   )
   
   else if ( type == 'dropzone' ) return(

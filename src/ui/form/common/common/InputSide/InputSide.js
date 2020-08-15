@@ -44,9 +44,7 @@ const InputSide = ({
       id={ id }
       style={ style }
     >
-      <p>
         { children }
-      </p>
     </div>
   )}
 

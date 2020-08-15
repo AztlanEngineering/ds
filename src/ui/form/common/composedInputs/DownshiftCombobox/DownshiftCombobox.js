@@ -1,17 +1,20 @@
 /* @fwrlines/generator-react-component 1.4.0 */
 import * as React from 'react'
+import { useState, useCallback, useMemo, useReducer } from 'react'
 import PropTypes from 'prop-types'
 
 import { useCombobox } from 'downshift'
+import { BaseHTMLInput } from '../../baseInputs'
+
+import C from 'ui/cssClasses'
+
+import { Popup, InlineLoader } from 'ui/common'
+import { Button } from 'ui/elements'
 
 import {
-  HTMLInput ,
-  InputSide,
-  InputIcon
-} from '../../common'
-
-/* Config
-   import C from 'ui/cssClasses' */
+  InputInside,
+  InputHolder as Holder,
+} from '../../elements'
 
 /* Relative imports
    import styles from './downshift_combobox.scss' */
@@ -43,7 +46,10 @@ const DownshiftCombobox = ({
   aesthetic,
   compact,
 
-  inputId,
+  inputId:userInputId,
+  inputClassName,
+  inputStyle,
+  inputDisabled,
 
   label,
   labelAs, //This is the only new prop compared to Input
@@ -56,9 +62,170 @@ const DownshiftCombobox = ({
   descriptionClassName,
   descriptionStyle,
 
+  // Start of downshift props
+  options:allItems, //originally called items in downshift
+  itemToString:userItemToString,
+  onSelectedItemChange:userOnSelectedItemChange,
+  stateReducer,
+
+  initialHighlightedIndex,
+  defaultSelectedItem,
+  defaultIsOpen,
+  onHighlightedIndexChange,
+  onIsOpenChange,
+  onStateChange,
+  circularNavigation,
+  menuId,
+  toggleButtonId,
+  getItemId,
+
+  itemClassName,
+  itemStyle,
+
+  popupPreferredOrder,
+  popupId,
+  popupClassName,
+  popupStyle,
+
+  highlightedClassName,
+  displayItem:userDisplayItem,
+  displaySelectedItem:userDisplaySelectedItem,
+  filterItems:userFilterItems,
+
+  //Unique to this input type
+  placeholder,
+  loading,
+
+  setInputValue,
+  setInputTouched,
+  touched,
+  value
+
+
 }) => {
 
-  /*
+
+
+  const areItemsObjects = useMemo(() =>
+    allItems.length ?
+      (typeof allItems[0] === 'object') ? true : false
+      : false,
+  [allItems]
+  )
+
+  const itemToString = useCallback(userItemToString ?
+    userItemToString : (areItemsObjects ?
+      (item => (item ? item.value : '')) :
+      (item => (item ? String(item) : ''))
+    ),
+  [userItemToString, areItemsObjects]
+  )
+
+  const displayItem = useCallback(userDisplayItem ?
+    userDisplayItem : (areItemsObjects ?
+      (item => (item ? item.label : '')) :
+      (item => (item ? String(item) : ''))
+    ),
+  [displayItem, areItemsObjects]
+  )
+
+  const displaySelectedItem = useCallback(userDisplaySelectedItem ?
+    userDisplaySelectedItem : (areItemsObjects ?
+      (item => (item ? item.label : '')) :
+      (item => (item ? String(item) : ''))
+    ),
+  [userDisplaySelectedItem, areItemsObjects]
+  )
+
+  const filterItems = useCallback(userFilterItems ?
+    userFilterItems : (areItemsObjects ?
+      ((items, value) => {
+        return items.filter(e => e.label.match(new RegExp(value, 'gi')))
+      }) :
+      ((items, value) => {
+        return items.filter(e => e.match(new RegExp(value, 'gi')))
+      })
+      /* (item => (item ? item.label : '')) :
+         (item => (item ? String(item) : '')) */
+    ),
+  [userFilterItems, areItemsObjects]
+  )
+
+  const onSelectedItemChange = useCallback((setInputValue || userOnSelectedItemChange) ?
+    userOnSelectedItemChange ? userOnSelectedItemChange : (c) => {
+      console.log('DS change', c)
+      !touched && setInputTouched && setInputTouched()
+      setInputValue(itemToString(c.selectedItem))
+    } : () => null)
+
+  const selectedItem = value ? allItems.find((e) => itemToString(e) == value) : undefined
+
+  const [filteredItems, setFilteredItems] = useState(allItems)
+
+  const onInputValueChange = useCallback(({inputValue:localValue}) =>{
+    console.log('Input value changed to', localValue)
+    setFilteredItems(filterItems(allItems, localValue))
+  }
+  ,[allItems, filterItems]
+  )
+
+  const allUseComboboxProps = {
+    items              :filteredItems,
+    itemToString,
+    onSelectedItemChange,
+    stateReducer,
+    initialSelectedItem:selectedItem,
+    initialHighlightedIndex,
+    /* initialInputValue,*/
+    onInputValueChange,
+    defaultSelectedItem,//TODO need to control this
+    defaultIsOpen,
+    onHighlightedIndexChange,
+    onIsOpenChange,
+    onStateChange,
+    circularNavigation,
+    id                 :userInputId,
+    labelId, //This one prop comes from outside !
+    menuId,
+    toggleButtonId,
+    getItemId,
+
+    /* inputValue:value,
+       selectedItem, */
+  }
+
+  const finalUseComboboxProps = useMemo(
+    () => Object.keys(allUseComboboxProps).reduce(
+      (a,e) => {
+        const current = allUseComboboxProps[e]
+        if (current) a[e] = current
+        return a
+      },
+      {}
+    ),
+    []
+  )
+
+  const {
+    isOpen,
+    selectedItem:uncontrolledSelectedItem, //Unused because we control the input
+    getToggleButtonProps,
+    getLabelProps,
+    getMenuProps,
+    getInputProps,
+    getComboboxProps,
+    highlightedIndex,
+    getItemProps,
+    reset:resetDownshift
+  } = useCombobox(finalUseComboboxProps)
+
+
+  const {
+    id:inputId,
+    ...otherSearchInputProps
+  } = getInputProps()
+
+
   const holder_props = {
     id,
     //className, // We transform the classname as usual so not needed here
@@ -90,6 +257,64 @@ const DownshiftCombobox = ({
     labelAdditionalProps:getLabelProps(),
   }
 
+  const insideContainerProps = {
+    errors,
+    valid,
+
+    //rightIcon:'j',
+    rightSide:loading ? (<InlineLoader
+      type='circle'
+      className='x-blue'
+      height='2.3em'
+    />) : !selectedItem ? (
+                           <Button
+        { ...getToggleButtonProps() }
+        simple
+        icon='j'
+      />
+
+    ) :
+      (<Button
+        simple
+        //className='x-red'
+        icon='p'
+        onClick={ resetDownshift }
+      />)
+    ,
+    ...getComboboxProps()
+    /*
+    leftSide,
+    rightSide,
+    sidesClassName,
+    sidesStyle,
+
+    leftIcon,
+    rightIcon,
+    iconsClassName,
+    iconsStyle,
+
+    errorIcon,
+    validIcon,
+    */
+
+  }
+
+  const searchInputProps = {
+    type       :'text',
+    placeholder:placeholder,
+    name       :name ,
+    className  :[
+      //styles[baseClassName],
+      inputClassName
+    ].filter(e => e).join(' '),
+    id      :userInputId,
+    style   :inputStyle,
+    disabled:inputDisabled,
+
+    id:inputId,
+    ...otherSearchInputProps
+  }
+
   return (
     <Holder
       className={
@@ -101,15 +326,14 @@ const DownshiftCombobox = ({
       }
       { ...holder_props }
     >
-      <div className={ C.inside }>
-        { leftSide &&
+      {/* leftSide &&
           <InputSide
             className={ sidesClassName }
             style={ sidesStyle }
           >
             { leftSide }
           </InputSide>
-        }
+          }
         {
           leftIcon &&
             <InputIcon
@@ -117,48 +341,62 @@ const DownshiftCombobox = ({
               style={ iconsStyle }
               icon={ leftIcon }
             />
-        }
-        <HTMLInput
-          type={ type }
-          placeholder={ placeholder }
-          name={ name }
-          className={
-            [
-            //styles[baseClassName],
-              inputClassName
-            ].filter(e => e).join(' ')
-          }
-          id={ inputId }
-          style={ inputStyle }
-          disabled={ inputDisabled }
-
-          value={ value }
-          onChange={ onChange }
-        />
+        */}
+      <InputInside
+        { ...insideContainerProps }
+      >
         {
-          rightIcon &&
-            <InputIcon
-              className={ iconsClassName }
-              style={ iconsStyle }
-              icon={
-                (errors && errorsIcon) ||
-                (valid && validIcon) ||
-                rightIcon }
+          selectedItem ?
+            <div className='selected-item'>
+              {displayItem(selectedItem)}
+            </div>:
+            <BaseHTMLInput
+              { ...searchInputProps }
             />
         }
-        { rightSide &&
-          <InputSide
-            className={ sidesClassName }
-            style={ sidesStyle }
+        <Popup
+          className={ [
+            popupClassName,
+            'b-y y-background',
+          ].filter(e => e).join(' ')
+          }
+          id={ popupId }
+          //style={{ width: '200px', ...popupStyle }}
+          isVisible={ isOpen }
+          preferredOrder={ popupPreferredOrder }
+          style={ popupStyle }
+        >
+          <ul
+            {...getMenuProps()}
+            className='compact'
           >
-            { rightSide }
-          </InputSide>
-        }
-      </div>
+            {isOpen &&
+            filteredItems.map((item, index) => (
+              <li
+                className={ [
+                  itemClassName,
+                  (highlightedIndex === index) && highlightedClassName
+                ].filter(e => e).join(' ')
+                }
+                style={ itemStyle }
+                key={`${item}${index}`}
+                {...getItemProps({ item, index })}
+              >
+                {
+                  selectedItem === item ?
+                    displaySelectedItem(item) :
+                    displayItem(item)
+                }
+              </li>
+            ))}
+          </ul>
+        </Popup>
+      </InputInside>
+      { JSON.stringify(filteredItems, null, 2) }
+      { JSON.stringify(value, null, 2) }
     </Holder>
 
-    )*/
-  return null
+  )
 }
 
 DownshiftCombobox.propTypes = {
@@ -231,6 +469,21 @@ DownshiftCombobox.propTypes = {
   inputId:PropTypes.string.isRequired,
 
   /**
+   * The html class names to be provided to the input
+   */
+  inputClassName:PropTypes.string,
+
+  /**
+   * The JSX-Written, css styles to apply to the input.
+   */
+  inputStyle:PropTypes.object,
+
+  /**
+   * Whether the input is disabled. Do not apply at the same time as 'disabled'
+   */
+  inputDisabled:PropTypes.bool,
+
+  /**
    * The content of the label
    */
   label:PropTypes.oneOfType([
@@ -284,6 +537,11 @@ DownshiftCombobox.propTypes = {
     PropTypes.object
   ]),
 
+  /**
+   * Whether the input is in the loading state.
+   */
+  loading:PropTypes.bool
+
   /*
   : PropTypes.shape({
     id: PropTypes.string.isRequired,
@@ -296,11 +554,13 @@ DownshiftCombobox.propTypes = {
   */
 }
 
-/*
 DownshiftCombobox.defaultProps = {
-  status: 'neutral',
-  //height:'2.2em',
-  //as:'p',
+  loading             :false,
+  circularNavigation  :true,
+  popupPreferredOrder :['bottom', 'top'],
+  highlightedClassName:'b-light-y'
+  /* height:'2.2em',
+     as:'p', */
 }
-*/
+
 export default DownshiftCombobox

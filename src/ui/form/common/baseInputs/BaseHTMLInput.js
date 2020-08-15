@@ -17,7 +17,7 @@ import PropTypes from 'prop-types'
  * Use `HTMLInput` to
  * Has color `x`. Look at composed inputs for props
  */
-const HTMLInput = (
+const HTMLInput = React.forwardRef((
   props
 
   /*{
@@ -35,7 +35,7 @@ const HTMLInput = (
   onBlur,
 }
 */
-) => {
+  , ref) => {
 
   return (
     <input
@@ -57,8 +57,10 @@ const HTMLInput = (
       onBlur={ onBlur }
        */
       { ...props }
+      ref={ ref }
     />
   )}
+)
 
 HTMLInput.propTypes = {
   /**
