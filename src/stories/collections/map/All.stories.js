@@ -174,7 +174,6 @@ const typeList = [{
   },
   actions:{
     defaultActions:{
-
     },
     extraActions:[
       {
@@ -182,7 +181,6 @@ const typeList = [{
         Component:({ item }) => <Button>{ item.name }</Button>
       }
     ]
-
   },
   graphql:{
     queries:{

@@ -21,7 +21,7 @@ import { useObjectMap, MapActions as Actions } from '../common'
 import { Link, useLocation, useParams, useHistory } from 'react-router-dom'
 
 import gql from 'graphql-tag'
-import { useLazyQuery, useMutation } from '@apollo/client'
+import { useQuery, useMutation } from '@apollo/client'
 //Intl
 
 /* import { FormattedMessage} from "react-intl";
@@ -69,12 +69,12 @@ const SingleView = ({
     generateLocalPath
   } = useObjectMap()
 
-  const [getItem, {
+  const {
     loading,
     error,
-    data,
+    data={},
     refetch
-  }] = useLazyQuery(gql(currentType.graphql.queries.ONE),
+  } = useQuery(gql(currentType.graphql.queries.ONE),
     {
       variables:{
         id:itemId || currentId
@@ -87,21 +87,10 @@ const SingleView = ({
   const { fields=[] } = currentType.name ?
     currentType.defaultViews.single : {}
 
-  const finalData = useMemo(() => {
-    var result = {}
-    if(data) {
-      const dataKey = Object.keys(data).reduce((a, e) => e)
-      result = data[dataKey]
-    }
-    return result
-  },
-  [currentType.name, loading, location, data])
-
-  useEffect(() => {
-    if(currentId && (!finalData.id)) {
-      getItem({variables:{id:currentId}})
-    }
-  }, [])
+  const finalData = useMemo(() => (data && data[Object.keys(data).reduce((a, e) => {
+    return e
+  }, '')]) || {},
+  [currentType.name, loading, location])
 
   //console.log(777, loading, error, data, finalData, currentId)
 
@@ -148,7 +137,7 @@ const SingleView = ({
 
     }
     if(mutationResponse.id) {
-      currentId && refetch()
+      refetch()
     }
   }
 
@@ -179,9 +168,9 @@ const SingleView = ({
       ,{}) : {}
       if (values && values.id) {
         variables['id'] = values.id
-        
+
       }
-      console.log('Will now mutate', variables)
+      //console.log('Will now mutate', variables)
       saveItem({variables})
     }, [values])
 
@@ -239,7 +228,7 @@ const SingleView = ({
               time={ finalData.createdAt }
               className={ 'x-subtitle c-x' }
               prefix={
-              <strong>Created</strong>
+                <strong>Created</strong>
               }
             />
           }
@@ -248,7 +237,7 @@ const SingleView = ({
               time={ finalData.updatedAt }
               className={ 'x-primary c-x' }
               prefix={
-              <strong>Updated</strong>
+                <strong>Updated</strong>
               }
             />
           }
@@ -373,18 +362,14 @@ const SingleView = ({
       style={ style }
     >
       { loading && <InlineLoader/> }
-      
+
       <pre className='c-x'>
-      { error && JSON.stringify(error, null, 2) }
+        { error && JSON.stringify(error, null, 2) }
       </pre>
       {!(loading || error) &&
-      <p className='c-x'>
-      If nothing else appears, the object was not found or there was no data returned
-        <pre>
-        { JSON.stringify(finalData) }
-        { JSON.stringify(data) }
-        </pre>
-      </p>}
+        <p className='c-x'>
+          If nothing else appears, the object was not found or there was no data returned
+        </p>}
 
     </div>
   )

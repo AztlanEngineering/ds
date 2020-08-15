@@ -1,4 +1,4 @@
-/* @fwrlines/generator-react-component 1.5.0 */
+///* @fwrlines/generator-react-component 1.5.0 */
 import * as React from 'react'
 //import {} from 'react'
 import PropTypes from 'prop-types'

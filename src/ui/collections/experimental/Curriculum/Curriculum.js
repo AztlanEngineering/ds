@@ -12,7 +12,7 @@ import { Item } from './common'
 
 //Intl
 
-import { FormattedMessage} from 'react-intl'
+import { FormattedMessage } from 'react-intl'
 import messages from './messages'
 
 //Config
@@ -43,20 +43,20 @@ const Curriculum = ({
 
 
   return (
-      <Accordion
-        {...otherProps}
-        className={
-          [
-            //styles[baseClassName],
-            baseClassName,
-            className
-          ].filter(e => e).join(' ')
-        }
-        id={ id }
-        style={ style }
-      >
-        { children }
-      </Accordion>
+    <Accordion
+      {...otherProps}
+      className={
+        [
+          //styles[baseClassName],
+          baseClassName,
+          className
+        ].filter(e => e).join(' ')
+      }
+      id={ id }
+      style={ style }
+    >
+      { children }
+    </Accordion>
   )}
 
 Curriculum.propTypes = {
