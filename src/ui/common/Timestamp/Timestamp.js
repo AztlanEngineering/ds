@@ -65,7 +65,7 @@ const Timestamp = ({
       { prefix && prefix }
       { prefix && ' ' }
       {
-        displayUnix ? time : format(new Date(time), 'yyyy-MM-dd\'T\'HH:mm:ss.SSSxxx')
+        displayUnix ? Number(time) : format(new Date(time), 'yyyy-MM-dd\'T\'HH:mm:ss.SSSxxx')
       }
     </Element>
   )}
