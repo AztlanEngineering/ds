@@ -11,6 +11,8 @@ import { DownshiftCombobox } from 'ui'
    import { TEXT_XXS_ESC, TEXT_XXS, TEXT_XS, TEXT } from '../utils/Dummy' */
 
 //const endpoint = 'https://api.fwrlines.com/graphql'
+//
+import { LIST, LIST_XS, TEXT_XXS_ESC, TEXT_XXS, TEXT_XS, TEXT } from '../../../utils/Dummy'
 
 export default {
   title        :'form/common/composedInputs/DownshiftCombobox',
@@ -29,10 +31,63 @@ export default {
 }
 
 export const Default = () => (
-  <DownshiftCombobox></DownshiftCombobox>
+  <DownshiftCombobox
+    inputId='fruit'
+    label='Please select your favourite fruit'
+    options={ LIST }
+    description='Here is a list of very tasty fruits you can choose your favourite from'
+    aesthetic='mars'
+  />
 )
 
+export const Dict = () => (
+  <DownshiftCombobox
+    inputId='fruit'
+    label='Please select your favourite fruit'
+    options={ LIST.map((e, i) => ({
+      label:e,
+      value:i
+    })) }
+    description='Here is a list of very tasty fruits you can choose your favourite from'
+    aesthetic='mars'
+  />
+)
+
+export const Loading = () => (
+  <DownshiftCombobox
+    loading
+    inputId='fruit'
+    label='Please select your favourite fruit'
+    options={ LIST }
+    description='Here is a list of very tasty fruits you can choose your favourite from'
+    aesthetic='mars'
+  />
+)
+
+export const Valid = () => (
+  <DownshiftCombobox
+    valid
+    inputId='fruit'
+    label='Please select your favourite fruit'
+    options={ LIST }
+    description='Here is a list of very tasty fruits you can choose your favourite from'
+    aesthetic='mars'
+  />
+)
+
+export const Error = () => (
+  <DownshiftCombobox
+    errors='Please select a better fruit'
+    inputId='fruit'
+    label='Please select your favourite fruit'
+    options={ LIST }
+    description='Here is a list of very tasty fruits you can choose your favourite from'
+    aesthetic='mars'
+  />
+)
+
+/*
 export const Variant = () => (
   <DownshiftCombobox></DownshiftCombobox>
-)
+)*/
 

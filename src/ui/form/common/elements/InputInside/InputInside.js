@@ -31,7 +31,7 @@ const baseClassName = C.inside
  * Use `InputInside` to
  * Has color `x`
  */
-const InputInside = ({
+const InputInside = React.forwardRef(({
   /*id,
   className,
   style
@@ -53,7 +53,7 @@ const InputInside = ({
 
   errorIcon,
   validIcon,
-}) => {
+}, ref) => {
 
 
   return (
@@ -68,6 +68,7 @@ const InputInside = ({
   }
      */
       className={ baseClassName }
+      ref={ref}
     /* id={ id }
        style={ style } */
     >
@@ -109,6 +110,7 @@ const InputInside = ({
       }
     </div>
   )}
+)
 
 InputInside.propTypes = {
 
