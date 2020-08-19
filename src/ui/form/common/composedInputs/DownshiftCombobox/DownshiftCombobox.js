@@ -407,13 +407,17 @@ const DownshiftCombobox = ({
 
       </InputInside>
       { debug &&
-          <div>
-            <pre>
-              filteredItems : { JSON.stringify(filteredItems, null, 2) }
-              value : { JSON.stringify(value, null, 2) }
-              (The value is only displayed if the component is in a FormContextProvider)
-            </pre>
-          </div>
+        <div>
+          <pre>
+            filteredItems :
+            {' '}
+            { JSON.stringify(filteredItems, null, 2) }
+            value :
+            {' '}
+            { JSON.stringify(value, null, 2) }
+            (The value is only displayed if the component is in a FormContextProvider)
+          </pre>
+        </div>
       }
     </Holder>
 
@@ -437,19 +441,6 @@ DownshiftCombobox.propTypes = {
   style:PropTypes.object,
 
   /**
-   *  The children JSX
-   */
-  children:PropTypes.node,
-
-  /**
-   * Which html tag to use
-   */
-  as:PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.object
-  ]),
-
-  /**
    * Whether the input is on an errors state. Will be displayed before the description.
    */
   errors:PropTypes.string,
@@ -462,6 +453,11 @@ DownshiftCombobox.propTypes = {
     PropTypes.string,
   ]),
 
+  /**
+   *  The children JSX
+   */
+  children:PropTypes.node,
+
 
   /**
    * Whether the input is disabled. This property is applied at the wrapper level, and only if the wrapper is a fieldset
@@ -473,16 +469,23 @@ DownshiftCombobox.propTypes = {
    */
   optional:PropTypes.bool,
 
-
   /**
-   * Whether the input is compact
+   * Which html tag to use
    */
-  compact:PropTypes.bool,
+  as:PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object
+  ]),
 
   /**
    * The display style.
    */
   aesthetic:PropTypes.oneOf(['mars', 'saturn']),
+
+  /**
+   * Whether the input is compact
+   */
+  compact:PropTypes.bool,
 
   /**
    * Provide an HTML id to the input
@@ -513,6 +516,14 @@ DownshiftCombobox.propTypes = {
   ]),
 
   /**
+   * Which html tag to use to display the label (This prop doesnt exist in the input component)
+   */
+  labelAs:PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object
+  ]),
+
+  /**
    * Provide an HTML id to the label. Trumps https://github.com/downshift-js/downshift/tree/master/src/hooks/useSelect#labelid
    */
   labelId:PropTypes.string,
@@ -528,17 +539,17 @@ DownshiftCombobox.propTypes = {
   labelStyle:PropTypes.object,
 
   /**
-   * Which html tag to use to display the label (This prop doesnt exist in the input component)
-   */
-  labelAs:PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.object
-  ]),
-
-  /**
    * The input description
    */
   description:PropTypes.string,
+
+  /**
+   * Which html tag to use
+   */
+  descriptionAs:PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object
+  ]),
 
   /**
    * The html class names to be provided to the input description
@@ -551,12 +562,146 @@ DownshiftCombobox.propTypes = {
   descriptionStyle:PropTypes.object,
 
   /**
-   * Which html tag to use
+   * The items to display in the dropdown. https://github.com/downshift-js/downshift/tree/master/src/hooks/useSelect#items. This is the renamed prop "items" from downshift, renamed here for api coherence
    */
-  descriptionAs:PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.object
+  options:PropTypes.oneOfType([
+    PropTypes.arrayOf(
+      PropTypes.string
+    ),
+    PropTypes.arrayOf(
+      PropTypes.object
+    )
   ]),
+
+  /**
+   * https://github.com/downshift-js/downshift/tree/master/src/hooks/useSelect#itemtostring
+   */
+  itemsToString:PropTypes.func,
+
+  /**
+   * https://github.com/downshift-js/downshift/tree/master/src/hooks/useSelect#onselecteditemchange
+   */
+  onSelectedItemChange:PropTypes.func,
+
+  /**
+   * https://github.com/downshift-js/downshift/tree/master/src/hooks/useSelect#itemtostring
+   */
+  stateReducer:PropTypes.func,
+
+  /**
+   * https://github.com/downshift-js/downshift/tree/master/src/hooks/useSelect#initialHighlightedIndex
+   */
+  initialHighlightedIndex:PropTypes.number,
+
+  /**
+   * https://github.com/downshift-js/downshift/tree/master/src/hooks/useSelect#defaultselecteditem
+   */
+  defaultSelectedItem:PropTypes.oneOf([
+    PropTypes.object,
+    PropTypes.string
+  ]),
+
+  /**
+   * https://github.com/downshift-js/downshift/tree/master/src/hooks/useSelect#defaultisopen
+   */
+  defaultIsOpen:PropTypes.bool,
+
+  /**
+   * https://github.com/downshift-js/downshift/tree/master/src/hooks/useSelect#onhighlightedindexchange
+   */
+  onHighlightedIndexChange:PropTypes.func,
+
+  /**
+   * https://github.com/downshift-js/downshift/tree/master/src/hooks/useSelect#onisopenchange
+   */
+  onIsOpenChange:PropTypes.func,
+
+  /**
+   * https://github.com/downshift-js/downshift/tree/master/src/hooks/useSelect#onstatechange
+   */
+  onStateChange:PropTypes.func,
+
+  /**
+   * https://github.com/downshift-js/downshift/tree/master/src/hooks/useSelect#circularnavigation
+   */
+  circularNavigation:PropTypes.bool,
+
+  /**
+   * https://github.com/downshift-js/downshift/tree/master/src/hooks/useSelect#menuid
+   */
+  menuId:PropTypes.string,
+
+  /**
+   * https://github.com/downshift-js/downshift/tree/master/src/hooks/useSelect#togglebuttonid
+   */
+  toggleButtonId:PropTypes.string,
+
+  /**
+   * https://github.com/downshift-js/downshift/tree/master/src/hooks/useSelect#getitemid
+   */
+  getItemId:PropTypes.func,
+
+  /**
+   * The html class names to be provided to the items in the menu.
+   */
+  itemClassName:PropTypes.string,
+
+  /**
+   * The JSX-Written, css styles to apply to the items in the menu.
+   */
+  itemStyle:PropTypes.object,
+
+  /**
+   * In which order should we open the pop-up. Warning : Default is different than the base Popup component
+   */
+  popupPreferredOrder:PropTypes.arrayOf(
+    PropTypes.oneOf([
+      'bottom',
+      'top',
+      'right',
+      'left'
+    ])
+  ),
+
+  /**
+   * The html id for the popup.
+   */
+  popupId:PropTypes.string,
+
+  /**
+   * The html class names to be provided to the popup/
+   */
+  popupClassName:PropTypes.string,
+
+  /**
+   * The JSX-Written, css styles to apply to the popup.
+   */
+  popupStyle:PropTypes.object,
+
+  /**
+   * The html class names to be provided to the input description
+   */
+  highlightedClassName:PropTypes.string,
+
+  /**
+   * This function takes an item and outputs the component displayed as the children of each list item. Defaults to the current string for an array of strings, and for item.value for an array of objects
+   */
+  displayItem:PropTypes.func,
+
+  /**
+   * This function takes an item and outputs the component displayed in the button. Defaults to the current string for an array of strings, and for item.value for array of objects
+   */
+  displaySelectedItem:PropTypes.func,
+
+  /**
+   * whether the map returns an array
+   */
+  filterItems:PropTypes.array,
+
+  /**
+   * placeholder for the input
+   */
+  placeholder:PropTypes.string,
 
   /**
    * Whether the input is in the loading state.
@@ -566,8 +711,28 @@ DownshiftCombobox.propTypes = {
   /**
    * Whether the input is in debug mode (prints the available options and the value).
    */
-  debug:PropTypes.bool
-  
+  debug:PropTypes.bool,
+
+  /**
+   * the funnction to set the value of input
+   */
+  setInputValue:PropTypes.func,
+
+  /**
+   * the function to set inputTouched value.
+   */
+  setInputTouched:PropTypes.func,
+
+  /**
+   * whether the input is touched
+   */
+  touched:PropTypes.bool,
+
+  /**
+   * set value to string
+   */
+  value:PropTypes.string,
+
 
   /*
   : PropTypes.shape({
@@ -582,7 +747,7 @@ DownshiftCombobox.propTypes = {
 }
 
 DownshiftCombobox.defaultProps = {
-  debug:false,
+  debug               :false,
   loading             :false,
   circularNavigation  :true,
   popupPreferredOrder :['bottom', 'top'],
