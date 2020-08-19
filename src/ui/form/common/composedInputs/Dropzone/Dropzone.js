@@ -15,22 +15,15 @@ import { InputHolder, InputInside } from '../../elements'
 
 /* import { FormattedMessage} from "react-intl";
    import messages from "./messages";
-    <FormattedMessage {...messages.title} /> */
+    <FormattedMessage {...messages.title} />
 
 //Config
 
 //import C from 'ui/cssClasses'
 
-/* Relative imports
-   import styles from './dropzone.scss' */
-import { isBackend } from 'ui/isBackend'
-
-if(!isBackend) {
-  import('./dropzone.scss')
-}
 
 const baseClassName = 'dropzone'
-
+*/
 
 /**
  * Use `Dropzone` to ...
