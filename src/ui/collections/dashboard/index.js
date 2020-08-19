@@ -1,6 +1,7 @@
 export {
   DashboardContext,
   DashboardContextProvider,
+  useSession,
   SessionContext,
   SessionContextProvider,
 } from './common'

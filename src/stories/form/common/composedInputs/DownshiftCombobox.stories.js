@@ -3,15 +3,16 @@ import React from 'react'
 
 //import { action } from '@storybook/addon-actions'
 
-import { DownshiftCombobox } from 'ui'
-/* import QUERY from './graphql/query.graphql'
-   import { AplProvider } from 'stories/utils'
+import { Heading, QueryDownshiftCombobox, DownshiftCombobox, FormContextProvider } from 'ui'
+import { AplProvider } from 'stories/utils'
+import QUERY from './graphql/allFruits.graphql'
+/*
    import { Router } from 'stories/utils'
    import {ALL_COLORS, SIZES } from '../config.js'
    import { TEXT_XXS_ESC, TEXT_XXS, TEXT_XS, TEXT } from '../utils/Dummy' */
 
-//const endpoint = 'https://api.fwrlines.com/graphql'
-//
+/* const endpoint = 'https://api.fwrlines.com/graphql'
+    */
 import { LIST, LIST_XS, TEXT_XXS_ESC, TEXT_XXS, TEXT_XS, TEXT } from '../../../utils/Dummy'
 
 export default {
@@ -23,8 +24,8 @@ export default {
   },
   parameters:{
     decorators:[
+      storyfn => <AplProvider>{ storyfn() }</AplProvider>,
       /* storyfn => <div className="">{ storyfn() }</div>,
-         storyfn => <AplProvider endpoint={ endpoint }>{ storyfn() }</AplProvider>,
          storyfn => <Router>{ storyfn() }</Router>, */
     ]
   }
@@ -86,6 +87,43 @@ export const Error = () => (
   />
 )
 
+export const Debug = () => (
+  <DownshiftCombobox
+    errors='Please select a better fruit'
+    inputId='fruit'
+    label='Please select your favourite fruit'
+    options={ LIST }
+    description='Here is a list of very tasty fruits you can choose your favourite from'
+    aesthetic='mars'
+    debug
+  />
+)
+
+export const Query = () => (
+  <QueryDownshiftCombobox
+    query={QUERY}
+    errors='Please select a better fruit'
+    inputId='fruit'
+    label='Please select your favourite fruit'
+    description='Here is a list of very tasty fruits you can choose your favourite from'
+    displayItem={ item => (
+      <Heading
+        className='y-background b-y'
+        heading={ item.name }
+        subtitle={ `This fruit tastes ${item.taste}` }
+      />
+    ) }
+    displaySelectedItem={ item => (
+      <Heading
+        className='ui-dark y-background b-y'
+        heading={ item.name }
+        subtitle={ `This fruit tastes ${item.taste}` }
+      />
+    ) }
+    filterItems={ (items, value) => items.filter(e => e.name.match(new RegExp(value, 'gi'))) }
+    aesthetic='mars'
+  />
+)
 /*
 export const Variant = () => (
   <DownshiftCombobox></DownshiftCombobox>

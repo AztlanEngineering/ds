@@ -26,12 +26,10 @@ module.exports = function (api) {
   ]
   const plugins = [
     ['module-resolver', {
-      root:['./src'],
-      /*
+      root :['./src'],
       alias:{
-        'utils':'@fwrlines/utils'
+        '@fwrlines/ds':'./src/ui'
       }
-      */
     }],
     '@babel/plugin-proposal-class-properties',
     ['babel-plugin-inline-import', {

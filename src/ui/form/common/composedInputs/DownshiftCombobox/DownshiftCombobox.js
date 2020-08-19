@@ -1,6 +1,6 @@
 /* @fwrlines/generator-react-component 1.4.0 */
 import * as React from 'react'
-import { useState, useCallback, useMemo, useReducer } from 'react'
+import { useEffect, useState, useCallback, useMemo, useReducer } from 'react'
 import PropTypes from 'prop-types'
 
 import { useCombobox } from 'downshift'
@@ -96,6 +96,8 @@ const DownshiftCombobox = ({
   placeholder,
   loading,
 
+  debug,
+
   setInputValue,
   setInputTouched,
   touched,
@@ -115,7 +117,7 @@ const DownshiftCombobox = ({
 
   const itemToString = useCallback(userItemToString ?
     userItemToString : (areItemsObjects ?
-      (item => (item ? item.value : '')) :
+      (item => (item ? item.id : '')) :
       (item => (item ? String(item) : ''))
     ),
   [userItemToString, areItemsObjects]
@@ -123,7 +125,7 @@ const DownshiftCombobox = ({
 
   const displayItem = useCallback(userDisplayItem ?
     userDisplayItem : (areItemsObjects ?
-      (item => (item ? item.label : '')) :
+      (item => (item ? item._string || item.label : '')) :
       (item => (item ? String(item) : ''))
     ),
   [displayItem, areItemsObjects]
@@ -131,7 +133,7 @@ const DownshiftCombobox = ({
 
   const displaySelectedItem = useCallback(userDisplaySelectedItem ?
     userDisplaySelectedItem : (areItemsObjects ?
-      (item => (item ? item.label : '')) :
+      (item => (item ? item._string || item.label : '')) :
       (item => (item ? String(item) : ''))
     ),
   [userDisplaySelectedItem, areItemsObjects]
@@ -140,7 +142,7 @@ const DownshiftCombobox = ({
   const filterItems = useCallback(userFilterItems ?
     userFilterItems : (areItemsObjects ?
       ((items, value) => {
-        return items.filter(e => e.label.match(new RegExp(value, 'gi')))
+        return items.filter(e =>(e._string || e.label).match(new RegExp(value, 'gi')))
       }) :
       ((items, value) => {
         return items.filter(e => e.match(new RegExp(value, 'gi')))
@@ -150,6 +152,7 @@ const DownshiftCombobox = ({
     ),
   [userFilterItems, areItemsObjects]
   )
+
 
   const onSelectedItemChange = useCallback((setInputValue || userOnSelectedItemChange) ?
     userOnSelectedItemChange ? userOnSelectedItemChange : (c) => {
@@ -162,12 +165,12 @@ const DownshiftCombobox = ({
 
   const [filteredItems, setFilteredItems] = useState(allItems)
 
-  const onInputValueChange = useCallback(({inputValue:localValue}) =>{
-    console.log('Input value changed to', localValue)
+
+  const onInputValueChange = ({inputValue:localValue}) =>{
+    console.log('Input value changed to', localValue, allItems)
     setFilteredItems(filterItems(allItems, localValue))
   }
-  ,[allItems, filterItems]
-  )
+
 
   const allUseComboboxProps = {
     items              :filteredItems,
@@ -219,6 +222,16 @@ const DownshiftCombobox = ({
     reset:resetDownshift
   } = useCombobox(finalUseComboboxProps)
 
+
+  useEffect(() =>  {
+    if(!filteredItems.length) {
+      setFilteredItems(allItems)
+      resetDownshift()
+    }
+  }, [
+    allItems
+  ]
+  )
 
   const {
     id:inputId,
@@ -370,30 +383,38 @@ const DownshiftCombobox = ({
             {...getMenuProps()}
             className='compact'
           >
-            {isOpen &&
-            filteredItems.map((item, index) => (
-              <li
-                className={ [
-                  itemClassName,
-                  (highlightedIndex === index) && highlightedClassName
-                ].filter(e => e).join(' ')
-                }
-                style={ itemStyle }
-                key={`${item}${index}`}
-                {...getItemProps({ item, index })}
-              >
-                {
-                  selectedItem === item ?
-                    displaySelectedItem(item) :
-                    displayItem(item)
-                }
-              </li>
-            ))}
+            {
+              filteredItems.map((item, index) => (
+                <li
+                  className={ [
+                    itemClassName,
+                    (highlightedIndex === index) && highlightedClassName
+                  ].filter(e => e).join(' ')
+                  }
+                  style={ itemStyle }
+                  key={`${item}${index}`}
+                  {...getItemProps({ item, index })}
+                >
+                  {
+                    selectedItem === item ?
+                      displaySelectedItem(item) :
+                      displayItem(item)
+                  }
+                </li>
+              ))}
           </ul>
         </Popup>
+
       </InputInside>
-      { JSON.stringify(filteredItems, null, 2) }
-      { JSON.stringify(value, null, 2) }
+      { debug &&
+          <div>
+            <pre>
+              filteredItems : { JSON.stringify(filteredItems, null, 2) }
+              value : { JSON.stringify(value, null, 2) }
+              (The value is only displayed if the component is in a FormContextProvider)
+            </pre>
+          </div>
+      }
     </Holder>
 
   )
@@ -540,7 +561,13 @@ DownshiftCombobox.propTypes = {
   /**
    * Whether the input is in the loading state.
    */
-  loading:PropTypes.bool
+  loading:PropTypes.bool,
+
+  /**
+   * Whether the input is in debug mode (prints the available options and the value).
+   */
+  debug:PropTypes.bool
+  
 
   /*
   : PropTypes.shape({
@@ -555,6 +582,7 @@ DownshiftCombobox.propTypes = {
 }
 
 DownshiftCombobox.defaultProps = {
+  debug:false,
   loading             :false,
   circularNavigation  :true,
   popupPreferredOrder :['bottom', 'top'],

@@ -4,12 +4,16 @@ import * as React from 'react'
 //import { action } from '@storybook/addon-actions'
 
 import {
+  Heading,
   FormContextProvider as ContextProvider,
   FormInput,
   FormContextDebugger
 } from 'ui'
+
+import QUERY from './common/composedInputs/graphql/allFruits.graphql'
+
+import { AplProvider } from 'stories/utils'
 /* import QUERY from './graphql/query.graphql'
-   import { AplProvider } from 'stories/utils'
    import { Router } from 'stories/utils'
    import {ALL_COLORS, SIZES } from '../config.js'
    import { TEXT_XXS_ESC, TEXT_XXS, TEXT_XS, TEXT } from '../utils/Dummy' */
@@ -25,8 +29,8 @@ export default {
   },
   parameters:{
     decorators:[
+      storyfn => <AplProvider>{ storyfn() }</AplProvider>,
       /* storyfn => <div className="">{ storyfn() }</div>,
-         storyfn => <AplProvider endpoint={ endpoint }>{ storyfn() }</AplProvider>,
          storyfn => <Router>{ storyfn() }</Router>, */
     ]
   }
@@ -272,7 +276,32 @@ export const Default = () => (
       />
       <FormInput
         context={ context }
-        type='image-dropzone' //radios
+        query={ QUERY }
+        type='query-downshift-combobox'
+        name='favourite-fruit'
+        inputClassName='y-indigo'
+        label='Favourite fruit?'
+        inputId='fruit2'
+        displayItem={ item => (
+          <Heading
+            className='y-background b-y'
+            heading={ item.name }
+            subtitle={ `This fruit tastes ${item.taste}` }
+          />
+        ) }
+        displaySelectedItem={ item => (
+          <Heading
+            className='ui-dark y-background b-y'
+            heading={ item.name }
+            subtitle={ `This fruit tastes ${item.taste}` }
+          />
+        ) }
+        filterItems={ (items, value) => items.filter(e => e.name.match(new RegExp(value, 'gi'))) }
+        //debug
+      />
+      <FormInput
+        context={ context }
+        type='image-dropzone'
         name='illustration'
         label='Please select an illustration'
         description='Drag and drop a file on the square'

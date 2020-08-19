@@ -1,6 +1,9 @@
 export { CardChoice } from './CardChoice'
 export { Choice } from './Choice'
-export { DownshiftCombobox } from './DownshiftCombobox'
+export { 
+  QueryDownshiftCombobox,
+  DownshiftCombobox 
+} from './DownshiftCombobox'
 export { DownshiftSelect } from './DownshiftSelect'
 export { Input } from './Input'
 export { Select } from './Select'

@@ -5,4 +5,5 @@ export {
 export {
   SessionContext,
   SessionContextProvider,
+  useSession
 } from './SessionContext'
