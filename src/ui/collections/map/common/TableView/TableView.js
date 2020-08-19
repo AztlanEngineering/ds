@@ -108,7 +108,7 @@ const TableView = ({
       { error && JSON.stringify(error) }
       <Button.Group
         style={{
-          justifyContent:'end'
+          justifyContent:'flex-end'
         }}
         independent
       >
@@ -253,7 +253,7 @@ const TableView = ({
                     <td className='actions'>
                       <Actions
                         className='s-2 k-s'
-                        style={{ justifyContent: 'end' }}
+                        style={{ justifyContent: 'flex-end' }}
                         item={ e.values }
                         refetch={ refetch }
                         extraActions={
