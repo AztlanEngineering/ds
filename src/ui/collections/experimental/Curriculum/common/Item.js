@@ -3,8 +3,8 @@ import * as React from 'react'
 //import {} from 'react'
 import PropTypes from 'prop-types'
 
-import { Heading } from 'ui/elements'
-import { Accordion } from 'ui/site'
+import { Heading } from '@fwrlines/ds/elements'
+import { Accordion } from '@fwrlines/ds/site'
 
 
 //Intl

@@ -3,8 +3,8 @@ import * as React from 'react'
 //import {} from 'react'
 import PropTypes from 'prop-types'
 
-import { Heading } from 'ui/elements'
-import { Accordion } from 'ui/site'
+import { Heading } from '@fwrlines/ds/elements'
+import { Accordion } from '@fwrlines/ds/site'
 
 import { Item } from './common'
 
@@ -43,20 +43,20 @@ const Curriculum = ({
 
 
   return (
-      <Accordion
-        {...otherProps}
-        className={
-          [
-            //styles[baseClassName],
-            baseClassName,
-            className
-          ].filter(e => e).join(' ')
-        }
-        id={ id }
-        style={ style }
-      >
-        { children }
-      </Accordion>
+    <Accordion
+      {...otherProps}
+      className={
+        [
+          //styles[baseClassName],
+          baseClassName,
+          className
+        ].filter(e => e).join(' ')
+      }
+      id={ id }
+      style={ style }
+    >
+      { children }
+    </Accordion>
   )}
 
 Curriculum.propTypes = {

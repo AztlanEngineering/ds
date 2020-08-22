@@ -3,9 +3,9 @@ import * as React from 'react'
 //import {} from 'react'
 import PropTypes from 'prop-types'
 
-import { Figure } from 'ui/common'
-import { Heading } from 'ui/elements'
-import { Page } from 'ui/site'
+import { Figure } from '@fwrlines/ds/common'
+import { Heading } from '@fwrlines/ds/elements'
+import { Page } from '@fwrlines/ds/site'
 
 //Intl
 

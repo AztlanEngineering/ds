@@ -5,8 +5,8 @@ import PropTypes from 'prop-types'
 
 import { useHistory } from 'react-router-dom'
 
-import { Heading, Button } from 'ui/elements'
-import { HorizontalBar } from 'ui/site'
+import { Heading, Button } from '@fwrlines/ds/elements'
+import { HorizontalBar } from '@fwrlines/ds/site'
 
 import {FormattedMessage} from 'react-intl'
 import messages from './messages'

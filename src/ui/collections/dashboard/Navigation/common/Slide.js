@@ -3,9 +3,9 @@ import * as React from 'react'
 import { useEffect, useMemo, useContext } from 'react'
 import PropTypes from 'prop-types'
 
-import { Subtitle, IconList, Image } from 'ui/common'
-import { Heading, Button } from 'ui/elements'
-import { HorizontalBar } from 'ui/site'
+import { Subtitle, IconList, Image } from '@fwrlines/ds/common'
+import { Heading, Button } from '@fwrlines/ds/elements'
+import { HorizontalBar } from '@fwrlines/ds/site'
 
 import { DashboardContext } from '../../common'
 

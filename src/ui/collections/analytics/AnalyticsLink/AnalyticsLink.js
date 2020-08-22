@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
 
 import ga from 'react-ga'
 
-import { usePage } from 'ui/site'
+import { usePage } from '@fwrlines/ds/site'
 
 import { Link } from 'react-router-dom'
 

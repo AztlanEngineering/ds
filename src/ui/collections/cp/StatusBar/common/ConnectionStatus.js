@@ -10,7 +10,7 @@ import gql from 'graphql-tag'
 import QUERY from './graphql/time.graphql'
 //import CONFIG from 'config'
 
-import { DotInfo } from 'ui/elements'
+import { DotInfo } from '@fwrlines/ds/elements'
 
 //Intl
 

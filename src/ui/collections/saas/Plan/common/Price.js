@@ -3,9 +3,6 @@ import * as React from 'react'
 //import {} from 'react'
 import PropTypes from 'prop-types'
 
-
-
-
 //Intl
 
 import { FormattedMessage} from 'react-intl'

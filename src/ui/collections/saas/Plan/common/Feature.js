@@ -3,7 +3,7 @@ import * as React from 'react'
 import { useContext } from 'react'
 import PropTypes from 'prop-types'
 
-import { IconList } from 'ui/common'
+import { IconList } from '@fwrlines/ds/common'
 
 import PlanContext from '../Context'
 

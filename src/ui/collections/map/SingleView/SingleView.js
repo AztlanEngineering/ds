@@ -99,7 +99,7 @@ const SingleView = ({
 
   useEffect(() => {
     if(currentId && (!finalData.id)) {
-      getItem({variables:{id:currentId}})
+      getItem({variables: {id: currentId}})
     }
   }, [])
 
@@ -179,7 +179,7 @@ const SingleView = ({
       ,{}) : {}
       if (values && values.id) {
         variables['id'] = values.id
-        
+
       }
       console.log('Will now mutate', variables)
       saveItem({variables})
@@ -239,7 +239,7 @@ const SingleView = ({
               time={ finalData.createdAt }
               className={ 'x-subtitle c-x' }
               prefix={
-              <strong>Created</strong>
+                <strong>Created</strong>
               }
             />
           }
@@ -248,7 +248,7 @@ const SingleView = ({
               time={ finalData.updatedAt }
               className={ 'x-primary c-x' }
               prefix={
-              <strong>Updated</strong>
+                <strong>Updated</strong>
               }
             />
           }
@@ -373,18 +373,18 @@ const SingleView = ({
       style={ style }
     >
       { loading && <InlineLoader/> }
-      
+
       <pre className='c-x'>
-      { error && JSON.stringify(error, null, 2) }
+        { error && JSON.stringify(error, null, 2) }
       </pre>
       {!(loading || error) &&
-      <p className='c-x'>
-      If nothing else appears, the object was not found or there was no data returned
-        <pre>
-        { JSON.stringify(finalData) }
-        { JSON.stringify(data) }
-        </pre>
-      </p>}
+        <p className='c-x'>
+          If nothing else appears, the object was not found or there was no data returned
+          <pre>
+            { JSON.stringify(finalData) }
+            { JSON.stringify(data) }
+          </pre>
+        </p>}
 
     </div>
   )

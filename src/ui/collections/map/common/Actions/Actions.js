@@ -174,11 +174,11 @@ Actions.propTypes = {
 }
 
 Actions.defaultProps = {
-  enableEdit  :true,
-  enableDelete:true,
+  enableEdit         :true,
+  enableDelete       :true,
   redirectAfterDelete:false,
-  extraActions:[],
-  reverse:true
+  extraActions       :[],
+  reverse            :true
 }
 
 Actions.Delete = Delete

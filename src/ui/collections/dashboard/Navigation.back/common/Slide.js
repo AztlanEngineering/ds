@@ -5,9 +5,9 @@ import PropTypes from 'prop-types'
 
 import { DashboardContext } from '../../common'
 
-import { Subtitle, IconList } from 'ui/common'
-import { Heading, Button } from 'ui/elements'
-import { HorizontalBar } from 'ui/site'
+import { Subtitle, IconList } from '@fwrlines/ds/common'
+import { Heading, Button } from '@fwrlines/ds/elements'
+import { HorizontalBar } from '@fwrlines/ds/site'
 
 import NavItem from './Item'
 import HorizontalNavBar from './HorizontalNavBar'

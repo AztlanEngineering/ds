@@ -6,17 +6,11 @@ import PropTypes from 'prop-types'
 
 import { useSelect } from 'downshift'
 
-import {
-  Popup
-} from 'ui/common'
+import { Popup } from '@fwrlines/ds/common'
 
-import {
-  Button
-} from 'ui/elements'
+import { Button } from 'ui/elements'
 
-import {
-  InputHolder as Holder,
-} from '../../elements'
+import { InputHolder as Holder } from '../../elements'
 
 /* Config
    import C from 'ui/cssClasses' */

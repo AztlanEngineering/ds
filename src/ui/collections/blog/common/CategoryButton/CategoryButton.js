@@ -3,7 +3,7 @@ import * as React from 'react'
 //import {} from 'react'
 import PropTypes from 'prop-types'
 
-import { Button } from 'ui/elements'
+import { Button } from '@fwrlines/ds/elements'
 
 import { BlogLink } from '../Link'
 //Intl

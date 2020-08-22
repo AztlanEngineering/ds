@@ -78,9 +78,10 @@ const CardView = ({
       { error && JSON.stringify(error) }
 
       { data &&
-        <Card.Group style={{
-          '--card-width':currentType.defaultViews.card.minWidth || '200px'
-        }}
+        <Card.Group
+          style={{
+            '--card-width':currentType.defaultViews.card.minWidth || '200px'
+          }}
           className='u0'
         >
           { finalData.map((e, i) =>

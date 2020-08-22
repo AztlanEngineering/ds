@@ -7,7 +7,7 @@ import Context from './Context'
 
 import { generatePath } from 'react-router-dom'
 
-import { useSite } from 'ui/common'
+import { useSite } from '@fwrlines/ds/common'
 //Intl
 
 /* import { FormattedMessage} from "react-intl";
@@ -47,9 +47,9 @@ const BlogContext = ({
 
   const generateLocalPath = (to, params, canonical=false) => {
     const path = generatePath(
-    routes[to],
-    params
-  )
+      routes[to],
+      params
+    )
     return canonical ? [SITE_CANONICAL, path].join('') : path
 
   }

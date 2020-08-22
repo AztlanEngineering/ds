@@ -3,8 +3,8 @@ import * as React from 'react'
 //import {} from 'react'
 import PropTypes from 'prop-types'
 
-import { Image } from 'ui/common'
-import { Heading, Card } from 'ui/elements'
+import { Image } from '@fwrlines/ds/common'
+import { Heading, Card } from '@fwrlines/ds/elements'
 
 import { AnalyticsButton as LocalButton } from 'ui/collections/analytics'
 
@@ -98,10 +98,10 @@ const ArticleCard = ({
             slug={ category.slug }
             name={ category.name }
             className={
-        [
-          categoryClassName,
-          's0 k-s'
-        ].filter(e => e).join(' ')
+              [
+                categoryClassName,
+                's0 k-s'
+              ].filter(e => e).join(' ')
 
             }
           />

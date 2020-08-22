@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 
 import {
   Label
-} from 'ui/common'
+} from '@fwrlines/ds/common'
 
 /* Config
    import C from 'ui/cssClasses' */
@@ -14,8 +14,8 @@ import {
    import './input_label.scss' */
 
 //const baseClassName = 'input_label'
- import { FormattedMessage} from "react-intl";
- import messages from "./messages"
+import { FormattedMessage} from 'react-intl'
+import messages from './messages'
 
 
 /**
@@ -59,7 +59,7 @@ const InputLabel = ({
           }}
         >
           (
-            <FormattedMessage {...messages.optional } />
+          <FormattedMessage {...messages.optional } />
           )
         </Label>
       }
@@ -107,8 +107,8 @@ InputLabel.propTypes = {
 }
 
 InputLabel.defaultProps = {
-  as          :'label',
-  optional    :false,
+  as      :'label',
+  optional:false,
 }
 
 export default InputLabel

@@ -14,13 +14,9 @@ import { useQuery, useMutation } from '@apollo/client'
 import { Actions } from '../Actions'
 import { Row } from './common'
 
-import { Popup } from 'ui/common'
+import { Popup, InlineLoader } from 'ui/common'
 
-import {
-  Shortcut
-} from 'ui/site'
-
-import { InlineLoader } from 'ui/common'
+import { Shortcut } from 'ui/site'
 
 /* import { FormattedMessage} from "react-intl";
    import messages from "./messages";
@@ -84,7 +80,7 @@ const TableView = ({
   } = useTable(
     {
       columns,
-      data:finalData,
+      data        :finalData,
       initialState:currentType.defaultViews.table.initialState,
     },
     useSortBy
@@ -142,18 +138,18 @@ const TableView = ({
                   Visible
                 </span>
                 <ul className='compact visible-columns'>
-                  {allColumns.map(column => 
-                    (column.isVisible && !(column.id === 'id')) && 
-                    <li key={column.id}>
-                      <label>
-                        <input
-                          type='checkbox'
-                          {...column.getToggleHiddenProps()}
-                        />
-                        {' '}
-                        {column.id}
-                      </label>
-                    </li>
+                  {allColumns.map(column =>
+                    (column.isVisible && !(column.id === 'id')) &&
+                      <li key={column.id}>
+                        <label>
+                          <input
+                            type='checkbox'
+                            {...column.getToggleHiddenProps()}
+                          />
+                          {' '}
+                          {column.id}
+                        </label>
+                      </li>
                   )}
                 </ul>
               </div>
@@ -162,18 +158,18 @@ const TableView = ({
                   Hidden
                 </span>
                 <ul className='compact hidden-columns'>
-                  {allColumns.map(column => 
-                    !column.isVisible && 
-                    <li key={column.id}>
-                      <label>
-                        <input
-                          type='checkbox'
-                          {...column.getToggleHiddenProps()}
-                        />
-                        {' '}
-                        {column.id}
-                      </label>
-                    </li>
+                  {allColumns.map(column =>
+                    !column.isVisible &&
+                      <li key={column.id}>
+                        <label>
+                          <input
+                            type='checkbox'
+                            {...column.getToggleHiddenProps()}
+                          />
+                          {' '}
+                          {column.id}
+                        </label>
+                      </li>
                   )}
                 </ul>
               </div>
@@ -200,7 +196,7 @@ const TableView = ({
       </Button.Group>
 
       <br />
-      
+
 
       { data &&
         <table {...getTableProps()}>
@@ -258,7 +254,7 @@ const TableView = ({
                         refetch={ refetch }
                         extraActions={
                           currentType.actions ? currentType.actions.extraActions: undefined
-                         }
+                        }
                       />
                     </td>
                   </tr>

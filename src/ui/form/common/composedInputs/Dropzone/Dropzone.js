@@ -4,9 +4,9 @@ import * as React from 'react'
 import { useState, useCallback, useMemo, useEffect } from 'react'
 import PropTypes from 'prop-types'
 
-import { Figure } from 'ui/common'
+import { Figure } from '@fwrlines/ds/common'
 
-import { SnapSlider } from 'ui/elements'
+import { SnapSlider } from '@fwrlines/ds/elements'
 
 import { useDropzone } from 'react-dropzone'
 
@@ -318,7 +318,7 @@ const Dropzone = ({
             <div key={i}>
               <Figure src={ e.preview }>
                 <span className='x-subtitle c-x'>
-                  { e.name } 
+                  { e.name }
                   {' '}
                   <small className='c-light-x'>{ readableFileSize(value.size) }</small>
                 </span>
@@ -331,7 +331,7 @@ const Dropzone = ({
             <Figure src={ value.preview }>
               <span className='x-subtitle c-x'>
                 { value.name }
-                 {' '}
+                {' '}
                 <small className='c-light-x'>{ readableFileSize(value.size) }</small>
               </span>
 

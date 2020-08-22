@@ -6,14 +6,14 @@ import PropTypes from 'prop-types'
 import {
   IconList,
   useSite,
-} from 'ui/common'
+} from '@fwrlines/ds/common'
 
 import {
   Card,
   Heading
-} from 'ui/elements'
+} from '@fwrlines/ds/elements'
 
-import { 
+import {
   Feature ,
   Price,
 } from './common'
@@ -22,8 +22,8 @@ import PlanContext from './Context'
 
 //Intl
 
- import { FormattedMessage} from "react-intl";
- import messages from "./messages"
+import { FormattedMessage} from 'react-intl'
+import messages from './messages'
 
 //Config
 
@@ -82,7 +82,7 @@ const Plan = ({
         { ...otherProps }
       >
         <Card.Section className='price_tag'>
-          
+
           <Heading
             heading={ name }
             headingClassName={
@@ -95,7 +95,8 @@ const Plan = ({
           <Price
             price={ price }
             currency={ currency }
-          ></Price>
+          >
+          </Price>
         </Card.Section>
         <Card.Section className='features'>
           <Heading
@@ -112,9 +113,9 @@ const Plan = ({
           </IconList>
         </Card.Section>
         { Cta &&
-        <Card.Section className='ur'>
-          <Cta name={ name } />
-        </Card.Section>
+          <Card.Section className='ur'>
+            <Cta name={ name } />
+          </Card.Section>
 
         }
       </Card>

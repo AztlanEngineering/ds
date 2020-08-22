@@ -5,9 +5,9 @@ import PropTypes from 'prop-types'
 
 
 
-import { Figure } from 'ui/common'
-import { Heading, Card } from 'ui/elements'
-import { Page, IconCard } from 'ui/site'
+import { Figure } from '@fwrlines/ds/common'
+import { Heading, Card } from '@fwrlines/ds/elements'
+import { Page, IconCard } from '@fwrlines/ds/site'
 
 //Intl
 

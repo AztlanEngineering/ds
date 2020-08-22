@@ -2,8 +2,8 @@
 import * as React from 'react'
 //import {} from 'react'
 import PropTypes from 'prop-types'
-import { Button } from 'ui/elements'
-import { usePage } from 'ui/site'
+import { Button } from '@fwrlines/ds/elements'
+import { usePage } from '@fwrlines/ds/site'
 
 
 import ga from 'react-ga'

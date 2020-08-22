@@ -8,8 +8,8 @@ import { BaseHTMLInput } from '../../baseInputs'
 
 import C from 'ui/cssClasses'
 
-import { Popup, InlineLoader } from 'ui/common'
-import { Button } from 'ui/elements'
+import { Popup, InlineLoader } from '@fwrlines/ds/common'
+import { Button } from '@fwrlines/ds/elements'
 
 import {
   InputInside,

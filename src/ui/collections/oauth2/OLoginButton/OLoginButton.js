@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 
 /* Config
    import C from 'ui/cssClasses' */
-import { Button } from 'ui'
+import { Button } from '@fwrlines/ds/elements'
 import gql from 'graphql-tag'
 import { useQuery } from '@apollo/client'
 import QUERY_GOOGLE from './graphql/oAuth2Google.gql'

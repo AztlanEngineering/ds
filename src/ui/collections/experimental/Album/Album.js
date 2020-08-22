@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
 import { useHistory, useRouteMatch } from 'react-router-dom'
 import path from 'path'
 
-import { Figure } from 'ui/common'
+import { Figure } from '@fwrlines/ds/common'
 
 //Intl
 
