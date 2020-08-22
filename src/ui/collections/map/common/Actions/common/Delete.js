@@ -150,7 +150,9 @@ Delete.propTypes = {
    */
   refetch:PropTypes.func,
 
-  /* Whether to redirect to the main list page after deletion */
+  /**
+   *  Whether to redirect to the main list page after deletion 
+   */
   redirect:PropTypes.bool
 }
 
