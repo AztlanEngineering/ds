@@ -8,7 +8,7 @@ import { useSelect } from 'downshift'
 
 import { Popup } from '@fwrlines/ds/common'
 
-import { Button } from 'ui/elements'
+import { Button } from '@fwrlines/ds/elements'
 
 import { InputHolder as Holder } from '../../elements'
 
