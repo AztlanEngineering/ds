@@ -1,0 +1,36 @@
+{
+  "name": "@fwrlines/ds",
+  "version": "3.0.0",
+  "description": "",
+  "main": "index.js",
+  "main": "dist/cjs/index.js",
+  "module": "dist/es/index.js",
+  "scripts": {
+    "relink": "npm link @fwrlines/ds.core && npm link @fwrlines/ds.contrib && npm link @fwrlines/ds.form",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile:cjs": "NODE_ENV=cjs babel src --out-dir dist/cjs",
+    "compile:es": "NODE_ENV=es babel src --out-dir dist/es",
+    "compile": "npm run compile:cjs && npm run compile:es",
+    "prepare": "npm run compile"
+  },
+  "author": "",
+  "repository": "github:fwrlines/ds",
+  "license": "MIT",
+  "dependencies": {
+    "@babel/preset-env": "^7.11.0",
+    "@fwrlines/ds.contrib": "latest",
+    "@fwrlines/ds.core": "latest",
+    "@fwrlines/ds.form": "latest"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.10.1",
+    "@babel/core": "^7.10.2",
+    "@babel/plugin-proposal-class-properties": "^7.10.1",
+    "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.1.0",
+    "babel-plugin-add-module-exports": "^1.0.2",
+    "babel-plugin-inline-import": "^3.0.0",
+    "babel-plugin-module-resolver": "^4.0.0",
+    "babel-plugin-transform-react-remove-prop-types": "^0.4.24"
+  }
+}
